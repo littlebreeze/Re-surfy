@@ -3,7 +3,7 @@ package org.zerock.domain;
 import lombok.Data;
 
 @Data
-public class stepVO {
+public class StepVO {
 	private Long sno;
 	private Long bno;
 	private Long stepNo;
