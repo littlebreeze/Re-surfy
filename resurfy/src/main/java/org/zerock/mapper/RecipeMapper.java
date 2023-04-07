@@ -9,9 +9,9 @@ import org.zerock.domain.RecipeVO;
 import org.zerock.domain.StepVO;
 
 public interface RecipeMapper {
-	public RecipeVO read(Long bno);
-	public StepVO read(Long bno);
-	public IngredientVO read(long bno);
+	public RecipeVO readRecipe(Long bno);
+	public StepVO readStep(Long bno);
+	public IngredientVO readIngredient(long bno);
 	public void insert(RecipeVO board);
 	public void insert(StepVO board);
 	public void insert(IngredientVO board);
@@ -22,5 +22,5 @@ public interface RecipeMapper {
 	public List<RecipeVO> getList();
 	public  List<RecipeVO> getListWithPaging(Criteria cri);
 	public Long getTotalCount(Criteria cri);
-	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount)
+	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
 }
