@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import lombok.Data;
 @Data
-public class BoardVO {
+public class RecipeVO {
 	private Long bno;
 	private String recipeName;
 	private String recipeDescription;
