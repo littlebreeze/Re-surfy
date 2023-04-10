@@ -30,6 +30,6 @@ public class UserController {
 	public String remove(String id, RedirectAttributes rttr) {
 		return null;
 	
-	
+	}
 	
 }

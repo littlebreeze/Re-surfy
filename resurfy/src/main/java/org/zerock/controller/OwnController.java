@@ -26,6 +26,6 @@ public class OwnController {
 	
 	public String modify(OwnVO vo, RedirectAttributes rttr) {
 		return null;
-	
+	}
 	
 }
