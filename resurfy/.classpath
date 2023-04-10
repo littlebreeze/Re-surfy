@@ -26,6 +26,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -35,7 +36,9 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/sqldeveloper/jdbc/lib/ojdbc8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/user/OneDrive/바탕 화면/others/자바필수프로그램/lombok.jar"/>
+	<classpathentry kind="lib" path="/Users/taeeon/Downloads/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="/Users/taeeon/Downloads/lombok.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
