@@ -6,9 +6,9 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.StepVO;
 
 public interface StepService {
-	public void register(StepVO step);
+	public void register(StepVO vo);
 	public StepVO get(Long bno);
-	public boolean modify(StepVO step);
+	public boolean modify(StepVO vo);
 	public boolean remove(Long bno);
 	public List<StepVO> getList(Criteria cri);
 	
