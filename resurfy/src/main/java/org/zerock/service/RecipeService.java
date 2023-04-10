@@ -6,7 +6,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.RecipeVO;
 
 public interface RecipeService {
-	public void register(RecipeVO vo);
+	public void register(RecipeVO recipe);
 	public RecipeVO get(Long bno);
 	public boolean remove(Long bno);
 	public boolean modify(Long bno);
