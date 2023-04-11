@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.OwnMapper">
+	<select id="getList" resultType="org.zerock.domain.OwnVO">
+	<![CDATA[
+		select * from OWN_TBL where ID = 'user1'
+	]]>
+	</select>
+
+	<insert id="insert">
+		insert into OWN_TBL (OWNNO, ID, INGRENAME)
+		values (seq_own.nextval, #{id}, #{ingreName})
+	</insert>
+	
+	<delete id="delete">
+		delete from OWN_TBL where OWNNO = #{ownNo}
+	</delete>
+
 </mapper>
