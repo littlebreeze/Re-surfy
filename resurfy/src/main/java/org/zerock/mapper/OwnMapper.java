@@ -5,10 +5,8 @@ import java.util.List;
 import org.zerock.domain.OwnVO;
 
 public interface OwnMapper {
-
+	public int insert(OwnVO vo);
 	public List<OwnVO> getList();
-	
-	public void insert(OwnVO cart);
-	
-	public int delete(Long bno);
+ 	public int delete(Long ownNO);
+ 	public int update(OwnVO vo);
 }
