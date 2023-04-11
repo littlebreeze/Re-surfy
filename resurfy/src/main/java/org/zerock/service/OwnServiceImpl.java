@@ -14,35 +14,24 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor //모든 생성자를 주입한다.
 public class OwnServiceImpl implements OwnService {
+	
 	private OwnMapper mapper;
-	@Override
-	public void register(OwnVO vo) {
-		// TODO Auto-generated method stub
 
+	@Override
+	public void register(List<OwnVO> cart) {
+		for (OwnVO OwnVO : cart) {
+			mapper.insert(OwnVO);
+		}
 	}
 
 	@Override
-	public boolean remove(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean modify(OwnVO vo) {
-		// TODO Auto-generated method stub
+	public boolean remove(Long cno) {
+		mapper.delete(cno);
 		return false;
 	}
 
 	@Override
-	public List<OwnVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OwnVO> getList() {
+		return mapper.getList();
 	}
-
-	@Override
-	public int getTotal(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

@@ -17,29 +17,31 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor //모든 생성자를 주입한다.
 
 public class CartServiceImpl implements CartService {
+	
 	private CartMapper mapper;
+	
 	@Override
-	public void register(CartVO vo) {
-		// TODO Auto-generated method stub
-
+	public void register(List<CartVO> cart) {
+		for (CartVO cartVO : cart) {
+			mapper.insert(cartVO);
+		}
 	}
 
 	@Override
-	public boolean modify(CartVO vo) {
-		// TODO Auto-generated method stub
+	public boolean modify(CartVO cart) {
+		mapper.update(cart);
 		return false;
 	}
 
 	@Override
-	public int getTotal(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean remove(Long cno) {
+		mapper.delete(cno);
+		return false;
 	}
 
 	@Override
 	public List<CartVO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.getList();
 	}
 
 }
