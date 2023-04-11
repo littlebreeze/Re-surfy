@@ -5,10 +5,6 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<script>location.href = "get";</script>
 </body>
 </html>

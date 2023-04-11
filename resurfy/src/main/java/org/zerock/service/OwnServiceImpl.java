@@ -24,7 +24,7 @@ public class OwnServiceImpl implements OwnService {
 	@Override
 	public boolean remove(Long bno) {
 		// TODO Auto-generated method stub
-		return null;
+		return (Boolean) null;
 	}
 
 	@Override

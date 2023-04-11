@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.RecipeMapper">
+	<select id = "readRecipe" resultType = "org.zerock.domain.RecipeVO">
+		<![CDATA[ 
+				select* from recipe_tbl where bno=#{bno};
+		  ]]>
+	</select>
+		<select id = "readStep" resultType = "org.zerock.domain.StepVO">
+		<![CDATA[ 
+				select* from step_tbl where bno=#{bno};
+		  ]]>
+	</select>
+	<select id = "readIngredient" resultType = "org.zerock.domain.IngredientVO">
+		<![CDATA[ 
+				select* from step_tbl where sno=#{sno};
+		  ]]>
+	</select>
+	
+	<insert id = "insert">
+	<![CDATA[ 
+			insert into recipe_tbl (bno,id,recipename,recipedescription, foodtypeno,foodtype, time,person,difficulty,image,recipedate,recipeupdatedate)
+			values (seq_board.nextval,#{id},recipename,recipedescription, foodtypeno,foodtype,time,person,difficulty,image,recipedate,recipeupdatedate)
+		  ]]>
+	</insert>
+	
+</mapper>

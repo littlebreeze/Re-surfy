@@ -10,8 +10,8 @@ import org.zerock.domain.StepVO;
 
 public interface RecipeMapper {
 	public RecipeVO readRecipe(Long bno);
-	public StepVO readStep(Long bno);
-	public IngredientVO readIngredient(long bno);
+	public StepVO readStep(Long sno);
+	public IngredientVO readIngredient(long ino);
 	public void insert(RecipeVO board);
 	public void insert(StepVO board);
 	public void insert(IngredientVO board);

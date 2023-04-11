@@ -9,7 +9,7 @@ public interface ReplyService {
 	public void register(ReplyVO vo);
 	public ReplyVO get(Long bno);
 	public boolean modify(ReplyVO vo);
-	public List<ReplyVO> getList(Criteria cri)
+	public List<ReplyVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
 	
 }
