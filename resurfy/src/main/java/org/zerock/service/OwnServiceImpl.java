@@ -34,4 +34,14 @@ public class OwnServiceImpl implements OwnService {
 	public List<OwnVO> getList() {
 		return mapper.getList();
 	}
+	
+	@Override
+	public List<OwnVO> getList(Criteria cri) {
+		return mapper.getListPaging(cri);
+	}
+	
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
 }

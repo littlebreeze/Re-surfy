@@ -11,7 +11,9 @@ public interface CartService {
 
 	public boolean modify(CartVO cart);
 
-	public boolean remove(Long cno);
+	public boolean remove(List<Long> cno);
 
-	public List<CartVO> getList();
+	public List<CartVO> getList(Criteria cri);
+	
+	public int getTotal(Criteria cri);
 }
