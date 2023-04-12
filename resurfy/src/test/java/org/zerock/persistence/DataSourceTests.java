@@ -1,7 +1,5 @@
 package org.zerock.persistence;
 
-
-
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
@@ -23,6 +21,21 @@ public class DataSourceTests {
 	
 	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
+	
+	@Test
+	public void testMybatis() {
+		try(SqlSession session = sqlSessionFactory.openSession();
+			Connection con = session.getConnection();	
+				){
+			
+			log.info(session);
+			log.info(con);
+			
+		}catch(Exception e) {
+			fail(e.getMessage());
+		}
+	}
+	
 	
 	@Test
 	public void testConnection() {
