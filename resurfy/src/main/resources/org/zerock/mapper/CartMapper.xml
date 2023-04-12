@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.CartMapper">
+
 	<select id="getList" resultType="org.zerock.domain.CartVO">
 	<![CDATA[
 		select * from CART_TBL where ID = 'user1'
 	]]>
+	</select>
+	
+	<select id="getListPaging" resultType="org.zerock.domain.CartVO">
+		<![CDATA[
+		select 
+			CNO, ID, PRICE, PNAME, COUNT
+		from 
+			(
+			select /*+INDEX_DESC(CART_TBL pk_cart) */
+			rownum rn, CNO, ID, PRICE, PNAME, COUNT
+			from 
+			CART_TBL
+			where 
+			rownum <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} -1) * #{amount} 
+		]]>
 	</select>
 
 	<insert id="insert">
@@ -22,5 +40,9 @@
 		set count = #{count}
 		where cno = #{cno}
 	</update>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from CART_TBL where ID = 'user1'
+	</select>
 
 </mapper>

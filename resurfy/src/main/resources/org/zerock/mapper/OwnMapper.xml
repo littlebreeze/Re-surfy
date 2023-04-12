@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.OwnMapper">
+
 	<select id="getList" resultType="org.zerock.domain.OwnVO">
 	<![CDATA[
 		select * from OWN_TBL where ID = 'user1'
 	]]>
+	</select>
+	
+	<select id="getListPaging" resultType="org.zerock.domain.OwnVO">
+		<![CDATA[
+		select 
+			ownno, ID, ingredient
+		from 
+			(
+			select /*+INDEX_DESC(OWN_TBL pk_own) */
+			rownum rn, ownno, ID, ingredient
+			from 
+			WON_TBL
+			where 
+			rownum <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} -1) * #{amount} 
+		]]>
 	</select>
 
 	<insert id="insert">
@@ -16,5 +34,9 @@
 	<delete id="delete">
 		delete from OWN_TBL where OWNNO = #{ownNo}
 	</delete>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from OWN_TBL where ID = 'user1'
+	</select>
 
 </mapper>

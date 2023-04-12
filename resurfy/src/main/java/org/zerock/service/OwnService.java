@@ -12,4 +12,8 @@ public interface OwnService {
 	public boolean remove(Long cno);
 
 	public List<OwnVO> getList();
+	
+	public List<OwnVO> getList(Criteria cri);
+
+	public int getTotal(Criteria cri);
 }

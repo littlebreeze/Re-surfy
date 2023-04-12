@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.OwnVO;
+import org.zerock.domain.PageDTO;
 import org.zerock.service.CartService;
 import org.zerock.service.OwnService;
 
@@ -24,7 +25,11 @@ public class OwnController {
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
 		log.info("가진 재료 페이지 진입");
+		
+		int total = service.getTotal(cri);
+		
 		model.addAttribute("list", service.getList());
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	public String register(OwnVO vo , RedirectAttributes rttr) {

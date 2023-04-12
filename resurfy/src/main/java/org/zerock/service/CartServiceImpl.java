@@ -34,14 +34,22 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public boolean remove(Long cno) {
-		mapper.delete(cno);
-		return false;
+	public boolean remove(List<Long> cno) {
+		int cnt = 0;
+		for (Long long1 : cno) {
+			cnt += mapper.delete(long1);
+		}
+		return cnt==cno.size();
 	}
 
 	@Override
-	public List<CartVO> getList() {
-		return mapper.getList();
+	public List<CartVO> getList(Criteria cri) {
+		return mapper.getListPaging(cri);
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotalCount(cri);
 	}
 
 }

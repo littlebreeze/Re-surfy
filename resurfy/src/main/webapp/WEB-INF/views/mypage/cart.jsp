@@ -57,21 +57,112 @@
                     <h1>장바구니</h1>
                     <br><br>
                     <div class="container">
+                    	<div class="row mb-3 text-center">
+					      <div class="col-md-2 themed-grid-col">
+					      	<input type="checkbox" id="cbx_chkAll">전체 선택
+					      </div>
+					    </div>
 					<c:forEach items="${list}" var="cart">
 					    <div class="row mb-3 text-center">
-					      <div class="col-md-1 themed-grid-col">${cart.cno}</div>
+					      <div class="col-md-1 themed-grid-col">
+					      	<input type="checkbox" name="chk" data-cno="${cart.cno}">${cart.cno}
+					      </div>
 					      <div class="col-md-7 themed-grid-col">${cart.pname}</div>
 					      <div class="col-md-2 themed-grid-col">${cart.price}</div>
-					      <div class="col-md-2 themed-grid-col">${cart.count}</div>
+					      <div class="col-md-2 themed-grid-col">
+					      	<input class="col-md-2" type="number" value="${cart.count}" min="0">
+					      </div>
 					    </div>
 					</c:forEach>
 					 </div>
+				<input type="button" value="선택삭제" class="deleteBtn">
+				<!-- start Paging -->
+				<div class='pull-right'>
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous">
+							<a href="${pageMaker.startPage -1 }">Previous</a>
+							</li>
+						</c:if>
+						<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+								<a href="${num}">${num}-</a>
+							</li>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a
+								href="${pageMaker.endPage +1}">Next</a>
+							</li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- end paging -->
                 </div>
+                <form id='actionForm' action="/mypage/cart" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				</form>
             </div>
         </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../resources/js/mypageScripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var actionForm = $("#actionForm");
+	$(".paginate_button a").on("click",	function(e) {
+		e.preventDefault();
+		console.log('click');
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#cbx_chkAll").click(function() {
+			if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
+			else $("input[name=chk]").prop("checked", false);
+		});
+		
+		$("input[name=chk]").click(function() {
+			var total = $("input[name=chk]").length;
+			var checked = $("input[name=chk]:checked").length;
+			
+			if(total != checked) $("#cbx_chkAll").prop("checked", false);
+			else $("#cbx_chkAll").prop("checked", true); 
+		});
+		
+		$(".deleteBtn").click(function(){
+			var checkArr = new Array();
+			   
+		   $("input[name=chk]:checked").each(function(){
+		    checkArr.push($(this).attr("data-cno"));
+		   });
+		   
+		   if(checkArr.length == 0){
+			   alert("선택된 글이 없습니다.");
+		   }else{
+			  var confirm_val = confirm("정말 삭제하시겠습니까?");
+			  
+			  if(confirm_val) {
+				   console.log(checkArr);
+				   $.ajax({
+					    url : "/mypage/deleteCart",
+					    method : "post",
+					    data : { chbox : checkArr },
+					    success : function(){
+					    	console.log("삭제 성공");
+					    	location.href = "/mypage/cart";
+					    }
+					});
+			  } 
+		   }
+		});	//end click
+	});
+</script>
     </body>
 </html>
+
