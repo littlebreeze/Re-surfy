@@ -119,7 +119,6 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 		</trim>
 	</sql>
 
-	
 	<select id = "getListWithPaging" 
 	resultType = "org.zerock.domain.RecipeVO">
 	<![CDATA[
