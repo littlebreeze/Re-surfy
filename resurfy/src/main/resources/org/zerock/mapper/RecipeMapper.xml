@@ -121,7 +121,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 
 	
 	<select id = "getListWithPaging" 
-	resultType = "org.zerock.domain.recipeVO">
+	resultType = "org.zerock.domain.RecipeVO">
 	<![CDATA[
   	select 
     bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
