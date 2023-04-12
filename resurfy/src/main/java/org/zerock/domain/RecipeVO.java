@@ -15,10 +15,8 @@ public class RecipeVO {
 	private String image;
 	private Long foodTypeNo;
 	private String foodType;
-	private String difficuty;
+	private String difficulty;
 	private String person;
 	private String time;
-	
-	
-	
+
 }

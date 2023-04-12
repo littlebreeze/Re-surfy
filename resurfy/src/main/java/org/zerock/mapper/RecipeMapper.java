@@ -12,15 +12,15 @@ public interface RecipeMapper {
 	public RecipeVO readRecipe(Long bno);
 	public StepVO readStep(Long sno);
 	public IngredientVO readIngredient(long ino);
-	public void insert(RecipeVO board);
-	public void insert(StepVO board);
-	public void insert(IngredientVO board);
-	public void update(RecipeVO board);
-	public void update(StepVO board);
-	public void update(IngredientVO board);
+	public void insertRecipe(RecipeVO board);
+	public void insertStep(StepVO board);
+	public void insertIngredient(IngredientVO board);
+	public void updateRecipe(RecipeVO board);
+	public void updateStep(StepVO board);
+	public void updateIngredient(IngredientVO board);
 	public Long delete(Long bno);
 	public List<RecipeVO> getList();
 	public  List<RecipeVO> getListWithPaging(Criteria cri);
-	public Long getTotalCount(Criteria cri);
+	public int getTotalCount(Criteria cri);
 	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
 }

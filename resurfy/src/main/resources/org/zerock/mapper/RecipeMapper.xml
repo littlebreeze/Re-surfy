@@ -3,6 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.RecipeMapper">
+
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+					<!-- 음식 명(foodName)으로 검색  -->
+						<when test="type == 'R'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+				 	<!-- 음식 타입(foodType)으로 검색  -->
+						<when test="type == 'F'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 	<select id = "readRecipe" resultType = "org.zerock.domain.RecipeVO">
 		<![CDATA[ 
 				select* from recipe_tbl where bno=#{bno};
@@ -19,11 +39,109 @@
 		  ]]>
 	</select>
 	
-	<insert id = "insert">
+	<select id = "getList" resultType = "org.zerock.domain.RecipeVO">
+			<![CDATA[
+		select * from recipe_tbl where bno > 0 
+		]]>
+	</select>
+	
+	<insert id = "insertRecipe">
 	<![CDATA[ 
-			insert into recipe_tbl (bno,id,recipename,recipedescription, foodtypeno,foodtype, time,person,difficulty,image,recipedate,recipeupdatedate)
-			values (seq_board.nextval,#{id},recipename,recipedescription, foodtypeno,foodtype,time,person,difficulty,image,recipedate,recipeupdatedate)
+			insert into recipe_tbl (bno,id,recipename,recipedescription, foodtypeno,foodtype,time,person,difficulty,image)
+			values (seq_board.nextval,#{id},#{recipeName},#{recipeDescription}, #{foodTypeNo},#{foodType},#{time},#{person},#{difficulty},#{image})
 		  ]]>
 	</insert>
 	
+	<insert id = "insertStep">
+		<![CDATA[
+			insert into step_tbl (sno,bno,stepno,stepdescription,stepimage,tip) 
+			values (seq_step.nextval,#{bno},#{stepNo},#{stepDescription},#{stepImage},#{tip})
+		]]>
+	</insert>
+		<insert id = "insertIngredient">
+		<![CDATA[
+			insert into ingredient_tbl (ino,bno,ingrename,ingretypeno,ingremeasure,ingretype) 
+			values (seq_ingre.nextval,#{bno},#{ingreName},#{ingreTypeNo},#{ingreMeasure},#{ingreType})
+		]]>
+	</insert>
+	
+	<update id = "updateRecipe">
+		update recipe_tbl
+		set recipename = #{recipeName},
+		recipedescription = #{recipeDescription},
+		foodtypeno = #{foodTypeNo},
+		recipeupdatedate=SYSDATE
+		where bno = 
+		#{bno}
+	</update>
+
+	<update id = "updateStep">
+		update step_tbl
+		set stepnO = #{stepNo},
+		stepdescription = #{stepDescription},
+		stepimage = #{stepImage},
+		tip = #{tip}
+		where sno = 
+		#{sno}
+	</update>
+	
+	<update id = "updateIngredient">
+		update ingredient_tbl
+		set ingrename = #{ingreName},
+		ingretypeno = #{ingreTypeNo},
+		ingremeasure = #{ingreMeasure},
+		ingretype = #{ingreType}
+		where ino = 
+		#{ino}
+	</update>
+	
+	<delete id="delete">
+		delete recipe_tbl where bno = #{bno}
+	</delete>
+	<select id = "getListWithPaging" 
+	resultType = "org.zerock.domain.recipeVO">
+	<![CDATA[
+  	select 
+    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
+  		from 
+      (
+      select /*+INDEX_DESC(tbl_board pk_recipe) */
+        rownum rn, bno, title, content, writer,regdate,updatedate 
+      from 
+        recipe_tbl
+      where 
+  ]]>
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'R'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'F'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+      
+  <![CDATA[    
+      rownum <= #{pageNum} * #{amount}
+      )
+  where rn > (#{pageNum} -1) * #{amount}   
+  ]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from recipe_tbl where 
+		
+		<include refid="criteria"></include> 
+		
+		bno > 0
+		
+	</select>
+
 </mapper>
+
+
