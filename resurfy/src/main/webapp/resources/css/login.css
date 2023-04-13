@@ -1,0 +1,222 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,700&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #fff;
+  display: grid;
+  place-content: center;
+  padding: 50px;
+}
+
+section {
+  width: 800px;
+  height: 550px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(135,206,250, 0.36);
+}
+
+section.active .left {
+  transform: translateY(0px);
+}
+section.active .right {
+  transform: translateY(0px);
+}
+
+.left,
+.right {
+  width: 400px;
+  height: 1000px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
+}
+.left img,
+.right img {
+  max-width: 100%;
+}
+
+.right {
+  transform: translateY(-500px);
+}
+
+.sign-up,
+.sign-in {
+  display: grid;
+  place-content: center;
+  width: 400px;
+  height: 400px;
+}
+
+.sign-in h1 {
+  color:#33afe9;
+  font-size:42px;
+  margin-top:300px;
+  margin-bottom: 18px;
+  text-align: center;
+  transition:0.2s linear;
+  letter-spacing: -3px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sign-up h1 {
+  color:#33afe9;
+  font-size:42px;
+  margin-top:165px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition:0.2s linear;
+  letter-spacing: -3px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sign-up form,
+.sign-in form {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  gap: 20px;
+}
+.con1 {
+  display: flex;
+  width: 340px;
+  gap: 20px;
+}
+.con2,
+.con3 {
+  display: flex;
+  width: 340px;
+  gap: 20px;
+}
+
+.con1 button,
+.con2 button,
+.con3 button{
+	background: #33afe9;
+	border-radius:7px;
+	border: 0px;
+	color:#f5f5f5;
+	cursor: pointer;
+	font-family: 'Nanum Gothic', sans-serif;
+	text-align: center;
+}
+
+.sign-up div input{
+  border: 0;
+  outline: 0;
+  background: #f5f5f5;
+  padding: 10px 5px;
+  border-radius: 5px;
+  padding-left: 15px;
+  display: block;
+}
+
+.sign-up form input:nth-child(n+1):nth-child(-n+6),
+.sign-in form input {
+  border: 0;
+  outline: 0;
+  background: #f5f5f5;
+  padding: 10px 5px;
+  border-radius: 5px;
+  padding-left: 15px;
+  display: block;
+  position: relative;
+}
+
+
+.sign-up div input::placeholder,
+.sign-up form input::placeholder,
+.sign-in form input::placeholder {
+  color: rgba(15, 19, 42, 0.3);
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.sign-up form [type=submit],
+.sign-in form [type=submit] {
+  background: #33afe9;
+  color: white;
+  display: block;
+  width : 100%;
+  height: 40px;
+  border-radius: 8px;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-family:  sans-serif;
+  transition: 0.2s linear;
+}
+
+
+.sign-up p,
+.sign-in p {
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.sign-up p a,
+.sign-in p a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #00a4cc;
+}
+.sign-up p a:is(:hover, :visited),
+.sign-in p a:is(:hover, :visited) {
+  color: #00a4cc;
+}
+
+
+.separator {
+  display: block;
+  margin: 30px auto 10px;
+  text-align: center;
+  height: 40px;
+  position: relative;
+  background: transparent;
+  color: rgba(15, 19, 42, 0.4);
+  font-size: 13px;
+  width: 90%;
+  max-width: 680px;
+}
+.separator::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 40%;
+}
+.separator::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: rgba(15, 19, 42, 0.2);
+  height: 1px;
+  width: 40%;
+}
+
+.sign-up div a,
+.sign-in div a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #33afe9;
+}
+.sign-up div a:is(:hover, :visited),
+.sign-in div a:is(:hover, :visited) {
+  color: #33afe9;
+}

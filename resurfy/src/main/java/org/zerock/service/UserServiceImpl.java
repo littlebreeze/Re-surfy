@@ -44,5 +44,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public void join(UserVO userVO) {
+		log.info("join....." + userVO);
+		mapper.insert(userVO);
+		
+	}
 
 }

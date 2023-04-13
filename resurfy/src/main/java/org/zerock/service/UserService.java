@@ -11,4 +11,5 @@ public interface UserService {
 	public boolean modify(Criteria cri);
 	public List<UserVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
+	public void join(UserVO userVO);
 }
