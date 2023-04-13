@@ -29,7 +29,11 @@ public class RecipeController {
 	public String register(RecipeVO vo , RedirectAttributes rttr) {
 		return "";
 	}
-	public void register() {}
+	
+	@GetMapping("/registerRecipe")
+	public void register() {
+		log.info("/registerRecipe");
+	}	
 	
 	@GetMapping("/detail")
 	public void get(@RequestParam("bno") Long bno, Model model) {

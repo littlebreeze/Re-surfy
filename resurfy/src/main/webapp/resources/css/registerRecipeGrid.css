@@ -1,0 +1,160 @@
+.register_title {
+    background: #f8f8f8;
+    border-bottom: 1px solid #e6e7e8;
+    padding: 14px 18px;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    color: #33afe9;
+}
+
+.wrapper_box {
+    padding: 26px 50px;
+    border-bottom: 10px solid #f1f1f2;
+    margin: 0 -1px;
+}
+
+.wrapper_line{
+  padding: 25px 0px 0px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid white;
+  
+}
+
+.wrapper_title1 {
+    width: 140px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    vertical-align: top;
+    padding: 0px 0px 0px 2px;
+	margin: 0px 0px 22px;
+	color: #33afe9;
+    
+}
+
+.wrapper_box p {
+    font-size: 20px;
+    padding: 0 0 0 2px;
+    margin: 0 0 22px 0;
+    line-height: 50px;
+    display: inline-block;
+}
+
+.wrapper_box select {
+    background: #f5f5f5;
+    border: 1px solid #e1e1e1;
+    font-size: 16px;
+    padding: 10px 4px;
+    margin: 0 2px 0 0;
+    border-radius: 4px;
+}
+
+.wrapper ul, .wrapper li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper_box li input {
+    display: inline-block;
+    margin: 0 3px;
+    vertical-align: middle;
+}
+
+.pad_l_60 {
+    padding-left: 300px !important;
+}
+
+.pad_l_60 input{
+	background: #f5f5f5;
+    border: 1px solid #e1e1e1;
+    font-size: 16px;
+    padding-left: 15px;
+    height: 50px;
+    vertical-align: middle;
+    margin-top: -1px;
+}
+
+.pad_l_60 textarea{
+	height:120px; 
+	width: 610px; 
+	resize: none;
+	margin: 4px;
+	padding-left: 10px;
+}
+
+.recipeName{
+	padding: 6px 12px 6px 15px;
+	margin: -1px 0px 0px;
+}
+
+
+ul {
+    display: inline-block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}
+
+
+.wrapper_box2 .step_title1 {
+    width: 100px;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: normal;
+    vertical-align: top;
+    color: #33afe9;
+    margin-left: 40px;
+}
+.wrapper_box2 .wrapper_title2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 50px 0px 22px;
+    width: 100%;
+    color: #33afe9;
+}
+
+.step_cont {
+    display: inline-block;
+    vertical-align: middle;
+    background: #f5f5f5;
+    border: 1px solid #e1e1e1;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.step img {
+    border: 1px solid #e1e1e1;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+button{
+	text-align: center;
+}
+
+.btn_add .btn {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 16px;
+    color: #444;
+}
+
+.mag_b_25 {
+    margin-bottom: 25px !important;
+}
+
+
+.regi_btm {
+    border: 1px solid #e6e7e8;
+    background: #fff;
+    text-align: center;
+    padding: 35px 0 40px 0;
+    border-top: none;
+}
