@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
 
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
   <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
-  <label class="btn btn-outline-primary" for="btnradio1">�ֽŸ޴�</label>
+  <label class="btn btn-outline-primary" for="btnradio1">최신메뉴</label>
   <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">
-  <label class="btn btn-outline-primary" for="btnradio2">��õ�޴�</label>
+  <label class="btn btn-outline-primary" for="btnradio2">추천메뉴</label>
    <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">search</button>

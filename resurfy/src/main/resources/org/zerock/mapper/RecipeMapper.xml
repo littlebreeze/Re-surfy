@@ -19,7 +19,7 @@
   </select>
   
   <insert id="insertRecipe">
-  <!-- 쿼리문을 규칙에 맞게 지정삽입 필드와 필드값을 쌍으로 맞춘다. -->
+  <!-- 키본키,외래키 규칙에 위반하지 않도록 sequence 작성 및 tests를 수행한다. -->
   insert into recipe_tbl (bno, id, recipeName, recipeDescription, foodTypeNo, foodType, time, person, difficulty, image)
       values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription}, #{foodTypeNo}, #{foodType}, #{time}, #{person}, #{difficulty}, #{image})
    </insert>   

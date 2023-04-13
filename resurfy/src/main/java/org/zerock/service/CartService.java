@@ -7,13 +7,15 @@ import org.zerock.domain.Criteria;
 
 
 public interface CartService {
-	public void register(List<CartVO> cart);
+	public boolean register(List<CartVO> cart);
 
-	public boolean modify(CartVO cart);
+	public boolean modify(List<CartVO> cartUpdate);
 
 	public boolean remove(List<Long> cno);
 
 	public List<CartVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
+	
+	public List<Long> getpIDList();
 }

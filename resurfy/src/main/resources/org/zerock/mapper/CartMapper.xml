@@ -12,11 +12,11 @@
 	<select id="getListPaging" resultType="org.zerock.domain.CartVO">
 		<![CDATA[
 		select 
-			CNO, ID, PRICE, PNAME, COUNT
+			CNO, ID, PRICE, PNAME, COUNT, PIMAGE, INAME, PRODUCTID
 		from 
 			(
 			select /*+INDEX_DESC(CART_TBL pk_cart) */
-			rownum rn, CNO, ID, PRICE, PNAME, COUNT
+			rownum rn, CNO, ID, PRICE, PNAME, COUNT, PIMAGE, INAME, PRODUCTID
 			from 
 			CART_TBL
 			where 
@@ -27,8 +27,8 @@
 	</select>
 
 	<insert id="insert">
-		insert into CART_TBL (CNO, ID, PRICE, PNAME, COUNT)
-		values (seq_cart.nextval, #{id}, #{price}, #{pname}, #{count})
+		insert into CART_TBL (CNO, ID, PRICE, PNAME, COUNT, PIMAGE, INAME, PRODUCTID)
+		values (seq_cart.nextval, #{id}, #{price}, #{pname}, 1, #{pimage}, #{iname}, #{productid})
 	</insert>
 	
 	<delete id="delete">
@@ -36,13 +36,15 @@
 	</delete>
 	
 	<update id="update">
-		update CART_TBL
-		set count = #{count}
-		where cno = #{cno}
+		update CART_TBL set count = count+1 where ID = #{id} AND PRODUCTID = #{productid}
 	</update>
 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from CART_TBL where ID = 'user1'
+	</select>
+	
+	<select id="getpIdList" resultType="Long">
+		select PRODUCTID from cart_tbl where ID = 'user1'
 	</select>
 
 </mapper>

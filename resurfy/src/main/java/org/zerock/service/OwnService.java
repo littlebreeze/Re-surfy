@@ -7,9 +7,9 @@ import org.zerock.domain.OwnVO;
 
 public interface OwnService {
 
-	public void register(List<OwnVO> cart);
+	public boolean register(List<OwnVO> cart);
 
-	public boolean remove(Long cno);
+	public boolean remove(List<Long> cno);
 
 	public List<OwnVO> getList();
 	
