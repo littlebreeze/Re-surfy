@@ -53,7 +53,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   </select>
   
   <select id="readIngredient" resultType="org.zerock.domain.IngredientVO">
-   select * from ingredient_tbl where ino=#{ino}
+   select * from ingredient_tbl where bno=#{bno}
   </select>
   
 

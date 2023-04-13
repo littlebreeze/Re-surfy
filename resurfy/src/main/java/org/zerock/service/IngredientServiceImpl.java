@@ -21,10 +21,30 @@ public class IngredientServiceImpl implements IngredientService {
 
 	}
 
-	@Override
-	public IngredientVO get(Long bno) {
+	/*@Override
+	public List<IngredientVO> getList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return null;
+	}*/
+	
+	@Override
+	public List<IngredientVO> getList() {
+		log.info("getListIngre.......");
+		return mapper.getIngreList();
+	}
+	
+	@Override
+	public List<IngredientVO> get(Long bno) {
+		log.info("getIngre.......");
+		return mapper.readIngredient(bno);
+	}
+
+
+
+	@Override
+	public boolean remove(Long bno) {
+		log.info("removeIngre......." + bno);
+		return mapper.deleteRecipe(bno)==1;	
 	}
 
 	@Override
@@ -33,16 +53,11 @@ public class IngredientServiceImpl implements IngredientService {
 		return false;
 	}
 
-	@Override
-	public boolean remove(Long bno) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public List<IngredientVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
+
+
+
 
 }

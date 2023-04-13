@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-<title>Resurfy Detail Page</title>
+<title>Resurfy - <c:out value="${recipe.recipeName }"/></title>
 <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/resources/assets/logo.jpg" />
         <!-- Bootstrap icons-->
@@ -52,29 +52,55 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5" >
             <div class="text-center">
-  				<img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" width=500px height=500px  alt="...">
+  		<img src='<c:out value="${recipe.image }"/>' readonly="readonly" width=500px height=500px  alt="...">
+  				<!-- <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" width=500px height=500px  alt="..."> -->
   				<div class="row">
   					<div class="fs-5 mb-5">
   							<br>
                             
-                            <h5 class="p-2 fw-bolder">나물비빔밥</h5>
+                            <div class="form-group">
+                            <h5 class="p-2 fw-bolder"> <c:out value="${recipe.recipeName }"/> </h5>
+						</div>
                              <div class="p-2 small mb-1">
                              
                              <span style="font-size:13px">난이도 : </span>
-                             <span style="font-size:13px">보통 &nbsp &nbsp &nbsp &nbsp &nbsp</span>
-                             <span style="font-size:13px">소요시간 : 60분</span>
-                             <span style="font-size:13px"></span>
+                             <span style="font-size:13px"><c:out value="${recipe.difficulty }"/> &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+                             <span style="font-size:13px">소요시간 : </span>
+                             <span style="font-size:13px"><c:out value="${recipe.time }"/></span>
                              </div>
                              
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
                              
                              <div class="p-2"  style=" width: 50%; margin: 0 auto; text-align:left">
                              <img class="gx-1"  src="https://cdn-icons-png.flaticon.com/512/5393/5393061.png" width=20px height=20px  alt="...">
-                             <span class="gx-2" style="font-size:13px">user1</span> 
+                             <span class="gx-2" style="font-size:13px"><c:out value="${recipe.id }"/></span> 
                              </div>
                             
-                             <div class="p-3 small mb-1" style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">육수로 지은 밥에 야채를 듬뿍 넣은 영양만점 나물비빕밥! 길면 어떻게 나오는지 확인 길면 어떻게 나오는지 확인 길면 어떻게 나오는지 확인 길면 어떻게 나오는지 확인 길면 어떻게 나오는지 확인 길면 어떻게 나오는지 확인
+                             <div class="p-3 small mb-1" style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
+                             <c:out value="${recipe.recipeDescription }"/>
                              </div><br>
+                             
+              
+           <%--  <table width="100%"
+               class="table table-striped table-bordered table-hover">
+               <thead>
+                  <tr>
+                     <th>재료</th>
+                     <th>양</th>
+                  </tr>
+               </thead>
+
+               <c:forEach items="${list}" var="ingre">
+
+                  <tr>
+                     <td><c:out value="${ingre.ingreName}" /></td>
+                     <td><c:out value="${ingre.inagre}" /></td>
+                     
+                  </tr>
+
+               </c:forEach>
+            </table> --%>
+          
                              
                              <!-- 재료칸(재료, 양념) -->
                               <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">재료</div>
@@ -365,7 +391,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+       <!--  <script src="js/scripts.js"></script> -->
        
 </body>
 </html>
