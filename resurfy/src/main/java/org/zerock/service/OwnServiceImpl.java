@@ -18,16 +18,21 @@ public class OwnServiceImpl implements OwnService {
 	private OwnMapper mapper;
 
 	@Override
-	public void register(List<OwnVO> cart) {
-		for (OwnVO OwnVO : cart) {
-			mapper.insert(OwnVO);
+	public boolean register(List<OwnVO> own) {
+		int cnt = 0;
+		for (OwnVO OwnVO : own) {
+			cnt += mapper.insert(OwnVO);
 		}
+		return cnt==own.size();
 	}
 
 	@Override
-	public boolean remove(Long cno) {
-		mapper.delete(cno);
-		return false;
+	public boolean remove(List<Long> cno) {
+		int cnt = 0;
+		for (Long OwnVO : cno) {
+			cnt += mapper.delete(OwnVO);
+		}
+		return cnt==cno.size();
 	}
 
 	@Override

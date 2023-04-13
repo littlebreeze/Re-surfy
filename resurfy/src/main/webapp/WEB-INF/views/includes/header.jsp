@@ -14,8 +14,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- CSS CORE 테마-->
         <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
-        <!-- Bootstrap 테마  -->
-        <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        
+        <link href="../resources/css/pagingButton.css" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../resources/css/mypageStyles.css" rel="stylesheet" />
+        <link href="../resources/css/mypageGrid.css" rel="stylesheet">
     </head>
     <body>
        <div id="wrapper">

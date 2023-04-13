@@ -11,7 +11,7 @@ public interface OwnMapper {
 	
 	public List<OwnVO> getListPaging(Criteria cri);
 	
-	public void insert(OwnVO cart);
+	public int insert(OwnVO cart);
 	
 	public int delete(Long bno);
 	

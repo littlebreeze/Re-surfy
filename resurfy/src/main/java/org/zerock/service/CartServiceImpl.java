@@ -21,16 +21,21 @@ public class CartServiceImpl implements CartService {
 	private CartMapper mapper;
 	
 	@Override
-	public void register(List<CartVO> cart) {
+	public boolean register(List<CartVO> cart) {
+		int cnt = 0;
 		for (CartVO cartVO : cart) {
-			mapper.insert(cartVO);
+			cnt += mapper.insert(cartVO);
 		}
+		return cnt==cart.size();
 	}
 
 	@Override
-	public boolean modify(CartVO cart) {
-		mapper.update(cart);
-		return false;
+	public boolean modify(List<CartVO> cart) {
+		int cnt = 0;
+		for (CartVO cartVO : cart) {
+			cnt += mapper.update(cartVO);
+		}
+		return cnt==cart.size();
 	}
 
 	@Override
@@ -51,5 +56,10 @@ public class CartServiceImpl implements CartService {
 	public int getTotal(Criteria cri) {
 		return mapper.getTotalCount(cri);
 	}
-
+	
+	@Override
+	public List<Long> getpIDList() {
+		return mapper.getpIdList();
+	}
+	
 }

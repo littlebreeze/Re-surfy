@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class OwnVO {
-	private Long rno;
+	private Long ownNo;
 	private String id;
 	private String ingreName;
 }

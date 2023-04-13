@@ -1,11 +1,11 @@
 package org.zerock.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,10 +45,39 @@ public class CartController {
 		return "redirect:/mypage/cart";
 	}
 	
-	public String register(CartVO vo , RedirectAttributes rttr) {
-		return "";
+	@PostMapping("/addCart")
+	public String register(@RequestParam(value = "pArr[]") List<Long> pArr,
+			@RequestParam(value = "tArr[]") List<String> tArr, @RequestParam(value = "igArr[]") List<String> igArr,
+			@RequestParam(value = "imArr[]") List<String> imArr,@RequestParam(value = "pIdArr[]") List<Long> pIdArr, RedirectAttributes rttr) {
+
+		List<Long> pidList = service.getpIDList();
+		//이미 있는 제품이면 update를 하고 없으면 insert를 하고싶은디
+		
+		List<CartVO> cart = new ArrayList<CartVO>();
+		List<CartVO> cartUpdate = new ArrayList<CartVO>();
+		
+		for (int i = 0; i < pArr.size(); i++) {
+			CartVO c = new CartVO();
+			c.setId("user1");
+			c.setPrice(pArr.get(i));
+			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i); // DB에 맞춰 문자열 길이 변경
+			c.setPname(str);
+			c.setIname(igArr.get(i));
+			c.setPimage(imArr.get(i));
+			c.setProductid(pIdArr.get(i));
+			if(pidList.contains(pIdArr.get(i)))	//이미 있으면 update 해야하니까
+				cartUpdate.add(c);
+			else
+				cart.add(c);
+		}
+		if (service.register(cart)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		if (service.modify(cartUpdate)) {
+			rttr.addFlashAttribute("resultUp", "success");
+		}
+		return "redirect:/mypage/cart";
 	}
-	public void register() {}
 	
 	public String modify(Long OwnNo, RedirectAttributes rttr) {
 		return null;
