@@ -14,35 +14,37 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor //모든 생성자를 주입한다.
 public class StepServiceImpl implements StepService {
+	
 	private RecipeMapper mapper;
-	@Override
-	public void register(StepVO vo) {
-		// TODO Auto-generated method stub
 
+	@Override
+	public void register(StepVO board) {
+		log.info("register......" + board);
+		mapper.insertStep(board);
 	}
 
 	@Override
-	public StepVO get(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StepVO> get(Long bno) {
+		log.info("get......" + bno);
+		return mapper.readStep(bno);
 	}
 
 	@Override
-	public boolean modify(StepVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modify(StepVO board) {
+		log.info("modify....." + board);
+		return mapper.updateStep(board) == 1;
 	}
 
 	@Override
 	public boolean remove(Long bno) {
-		// TODO Auto-generated method stub
-		return false;
+		log.info("remove....." + bno);
+		return mapper.deleteStep(bno) == 1;
 	}
 
 	@Override
 	public List<StepVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("getList....." + cri);
+		return mapper.getStepList();
 	}
 
 }
