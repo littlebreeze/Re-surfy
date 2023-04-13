@@ -27,33 +27,33 @@ public class StepServiceTests {
 		assertNotNull(service);
 	}
 	
+	// 부모테이블(recipe_tbl)에 기본키 (bno) 값이 있으면 정상 수행
 	@Test
 	public void testRegister() {
 		StepVO board = new StepVO();
-		board.setBno(195477L);
+		board.setBno(195457L);
 		board.setStepNo(1L);
 		board.setStepDescription("계란을 깬다.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		board.setTip("너무 쉽습니다.");
 		
 		service.register(board);
-		log.info(board);
+		log.info("생성된 게시물의 번호 : " + board.getSno());
 	}
 	
 	@Test
 	public void testGet() {
-		log.info(service.get(1L));
+		log.info(service.get(2L));
 	}
 	
 	@Test
 	public void testModify() {
-		List<StepVO> board = service.get(1L);
-		
+		StepVO board = service.get(2L);
 		if(board == null) {
 			return;
 		}
-		board.get(1).setTip("정말 쉽습니다.");
-		log.info(board);
+		board.setTip("굉장히 쉽습니다");
+		log.info("MODIFY RESULT : " + service.modify(board));
 	}
 	
 	@Test

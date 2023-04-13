@@ -11,5 +11,4 @@ public interface ReplyService {
 	public boolean modify(ReplyVO vo);
 	public List<ReplyVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
-	
 }

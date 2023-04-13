@@ -63,7 +63,6 @@ public class OwnController {
 		}
 		return "redirect:/mypage/cart";
 	}
-	public void register() {}
 	
 	public String modify(OwnVO vo, RedirectAttributes rttr) {
 		return null;

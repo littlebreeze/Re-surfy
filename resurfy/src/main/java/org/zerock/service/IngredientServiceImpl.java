@@ -22,7 +22,7 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 
 	@Override
-	public List<IngredientVO> get(Long ino) {
+	public IngredientVO get(Long ino) {
 		log.info("get......." + ino);
 		return mapper.readIngredient(ino);
 	}

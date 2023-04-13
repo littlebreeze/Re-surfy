@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +29,18 @@ public class RecipeController {
 	public String register(RecipeVO vo , RedirectAttributes rttr) {
 		return "";
 	}
-	public void register() {}
+	
+	@GetMapping("/registerRecipe")
+	public void register() {
+		log.info("/registerRecipe");
+	}	
+	
+	@GetMapping("/detail")
+	public void get(@RequestParam("bno") Long bno, Model model) {
+		
+		log.info("/detail");
+		model.addAttribute("board", rService.get(bno));
+	} 
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {}
 	

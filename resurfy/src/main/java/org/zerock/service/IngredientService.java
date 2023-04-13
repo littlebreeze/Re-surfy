@@ -7,7 +7,7 @@ import org.zerock.domain.IngredientVO;
 
 public interface IngredientService {
 	public void register(IngredientVO board);
-	public List<IngredientVO> get(Long ino);
+	public IngredientVO get(Long ino);
 	public boolean modify(IngredientVO board);
 	public boolean remove(Long ino);
 }

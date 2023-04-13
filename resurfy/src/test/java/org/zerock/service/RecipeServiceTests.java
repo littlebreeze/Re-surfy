@@ -26,11 +26,17 @@ public class RecipeServiceTests {
 		assertNotNull(service);
 	}
 	
+ /*select max(bno) from recipe_tbl; 하고 SELECT sequence_name, last_number, increment_by, min_value, max_value, cache_size 
+	FROM user_sequences 
+	WHERE sequence_name = 'SEQ_RECIPE';
+	로 계속 bno 값 확인하시고 test 하면 수행 됩니다.
+	*/
+
 	@Test
 	public void testRegister() {
 		RecipeVO board = new RecipeVO();
-		board.setId("new_user1");
-		board.setRecipeName("계란후라이");
+		board.setId("user1");
+		board.setRecipeName("후라이계란");
 		board.setRecipeDescription("이것은 간단한 요리입니다.");
 		board.setFoodTypeNo(3020001L);
 		board.setFoodType("한식");
