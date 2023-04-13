@@ -18,10 +18,29 @@ public class RecipeServiceTests {
 	@Autowired
 	private RecipeService service;
 
+	
 	@Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
+	}
+	
+	@Test
+	public void Register() {
+		RecipeVO board = new RecipeVO();
+		board.setId("user1");
+		board.setRecipeName("ÈÄ¶óÀÌ°è¶õ");
+		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
+		board.setFoodTypeNo(3020001L);
+		board.setFoodType("ÇÑ½Ä");
+		board.setTime("3ºÐ");
+		board.setPerson("1ÀÎºÐ");
+		board.setDifficulty("ÃÊº¸");
+		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
+		
+		service.register(board);
+		log.info("»ý¼ºµÈ °Ô½Ã¹°ÀÇ ¹øÈ£ : " + board.getBno());
+		
 	}
 	
 	@Test
@@ -31,24 +50,24 @@ public class RecipeServiceTests {
 	
 	@Test
 	public void testGet() {
-		log.info(service.get(534L));
+		log.info(service.get(1L));
 	}
 	
 	@Test
 	public void testUpdate() {
-		RecipeVO board = service.get(534L);
+		RecipeVO board = service.get(1L);
 		
 		if (board==null) {
 			return;
 		}
 		
-		board.setRecipeDescription("ê°„ë‹¨í•œ ìš”ë¦¬ìž…ë‹ˆë‹¤.");
+		board.setRecipeDescription("°£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
 		log.info("MODIFY RESULT : " + service.modify(board));
 	}
 	
 	@Test
 	public void testDelete() {
-		log.info("REMOVE RESULT : " + service.remove(534L));
+		log.info("REMOVE RESULT : " + service.remove(1L));
 	}
 
 	

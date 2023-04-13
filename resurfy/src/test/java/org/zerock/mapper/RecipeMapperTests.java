@@ -45,14 +45,14 @@ public class RecipeMapperTests {
 	
 	@Test
 	public void testStepRead() {
-		List<StepVO> board = mapper.readStep(1L);
+		StepVO board = mapper.readStep(1L);
 		log.info(board);
 	
 	}
 	
 	@Test
 	public void testIngredientRead() {
-		List<IngredientVO> board = mapper.readIngredient(1L);
+		IngredientVO board = mapper.readIngredient(1L);
 		log.info(board);
 	}
 	

@@ -12,44 +12,39 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
-@AllArgsConstructor //ëª¨ë“  ìƒì„±ìë¥¼ ì£¼ì…í•œë‹¤.
+@AllArgsConstructor //¸ğµç »ı¼ºÀÚ¸¦ ÁÖÀÔÇÑ´Ù.
 public class StepServiceImpl implements StepService {
 	private RecipeMapper mapper;
-	@Override
-	public void register(StepVO vo) {
-		// TODO Auto-generated method stub
-
-	}
-
 
 	@Override
-	public boolean modify(StepVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void register(StepVO board) {
+		log.info("register....." + board);
+		mapper.insertStep(board);;
 	}
 
 	@Override
-	public boolean remove(Long bno) {
-		log.info("removeStep......." + bno);
-		return mapper.deleteStep(bno)==1;	
-	}
-
-	/*@Override
-	public List<StepVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-
-	@Override
-	public List<StepVO> get(Long bno) {
-		log.info("getStep.......");
+	public StepVO get(Long bno) {
+		log.info("get....." + bno);
 		return mapper.readStep(bno);
 	}
 
 	@Override
+	public boolean modify(StepVO board) {
+		log.info("modifyStep......" + board);
+		return mapper.updateStep(board) == 1;
+	}
+
+	@Override
+	public boolean remove(Long bno) {
+		log.info("removeStep......" + bno);
+		return mapper.deleteStep(bno) == 1;
+	}
+
+	@Override
 	public List<StepVO> getList() {
-		log.info("getListIngre.......");
+		log.info("getList.......");
 		return mapper.getStepList();
 	}
+	
 
 }

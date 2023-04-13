@@ -12,13 +12,13 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
-@AllArgsConstructor //모든 생성자를 주입한다.
+@AllArgsConstructor 
 public class IngredientServiceImpl implements IngredientService {
 	private RecipeMapper mapper;
 	@Override
-	public void register(IngredientVO vo) {
-		// TODO Auto-generated method stub
-
+	public void register(IngredientVO board) {
+		log.info("register....." );
+		mapper.insertIngredient(board);
 	}
 
 	/*@Override
@@ -34,7 +34,7 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 	
 	@Override
-	public List<IngredientVO> get(Long bno) {
+	public IngredientVO get(Long bno) {
 		log.info("getIngre.......");
 		return mapper.readIngredient(bno);
 	}
@@ -48,9 +48,10 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 
 	@Override
-	public boolean modify(IngredientVO vo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modify(IngredientVO board) {
+		log.info("modifyIngre......." + board);
+		return mapper.updateIngredient(board) == 1;
+		
 	}
 
 

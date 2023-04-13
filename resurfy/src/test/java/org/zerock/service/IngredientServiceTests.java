@@ -22,6 +22,20 @@ public class IngredientServiceTests {
 	private IngredientService service;
 
 	@Test
+	public void testRegister() {
+		IngredientVO board = new IngredientVO();
+		board.setBno(195457L);
+		board.setIngreName("계란");
+		board.setIngreMeasure("약간");
+		board.setIngreTypeNo(3060001L);
+		board.setIngreType("주재료");
+		
+		service.register(board);
+		log.info("생성된 게시물의 번호 : " + board.getIno());
+		
+	}
+	
+	@Test
 	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
@@ -39,12 +53,17 @@ public class IngredientServiceTests {
 	
 	@Test
 	public void testUpdate() {
-		
+		IngredientVO board = service.get(1L);
+		if(board == null) {
+			return;
+		}
+		board.setIngreMeasure("2컵");
+		log.info("MODIFY RESULT : " + service.modify(board));
 	}
 	
 	@Test
 	public void testDelete() {
-		log.info("REMOVE RESULT : " + service.remove(534L));
+		log.info("REMOVE RESULT : " + service.remove(1L));
 	}
 
 	

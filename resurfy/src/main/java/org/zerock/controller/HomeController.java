@@ -40,7 +40,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public String get() {
-		return "board/get";
+		return "recipe/get";
 	}
 	
 }

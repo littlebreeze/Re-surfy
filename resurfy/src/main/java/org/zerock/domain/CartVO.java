@@ -7,10 +7,10 @@ public class CartVO {
 
 	private Long cno;
 	private String id;
-	private Long price;		//ShopVOÏùò lprice
-	private String pname;	//ShopVOÏùò title
+	private Long price;		//ShopVO¿« lprice
+	private String pname;	//ShopVO¿« title
 	private Long count;
-	private String pimage;	//shopVOÏùò image
-	private String iname;	//ShopVOÏùò ingredient
+	private String pimage;	//shopVO¿« image
+	private String iname;	//ShopVO¿« ingredient
 	private Long productid;
 }
