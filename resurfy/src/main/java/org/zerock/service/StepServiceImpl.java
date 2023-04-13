@@ -21,11 +21,6 @@ public class StepServiceImpl implements StepService {
 
 	}
 
-	@Override
-	public StepVO get(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public boolean modify(StepVO vo) {
@@ -35,14 +30,26 @@ public class StepServiceImpl implements StepService {
 
 	@Override
 	public boolean remove(Long bno) {
-		// TODO Auto-generated method stub
-		return false;
+		log.info("removeStep......." + bno);
+		return mapper.deleteStep(bno)==1;	
 	}
 
-	@Override
+	/*@Override
 	public List<StepVO> getList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return null;
+	}*/
+
+	@Override
+	public List<StepVO> get(Long bno) {
+		log.info("getStep.......");
+		return mapper.readStep(bno);
+	}
+
+	@Override
+	public List<StepVO> getList() {
+		log.info("getListIngre.......");
+		return mapper.getStepList();
 	}
 
 }

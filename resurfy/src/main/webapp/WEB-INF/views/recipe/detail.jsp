@@ -79,114 +79,42 @@
                              <div class="p-3 small mb-1" style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
                              <c:out value="${recipe.recipeDescription }"/>
                              </div><br>
-                             
               
-           <%--  <table width="100%"
-               class="table table-striped table-bordered table-hover">
-               <thead>
-                  <tr>
-                     <th>재료</th>
-                     <th>양</th>
-                  </tr>
-               </thead>
-
-               <c:forEach items="${list}" var="ingre">
-
-                  <tr>
-                     <td><c:out value="${ingre.ingreName}" /></td>
-                     <td><c:out value="${ingre.inagre}" /></td>
-                     
-                  </tr>
-
-               </c:forEach>
-            </table> --%>
-          
-                             
+                                      
                              <!-- 재료칸(재료, 양념) -->
-                              <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">재료</div>
+                             <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">재료</div>
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
 						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
-							<div class="row">
-								<div class="col">쌀</div>
-								<div class="col">4컵</div>
+						
+						<c:forEach items="${ingre}" var="ing">
+						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
+    						<div class="row">
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 							</div>
-							<div class="row">
-								<div class="col">안심</div>
-								<div class="col">200g</div>
-							</div>
-							<div class="row">
-								<div class="col">콩나물</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">청포묵</div>
-								<div class="col">1/2모</div>
-							</div>
-							<div class="row">
-								<div class="col">미나리</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">고추장</div>
-								<div class="col">1/2큰술</div>
-							</div>
-							<div class="row">
-								<div class="col">숙주</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">도라지</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">고사리</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">계란</div>
-								<div class="col">1개</div>
-							</div>
-							<div class="row">
-								<div class="col">양지머리</div>
-								<div class="col">100g</div>
-							</div>
-							
+						</c:if>
+						</c:forEach>
 						</div><br>
-						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">양념</div>
-                        <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px">
-							<div class="row">
-								<div class="col">소금</div>
-								<div class="col">약간</div>
+                  
+                  
+                  <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">양념</div>
+                             <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
+						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
+						
+						<c:forEach items="${ingre}" var="ing">
+						<c:if test="${ing.ingreType eq '양념'}">
+    						<div class="row">
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 							</div>
-							<div class="row">
-								<div class="col">국간장</div>
-								<div class="col">약간</div>
-							</div>
-							<div class="row">
-								<div class="col">콩나물</div>
-								<div class="col">20g</div>
-							</div>
-							<div class="row">
-								<div class="col">다진파</div>
-								<div class="col">약간</div>
-							</div>
-							<div class="row">
-								<div class="col">다진마늘</div>
-								<div class="col">약간</div>
-							</div>
-							<div class="row">
-								<div class="col">참기름</div>
-								<div class="col">약간</div>
-							</div>
-							<div class="row">
-								<div class="col">설탕</div>
-								<div class="col">약간</div>
-							</div>
-							
-							
-						</div>
+						</c:if>
+						</c:forEach>
+						</div><br>
 						<!-- 재료, 양념 end -->
+											
+						
+						
+						
 						
 						<!-- 레시피 과정 start -->
 						<br><br>
@@ -201,7 +129,7 @@
 								</div>
 							</div>
 							<div class="py-3 row">
-								<div class="col"><img src="http://file.okdab.com/UserFiles/searching/recipe/000200_p02.jpg" width=200px height=200px  alt="..."></div>
+								<div class="col"><img src='<c:out value="${step[0].stepImage }"/>' width=200px height=200px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step2</div><br>
 								<span style="font-size:13px">안심은 불고기 양념하여 30분간 재워 국물 없이 구워 한 김 식으면 한입 크기로 자른다.</span>

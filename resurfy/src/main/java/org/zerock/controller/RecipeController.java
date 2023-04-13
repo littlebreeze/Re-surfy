@@ -41,6 +41,7 @@ public class RecipeController {
 		log.info("/detail");
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));
+		model.addAttribute("step", sService.get(bno));
 	} 
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {}
