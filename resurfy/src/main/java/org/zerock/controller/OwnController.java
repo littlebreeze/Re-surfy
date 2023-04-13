@@ -15,6 +15,7 @@ import org.zerock.domain.OwnVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.CartService;
 import org.zerock.service.OwnService;
+import org.zerock.service.RecipeService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -27,6 +28,7 @@ public class OwnController {
 	
 	private OwnService service;	
 	private CartService cService;
+	private RecipeService rService;
 	
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
@@ -66,6 +68,12 @@ public class OwnController {
 	
 	public String modify(OwnVO vo, RedirectAttributes rttr) {
 		return null;
+	}
+	
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) {
+
+		//model.addAttribute("relist", rService.getList(cri));
 	}
 	
 }

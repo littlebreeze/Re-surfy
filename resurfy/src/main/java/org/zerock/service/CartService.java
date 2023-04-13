@@ -18,4 +18,6 @@ public interface CartService {
 	public int getTotal(Criteria cri);
 	
 	public List<Long> getpIDList();
+	
+	public boolean modifyCount(CartVO cart);
 }

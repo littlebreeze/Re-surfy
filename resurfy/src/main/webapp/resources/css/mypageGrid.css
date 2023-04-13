@@ -5,9 +5,36 @@
   border: 1px solid white;
 }
 
+#cartGroup {
+  border: 1px solid #B6E6F0;
+}
+
+#cartGroup .themed-grid-col {
+  background-color:  transparent;
+}
+
+#cartGroup:hover .themed-grid-col{
+  background-color:  #B6E6F0;
+}
+
+#ownGroup:hover {
+  background-color: transparent;
+  border: 1px solid #B6E6F0;
+}
+
 .themed-container {
   padding: .75rem;
   margin-bottom: 1.5rem;
   background-color: rgba(112.520718, 44.062154, 249.437846, .15);
   border: 1px solid rgba(112.520718, 44.062154, 249.437846, .3);
+}
+
+.mypageBtn{	
+  border: 1px solid #B6E6F0;
+  border-radius: .5rem;
+}
+
+.mypageBtn:hover {	
+  border: 1px solid white;
+  background-color: #B6E6F0;
 }

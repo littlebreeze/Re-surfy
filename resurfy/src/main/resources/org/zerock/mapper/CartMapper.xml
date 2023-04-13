@@ -36,7 +36,7 @@
 	</delete>
 	
 	<update id="update">
-		update CART_TBL set count = count+1 where ID = #{id} AND PRODUCTID = #{productid}
+		update CART_TBL set count = count + #{count} where ID = #{id} AND PRODUCTID = #{productid}
 	</update>
 	
 	<select id="getTotalCount" resultType="int">
@@ -46,5 +46,9 @@
 	<select id="getpIdList" resultType="Long">
 		select PRODUCTID from cart_tbl where ID = 'user1'
 	</select>
+	
+	<update id="updateCount">
+		update CART_TBL set count = #{count} where CNO = #{cno}
+	</update>
 
 </mapper>

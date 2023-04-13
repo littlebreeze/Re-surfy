@@ -61,6 +61,7 @@ public class CartController {
 			c.setId("user1");
 			c.setPrice(pArr.get(i));
 			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i); // DB에 맞춰 문자열 길이 변경
+			c.setCount(1L);
 			c.setPname(str);
 			c.setIname(igArr.get(i));
 			c.setPimage(imArr.get(i));
@@ -79,7 +80,14 @@ public class CartController {
 		return "redirect:/mypage/cart";
 	}
 	
-	public String modify(Long OwnNo, RedirectAttributes rttr) {
-		return null;
+	@PostMapping("/updateCart")
+	public String modify(@RequestParam(value = "cno") Long cno, @RequestParam(value = "count") Long count, RedirectAttributes rttr) {
+		CartVO c = new CartVO();
+		c.setCno(cno);
+		c.setCount(count);
+		if (service.modifyCount(c)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/mypage/cart";
 	}
 }

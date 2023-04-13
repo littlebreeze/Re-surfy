@@ -8,7 +8,7 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">작성 글 모아보기</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">작성 글 모아보기</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/own">가진 재료</a>
                 </div>
@@ -17,56 +17,61 @@
             <div id="page-content-wrapper">
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <br><br>
-                    <h1>장바구니</h1>
-                    <br><br>
+                    <div class="col-lg-12"><br><br>
+						<h1 class="page-header">장바구니</h1>
+					<br><br></div>
                     <div class="container">
                     	<div class="row mb-3 text-center">
-					      <div class="col-md-1 themed-grid-col">
-					      	<input type="checkbox" id="cbx_chkAll">전체 선택
+					      <div class="col-md-2 themed-grid-col">
+					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll">전체 선택
 					      </div>
 					    </div>
-					<c:forEach items="${list}" var="cart">
 					    <div class="row mb-3 text-center">
+					      <div class="col-md-1 themed-grid-col"></div>
+					      <div class="col-md-7 themed-grid-col">상품 정보</div>
+					      <div class="col-md-2 themed-grid-col">가격</div>
+					      <div class="col-md-2 themed-grid-col">수량</div>
+					    </div>
+					<c:forEach items="${list}" var="cart">
+					    <div class="row mb-3 text-center" id="cartGroup">
 					      <div class="col-md-1 themed-grid-col">
-					      	<input type="checkbox" name="chk" data-cno="${cart.cno}" data-ingre="${cart.iname}">${cart.cno}
+					      	<input type="checkbox" class="form-check-input flex-shrink-0" name="chk" data-cno="${cart.cno}" data-ingre="${cart.iname}">${cart.cno}
 					      </div>
-					      <div class="col-md-7 themed-grid-col">${cart.pname}</div>
-					      <div class="col-md-2 themed-grid-col">${cart.price}</div>
+					      <div class="col-md-7 themed-grid-col"><img src="${cart.pimage}" width=100px style="margin-right:30px;" >${cart.pname}</div>
+					      <div class="col-md-2 themed-grid-col">${cart.price*cart.count}</div>
 					      <div class="col-md-2 themed-grid-col">
-					      	<input class="col-md-2" type="number" value="${cart.count}" min="0">
+					      	<input class="col-md-2" type="number" value="${cart.count}" data-cno="${cart.cno}" min="0">
 					      </div>
 					    </div>
 					</c:forEach>
 					
-					<input type="button" value="선택삭제" class="deleteBtn">
-					<input type="button" value="구매하기" class="buyBtn">
-					
-					<!-- start Paging -->
-					<div class='pull-right'>
-						<ul class="pagination">
-							<c:if test="${pageMaker.prev}">
-								<li class="paginate_button previous">
-								<a href="${pageMaker.startPage -1 }">Previous</a>
-								</li>
-							</c:if>
-							<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
-								<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
-									<a href="${num}">${num}</a>
-								</li>
-							</c:forEach>
-							<c:if test="${pageMaker.next}">
-								<li class="paginate_button next"><a
-									href="${pageMaker.endPage +1}">Next</a>
-								</li>
-							</c:if>
-						</ul>
+					<div>
+						<input type="button" value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
+						<input type="button" value="구매하기" id="buyBtn" class="btn mypageBtn pull-left">
 					</div>
-					<!-- end paging -->
 					
+						<!-- start Paging -->
+						<div class='pull-right'>
+							<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li class="paginate_button previous">
+									<a href="${pageMaker.startPage -1 }">Previous</a>
+									</li>
+								</c:if>
+								<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
+									<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+										<a href="${num}">${num}</a>
+									</li>
+								</c:forEach>
+								<c:if test="${pageMaker.next}">
+									<li class="paginate_button next"><a
+										href="${pageMaker.endPage +1}">Next</a>
+									</li>
+								</c:if>
+							</ul>
+						</div>
+						<!-- end paging -->					
 					 </div>
-					 
-				
                 </div>
                 <form id='actionForm' action="/mypage/cart" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
@@ -105,7 +110,7 @@ $(document).ready(function(){
 			else $("#cbx_chkAll").prop("checked", true); 
 		});
 		
-		$(".deleteBtn").click(function(){
+		$("#deleteBtn").click(function(){
 			var checkArr = new Array();
 			   
 		   $("input[name=chk]:checked").each(function(){
@@ -132,7 +137,7 @@ $(document).ready(function(){
 		   }
 		});	//end click
 		
-		$(".buyBtn").click(function(){
+		$("#buyBtn").click(function(){
 			var ingreArr = new Array();
 			var cnoArr = new Array();
 			   
@@ -161,6 +166,24 @@ $(document).ready(function(){
 			  } 
 		   }
 		});	//end click
+		
+		$("input[type=number]").change(function() {
+			alert("수량 변경")
+			var changeCno = $(this).attr("data-cno");
+			var changeCount = $(this).val();
+			console.log(changeCno);
+			console.log(changeCount);
+			$.ajax({
+			    url : "/mypage/updateCart",
+			    method : "post",
+			    data : { cno : changeCno,
+			    		 count : changeCount},
+			    success : function(){
+			    	console.log("수량 변경");
+			    	location.href = "/mypage/cart";
+			    }
+			});
+		});	// end change
 	});
 </script>
 <%@include file="../includes/footer.jsp"%>

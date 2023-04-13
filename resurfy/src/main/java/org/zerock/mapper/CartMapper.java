@@ -20,4 +20,6 @@ public interface CartMapper {
 	public int getTotalCount(Criteria cri);
 	
 	public List<Long> getpIdList();
+	
+	public boolean updateCount(CartVO cart);
 }

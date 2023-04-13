@@ -62,4 +62,9 @@ public class CartServiceImpl implements CartService {
 		return mapper.getpIdList();
 	}
 	
+	@Override
+	public boolean modifyCount(CartVO cart) {
+		return mapper.updateCount(cart);
+	}
+	
 }
