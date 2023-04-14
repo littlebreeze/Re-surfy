@@ -32,7 +32,7 @@ public class OwnController {
 	
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
-		log.info("°¡Áø Àç·á ÆäÀÌÁö ÁøÀÔ");
+		log.info("ê°€ì§„ ì¬ë£Œ í˜ì´ì§€ ì§„ì…");
 		
 		int total = service.getTotal(cri);
 		
@@ -50,8 +50,8 @@ public class OwnController {
 			o.setIngreName(ingreArr.get(i));
 			own.add(o);
 		}
-		cService.remove(cno);	//Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦
-		if (service.register(own)) {	//°¡Áø Àç·á·Î µî·Ï
+		cService.remove(cno);	//ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œ
+		if (service.register(own)) {	//ê°€ì§„ ì¬ë£Œë¡œ ë“±ë¡
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";

@@ -29,17 +29,17 @@ public class RecipeServiceTests {
 	public void Register() {
 		RecipeVO board = new RecipeVO();
 		board.setId("user1");
-		board.setRecipeName("ÈÄ¶óÀÌ°è¶õ");
-		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
+		board.setRecipeName("í›„ë¼ì´ê³„ë€");
+		board.setRecipeDescription("ì´ê²ƒì€ ê°„ë‹¨í•œ ìš”ë¦¬ì…ë‹ˆë‹¤.");
 		board.setFoodTypeNo(3020001L);
-		board.setFoodType("ÇÑ½Ä");
-		board.setTime("3ºĞ");
-		board.setPerson("1ÀÎºĞ");
-		board.setDifficulty("ÃÊº¸");
+		board.setFoodType("í•œì‹");
+		board.setTime("3ë¶„");
+		board.setPerson("1ì¸ë¶„");
+		board.setDifficulty("ì´ˆë³´");
 		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		
 		service.register(board);
-		log.info("»ı¼ºµÈ °Ô½Ã¹°ÀÇ ¹øÈ£ : " + board.getBno());
+		log.info("ìƒì„±ëœ ê²Œì‹œë¬¼ì˜ ë²ˆí˜¸ : " + board.getBno());
 		
 	}
 	
@@ -61,7 +61,7 @@ public class RecipeServiceTests {
 			return;
 		}
 		
-		board.setRecipeDescription("°£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
+		board.setRecipeDescription("ê°„ë‹¨í•œ ìš”ë¦¬ì…ë‹ˆë‹¤.");
 		log.info("MODIFY RESULT : " + service.modify(board));
 	}
 	

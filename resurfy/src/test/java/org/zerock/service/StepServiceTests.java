@@ -2,6 +2,8 @@ package org.zerock.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,12 @@ public class StepServiceTests {
 		StepVO board = new StepVO();
 		board.setBno(195457L);
 		board.setStepNo(1L);
-		board.setStepDescription("°è¶õÀ» ±ü´Ù.");
+		board.setStepDescription("ê³„ë€ì„ ê¹¬ë‹¤.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
-		board.setTip("³Ê¹« ½±½À´Ï´Ù.");
+		board.setTip("ë„ˆë¬´ ì‰½ìŠµë‹ˆë‹¤.");
 		
 		service.register(board);
-		log.info("»ı¼ºµÈ °Ô½Ã¹° ¸ÕÈ£..." + board.getSno());
+		log.info("ìƒì„±ëœ ê²Œì‹œë¬¼ ë¨¼í˜¸..." + board.getSno());
 	}
 	
 	@Test
@@ -49,13 +51,13 @@ public class StepServiceTests {
 	
 	@Test
 	public void testStepUpdate() {
-		StepVO board = service.get(1L);
+		List<StepVO> board = service.get(1L);
 		
 		if(board == null) {
 			return;
 		}
-		board.setStepDescription("¸Å¿ì ½±½À´Ï´Ù");
-		log.info("MODIFY RESULT : " + service.modify(board));
+		board.get(0).setStepDescription("ì–‘ì§€ë¨¸ë¦¬ë¡œ ìœ¡ìˆ˜ë¥¼ ë‚¸ í›„ ì‹í˜€ ê¸°ë¦„ì„ ê±·ì–´ë‚¸ í›„, ë¶ˆë¦° ìŒ€ì„ ë„£ì–´ ê³ ìŠ¬ê³ ìŠ¬í•˜ê²Œ ë°¥ì„ ì§“ìŠµë‹ˆë‹¤ ");
+		log.info("MODIFY RESULT : " + service.modify(board.get(0)));
 	}
 	
 	@Test

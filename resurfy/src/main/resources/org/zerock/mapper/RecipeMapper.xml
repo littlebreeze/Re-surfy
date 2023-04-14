@@ -43,7 +43,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
       values (#{ino}, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreTypeNo}, #{ingreType})     
   </insert>
    -->
-  
+  <!-- bno를 통해 recipe,step,ingre data를 불러온다  -->
   <select id="readRecipe" resultType="org.zerock.domain.RecipeVO">
    select * from recipe_tbl where bno=#{bno}
   </select>
@@ -56,11 +56,9 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
    select * from ingredient_tbl where bno=#{bno}
   </select>
   
-
   <delete id="deleteRecipe">
   delete from recipe_tbl where bno=#{bno}
   </delete>
-  
     <delete id="deleteStep">
   delete from step_tbl where sno=#{sno}
   </delete>

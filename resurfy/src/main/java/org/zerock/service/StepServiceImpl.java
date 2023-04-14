@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
-@AllArgsConstructor //모든 생성자를 주입한다.
+@AllArgsConstructor 
 public class StepServiceImpl implements StepService {
 	private RecipeMapper mapper;
 
@@ -23,7 +23,7 @@ public class StepServiceImpl implements StepService {
 	}
 
 	@Override
-	public StepVO get(Long bno) {
+	public List<StepVO> get(Long bno) {
 		log.info("get....." + bno);
 		return mapper.readStep(bno);
 	}
@@ -45,6 +45,6 @@ public class StepServiceImpl implements StepService {
 		log.info("getList.......");
 		return mapper.getStepList();
 	}
-	
+
 
 }

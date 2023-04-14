@@ -37,7 +37,6 @@ public class RecipeController {
 	
 	@GetMapping("/detail")
 	public void get(@RequestParam("bno") Long bno, Model model) {
-		
 		log.info("/detail");
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));

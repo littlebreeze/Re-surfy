@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,12 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>resurfy - ·¹½ÃÇÇ¸¦ °øÀ¯ÇÏ°í °øÀ¯¹Þ´Â ¿ì¸®´Â.</title>
-        <!-- »çÀÌÆ® ÀÌ¸ðÆ¼ÄÜ(ÇÈÅä±×·¥) Å×¸¶-->
+        <title>resurfy - ë ˆì‹œí”¼ë¥¼ ê³µìœ í•˜ê³  ê³µìœ ë°›ëŠ” ìš°ë¦¬ëŠ”.</title>
+        <!-- ì‚¬ì´íŠ¸ ì´ëª¨í‹°ì½˜(í”½í† ê·¸ëž¨) í…Œë§ˆ-->
         <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/resources/assets/favicon.png" rel="stylesheet"/>
-        <!-- Bootstrap¿¡¼­ »ç¿ëµÇ´Â ¾ÆÀÌÄÜµé-->
+        <!-- Bootstrapì—ì„œ ì‚¬ìš©ë˜ëŠ” ì•„ì´ì½˜ë“¤-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- CSS CORE Å×¸¶-->
+        <!-- CSS CORE í…Œë§ˆ-->
         <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
         
         <link href="../resources/css/pagingButton.css" rel="stylesheet">
@@ -26,14 +26,14 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container px-4 px-lg-5">
-            <!-- È¨ ÀÌ¹ÌÁö button -->
-                <a href="#"><img src ="/resources/assets/favicon.png"></a>
+            <!-- í™ˆ ì´ë¯¸ì§€ button -->
+                <a href="#"><img src ="/resources/assets/logo.jpg"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">·Î±×ÀÎ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">È¸¿ø°¡ÀÔ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">¸¶ÀÌÆäÀÌÁö</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">ë¡œê·¸ì¸</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">íšŒì›ê°€ìž…</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">ë§ˆì´íŽ˜ì´ì§€</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,24 +42,24 @@
         <header class="bg-dark py-5" >
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-				<p class="lead fw-normal text-white-50 mb-0">°ü¸®ÀÚ ÃßÃµ ·¹½ÃÇÇ</p>
+				<p class="lead fw-normal text-white-50 mb-0">ê´€ë¦¬ìž ì¶”ì²œ ë ˆì‹œí”¼</p>
 				<br>
 				<br>
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
 					  <div class="carousel-inner">
 					    <div class="carousel-item active">
 					    <a href="#">
-					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" class="d-block rounded mx-auto" alt="³ª¹°ºñºö¹ä" style="width:Xrem;">
+					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" class="d-block rounded mx-auto" alt="ë‚˜ë¬¼ë¹„ë¹”ë°¥" style="width:Xrem;">
 					      </a>
 					    </div>
 					    <div class="carousel-item">
 					    <a href="#">
-					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000300.jpg" class="d-block rounded mx-auto" alt="¿À°î¹ä" style="width:Xrem;">
+					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000300.jpg" class="d-block rounded mx-auto" alt="ì˜¤ê³¡ë°¥" style="width:Xrem;">
 					    </a>
 					    </div>
 					    <div class="carousel-item">
 					    <a href="#">
-					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000400.jpg" class="d-block rounded mx-auto" alt="ÀâÀç¹ä" style="width:Xrem;">
+					      <img src="http://file.okdab.com/UserFiles/searching/recipe/000400.jpg" class="d-block rounded mx-auto" alt="ìž¡ìž¬ë°¥" style="width:Xrem;">
 					    </a>
 					    </div>
 					  </div>

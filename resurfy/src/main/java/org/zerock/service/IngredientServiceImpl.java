@@ -34,7 +34,7 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 	
 	@Override
-	public IngredientVO get(Long bno) {
+	public List<IngredientVO> get(Long bno) {
 		log.info("getIngre.......");
 		return mapper.readIngredient(bno);
 	}

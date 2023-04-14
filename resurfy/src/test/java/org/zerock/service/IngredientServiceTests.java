@@ -25,13 +25,13 @@ public class IngredientServiceTests {
 	public void testRegister() {
 		IngredientVO board = new IngredientVO();
 		board.setBno(195457L);
-		board.setIngreName("°è¶õ");
-		board.setIngreMeasure("¾à°£");
+		board.setIngreName("ê³„ë€");
+		board.setIngreMeasure("ì•½ê°„");
 		board.setIngreTypeNo(3060001L);
-		board.setIngreType("ÁÖÀç·á");
+		board.setIngreType("ì£¼ì¬ë£Œ");
 		
 		service.register(board);
-		log.info("»ı¼ºµÈ °Ô½Ã¹°ÀÇ ¹øÈ£ : " + board.getIno());
+		log.info("ìƒì„±ëœ ê²Œì‹œë¬¼ì˜ ë²ˆí˜¸ : " + board.getIno());
 		
 	}
 	
@@ -53,12 +53,12 @@ public class IngredientServiceTests {
 	
 	@Test
 	public void testUpdate() {
-		IngredientVO board = service.get(1L);
+		List<IngredientVO> board = service.get(1L);
 		if(board == null) {
 			return;
 		}
-		board.setIngreMeasure("2ÄÅ");
-		log.info("MODIFY RESULT : " + service.modify(board));
+		board.get(0).setIngreMeasure("400g");
+		log.info("MODIFY RESULT : " + service.modify(board.get(0)));
 	}
 	
 	@Test
