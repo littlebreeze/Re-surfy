@@ -41,4 +41,16 @@ public class RecipeControllerTests {
 				.andReturn()
 				.getModelAndView().getModelMap());
 	}
+	
+	
+	@Test
+	public void testList() throws Exception{
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.get("/recipe/get"))
+				.andReturn().
+				getModelAndView().
+				getModelMap());
+	}
+
+	
 }

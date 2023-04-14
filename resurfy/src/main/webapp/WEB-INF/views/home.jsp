@@ -5,6 +5,6 @@
 	<title>Home</title>
 </head>
 <body>
-	<script>location.href = "get";</script>
+	<script>location.href = "recipe/get";</script>
 </body>
 </html>

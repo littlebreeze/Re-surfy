@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
 import org.zerock.domain.RecipeVO;
 import org.zerock.service.IngredientService;
 import org.zerock.service.RecipeService;
@@ -35,13 +36,22 @@ public class RecipeController {
 		log.info("/registerRecipe");
 	}	
 	
-	@GetMapping("/detail")
+	@GetMapping({"/detail", "/modify"})
 	public void get(@RequestParam("bno") Long bno, Model model) {
-		log.info("/detail");
+		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));
 		model.addAttribute("step", sService.get(bno));
 	} 
+		
+	@GetMapping("/get")
+	public void list1(@ModelAttribute("cri") Criteria cri , Model model) {
+		log.info("get" + cri);
+		model.addAttribute("get",rService.getList(cri));
+		int total = rService.getTotal(cri);
+		log.info("total : " + total);
+		model.addAttribute("pageMaker",new PageDTO(cri, total));
+	}
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {}
 	

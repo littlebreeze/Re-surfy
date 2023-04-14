@@ -1,12 +1,14 @@
 package org.zerock.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.RecipeVO;
 
 import lombok.extern.log4j.Log4j;
@@ -44,8 +46,9 @@ public class RecipeServiceTests {
 	}
 	
 	@Test
-	public void testGetRecipeList() {
-		service.getList().forEach(board-> log.info(board));
+	public void testGetList() {
+//		service.getList().forEach(board-> log.info(board));
+		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
 	}
 	
 	@Test

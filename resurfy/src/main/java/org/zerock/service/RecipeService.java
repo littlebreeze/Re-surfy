@@ -10,7 +10,7 @@ public interface RecipeService {
 	public RecipeVO get(Long bno);
 	public boolean modify(RecipeVO board);
 	public boolean remove(Long bno);
-//	public List<RecipeVO> getList(Criteria cri);
-	public List<RecipeVO> getList();
+	public List<RecipeVO> getList(Criteria cri);
+//	public List<RecipeVO> getList();
 	public int getTotal(Criteria cri);
 }

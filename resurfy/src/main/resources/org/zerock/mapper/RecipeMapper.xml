@@ -49,7 +49,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   </select>
   
   <select id="readStep" resultType="org.zerock.domain.StepVO">
-   select * from step_tbl where bno=#{bno}
+  select * from step_tbl where bno=#{bno} order by stepNo
   </select>
   
   <select id="readIngredient" resultType="org.zerock.domain.IngredientVO">
@@ -127,7 +127,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   		from 
       (
       select /*+INDEX_DESC(tbl_board pk_recipe) */
-        rownum rn, bno, title, content, writer,regdate,updatedate 
+        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
       from 
         recipe_tbl
       where 

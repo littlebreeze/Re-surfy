@@ -25,16 +25,17 @@ public class RecipeServiceImpl implements RecipeService {
 
 	}
 
-	/*@Override
-	public List<RecipeVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
 	@Override
-	public List<RecipeVO> getList() {
-		log.info("getList.......");
-		return mapper.getRecipeList();
+	public List<RecipeVO> getList(Criteria cri) {
+		log.info("get List with Criteria" + cri);
+		return mapper.getListWithPaging(cri);
 	}
+	
+//	@Override
+//	public List<RecipeVO> getList() {
+//		log.info("getList.......");
+//		return mapper.getRecipeList();
+//	}
 	
 	@Override
 	public RecipeVO get(Long bno) {
