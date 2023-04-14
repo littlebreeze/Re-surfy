@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%-- <%@include file="../includes/header.jsp"%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,6 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/styles_detail.css" rel="stylesheet" />
+       <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
 </head>
 <body>
     <!-- Navigation-->
@@ -68,7 +69,7 @@
                              <span style="font-size:13px">소요시간 : </span>
                              <span style="font-size:13px"><c:out value="${recipe.time }"/></span>
                              </div>
-                             
+                             <!-- 사용자 그림 사진 : https://cdn-icons-png.flaticon.com/512/5393/5393061.png-->
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
                              
                              <div class="p-2"  style=" width: 50%; margin: 0 auto; text-align:left">
@@ -111,12 +112,71 @@
 						</c:forEach>
 						</div><br>
 						<!-- 재료, 양념 end -->
-											
+							
+																	
+						<br><br>
+						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">레시피</div>
+                        <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
+						<div class="container" style=" width: 50%; margin: 0 auto; text-align:left">
+							<div class="py-3 row">
+							
+							<c:forEach items="${step}" var="st">
+							<c:choose>
+
+      							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
+      							<div class="py-2 row">
+      							<div class="col"><img src="/resources/assets/logo.jpg" width=200px height=200px  alt="..."></div>
+								<div class="col">
+								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
+								<span style="font-size:13px"><c:out value="${st.stepDescription}" /></span>
+								<c:choose>
+      							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
+								<div style="font-size:13px"></div>
+								</c:when>
+								<c:otherwise>
+								<div class="fw-bolder" style="font-size:13px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								</c:otherwise> 
+
+							</c:choose>  
+								</div>
+								</div>
+      							</c:when> 
+
+      							<c:otherwise>
+      							<div class="py-2 row"> 
+								<div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=200px height=200px  alt="..."></div>
+								<div class="col">
+								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
+								<span style="font-size:13px"><c:out value="${st.stepDescription}" /></span>
+									<c:choose>
+      							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
+								<div style="font-size:13px"></div>
+								</c:when>
+								<c:otherwise>
+								<div class="fw-bolder" style="font-size:13px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								</c:otherwise> 
+
+							</c:choose>  
+								</div>
+								</div>
+      							</c:otherwise> 
+
+							</c:choose> 
+						
+               
+                     </c:forEach>
+							
+								
+							
+						</div>
+						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
+						<button id='modifyBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'">Modify</button>
+						<button id='listBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/get'">List</button>
+						</div>
 						
 						
 						
-						
-						<!-- 레시피 과정 start -->
+						<%-- <!-- 레시피 과정 start -->
 						<br><br>
 						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">레시피</div>
                         <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
@@ -152,7 +212,7 @@
 								<span style="font-size:13px">청포묵은 고기와 비슷한 크기로 잘라 끓는 물에 데쳐내고 계란은 노른자와 흰자를 분리해 지단부쳐 곱게 채썬다.</span>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
 						<br><br>
