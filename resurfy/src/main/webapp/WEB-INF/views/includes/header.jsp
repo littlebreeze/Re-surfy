@@ -25,7 +25,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../resources/css/mypageStyles.css" rel="stylesheet" />
 <link href="../resources/css/mypageGrid.css" rel="stylesheet">
-<link href="../resources/css/main.css" rel="stylesheet">
+<link href="../resources/css/header.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>

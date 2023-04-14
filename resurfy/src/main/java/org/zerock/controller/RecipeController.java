@@ -25,12 +25,7 @@ public class RecipeController {
 	private RecipeService rService;
 	private StepService sService;
 	private IngredientService iService;
-	
-	public void list(Criteria cri, Model model) {}
-	public String register(RecipeVO vo , RedirectAttributes rttr) {
-		return "";
-	}
-	
+		
 	@GetMapping("/registerRecipe")
 	public void register() {
 		log.info("/registerRecipe");
@@ -45,7 +40,7 @@ public class RecipeController {
 	} 
 		
 	@GetMapping("/get")
-	public void list1(@ModelAttribute("cri") Criteria cri , Model model) {
+	public void list(@ModelAttribute("cri") Criteria cri , Model model) {
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
 		int total = rService.getTotal(cri);
