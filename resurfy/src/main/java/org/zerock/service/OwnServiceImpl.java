@@ -1,11 +1,11 @@
 package org.zerock.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.OwnVO;
-
 import org.zerock.mapper.OwnMapper;
 
 import lombok.AllArgsConstructor;
@@ -48,5 +48,10 @@ public class OwnServiceImpl implements OwnService {
 	@Override
 	public int getTotal(Criteria cri) {
 		return mapper.getTotalCount(cri);
+	}
+	
+	@Override
+	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception{
+		return mapper.autocomplete(paramMap);
 	}
 }

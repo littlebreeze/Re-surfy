@@ -2,7 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="../includes/header.jsp"%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Simple Sidebar - Start Bootstrap Template</title>
+        
+		<link href="../resources/css/pagingButton.css" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../resources/css/mypageStyles.css" rel="stylesheet" />
+        <link href="../resources/css/mypageGrid.css" rel="stylesheet">
+    </head>
+    <body>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
@@ -23,7 +37,7 @@
                     <div class="container">
                     	<div class="row mb-3 text-center">
 					      <div class="col-md-2 themed-grid-col">
-					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll">전체 선택
+					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll" style="margin-right:30px;">전체 선택
 					      </div>
 					    </div>
 					    <div class="row mb-3 text-center">
@@ -35,48 +49,31 @@
 					<c:forEach items="${list}" var="cart">
 					    <div class="row mb-3 text-center" id="cartGroup">
 					      <div class="col-md-1 themed-grid-col">
-					      	<input type="checkbox" class="form-check-input flex-shrink-0" name="chk" data-cno="${cart.cno}" data-ingre="${cart.iname}">${cart.cno}
+					      	<input type="checkbox" class="form-check-input flex-shrink-0" name="chk" data-cno="${cart.cno}" data-ingre="${cart.iname}" data-price="${cart.price}" data-count="${cart.count}">
 					      </div>
 					      <div class="col-md-7 themed-grid-col"><img src="${cart.pimage}" width=100px style="margin-right:30px;" >${cart.pname}</div>
-					      <div class="col-md-2 themed-grid-col">${cart.price*cart.count}</div>
+					      <div class="col-md-2 themed-grid-col" id="calCount">${cart.price*cart.count}</div>
 					      <div class="col-md-2 themed-grid-col">
-					      	<input class="col-md-2" type="number" value="${cart.count}" data-cno="${cart.cno}" min="0">
+					      	<input class="col-md-2" type="number" value="${cart.count}" data-cno="${cart.cno}" data-price="${cart.price}" min="1">
 					      </div>
 					    </div>
 					</c:forEach>
+					
+					<div class="row mb-3 text-center">
+				      <div class="col-md-1 themed-grid-col"></div>
+				      <div class="col-md-7 themed-grid-col"></div>
+				      <div class="col-md-2 themed-grid-col" id="sumPrice">가격</div>
+				      <div class="col-md-2 themed-grid-col" id="sumCount">수량</div>
+				    </div>
 					
 					<div>
 						<input type="button" value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
 						<input type="button" value="구매하기" id="buyBtn" class="btn mypageBtn pull-left">
 					</div>
-					
-						<!-- start Paging -->
-						<div class='pull-right'>
-							<ul class="pagination">
-								<c:if test="${pageMaker.prev}">
-									<li class="paginate_button previous">
-									<a href="${pageMaker.startPage -1 }">Previous</a>
-									</li>
-								</c:if>
-								<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
-									<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
-										<a href="${num}">${num}</a>
-									</li>
-								</c:forEach>
-								<c:if test="${pageMaker.next}">
-									<li class="paginate_button next"><a
-										href="${pageMaker.endPage +1}">Next</a>
-									</li>
-								</c:if>
-							</ul>
-						</div>
-						<!-- end paging -->					
+					<br><br><br>
+										
 					 </div>
                 </div>
-                <form id='actionForm' action="/mypage/cart" method='get'>
-					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-				</form>
             </div>
         </div>
         <!-- Bootstrap core JS-->
@@ -84,17 +81,6 @@
         <!-- Core theme JS-->
         <script src="../resources/js/mypageScripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	var actionForm = $("#actionForm");
-	$(".paginate_button a").on("click",	function(e) {
-		e.preventDefault();
-		console.log('click');
-		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-		actionForm.submit();
-	});
-});
-</script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#cbx_chkAll").click(function() {
@@ -108,7 +94,19 @@ $(document).ready(function(){
 			
 			if(total != checked) $("#cbx_chkAll").prop("checked", false);
 			else $("#cbx_chkAll").prop("checked", true); 
-		});
+		});	
+		
+		$("input[type=checkbox]").click(function() {	//합계금액 변경하기
+			var sumP=0;
+			var sumC=0;
+			$("input[name=chk]:checked").each(function(){
+			    sumC = sumC + Number($(this).attr("data-count"));
+			    sumP = sumP + $(this).attr("data-count")*$(this).attr("data-price");
+			});
+			$("#sumPrice").html(sumP +" 원");
+			$("#sumCount").html(sumC +" 개");
+		});	
+		
 		
 		$("#deleteBtn").click(function(){
 			var checkArr = new Array();
@@ -116,7 +114,7 @@ $(document).ready(function(){
 		   $("input[name=chk]:checked").each(function(){
 		    checkArr.push($(this).attr("data-cno"));
 		   });
-		   console.log(checkArr);
+		   
 		   if(checkArr.length == 0){
 			   alert("선택된 제품이 없습니다.");
 		   }else{
@@ -170,9 +168,11 @@ $(document).ready(function(){
 		$("input[type=number]").change(function() {
 			alert("수량 변경")
 			var changeCno = $(this).attr("data-cno");
+			var price = $(this).attr("data-price");
 			var changeCount = $(this).val();
-			console.log(changeCno);
-			console.log(changeCount);
+
+			$("#calCount").html(price*changeCount);
+			
 			$.ajax({
 			    url : "/mypage/updateCart",
 			    method : "post",
@@ -186,4 +186,6 @@ $(document).ready(function(){
 		});	// end change
 	});
 </script>
-<%@include file="../includes/footer.jsp"%>
+    </body>
+</html>
+

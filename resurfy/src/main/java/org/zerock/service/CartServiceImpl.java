@@ -49,7 +49,8 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<CartVO> getList(Criteria cri) {
-		return mapper.getListPaging(cri);
+		//return mapper.getListPaging(cri);
+		return mapper.getList();
 	}
 
 	@Override
