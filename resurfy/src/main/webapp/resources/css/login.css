@@ -44,8 +44,8 @@ section.active .right {
   flex-direction: column;
   transition: 1s;
 }
-.left img,
-.right img {
+
+.left img {
   max-width: 100%;
 }
 
@@ -58,13 +58,13 @@ section.active .right {
   display: grid;
   place-content: center;
   width: 400px;
-  height: 400px;
+  height: 550px;
 }
 
 .sign-in h1 {
   color:#33afe9;
   font-size:42px;
-  margin-top:300px;
+  margin-top:20px;
   margin-bottom: 18px;
   text-align: center;
   transition:0.2s linear;
@@ -75,7 +75,7 @@ section.active .right {
 .sign-up h1 {
   color:#33afe9;
   font-size:42px;
-  margin-top:165px;
+  margin-top:20px;
   margin-bottom: 10px;
   text-align: center;
   transition:0.2s linear;
@@ -90,11 +90,13 @@ section.active .right {
   width: 340px;
   gap: 20px;
 }
+
 .con1 {
   display: flex;
   width: 340px;
   gap: 20px;
 }
+
 .con2,
 .con3 {
   display: flex;
@@ -145,7 +147,7 @@ section.active .right {
   font-weight: bold;
 }
 
-.sign-up form [type=submit],
+.btnJoin,
 .sign-in form [type=submit] {
   background: #33afe9;
   color: white;
@@ -183,7 +185,7 @@ section.active .right {
   display: block;
   margin: 30px auto 10px;
   text-align: center;
-  height: 40px;
+  height: 30px;
   position: relative;
   background: transparent;
   color: rgba(15, 19, 42, 0.4);
