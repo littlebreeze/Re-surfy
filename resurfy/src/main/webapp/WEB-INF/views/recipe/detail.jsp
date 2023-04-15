@@ -21,29 +21,29 @@
        <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
        
        <!-- Bootstrap Core CSS -->
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
-<!-- MetisMenu CSS -->
+MetisMenu CSS
 <link href="/resources/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
 
-<!-- DataTables CSS -->
+DataTables CSS
 <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
 	rel="stylesheet">
 
-<!-- DataTables Responsive CSS -->
+DataTables Responsive CSS
 <link
 	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
 	rel="stylesheet">
 
-<!-- Custom CSS -->
+Custom CSS
 <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
-<!-- Custom Fonts -->
+Custom Fonts
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css"> -->
 </head>
 <body>
     <!-- Navigation-->
@@ -284,83 +284,62 @@
                      
   				</div> <!-- 전체 end -->
 			</div>
-			<div class='row'>
-<div class="col-lg-12">
-<!-- /.panel -->
-<div class="panel panel-default">
-<!-- <div class="panel-heading">
-<i class="fa fa-comments fa-fw"></i> Reply
-</div> -->
-<div class="panel-heading">
-<i class="fa fa-comments fa-fw"></i> 없는
-상품 리스트
-<button id='addCartBtn' class='btn btn primary btn-xs pull-right'>장바구니 담기</button>
-</div>
-<div class="panel-body">
-<ul class="shop">
-<!-- start shop -->
-<c:forEach items="${shopNotIn}" 
-var="sni">
-<li class="left clearfix" data-rno='12'>
-<div>
-<div class="header">
-<strong 
-class="promary-font">${sni.title}</strong>
-<small class="pull right text-muted">${sni.lprice}</small>
-</div>
-<p><input 
-type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/><a 
-href="${sni.link}"><img src="${sni.image}" width=100/></a></p>
-</div>
-</li>
-</c:forEach>
-</ul>
-<!-- ./ end ul -->
-</div>
-<!-- /.panel .chat-panel -->
-</div>
-</div>
-<!-- ./ end row -->
-</div>
-<div class='row'>
-<div class="col-lg-12">
-<!-- /.panel -->
-<div class="panel panel-default">
-<!-- <div class="panel-heading">
-<i class="fa fa-comments fa-fw"></i> Reply
-</div> -->
-<div class="panel-heading">
-<i class="fa fa-comments fa-fw"></i> 있는
-상품 리스트
-</div>
-<div class="panel-body">
-<ul class="shopHave">
-<!-- start shop -->
-<c:forEach items="${shopIn}" 
-var="si">
-<li class="left clearfix" data-rno='12'>
-<div>
-<div class="header">
-<strong 
-class="promary-font">${si.title}</strong>
-<small class="pull-
-right text-muted">${si.lprice}</small>
-</div>
-<p><input 
-type='checkbox' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" 
-data-pid="${si.productId}" /><a href="${si.link}"><img 
-src="${si.image}" width=100/></a></p>
-</div>
-</li>
-</c:forEach>
-</ul>
-<!-- ./ end ul -->
-</div>
-<!-- /.panel .chat-panel -->
-</div>
-</div>
-<!-- ./ end row -->
-</div>
+			<button id='addCartBtn' class='btn btn-primary btn-xs pull-right'>장바구니 담기</button>
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료</h2>
+        <!-- 없는 재료 -->
+        <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        	<c:forEach items="${shopNotIn}" var="sni">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." /></a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">${sni.title}</h5>
+                            <!-- Product price-->
+                            ${sni.lprice}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                       <div class="text-center"><input type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/></div>
+                    </div>
+                </div>
+            </div>
+            </c:forEach>
+        </div>
+        <!-- 있는 재료 -->
+        <h2 class="fw-bolder mb-4 h4">있는 재료</h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        	<c:forEach items="${shopIn}" var="si">
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." /></a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">${si.title}</h5>
+                            <!-- Product price-->
+                            ${si.lprice}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><input type='checkbox' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" data-pid="${si.productId}" /></div>
+                    </div>
+                </div>
+            </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
 <script>
 $(document).ready(function() {
 $("#addCartBtn").on("click", function(e){
