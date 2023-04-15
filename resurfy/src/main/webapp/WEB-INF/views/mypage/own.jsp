@@ -43,7 +43,7 @@
 						<div class="row row-cols-1 row-cols-md-3 g-3 text-center">
 						<c:forEach items="${list}" var="own">
 							<div class="col themed-grid-col" id="ownGroup">
-								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}">${own.ingreName}
+								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}">${own.ingreName}
 							</div>
 						</c:forEach>
 						</div>
@@ -78,9 +78,9 @@
                 <br><br>
 				<div id="addNew" style="display:none; margin-top: 1rem !important;">
 			      <h3>새로운 재료 추가</h3><br>
-			      <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px" data-bs-theme="light">
-				    <form class="p-2 mb-2 bg-body-tertiary border-bottom">
-				      <input type="search" class="form-control" autocomplete="false" placeholder="Type to filter..." id="autoComplete">
+			      <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 overflow-hidden w-280px" data-bs-theme="light">
+				    <form class="p-2 mb-2 bg-body-tertiary border-bottom" id="addOwnForm" action="/mypage/addOwn" method="post">
+				      <input type="search" class="form-control" autocomplete="false" placeholder="Type to filter..." id="autoComplete" name="addIngreName">
 				    </form>
 				  </div>				  
 				  <div style="margin-top: 1rem !important;">		
@@ -179,6 +179,26 @@ $(document).ready(function(){
 			$("#cancleBtn").toggle();
 			$("#chkAll").toggle();	
 			$("#addNew").toggle();
+		});	//end click
+		
+		var addOwnForm = $("#addOwnForm");
+		$("#addOwnBtn").on("click",	function(e) {
+			e.preventDefault();
+			console.log($("input[type='search']").val());
+			if($("input[type='search']").val()=="")
+				alert("값을 입력하세요");
+			else{
+				var sameChk = true;
+				 $("input[type=checkbox]").each(function(){
+					 if($(this).attr("data-name")==$("input[type='search']").val()){
+						 alert("이미 있는 재료 입니다.");
+						 sameChk=false;
+					 }
+				});
+				 if(sameChk)
+					 addOwnForm.submit();
+			}
+				
 		});	//end click
 	});
 </script>
