@@ -12,4 +12,7 @@ public interface IngredientService {
 	public boolean remove(Long bno);
 	//public List<IngredientVO> getList(Criteria cri);
 	public List<IngredientVO> getList();
+	
+	public List<String> getIngreList(Long bno);
+	public List<String> getIngreListHave(Long bno); 
 }

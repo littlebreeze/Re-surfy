@@ -30,4 +30,7 @@ public interface RecipeMapper {
 	public List<RecipeVO> getListWithPaging(Criteria cri);
 	public Long getTotalCount(Criteria cri);
 	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
+	
+	public List<String> readIngreName(Long bno); //가진 재료에 없는것
+	public List<String> readIngreNameHave(Long bno); //가진 재료에 있는것
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="../includes/header.jsp"%>
 <%-- <%@include file="../includes/header.jsp"%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +19,31 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/styles_detail.css" rel="stylesheet" />
        <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
+       
+       <!-- Bootstrap Core CSS -->
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- MetisMenu CSS -->
+<link href="/resources/vendor/metisMenu/metisMenu.min.css"
+	rel="stylesheet">
+
+<!-- DataTables CSS -->
+<link
+	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
+	rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link
+	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
+	rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Navigation-->
@@ -169,9 +195,9 @@
 								
 							
 						</div>
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
-						<button id='modifyBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'">Modify</button>
-						<button id='listBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/get'">List</button>
+						<div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
+						<button id='modifyBtn' data-oper='modify' class='py-3  btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'">Modify</button>
+						<button id='listBtn' data-oper='modify' class='py-3  btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/get'">List</button>
 						</div>
 						
 						
@@ -258,7 +284,130 @@
                      
   				</div> <!-- 전체 end -->
 			</div>
-			
+			<div class='row'>
+<div class="col-lg-12">
+<!-- /.panel -->
+<div class="panel panel-default">
+<!-- <div class="panel-heading">
+<i class="fa fa-comments fa-fw"></i> Reply
+</div> -->
+<div class="panel-heading">
+<i class="fa fa-comments fa-fw"></i> 없는
+상품 리스트
+<button id='addCartBtn' class='btn btn primary btn-xs pull-right'>장바구니 담기</button>
+</div>
+<div class="panel-body">
+<ul class="shop">
+<!-- start shop -->
+<c:forEach items="${shopNotIn}" 
+var="sni">
+<li class="left clearfix" data-rno='12'>
+<div>
+<div class="header">
+<strong 
+class="promary-font">${sni.title}</strong>
+<small class="pull right text-muted">${sni.lprice}</small>
+</div>
+<p><input 
+type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/><a 
+href="${sni.link}"><img src="${sni.image}" width=100/></a></p>
+</div>
+</li>
+</c:forEach>
+</ul>
+<!-- ./ end ul -->
+</div>
+<!-- /.panel .chat-panel -->
+</div>
+</div>
+<!-- ./ end row -->
+</div>
+<div class='row'>
+<div class="col-lg-12">
+<!-- /.panel -->
+<div class="panel panel-default">
+<!-- <div class="panel-heading">
+<i class="fa fa-comments fa-fw"></i> Reply
+</div> -->
+<div class="panel-heading">
+<i class="fa fa-comments fa-fw"></i> 있는
+상품 리스트
+</div>
+<div class="panel-body">
+<ul class="shopHave">
+<!-- start shop -->
+<c:forEach items="${shopIn}" 
+var="si">
+<li class="left clearfix" data-rno='12'>
+<div>
+<div class="header">
+<strong 
+class="promary-font">${si.title}</strong>
+<small class="pull-
+right text-muted">${si.lprice}</small>
+</div>
+<p><input 
+type='checkbox' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" 
+data-pid="${si.productId}" /><a href="${si.link}"><img 
+src="${si.image}" width=100/></a></p>
+</div>
+</li>
+</c:forEach>
+</ul>
+<!-- ./ end ul -->
+</div>
+<!-- /.panel .chat-panel -->
+</div>
+</div>
+<!-- ./ end row -->
+</div>
+<script>
+$(document).ready(function() {
+$("#addCartBtn").on("click", function(e){
+var priceArr = new Array();
+var titleArr = new Array();
+var ingreArr = new Array();
+var imageArr = new Array();
+var pIdArr = new Array();
+ 
+ $("input[name=chk]:checked").each(function(){
+ priceArr.push($(this).attr("data-price"));
+ titleArr.push($(this).attr("data-title"));
+ ingreArr.push($(this).attr("data-ingre"));
+ imageArr.push($(this).attr("data-image"));
+ pIdArr.push($(this).attr("data-pid"));
+ });
+ 
+ console.log(priceArr);
+ console.log(titleArr);
+ console.log(ingreArr);
+ console.log(imageArr);
+ console.log(pIdArr);
+ 
+ if(priceArr.length == 0){
+ alert("선택된 제품이 없습니다.");
+ }else{
+ var confirm_val = confirm("장바구니에 추가하시겠습니까?");
+ 
+ if(confirm_val) {
+ $.ajax({
+ url : "/mypage/addCart",
+ method : "post",
+ data : { pArr : priceArr,
+ tArr : titleArr,
+ igArr : ingreArr,
+ imArr : imageArr,
+ pIdArr : pIdArr },
+ success : function(){
+ console.log("장바구니 추가 성공");
+ alert("장바구니에 추가 되었습니다.");
+ }
+});
+ } 
+ }
+});
+});
+</script>
 
         </section>
         <!-- Related items section-->
