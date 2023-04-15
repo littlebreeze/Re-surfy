@@ -28,6 +28,6 @@ public interface RecipeMapper {
 	public List<StepVO> getStepList();
 	public List<IngredientVO> getIngreList();
 	public List<RecipeVO> getListWithPaging(Criteria cri);
-	public Long getTotalCount(Criteria cri);
+	public int getTotalCount(Criteria cri);
 	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
 }

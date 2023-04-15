@@ -169,5 +169,13 @@ public class RecipeMapperTests {
 		List<RecipeVO> list = mapper.getListWithPaging(cri);
 		list.forEach(board -> log.info(board));
 	}
+	
+	@Test
+	public void testGetTotal() {
+		Criteria cri = new Criteria();
+		int count = mapper.getTotalCount(cri);
+		log.info("Total....." + count);
+		
+	}
 
 }

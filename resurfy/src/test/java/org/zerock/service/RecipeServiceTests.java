@@ -72,6 +72,13 @@ public class RecipeServiceTests {
 	public void testDelete() {
 		log.info("REMOVE RESULT : " + service.remove(1L));
 	}
+	
+	@Test
+	public void testGetTotal() {
+		Criteria cri = new Criteria();
+		
+		log.info("TOTAL RESULT : " + service.getTotal(cri));
+	}
 
 	
 

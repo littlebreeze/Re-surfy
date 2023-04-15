@@ -6,6 +6,7 @@
 <link href="../resources/css/get.css" rel="stylesheet">
 
 
+
 <!-- Header-->
 <%-- <header class="recommend_recipe">
 	<div id="carouselExampleAutoplaying" class="carousel slide"
@@ -83,7 +84,6 @@
 		</div>
 	</div>
 </c:forEach>
-</section>
 		<div class='pull-right'>
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
@@ -102,20 +102,21 @@
 				</c:if>
 			</ul>
 		</div>
+	</div>	
+</section>
 		<form id='actionForm' action="/recipe/get" method='get'>
 			<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 			<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-
+<%-- 
 			<input type='hidden' name='type'
 				value='<c:out value="${ pageMaker.cri.type }"/>'> <input
 				type='hidden' name='keyword'
-				value='<c:out value="${ pageMaker.cri.keyword }"/>'>
+				value='<c:out value="${ pageMaker.cri.keyword }"/>'> --%>
 		</form>
-	</div>
+
+	
 
 <!--  end Pagination -->
-
-
 
 <script type="text/javascript">
 	$(document)

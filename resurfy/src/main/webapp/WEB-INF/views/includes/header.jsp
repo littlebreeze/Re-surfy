@@ -33,7 +33,7 @@
 			<div id = "logo" ><img src="/resources/assets/favicon.png"></div>
 			<ul>
 			<li><a href = "#">mypage</li>
-			<li><a href = "#">Sign-in</li>
+			<li><a href = "#">Sign-up</li>
 			<li><a href = "#">Login</li>
 			</ul>
 		</div>

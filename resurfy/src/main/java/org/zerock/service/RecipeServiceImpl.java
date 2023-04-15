@@ -58,8 +58,8 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public int getTotal(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("get total count....");
+		return mapper.getTotalCount(cri);
 	}
 
 
