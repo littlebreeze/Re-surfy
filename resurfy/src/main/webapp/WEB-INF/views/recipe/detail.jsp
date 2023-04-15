@@ -171,7 +171,7 @@
 						</div>
 						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
 						<button id='modifyBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'">Modify</button>
-						<button id='listBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/get'">List</button>
+						<button id='listBtn' data-oper='modify' class='btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/get'">List</button>
 						</div>
 						
 						
