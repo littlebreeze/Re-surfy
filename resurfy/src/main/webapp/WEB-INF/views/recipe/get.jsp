@@ -6,7 +6,6 @@
 <link href="../resources/css/get.css" rel="stylesheet">
 
 
-
 <!-- Header-->
 <%-- <header class="recommend_recipe">
 	<div id="carouselExampleAutoplaying" class="carousel slide"
@@ -28,7 +27,7 @@
 <br>
  --%>
 <!-- Section-->
-<section class="py-5">
+<div class="py-5">
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class='row'>
 			<div class="col-lg-12">
@@ -53,74 +52,74 @@
 				</form>
 			</div>
 		</div>
-	<c:forEach items="${get}" var="recipe">
-	<div class = "card-container">
-		<div class = "card">
-			<div class = "card-img">
-				<img class="card-img-top" src="${recipe.image}" alt="..." />
-			</div>
-			<div class = "card-head">
-				<c:out value="${recipe.recipeName}" />
-			</div>
-			<div class = "card-main">
-				<div>
-					<c:out value="${recipe.difficulty}" />
-				</div>
-				<div>
-					<c:out value="${recipe.foodType}" />
-				</div>
-				<div>
-					<c:out value="${recipe.person}" />
-				</div>
-				<div>
-					<c:out value="${recipe.time}" />
-				</div>
-			</div>
-			<div class = "card-footer">
-				<a class="btn btn-outline-dark mt-auto"
-				href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">View
-				options</a>
-			</div>
-		</div>
-	</div>
-</c:forEach>
-		<div class='pull-right'>
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev}">
-					<li class="paginate_button previous"><a
-						href="${pageMaker.startPage -1}">Previous</a></li>
-				</c:if>
-				<c:forEach var="num" begin="${pageMaker.startPage}"
-					end="${pageMaker.endPage}">
-					<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
-						<a href="${num}">${num}</a>
-					</li>
+			<div class="card-container">
+				<c:forEach items="${get}" var="recipe">
+					<div class="card">
+						<div class="card-img">
+							<img class="card-img-top" src="${recipe.image}" alt="..." />
+						</div>
+						<div class="card-head">
+							<c:out value="${recipe.recipeName}" />
+						</div>
+						<div class="card-main">
+							<div>
+								<c:out value="${recipe.difficulty}" />
+							</div>
+							<div>
+								<c:out value="${recipe.foodType}" />
+							</div>
+							<div>
+								<c:out value="${recipe.person}" />
+							</div>
+							<div>
+								<c:out value="${recipe.time}" />
+							</div>
+						</div>
+						<div class="card-footer">
+							<a class="btn btn-outline-dark mt-auto"
+								href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">View
+								options</a>
+						</div>
+					</div>
 				</c:forEach>
-				<c:if test="${pageMaker.next}">
-					<li class="paginate_button next"><a
-						href="${pageMaker.endPage + 1}">Next</a></li>
-				</c:if>
-			</ul>
-		</div>
-	</div>	
-</section>
-		<form id='actionForm' action="/recipe/get" method='get'>
-			<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-			<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-<%-- 
-			<input type='hidden' name='type'
-				value='<c:out value="${ pageMaker.cri.type }"/>'> <input
-				type='hidden' name='keyword'
-				value='<c:out value="${ pageMaker.cri.keyword }"/>'> --%>
-		</form>
 
-	
+				<div class='pull-right'>
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous"><a
+								href="${pageMaker.startPage -1}">Previous</a></li>
+						</c:if>
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+								<%-- <a href="${num}">${num}</a> --%>
+								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${num}&amount=12">${num}</a>
+							</li>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a
+								href="${pageMaker.endPage + 1}">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+				<form id='actionForm' action="/recipe/get" method='get'>
+					<input type='hidden' name='pageNum'
+						value='${pageMaker.cri.pageNum}'> <input type='hidden'
+						name='amount' value='${pageMaker.cri.amount}'> <input
+						type='hidden' name='type'
+						value='<c:out value="${ pageMaker.cri.type }"/>'> <input
+						type='hidden' name='keyword'
+						value='<c:out value="${ pageMaker.cri.keyword }"/>'>
+				</form>
+</div>
+
 
 <!--  end Pagination -->
 
 <script type="text/javascript">
-	$(document)
-			.ready(
+	$(document).ready(
 			function() {
 			var result = '<c:out value="${result}"/>';
 			checkModal(result);
@@ -180,4 +179,4 @@
 					});
 </script>
 
-<%-- <%@include file="../includes/footer.jsp"%> --%>
+<%@include file="../includes/footer.jsp"%>
