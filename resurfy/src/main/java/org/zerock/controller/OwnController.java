@@ -90,7 +90,7 @@ public class OwnController {
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 
-		//model.addAttribute("relist", rService.getList(cri));
+		model.addAttribute("relist", rService.getList(cri));
 	}
 	
 	@PostMapping("/autocomplete")
