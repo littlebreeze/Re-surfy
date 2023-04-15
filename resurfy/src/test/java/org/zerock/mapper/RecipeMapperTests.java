@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
 import org.zerock.domain.RecipeVO;
 import org.zerock.domain.StepVO;
@@ -38,7 +39,7 @@ public class RecipeMapperTests {
 	
 	@Test
 	public void testRecipeRead() {
-		RecipeVO board = mapper.readRecipe(1L); //ì½©ë¹„ì§€ ë™ê·¸ë‘ë•¡ ë‚˜ì˜¤ë©´ ì •ìƒì…ë‹ˆë‹¤
+		RecipeVO board = mapper.readRecipe(1L); //ÄáºñÁö µ¿±×¶û¶¯ ³ª¿À¸é Á¤»óÀÔ´Ï´Ù
 		log.info(board);
 	}
 	
@@ -56,18 +57,18 @@ public class RecipeMapperTests {
 		log.info(board);
 	}
 	
-//	recipe ë¨¼ì € ì¶”ê°€í•˜ê³  , bno ê°’ í™•ì¸ í•œ í›„ì— step, ingredient insert í•˜ë©´ ë©ë‹ˆë‹¤
+//	recipe ¸ÕÀú Ãß°¡ÇÏ°í , bno °ª È®ÀÎ ÇÑ ÈÄ¿¡ step, ingredient insert ÇÏ¸é µË´Ï´Ù
 	@Test
 	public void testInsertRecipe() {
 		RecipeVO board = new RecipeVO();
 		board.setId("user1");
-		board.setRecipeName("í›„ë¼ì´ê³„ë€");
-		board.setRecipeDescription("ì´ê²ƒì€ ê°„ë‹¨í•œ ìš”ë¦¬ì…ë‹ˆë‹¤.");
+		board.setRecipeName("ÈÄ¶óÀÌ°è¶õ");
+		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
 		board.setFoodTypeNo(3020001L);
-		board.setFoodType("í•œì‹");
-		board.setTime("3ë¶„");
-		board.setPerson("1ì¸ë¶„");
-		board.setDifficulty("ì´ˆë³´");
+		board.setFoodType("ÇÑ½Ä");
+		board.setTime("3ºĞ");
+		board.setPerson("1ÀÎºĞ");
+		board.setDifficulty("ÃÊº¸");
 		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		
 		mapper.insertRecipe(board);
@@ -79,9 +80,9 @@ public class RecipeMapperTests {
 		StepVO board = new StepVO();
 		board.setBno(195457L);
 		board.setStepNo(1L);
-		board.setStepDescription("ê³„ë€ì„ ê¹¬ë‹¤.");
+		board.setStepDescription("°è¶õÀ» ±ü´Ù.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
-		board.setTip("ë„ˆë¬´ ì‰½ìŠµë‹ˆë‹¤.");
+		board.setTip("³Ê¹« ½±½À´Ï´Ù.");
 		
 		mapper.insertStep(board);
 		log.info(board);
@@ -91,15 +92,15 @@ public class RecipeMapperTests {
 	public void testInsertIngredient() {
 		IngredientVO board = new IngredientVO();
 		board.setBno(195457L);
-		board.setIngreName("ê³„ë€");
-		board.setIngreMeasure("ì•½ê°„");
+		board.setIngreName("°è¶õ");
+		board.setIngreMeasure("¾à°£");
 		board.setIngreTypeNo(3060001L);
-		board.setIngreType("ì£¼ì¬ë£Œ");
+		board.setIngreType("ÁÖÀç·á");
 		
 		mapper.insertIngredient(board);
 		log.info(board);
 	}
-	// ê¸°ë³¸í‚¤ , ì™¸ë˜í‚¤ê°’ í™•ì¸
+	// ±âº»Å° , ¿Ü·¡Å°°ª È®ÀÎ
 	@Test
 	public void testStepDelete() {
 		log.info("DELETE COUNT : " + mapper.deleteStep(3025L));
@@ -114,20 +115,20 @@ public class RecipeMapperTests {
 	public void testRecipeDelete() {
 		log.info("DELETE COUNT : " + mapper.deleteRecipe(195456L));
 	}
-	// ìƒˆë¡œ í•˜ë‚˜ recipe,step,ingredient ìƒì„±í•˜ê³  í…ŒìŠ¤íŠ¸, ê¸°ë³¸í‚¤, ì™¸ë˜í‚¤ë¥¼ ë³€ê²½í•˜ì§€ ë§ê³  í•˜ë©´ í…ŒìŠ¤íŠ¸ ê°€ëŠ¥
+	// »õ·Î ÇÏ³ª recipe,step,ingredient »ı¼ºÇÏ°í Å×½ºÆ®, ±âº»Å°, ¿Ü·¡Å°¸¦ º¯°æÇÏÁö ¸»°í ÇÏ¸é Å×½ºÆ® °¡´É
 	
 	@Test
 	public void testUpdateRecipe() {
 		RecipeVO board = new RecipeVO();
 		board.setBno(195457L);
 		board.setId("user1");
-		board.setRecipeName("í›„ë¼ì´ê³„ë€ì´");
-		board.setRecipeDescription("ì´ê²ƒì€ ê°„ë‹¨í•œ ìš”ë¦¬ì…ë‹ˆë‹¤!");
+		board.setRecipeName("ÈÄ¶óÀÌ°è¶õÀÌ");
+		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù!");
 		board.setFoodTypeNo(3020001L);
-		board.setFoodType("í•œì‹");
-		board.setTime("3ë¶„");
-		board.setPerson("1ì¸ë¶„");
-		board.setDifficulty("ì´ˆë³´");
+		board.setFoodType("ÇÑ½Ä");
+		board.setTime("3ºĞ");
+		board.setPerson("1ÀÎºĞ");
+		board.setDifficulty("ÃÊº¸");
 		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		
 		int count = mapper.updateRecipe(board);
@@ -140,9 +141,9 @@ public class RecipeMapperTests {
 		board.setSno(3026L);
 		board.setBno(195457L);
 		board.setStepNo(1L);
-		board.setStepDescription("ì†Œê¸ˆì„ ë„£ëŠ”ë‹¤.");
+		board.setStepDescription("¼Ò±İÀ» ³Ö´Â´Ù.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
-		board.setTip("ì˜ì˜");
+		board.setTip("ÀßÀß");
 		
 		int count = mapper.updateStep(board);
 		log.info("UPDATE COUNT : " + count);
@@ -153,14 +154,20 @@ public class RecipeMapperTests {
 		IngredientVO board = new IngredientVO();
 		board.setIno(195468L);
 		board.setBno(195457L);
-		board.setIngreName("ì†Œê¸ˆ");
-		board.setIngreMeasure("ì•½ê°„");
+		board.setIngreName("¼Ò±İ");
+		board.setIngreMeasure("¾à°£");
 		board.setIngreTypeNo(3060003L);
-		board.setIngreType("ì–‘ë…");
+		board.setIngreType("¾ç³ä");
 		
 		int count = mapper.updateIngredient(board);
 		log.info("UPDATE COUNT : " + count);
 	}
 	
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		List<RecipeVO> list = mapper.getListWithPaging(cri);
+		list.forEach(board -> log.info(board));
+	}
 
 }

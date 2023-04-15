@@ -51,6 +51,15 @@ public class RecipeControllerTests {
 				getModelAndView().
 				getModelMap());
 	}
+	
+	@Test
+	public void testListPaging() throws Exception{
+		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/recipe/get")
+				.param("pageNum", "2")
+				.param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
+		
+	}
 
 	
 }

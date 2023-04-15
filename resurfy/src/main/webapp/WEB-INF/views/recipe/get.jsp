@@ -7,7 +7,6 @@
 
 
 <!-- Header-->
-
 <%-- <header class="recommend_recipe">
 	<div id="carouselExampleAutoplaying" class="carousel slide"
 		data-bs-ride="carousel">
@@ -26,11 +25,8 @@
 	</div>
 </header>
 <br>
-
  --%>
-
 <!-- Section-->
-
 <section class="py-5">
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class='row'>
@@ -56,43 +52,38 @@
 				</form>
 			</div>
 		</div>
-		<div
-			class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<div class="col mb-5">
-				<c:forEach items="${get}" var="recipe">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="${recipe.image}" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">
-									<c:out value="${recipe.recipeName}" />
-								</h5>
-								<h5>
-									<c:out value="${recipe.difficulty}" />
-								</h5>
-								<h5>
-									<c:out value="${recipe.foodType}" />
-								</h5>
-								<h5>
-									<c:out value="${recipe.person}" />
-								</h5>
-								<c:out value="${recipe.time}" />
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto"
-									href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">View
-									options</a>
-							</div>
-						</div>
-				</c:forEach>
+	<c:forEach items="${get}" var="recipe">
+	<div class = "card-container">
+		<div class = "card">
+			<div class = "card-img">
+				<img class="card-img-top" src="${recipe.image}" alt="..." />
+			</div>
+			<div class = "card-head">
+				<c:out value="${recipe.recipeName}" />
+			</div>
+			<div class = "card-main">
+				<div>
+					<c:out value="${recipe.difficulty}" />
+				</div>
+				<div>
+					<c:out value="${recipe.foodType}" />
+				</div>
+				<div>
+					<c:out value="${recipe.person}" />
+				</div>
+				<div>
+					<c:out value="${recipe.time}" />
+				</div>
+			</div>
+			<div class = "card-footer">
+				<a class="btn btn-outline-dark mt-auto"
+				href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">View
+				options</a>
 			</div>
 		</div>
+	</div>
+</c:forEach>
+</section>
 		<div class='pull-right'>
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
@@ -121,8 +112,9 @@
 				value='<c:out value="${ pageMaker.cri.keyword }"/>'>
 		</form>
 	</div>
-</section>
+
 <!--  end Pagination -->
+
 
 
 <script type="text/javascript">
@@ -187,4 +179,4 @@
 					});
 </script>
 
-<%@include file="../includes/footer.jsp"%>
+<%-- <%@include file="../includes/footer.jsp"%> --%>
