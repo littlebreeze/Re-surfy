@@ -152,7 +152,7 @@
 			  if(confirm_val) {
 				   console.log(ingreArr);
 				   $.ajax({
-					    url : "/mypage/addOwn",
+					    url : "/mypage/addOwnFromCart",
 					    method : "post",
 					    data : { ingreArr : ingreArr,
 					    		 chbox : cnoArr},
@@ -168,10 +168,7 @@
 		$("input[type=number]").change(function() {
 			alert("수량 변경")
 			var changeCno = $(this).attr("data-cno");
-			var price = $(this).attr("data-price");
 			var changeCount = $(this).val();
-
-			$("#calCount").html(price*changeCount);
 			
 			$.ajax({
 			    url : "/mypage/updateCart",

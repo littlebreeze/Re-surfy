@@ -42,8 +42,8 @@ public class OwnController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
-	@PostMapping("/addOwn")
-	public String ownRegister(@RequestParam(value = "ingreArr[]") List<String> ingreArr, @RequestParam(value = "chbox[]") List<Long> cno, RedirectAttributes rttr) {
+	@PostMapping("/addOwnFromCart")
+	public String ownRegisterFromCart(@RequestParam(value = "ingreArr[]") List<String> ingreArr, @RequestParam(value = "chbox[]") List<Long> cno, RedirectAttributes rttr) {
 
 		List<OwnVO> own = new ArrayList<OwnVO>();
 		for (int i = 0; i < ingreArr.size(); i++) {
@@ -53,6 +53,21 @@ public class OwnController {
 			own.add(o);
 		}
 		cService.remove(cno);	//장바구니에서 삭제
+		if (service.register(own)) {	//가진 재료로 등록
+			rttr.addFlashAttribute("result", "success");
+		}
+		return "redirect:/mypage/own";
+	}
+	
+	@PostMapping("/addOwn")
+	public String ownRegister(String addIngreName, RedirectAttributes rttr) {
+
+		//있는 재료 중복 확인해야함
+		List<OwnVO> own = new ArrayList<OwnVO>();
+		OwnVO o = new OwnVO();
+		o.setId("user1");
+		o.setIngreName(addIngreName);
+		own.add(o);
 		if (service.register(own)) {	//가진 재료로 등록
 			rttr.addFlashAttribute("result", "success");
 		}

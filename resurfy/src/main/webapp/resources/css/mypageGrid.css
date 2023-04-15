@@ -66,9 +66,11 @@
   --bs-dropdown-header-color: #6c757d;
   --bs-dropdown-header-padding-x: 1rem;
   --bs-dropdown-header-padding-y: 0.5rem;
-  position: absolute;
-  z-index: var(--bs-dropdown-zindex);
-  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+  height: auto;
   min-width: var(--bs-dropdown-min-width);
   padding: var(--bs-dropdown-padding-y) var(--bs-dropdown-padding-x);
   margin: 0;
@@ -79,9 +81,8 @@
   background-color: var(--bs-dropdown-bg);
   background-clip: padding-box;
   border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
-  border-radius: var(--bs-dropdown-border-radius);
-  max-height: 200px;
-  overflow-y: auto;
+  border-radius: var(--bs-dropdown-border-radius);  
+  /* position: absolute; 때문에 안따라다님 relative여야함!*/
 }
 
 .ui-menu-item {
@@ -107,8 +108,4 @@
   color: var(--bs-dropdown-link-active-color);
   text-decoration: none;
   background-color: var(--bs-dropdown-link-active-bg);
-}
-
-.ui-menu-item div.ui-helper-hidden-accessible{
-	display:hidden;
 }
