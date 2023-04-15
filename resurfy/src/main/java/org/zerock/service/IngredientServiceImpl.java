@@ -53,7 +53,16 @@ public class IngredientServiceImpl implements IngredientService {
 		return mapper.updateIngredient(board) == 1;
 		
 	}
+	
+	@Override
+	public List<String> getIngreList(Long bno) {// 이름만 가져오는 함수
+		return mapper.readIngreName(bno);
+	}
 
+	@Override
+	public List<String> getIngreListHave(Long bno) { // 이름만 가져오는 함수
+		return mapper.readIngreNameHave(bno);
+	}
 
 
 	

@@ -12,6 +12,7 @@ import org.zerock.domain.PageDTO;
 import org.zerock.domain.RecipeVO;
 import org.zerock.service.IngredientService;
 import org.zerock.service.RecipeService;
+import org.zerock.service.ShoppingService;
 import org.zerock.service.StepService;
 
 import lombok.AllArgsConstructor;
@@ -25,6 +26,8 @@ public class RecipeController {
 	private RecipeService rService;
 	private StepService sService;
 	private IngredientService iService;
+	private ShoppingService shService;
+
 		
 	@GetMapping("/registerRecipe")
 	public void register() {
@@ -37,6 +40,9 @@ public class RecipeController {
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));
 		model.addAttribute("step", sService.get(bno));
+		model.addAttribute("shopNotIn", shService.searchFromAPI(iService.getIngreList(bno)));
+		model.addAttribute("shopIn", shService.searchFromAPI(iService.getIngreListHave(bno)));
+
 	} 
 		
 	@GetMapping("/get")
