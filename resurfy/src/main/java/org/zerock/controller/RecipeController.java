@@ -47,7 +47,7 @@ public class RecipeController {
 		
 	@GetMapping("/get")
 	public void list(@ModelAttribute("cri") Criteria cri , Model model) {
-		cri.setAmount(12);
+		/* cri.setAmount(12); */
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
 		int total = rService.getTotal(cri);

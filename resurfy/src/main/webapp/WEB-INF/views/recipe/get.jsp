@@ -36,12 +36,12 @@
 						<option value=""
 							<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
 						<option value="R"
-							<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식</option>
+							<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식 이름</option>
 						<option value="F"
-							<c:out value="${pageMaker.cri.type eq 'F'?'selected':''}"/>>제목</option>
+							<c:out value="${pageMaker.cri.type eq 'F'?'selected':''}"/>>음식 종류</option>
 						<option value="FR"
-							<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>음식
-							or 제목</option>
+							<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>음식 이름
+							or 종류</option>
 					</select> <input type='text' name='keyword'
 						value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
 						type='hidden' name='pageNum'
@@ -63,22 +63,21 @@
 						</div>
 						<div class="card-main">
 							<div>
-								<c:out value="${recipe.difficulty}" />
+								난이도 : <c:out value="${recipe.difficulty}" />
 							</div>
 							<div>
-								<c:out value="${recipe.foodType}" />
+								종류 : <c:out value="${recipe.foodType}" />
 							</div>
 							<div>
-								<c:out value="${recipe.person}" />
+								기준인분 : <c:out value="${recipe.person}" />
 							</div>
 							<div>
-								<c:out value="${recipe.time}" />
+								조리시간 : <c:out value="${recipe.time}" />
 							</div>
 						</div>
 						<div class="card-footer">
 							<a class="btn btn-outline-dark mt-auto"
-								href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">View
-								options</a>
+								href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피 보기</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -86,8 +85,9 @@
 				<div class='pull-right'>
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button previous"><a
-								href="${pageMaker.startPage -1}">Previous</a></li>
+							<li class="paginate_button previous">
+								<%-- href="${pageMaker.startPage -1}">Previous</a></li> --%>
+								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.startPage -1}&amount=12">Previous</a>
 						</c:if>
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
@@ -97,8 +97,10 @@
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a
-								href="${pageMaker.endPage + 1}">Next</a></li>
+							<li class="paginate_button next">
+							<%--  ${pageMaker.cri.pageNum = ${pageMaker.endPage} + 1 --%>
+							<%-- <a href="${pageMaker.endPage + 1}">Next</a></li> --%>
+							<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
 						</c:if>
 					</ul>
 				</div>
