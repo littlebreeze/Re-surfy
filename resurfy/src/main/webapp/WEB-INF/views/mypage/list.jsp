@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@include file="../includes/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,43 +34,43 @@
 						<h1 class="page-header">사용자 정보</h1>
 					<br><br></div>
 					<div class="container">
-						    <div class="row d-flex justify-content-center align-items-center h-100">
-						      <div class="col col-md-12 col-lg-7 col-xl-5">
-						        <div class="card" style="border-radius: 15px;">
-						          <div class="card-body p-4">
-						            <div class="d-flex text-black">
-						              <div class="flex-shrink-0">
-						                <img src="/resources/assets/favicon.png"
-						                  alt="Generic placeholder image" class="img-fluid"
-						                  style="width: 180px; border-radius: 10px;">
-						              </div>
-						              <div class="flex-grow-1 ms-3">
-						                <h5 class="mb-1">닉네임</h5>
-						                <p class="mb-2 pb-1" style="color: #2b2a2a;">아이디</p>
-						                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
-						                  style="background-color: #efefef;">
-						                  <div>
-						                    <p class="small text-muted mb-1">작성글</p>
-						                    <p class="mb-0">41</p>
-						                  </div>
-						                  <div class="px-3">
-						                    <p class="small text-muted mb-1">댓글</p>
-						                    <p class="mb-0">976</p>
-						                  </div>
-						                  <div>
-						                    <p class="small text-muted mb-1">-</p>
-						                    <p class="mb-0">8.5</p>
-						                  </div>
-						                </div>
-						                <div class="d-flex pt-1">
-						                  <p class="mb-2 pb-1" style="color: #2b2a2a;">전화번호</p>
-						                </div>
-						              </div>
-						            </div>
-						          </div>
-						        </div>
-						      </div>
-						    </div>
+					    <div class="row d-flex justify-content-center align-items-center h-100">
+					      <div class="col col-md-12 col-lg-7 col-xl-5">
+					        <div class="card" style="border-radius: 15px;">
+					          <div class="card-body p-4">
+					            <div class="d-flex text-black">
+					              <div class="flex-shrink-0">
+					                <img src="/resources/assets/favicon.png"
+					                  alt="Generic placeholder image" class="img-fluid"
+					                  style="width: 180px; border-radius: 10px;">
+					              </div>
+					              <div class="flex-grow-1 ms-3">
+					                <h5 class="mb-1">닉네임</h5>
+					                <p class="mb-2 pb-1" style="color: #2b2a2a;">아이디</p>
+					                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+					                  style="background-color: #efefef;">
+					                  <div>
+					                    <p class="small text-muted mb-1">작성글</p>
+					                    <p class="mb-0">41</p>
+					                  </div>
+					                  <div class="px-3">
+					                    <p class="small text-muted mb-1">댓글</p>
+					                    <p class="mb-0">976</p>
+					                  </div>
+					                  <div>
+					                    <p class="small text-muted mb-1">-</p>
+					                    <p class="mb-0">8.5</p>
+					                  </div>
+					                </div>
+					                <div class="d-flex pt-1">
+					                  <p class="mb-2 pb-1" style="color: #2b2a2a;">전화번호</p>
+					                </div>
+					              </div>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
 					</div>
 					<div class="container">
 						<div class="col-lg-12">
@@ -143,3 +141,5 @@
 
     </body>
 </html>
+
+<%@include file="../includes/footer.jsp"%>
