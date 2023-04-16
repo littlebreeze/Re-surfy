@@ -41,6 +41,9 @@
 					      </div>
 					    </div>
 						<div class="row row-cols-1 row-cols-md-3 g-3 text-center">
+						<c:if test="${empty list}">
+							<div>데이터 없음</div>
+						</c:if>
 						<c:forEach items="${list}" var="own">
 							<div class="col themed-grid-col" id="ownGroup">
 								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}">${own.ingreName}
@@ -53,28 +56,6 @@
 					<input type="button" style="display:none;"  value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
 					<input type="button" style="display:none;"  value="취소" id="cancleBtn" class="btn mypageBtn pull-left">
 				</div>
-				
-				<!-- start Paging -->
-				<div class='pull-right'>
-					<ul class="pagination">
-						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button previous">
-							<a href="${pageMaker.startPage -1 }">Previous</a>
-							</li>
-						</c:if>
-						<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
-							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
-								<a href="${num}">${num}</a>
-							</li>
-						</c:forEach>
-						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a
-								href="${pageMaker.endPage +1}">Next</a>
-							</li>
-						</c:if>
-					</ul>
-				</div>
-				<!-- end paging -->
                 <br><br>
 				<div id="addNew" style="display:none; margin-top: 1rem !important;">
 			      <h3>새로운 재료 추가</h3><br>

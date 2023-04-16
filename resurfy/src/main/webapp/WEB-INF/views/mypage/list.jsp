@@ -75,9 +75,6 @@
 					<div class="container">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									<button id='allBtn' type="button" class="btn btn-xs pull-right" style="margin-bottom: 1rem !important;">> 작성 글 전체 보기</button>
-								</div>
 								<!-- /.panel-heading -->
 								<div class="panel-body">
 									<table class="table table-striped table-bordered table-hover">
@@ -91,6 +88,9 @@
 											</tr>
 										</thead>
 										<tbody>
+											<c:if test="${empty relist}">
+												<div>데이터 없음</div>
+											</c:if>
 											<c:forEach items="${relist}" var="board">
 												<tr>
 													<td><c:out value="${board.bno }" /></td>
@@ -108,6 +108,27 @@
 											</c:forEach>
 										</tbody>
 									</table>
+									<!-- start Paging -->
+									<div class='pull-right'>
+										<ul class="pagination">
+											<c:if test="${pageMaker.prev}">
+												<li class="paginate_button previous">
+												<a href="${pageMaker.startPage -1 }">Previous</a>
+												</li>
+											</c:if>
+											<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
+												<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+													<a href="${num}">${num}</a>
+												</li>
+											</c:forEach>
+											<c:if test="${pageMaker.next}">
+												<li class="paginate_button next"><a
+													href="${pageMaker.endPage +1}">Next</a>
+												</li>
+											</c:if>
+										</ul>
+									</div>
+									<!-- end paging -->
 								</div>
 							</div>
 						</div>
@@ -131,10 +152,6 @@
 					actionForm.attr("action","/board/get");
 					actionForm.submit();
 					});
-				
-				$("#allBtn").on("click", function() {
-					actionForm.submit();
-				});
 
 			});
 </script>

@@ -46,6 +46,9 @@
 					      <div class="col-md-2 themed-grid-col">가격</div>
 					      <div class="col-md-2 themed-grid-col">수량</div>
 					    </div>
+					<c:if test="${empty list}">
+						<div>데이터 없음</div>
+					</c:if>
 					<c:forEach items="${list}" var="cart">
 					    <div class="row mb-3 text-center" id="cartGroup">
 					      <div class="col-md-1 themed-grid-col">
