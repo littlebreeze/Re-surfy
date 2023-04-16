@@ -36,10 +36,7 @@ public class OwnController {
 	public void ownList(Criteria cri, Model model) {
 		log.info("가진 재료 페이지 진입");
 		
-		int total = service.getTotal(cri);
-		
 		model.addAttribute("list", service.getList());
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@PostMapping("/addOwnFromCart")
@@ -91,6 +88,7 @@ public class OwnController {
 	public void list(Criteria cri, Model model) {
 
 		model.addAttribute("relist", rService.getList(cri));
+		//model.addAttribute("relist", rService.getUserList(cri));
 	}
 	
 	@PostMapping("/autocomplete")

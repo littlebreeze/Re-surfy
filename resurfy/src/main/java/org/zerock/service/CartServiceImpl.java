@@ -49,13 +49,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<CartVO> getList(Criteria cri) {
-		//return mapper.getListPaging(cri);
-		return mapper.getList("user1");
-	}
-
-	@Override
-	public int getTotal(Criteria cri) {
-		return mapper.getTotalCount(cri,"user1");
+		return mapper.getList();
 	}
 	
 	@Override

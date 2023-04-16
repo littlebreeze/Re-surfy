@@ -30,10 +30,7 @@ public class CartController {
 	public void cartList(Criteria cri, Model model) {
 		log.info("장바구니 페이지 진입");
 		
-		int total = service.getTotal(cri);
-		
 		model.addAttribute("list", service.getList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@PostMapping("/deleteCart")

@@ -72,6 +72,7 @@
 					      </div>
 					    </div>
 					</div>
+					<br><br>
 					<div class="container">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
@@ -82,7 +83,6 @@
 											<tr>
 												<th>#번호</th>
 												<th>제목</th>
-												<th>작성자</th>
 												<th>작성일</th>
 												<th>수정일</th>
 											</tr>
@@ -99,7 +99,6 @@
 																<c:out value="${board.recipeName}" />
 														</a>
 													</td>
-													<td><c:out value="${board.id }" /></td>
 													<td><fmt:formatDate pattern="yyyy-MM-dd"
 															value="${board.recipeDate }" /></td>
 													<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -149,7 +148,7 @@
 				$(".move").on("click", function(e){
 					e.preventDefault();
 					actionForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+"'>");
-					actionForm.attr("action","/board/get");
+					actionForm.attr("action","/recipe/detail");
 					actionForm.submit();
 					});
 

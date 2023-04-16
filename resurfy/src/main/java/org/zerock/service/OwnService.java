@@ -14,9 +14,5 @@ public interface OwnService {
 
 	public List<OwnVO> getList();
 	
-	public List<OwnVO> getList(Criteria cri);
-
-	public int getTotal(Criteria cri);
-	
 	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception;
 }

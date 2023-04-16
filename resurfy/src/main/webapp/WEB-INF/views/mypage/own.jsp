@@ -70,10 +70,6 @@
 				</div>
 
                 </div>	<!-- end .container -->
-                <form id='actionForm' action="/mypage/own" method='get'>
-					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-				</form>
             </div>
         </div>
 	</div>
@@ -83,17 +79,7 @@
         <script src="../resources/js/mypageScripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	var actionForm = $("#actionForm");
-	$(".paginate_button a").on("click",	function(e) {
-		e.preventDefault();
-		console.log('click');
-		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-		actionForm.submit();
-	});
-});
-</script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#cbx_chkAll").click(function() {
@@ -134,10 +120,6 @@ $(document).ready(function(){
 					});
 			  } 
 		   }
-		});	//end click
-		
-		$("#searchBtn").click(function(){
-			alert("기능 준비중 입니다.");
 		});	//end click
 		
 		$("#editBtn").click(function(){
