@@ -28,7 +28,7 @@ public class CartController {
 	
 	@GetMapping("/cart")
 	public void cartList(Criteria cri, Model model) {
-		log.info("ì¥ë°”êµ¬ë‹ˆ í˜ì´ì§€ ì§„ì…");
+		log.info("Àå¹Ù±¸´Ï ÆäÀÌÁö ÁøÀÔ");
 		
 		model.addAttribute("list", service.getList(cri));
 	}
@@ -48,7 +48,7 @@ public class CartController {
 			@RequestParam(value = "imArr[]") List<String> imArr,@RequestParam(value = "pIdArr[]") List<Long> pIdArr, RedirectAttributes rttr) {
 
 		List<Long> pidList = service.getpIDList();
-		//ì´ë¯¸ ìˆëŠ” ì œí’ˆì´ë©´ updateë¥¼ í•˜ê³  ì—†ìœ¼ë©´ insertë¥¼ í•˜ê³ ì‹¶ì€ë””
+		//ÀÌ¹Ì ÀÖ´Â Á¦Ç°ÀÌ¸é update¸¦ ÇÏ°í ¾øÀ¸¸é insert¸¦ ÇÏ°í½ÍÀºµğ
 		
 		List<CartVO> cart = new ArrayList<CartVO>();
 		List<CartVO> cartUpdate = new ArrayList<CartVO>();
@@ -57,13 +57,13 @@ public class CartController {
 			CartVO c = new CartVO();
 			c.setId("user1");
 			c.setPrice(pArr.get(i));
-			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i); // DBì— ë§ì¶° ë¬¸ìì—´ ê¸¸ì´ ë³€ê²½
+			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i); // DB¿¡ ¸ÂÃç ¹®ÀÚ¿­ ±æÀÌ º¯°æ
 			c.setCount(1L);
 			c.setPname(str);
 			c.setIname(igArr.get(i));
 			c.setPimage(imArr.get(i));
 			c.setProductid(pIdArr.get(i));
-			if(pidList.contains(pIdArr.get(i)))	//ì´ë¯¸ ìˆìœ¼ë©´ update í•´ì•¼í•˜ë‹ˆê¹Œ
+			if(pidList.contains(pIdArr.get(i)))	//ÀÌ¹Ì ÀÖÀ¸¸é update ÇØ¾ßÇÏ´Ï±î
 				cartUpdate.add(c);
 			else
 				cart.add(c);

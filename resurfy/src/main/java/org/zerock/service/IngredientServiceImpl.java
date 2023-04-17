@@ -55,12 +55,12 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 	
 	@Override
-	public List<String> getIngreList(Long bno) {// 이름만 가져오는 함수
+	public List<String> getIngreList(Long bno) {
 		return mapper.readIngreName(bno);
 	}
 
 	@Override
-	public List<String> getIngreListHave(Long bno) { // 이름만 가져오는 함수
+	public List<String> getIngreListHave(Long bno) { 
 		return mapper.readIngreNameHave(bno);
 	}
 

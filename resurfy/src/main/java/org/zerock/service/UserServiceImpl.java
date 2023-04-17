@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
-@AllArgsConstructor //모든 생성자를 주입한다.
+@AllArgsConstructor 
 public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
 	@Override

@@ -34,7 +34,7 @@ public class OwnController {
 	
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
-		log.info("ê°€ì§„ ì¬ë£Œ í˜ì´ì§€ ì§„ì…");
+		log.info("°¡Áø Àç·á ÆäÀÌÁö ÁøÀÔ");
 		
 		model.addAttribute("list", service.getList());
 	}
@@ -49,8 +49,8 @@ public class OwnController {
 			o.setIngreName(ingreArr.get(i));
 			own.add(o);
 		}
-		cService.remove(cno);	//ì¥ë°”êµ¬ë‹ˆì—ì„œ ì‚­ì œ
-		if (service.register(own)) {	//ê°€ì§„ ì¬ë£Œë¡œ ë“±ë¡
+		cService.remove(cno);	//Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦
+		if (service.register(own)) {	//°¡Áø Àç·á·Î µî·Ï
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";
@@ -59,13 +59,13 @@ public class OwnController {
 	@PostMapping("/addOwn")
 	public String ownRegister(String addIngreName, RedirectAttributes rttr) {
 
-		//ìˆëŠ” ì¬ë£Œ ì¤‘ë³µ í™•ì¸í•´ì•¼í•¨
+		//ÀÖ´Â Àç·á Áßº¹ È®ÀÎÇØ¾ßÇÔ
 		List<OwnVO> own = new ArrayList<OwnVO>();
 		OwnVO o = new OwnVO();
 		o.setId("user1");
 		o.setIngreName(addIngreName);
 		own.add(o);
-		if (service.register(own)) {	//ê°€ì§„ ì¬ë£Œë¡œ ë“±ë¡
+		if (service.register(own)) {	//°¡Áø Àç·á·Î µî·Ï
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";

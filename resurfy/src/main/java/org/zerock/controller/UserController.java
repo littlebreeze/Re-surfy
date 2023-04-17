@@ -38,8 +38,8 @@ public class UserController {
 	
 	@PostMapping("join.do")
     public String join(UserVO userVO) {
-        log.info("-------------------í™•ì¸ìš©-------------------");
-        log.info("joinConfirm(ì¼ë°˜ íšŒì›): " + userVO.toString());
+        log.info("-------------------È®ÀÎ¿ë-------------------");
+        log.info("joinConfirm(ÀÏ¹İ È¸¿ø): " + userVO.toString());
         Service.join(userVO);
         return "member/login";
 	}

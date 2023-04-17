@@ -3,16 +3,29 @@
 	height : 100px;
 	background-color : #6BD0FE;
 	overflow : hidden;
-	boarder : 1px solid black;
+	border : 0px solid black;
+	display : flex;
+	justify-content : center;
+	align-item : center;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
 }
 
-#header_menu  ul{
+#header_menu_move{
+	overflow : hidden;
+	border : 0px solid black;
+	background-color : #6BD0FE;
+	
+}
+
+#header_menu_move  ul{
 	border : 0px solid black;
 	list-style-type : none;
 	
 }
 
-#header_menu  li{
+#header_menu_move  li{
 	text-align : center;
 	border : 0px solid black;
 	float : right;
@@ -28,19 +41,8 @@
     border : 0px solid black;
     margin : 20px -5px;
     overflow : hidden;
-    position : relative;
-    left : 860px;
+	
 	
 }
-
-/* #header_menu  button{
-	text-align : center;
-	border : 0px solid black;
-	float : right;
-	font-size : 150%;
-	padding : 15px;
-	color : white;
-	margin : 2px;
-} */
 
 

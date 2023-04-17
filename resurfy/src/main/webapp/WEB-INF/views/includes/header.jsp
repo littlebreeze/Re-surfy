@@ -27,14 +27,22 @@
 <link href="../resources/css/mypageGrid.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <body>
+
 		<div id = "header_menu">
 			<div id = "logo" ><img src="/resources/assets/favicon.png"></div>
-			<ul>
-			<li><a href = "#">mypage</li>
-			<li><a href = "#">Sign-up</li>
-			<li><a href = "#">Login</li>
-			</ul>
+
 		</div>
+			<div id = "header_menu_move" >
+				<ul>
+					<li><a href = "#">mypage</li>
+					<li><a href = "#">Sign-up</li>
+					<li><a href = "#">Login</li>
+				</ul>
+			</div>
+		
 		

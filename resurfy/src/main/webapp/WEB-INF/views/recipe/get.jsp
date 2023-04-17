@@ -4,28 +4,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 <link href="../resources/css/get.css" rel="stylesheet">
-
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootStrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <!-- Header-->
-<%-- <header class="recommend_recipe">
-	<div id="carouselExampleAutoplaying" class="carousel slide"
-		data-bs-ride="carousel">
-		<div class="monthly_recipe">이달의 레시피</div>
-		<div class="carousel-inner">
-			<c:forEach items="${get}" var="recipe">
-				<div class="carousel-item <c:if test="${status.index eq 0}">active</c:if>">
-					<img src="${recipe.image}" class="d-block w-100" alt="${recipe.bno}">
-					<div class="carousel-caption d-none d-md-block">
-						<h5>${recipe.recipeName}</h5>
-						<p>${recipe.foodType}</p>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
-</header>
+<div class = recommend_recipe>
+<div class="slide_div_wrap">
+	<div class="slide_div">
+	<c:forEach items="${get}" var="recipe">
+		<div>
+			<a>
+				<img src="${recipe.image}">
+			</a>
+			<c:out value="${recipe.recipeName}" />
+			</div>
+			</c:forEach>	
+		</div>	
+	</div>	
+</div>
+
 <br>
- --%>
 <!-- Section-->
 <div class="py-5">
 	<div class="container px-4 px-lg-5 mt-5">
@@ -87,20 +86,20 @@
 						<c:if test="${pageMaker.prev}">
 							<li class="paginate_button previous">
 								<%-- href="${pageMaker.startPage -1}">Previous</a></li> --%>
-								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.startPage -1}&amount=12">Previous</a>
+								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.startPage -1}&amount=${pageMaker.cri.amount}">Previous</a>
 						</c:if>
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
 							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
 								<%-- <a href="${num}">${num}</a> --%>
-								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${num}&amount=12">${num}</a>
+								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${num}&amount=${pageMaker.cri.amount}">${num}</a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next}">
 							<li class="paginate_button next">
 							<%--  ${pageMaker.cri.pageNum = ${pageMaker.endPage} + 1 --%>
 							<%-- <a href="${pageMaker.endPage + 1}">Next</a></li> --%>
-							<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.endPage + 1}&amount=12">Next</a>
+							<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.cri.amount}">Next</a>
 						</c:if>
 					</ul>
 				</div>
@@ -178,7 +177,41 @@
 									e.preventDefault();
 									searchForm.submit();
 								});
+
 					});
+	
+</script>
+<script>
+$(document).ready(function(){
+			$(".slide_div").slick({
+				  centerMode: true,
+				  centerPadding: '90px',
+				  slidesToShow: 4,
+				  slidesToScroll : 1,
+				  autoplay : true,
+				  autoplaySpeed : 1500,
+				  responsive: [
+				    {
+				      breakpoint: 768,
+				      settings: {
+				        arrows: false,
+				        centerMode: true,
+				        centerPadding: '30px',
+				        slidesToShow: 3
+				      }
+				    },
+				    {
+				      breakpoint: 480,
+				      settings: {
+				        arrows: false,
+				        centerMode: true,
+				        centerPadding: '30px',
+				        slidesToShow: 1
+				      }
+				    }
+				  ]
+			});
+});
 </script>
 
 <%@include file="../includes/footer.jsp"%>
