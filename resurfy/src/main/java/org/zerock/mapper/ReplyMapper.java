@@ -10,8 +10,9 @@ public interface ReplyMapper {
 	public int insert(ReplyVO vo);
 	public ReplyVO read(Long bno);
 	public int update(ReplyVO reply);
-	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri
+	public List<ReplyVO> getListWithPaging(
+			@Param("cri") Criteria cri
 			,@Param("bno") Long bno);
 	public int getCountByBno(Long bno);
-	public int delete(ReplyVO reply);
+	public int delete(Long rno);
 }

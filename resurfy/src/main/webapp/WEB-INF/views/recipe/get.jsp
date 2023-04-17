@@ -12,11 +12,12 @@
 <div class = recommend_recipe>
 <div class="slide_div_wrap">
 	<div class="slide_div">
-	<c:forEach items="${get}" var="recipe">
+	<c:forEach items="${all}" var="recipe">
 		<div>
 			<a>
 				<img src="${recipe.image}">
 			</a>
+			<br>
 			<c:out value="${recipe.recipeName}" />
 			</div>
 			</c:forEach>	
@@ -47,7 +48,7 @@
 						value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 						type='hidden' name='amount'
 						value='<c:out value="${pageMaker.cri.amount}"/>' />
-					<button class='btn btn-default'>Search</button>
+					<button  class="btn btn-primary btn-sm">Search</button>
 				</form>
 			</div>
 		</div>

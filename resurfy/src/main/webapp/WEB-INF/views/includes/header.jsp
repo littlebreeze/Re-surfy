@@ -39,9 +39,15 @@
 		</div>
 			<div id = "header_menu_move" >
 				<ul>
-					<li><a href = "#">mypage</li>
-					<li><a href = "#">Sign-up</li>
-					<li><a href = "#">Login</li>
+					<li><a href = "/mypage/cart">
+					<button type="button" class="btn btn-primary btn-lg">
+					mypage</button></a></li>
+					<li><a href = "/recipe/registerRecipe">
+					<button type="button" class="btn btn-primary btn-lg">
+					register</button></a></li>
+					<li><a href = "/member/login.do">
+					<button type="button" class="btn btn-primary btn-lg">
+					Login</button></a></li>
 				</ul>
 			</div>
 		
