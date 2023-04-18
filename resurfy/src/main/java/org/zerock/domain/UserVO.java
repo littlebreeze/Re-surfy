@@ -9,8 +9,8 @@ public class UserVO {
 	private Long stepNo;
 	private String stepDescription;
 	
-	private String userId;
-	private String userPw;
+	private String id;
+	private String password;
     private String userName;
     private String userNick;
     private String userPhone;

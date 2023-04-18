@@ -55,26 +55,34 @@
 						</form>
 				<div style="margin-top: 1rem !important;">		
 					<input type="button" value="편집 및 검색" id="editBtn" class="btn mypageBtn pull-left">
+					<input type="button" value="추가" id="addNewBtn" class="btn mypageBtn pull-left">
 					<input type="button" style="display:none;" value="검색" id="searchBtn" class="btn mypageBtn pull-left">	
 					<input type="button" style="display:none;"  value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
 					<input type="button" style="display:none;"  value="취소" id="cancleBtn" class="btn mypageBtn pull-left">
 				</div>
-                <br><br>
-				<div id="addNew" style="display:none; margin-top: 1rem !important;">
-			      <h3>새로운 재료 추가</h3><br>
-			      <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 overflow-hidden w-280px" data-bs-theme="light">
-				    <form class="p-2 mb-2 bg-body-tertiary border-bottom" id="addOwnForm" action="/mypage/addOwn" method="post">
-				      <input type="search" class="form-control" autocomplete="false" placeholder="Type to filter..." id="autoComplete" name="addIngreName">
-				    </form>
-				  </div>				  
-				  <div style="margin-top: 1rem !important;">		
-					<input type="button" value="추가" id="addOwnBtn" class="btn mypageBtn pull-right">
-				  </div>				  
-				</div>
-
                 </div>	<!-- end .container -->
             </div>
         </div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">새로운 재료 추가</h4>
+				</div>
+				<div class="modal-body">
+					<form class="p-2 mb-2 bg-body-tertiary border-bottom" id="addOwnForm" action="/mypage/addOwn" method="post">
+				      <input type="search" class="form-control"placeholder="Type to filter..." id="autoComplete" name="addIngreName">
+				    </form>
+				</div>
+				<div class="modal-footer">
+					<button id='addOwnBtn' type="button" class="btn btn-primary">Register</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	</div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -133,7 +141,7 @@
 				$("#chkAll").toggle();				
 				$("#editBtn").toggle();
 				$("#searchBtn").toggle();
-				$("#addNew").toggle();
+				$("#addNewBtn").toggle();
 			}
 		});	//end click
 		
@@ -144,7 +152,7 @@
 			$("#deleteBtn").toggle();
 			$("#cancleBtn").toggle();
 			$("#chkAll").toggle();	
-			$("#addNew").toggle();
+			$("#addNewBtn").toggle();
 		});	//end click
 		
 		var addOwnForm = $("#addOwnForm");
@@ -221,7 +229,31 @@ $(document).ready(function(){
 				console.log(ui.item.idx);
 		 }
 	});
+	
+	$(".modal").on("shown.bs.modal", function() {
+		  $("#autoComplete").autocomplete("option", "appendTo", ".modal")
+	})
 });
+</script>
+<script>
+	$(document).ready(function() {
+		
+		var modal = $(".modal");
+		
+		$("#addNewBtn").on("click", function(e) {
+			$(".modal").modal("show");
+		});
+		
+		var modalCloseBtn = $("#modalCloseBtn");
+		modalCloseBtn.on("click", function(e){
+				modal.modal("hide");
+		});
+		var CloseBtn = $(".close");
+		CloseBtn.on("click", function(e){
+				modal.modal("hide");
+		});
+		
+	});
 </script>
     </body>
 </html>
