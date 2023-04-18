@@ -480,7 +480,7 @@
 					</div>
 					<div class="form-group">
 						<label>Replyer</label>
-						<input class="form-control" name='replyer' value='replyer'>
+						<input class="form-control" name='id' value='user1'>
 					</div>
 					<div class="form-group">
 						<label>Reply Date</label>
@@ -527,7 +527,7 @@ $(document).ready(function(){
 	}// end showList
 	var modal = $(".modal");
 	var modalInputReply = modal.find("input[name='reply']");
-	var modalInputReplyer = modal.find("input[name='replyer']");
+	var modalInputReplyer = modal.find("input[name='id']");
 	var modalInputReplyDate = modal.find("input[name='replyDate']");
 	
 	var modalModBtn = $("#modalModBtn");
@@ -543,6 +543,65 @@ $(document).ready(function(){
 		modalRegisterBtn.show();
 		$(".modal").modal("show");
 	});
+	
+	modalRegisterBtn.on("click", function(e) {
+		var reply ={
+				reply: modalInputReply.val(),
+				id: modalInputReplyer.val(),
+				bno: bnoValue
+		};
+		replyService.add(reply, function (result){
+			alert(result);
+			modal.find("input").val("");
+			modal.modal("hide");
+			
+			//showList(1);
+			showList(-1);
+		});
+});
+	
+	//댓글 조회 클릭 이벤트 처리 
+    $(".chat").on("click", "li", function(e){
+      
+      var rno = $(this).data("rno");
+      
+      replyService.get(rno, function(reply){
+      
+        modalInputReply.val(reply.reply);
+        modalInputReplyer.val(reply.id);
+        modalInputReplyDate.val(replyService.displayTime( reply.replyDate))
+        .attr("readonly","readonly");
+        modal.data("rno", reply.rno);
+        
+        modal.find("button[id !='modalCloseBtn']").hide();
+        modalModBtn.show();
+        modalRemoveBtn.show();
+        
+        $(".modal").modal("show");
+            
+      });
+    });
+	
+    modalModBtn.on("click", function(e) {
+		var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
+		replyService.update(reply, function(result) {
+			alert(result);
+			modal.modal("hide");
+			showList(1);
+			//showList(pageNum);
+		});
+	});
+    
+	modalRemoveBtn.on("click", function(e) {
+		var rno = modal.data("rno");
+		replyService.remove(rno, function(result) {
+			alert(result);
+			modal.modal("hide");
+			showList(-1);
+			//showList(pageNum);
+		});
+	});
+	
 	
 });
 </script>
