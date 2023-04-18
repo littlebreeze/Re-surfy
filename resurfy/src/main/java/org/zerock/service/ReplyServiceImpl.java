@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
-@AllArgsConstructor //紐⑤뱺 �깮�꽦�옄瑜� 二쇱엯�븳�떎.
+@AllArgsConstructor //모든 생성자를 주입한다.
 public class ReplyServiceImpl implements ReplyService {
 	//private RecipeMapper recipeMapper;
 	@Autowired
