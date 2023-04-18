@@ -28,7 +28,10 @@
 			from (
 				select /*+INDEX_DESC(reply_tbl pk_reply) */
 				rownum rn , rno, id, bno , reply,replydate, updatedate
-
+				from reply_tbl
+				where bno = #{bno}
+				and rownum <= #{cri.pageNum} * #{cri.amount}
+				)
 			where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
 		]]>				
 
