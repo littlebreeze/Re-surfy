@@ -4,11 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.ReplyMapper">
 
-  <insert id="insert">
+<insert id="insert">
   	insert into reply_tbl (rno, bno, reply, id)
-  	values(seq_reply.nextval, #{bno}, #{reply}, #{id})
-  </insert>
-  
+  	values(seq_reply.nextval, #{bno}, #{reply}, #{id}) 
+</insert>
    <select id="read" resultType="org.zerock.domain.ReplyVO">
   	select * from reply_tbl where rno = #{rno}
   </select>

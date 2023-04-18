@@ -145,11 +145,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	resultType = "org.zerock.domain.RecipeVO">
 	<![CDATA[
   	select 
-    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
+    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt
   		from 
       (
       select /*+INDEX_DESC(recipe_tbl pk_recipe) */
-        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
+        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt
       from 
         recipe_tbl
       where 

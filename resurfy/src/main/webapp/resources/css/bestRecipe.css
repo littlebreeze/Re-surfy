@@ -5,7 +5,11 @@
 	height: auto;	
 	border: 0px solid black;
 	text-align : center;
-	background-color: #CCCCCC;
+	background-color:  #00FF00;
+}
+
+.recommend_recipe h1{
+	color : #FFFFFF;
 }
 .slick-prev{
 	left: 200px;
@@ -26,9 +30,9 @@
 
 .slide_div_wrap{
 	padding: 15px 0 15px 0;
-    background-color: #CCCCCC;
     text-align : center;
     overflow: hidden;
+
 }
 
 /* .image_wrap img{
@@ -43,6 +47,7 @@
 	width : 100%;
 	height : 100%;
 	overflow : hidden;
+	background-color:  #00FF00;
 }
 
 .slide_div > div{
@@ -60,6 +65,7 @@
 	display : flex;
 	margin : 0 auto;
 	position : relative;
+	background-color:  #00FF00;
 }
 
 .slide_item img

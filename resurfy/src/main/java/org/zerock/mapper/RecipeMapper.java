@@ -29,15 +29,11 @@ public interface RecipeMapper {
 	public List<IngredientVO> getIngreList();
 	public List<RecipeVO> getListWithPaging(Criteria cri);
 	public int getTotalCount(Criteria cri);
-	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
+	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
 	
-<<<<<<< HEAD
 	public List<String> readIngreName(Long bno); //°¡Áø Àç·á¿¡ ¾ø´Â°Í
 	public List<String> readIngreNameHave(Long bno); //°¡Áø Àç·á¿¡ ÀÖ´Â°Í
-=======
-	public List<String> readIngreName(Long bno); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½á¿¡ ï¿½ï¿½ï¿½Â°ï¿½
-	public List<String> readIngreNameHave(Long bno); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½á¿¡ ï¿½Ö´Â°ï¿½
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
+
 	public List<RecipeVO> getUserList(Criteria cri);
 	public int getUserTotalCount(Criteria cri);
 }

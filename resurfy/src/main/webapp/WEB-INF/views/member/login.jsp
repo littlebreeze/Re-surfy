@@ -15,7 +15,7 @@
 <body>
 <section>
   <div class="left">
-    <img src="../resources/image/logo.jpg" height="550px" alt="" />
+    <img src="/resources/assets/logo.jpg" height="550px" alt="" />
   </div>
   <div class="right">
     <div class="sign-up">

@@ -20,20 +20,21 @@ public class ReplyMapperTests {
 	@Autowired
 	private ReplyMapper mapper;
 	
-	private Long[] bnoArr = {2L ,3L ,4L ,5L ,6L};
+	private Long[] bnoArr = {62L ,63L ,64L ,65L ,66L};
 	
 	@Test
 	public void testMapper() {
 		log.info(mapper);
 	}
 	
+	
 	@Test
 	public void testCreate() {
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			ReplyVO board = new ReplyVO();
 			
-			board.setBno(bnoArr[i % 5]);
-			board.setId("user" + i);
+			board.setId("user1");			//FK , recipeTBL 확인
+			board.setBno(bnoArr[i % 5]);	//FK , recipeTBL 확인
 			board.setReply("댓글 테스트 " + i);
 			
 			mapper.insert(board);

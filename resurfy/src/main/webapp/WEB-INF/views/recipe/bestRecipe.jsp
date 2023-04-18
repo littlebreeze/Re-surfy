@@ -27,7 +27,7 @@
 		<br>
 
 			<div>
-				<a>
+				<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 				<img src="${recipe.image}"/>
 				</a>
 			</div>

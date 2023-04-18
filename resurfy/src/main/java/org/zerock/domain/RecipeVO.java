@@ -18,5 +18,6 @@ public class RecipeVO {
 	private String difficulty;
 	private String person;
 	private String time;
+	private int replycnt;
 
 }

@@ -37,7 +37,7 @@ public class UserController {
 	}
 	
 	@PostMapping("join.do")
-    public String join(UserVO userVO) {
+    public String join(UserVO userVO , Model model) {
         log.info("-------------------확인용-------------------");
         log.info("joinConfirm(일반 회원): " + userVO.toString());
         Service.join(userVO);

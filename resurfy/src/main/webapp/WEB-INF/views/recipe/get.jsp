@@ -66,6 +66,9 @@
 						</div>
 						<div class="card-head">
 							<c:out value="${recipe.recipeName}" />
+							<div>
+								<b>[ <c:out value="${recipe.replycnt }" /> ]</b>
+							</div>							
 						</div>
 						<div class="card-main">
 							<div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
@@ -17,13 +18,18 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor //모든 생성자를 주입한다.
 public class ReplyServiceImpl implements ReplyService {
-	//private RecipeMapper recipeMapper;
+	
+	@Autowired
+	private RecipeMapper recipeMapper;
+	
 	@Autowired
 	private ReplyMapper mapper;
 	
+	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
 		log.info("register..." + vo);
+		recipeMapper.updateReplyCnt(vo.getBno(), 1);
 		return mapper.insert(vo);
 	}
 	
@@ -38,9 +44,15 @@ public class ReplyServiceImpl implements ReplyService {
 		log.info("modify..." + vo);
 		return mapper.update(vo);
 	}
+	
+	@Transactional
 	@Override
 	public int remove(Long rno) {
 		log.info("remove..." + rno);
+		
+		ReplyVO vo = mapper.read(rno);
+		
+		recipeMapper.updateReplyCnt(vo.getBno(), -1);
 		return mapper.delete(rno);
 	}
 	
@@ -59,6 +71,7 @@ public class ReplyServiceImpl implements ReplyService {
 	public int getTotal(Long bno) {
 		return mapper.getCountByBno(bno);
 	}
-
+	
+	
 
 }

@@ -12,11 +12,12 @@
 }
 
 .card-head {
-	height: 50px;
+	height: 70px;
 	background-color: thistle;
 	font-size : 20px;
 	text-align : center;
 }
+
 
 .card-main {
 	height: 130px;
