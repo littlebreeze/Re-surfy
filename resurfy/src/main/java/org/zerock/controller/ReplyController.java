@@ -45,7 +45,7 @@ public class ReplyController {
 	}
 
 	
-	@GetMapping(value = "/pages/{bno}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
+	/*@GetMapping(value = "/pages/{bno}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<ReplyVO>> getList(
 
@@ -56,11 +56,18 @@ public class ReplyController {
 		log.info(cri);
 
 		return new ResponseEntity<>(reService.getList(cri, bno), HttpStatus.OK);
-	}
+	}*/
 	 
+	@GetMapping(value = "/pages/{bno}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
+	         MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("bno") Long bno) {
+	    log.info("getList.................");
+	      Criteria cri = new Criteria(page, 10);
+	      log.info("get Reply List bno: " + bno);
 
-	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") Long page, @PathVariable("bno") Long bno) {
-		return null;
+	      log.info("cri:" + cri);
+
+	      return new ResponseEntity<>(reService.getListPage(cri, bno), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{rno}", 

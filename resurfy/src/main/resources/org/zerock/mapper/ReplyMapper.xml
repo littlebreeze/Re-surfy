@@ -12,7 +12,7 @@
    <select id="read" resultType="org.zerock.domain.ReplyVO">
   	select * from reply_tbl where rno = #{rno}
   </select>
-    
+  
     <delete id="delete">
   	delete from reply_tbl where rno = #{rno}
   </delete>
@@ -21,21 +21,22 @@
   	update reply_tbl set reply = #{reply}, updatedate = sysdate where rno = #{rno}
   </update>
   
-
-    <select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
-		<![CDATA[
-			select rno,id,bno,reply,replydate,updatedate
-			from (
-				select /*+INDEX_DESC(reply_tbl pk_reply) */
-				rownum rn , rno, id, bno , reply,replydate, updatedate
+        <select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+	  <![CDATA[
+			select rno, bno, reply, id, replyDate, updateDate
+			from
+				(
+				select /*+INDEX(tbl_reply idx_reply) */
+				rownum rn, rno, bno, reply, id, replyDate, updateDate
 				from reply_tbl
-				where bno = #{bno}
+				where bno=#{bno}
+				and rno>0
 				and rownum <= #{cri.pageNum} * #{cri.amount}
 				)
-			where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
-		]]>				
-
+				where rn > (#{cri.pageNum} -1) * #{cri.amount}
+		]]>
   </select>
+  
   
   <select id = "getCountByBno" resultType = "int">
   	<![CDATA[
