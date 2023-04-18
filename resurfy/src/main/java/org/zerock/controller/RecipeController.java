@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
-import org.zerock.domain.RecipeVO;
 import org.zerock.service.IngredientService;
+import org.zerock.service.OwnService;
 import org.zerock.service.RecipeService;
 import org.zerock.service.ShoppingService;
 import org.zerock.service.StepService;
@@ -27,6 +27,7 @@ public class RecipeController {
 	private StepService sService;
 	private IngredientService iService;
 	private ShoppingService shService;
+	private OwnService oService;
 
 		
 	@GetMapping("/registerRecipe")
@@ -49,6 +50,7 @@ public class RecipeController {
 	public void list(@ModelAttribute("cri") Criteria cri , Model model) {
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
+		model.addAttribute("list",oService.getList());
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker",new PageDTO(cri, total));

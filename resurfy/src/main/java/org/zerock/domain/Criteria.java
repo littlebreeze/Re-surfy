@@ -1,5 +1,7 @@
 package org.zerock.domain;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +15,8 @@ public class Criteria {
 	
     private String type; 
 	private String keyword; 
+	
+	private List<String> chk;
 
 	public Criteria() {
 		this(1,12);
