@@ -4,7 +4,6 @@
 	background-color: #CCCCCC;
 	overflow: hidden;
 	border: 0px solid black;
-	overflow: hidden;
 }
 
 
@@ -74,8 +73,9 @@
     text-align : center;
 }
 .image_wrap img{
-	max-width: 85%;
-    height: auto;
+	max-width: 50%;
+	max-height: 50%;
+    height: ;
     display: block;
 	margin: auto;   
 	

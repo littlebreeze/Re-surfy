@@ -86,7 +86,7 @@
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
 							<li class="paginate_button previous">
-								<%-- href="${pageMaker.startPage -1}">Previous</a></li> --%>
+								<%-- <a href="${pageMaker.startPage -1}">Previous</a></li> --%>
 								<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.startPage -1}&amount=${pageMaker.cri.amount}">Previous</a>
 						</c:if>
 						<c:forEach var="num" begin="${pageMaker.startPage}"
@@ -98,8 +98,7 @@
 						</c:forEach>
 						<c:if test="${pageMaker.next}">
 							<li class="paginate_button next">
-							<%--  ${pageMaker.cri.pageNum = ${pageMaker.endPage} + 1 --%>
-							<%-- <a href="${pageMaker.endPage + 1}">Next</a></li> --%>
+						<%--<a href="${pageMaker.endPage + 1}">Next</a></li> --%>
 							<a href="?type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}&pageNum=${pageMaker.endPage + 1}&amount=${pageMaker.cri.amount}">Next</a>
 						</c:if>
 					</ul>
