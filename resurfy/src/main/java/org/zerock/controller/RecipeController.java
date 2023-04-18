@@ -51,7 +51,7 @@ public class RecipeController {
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
 		log.info("list");
-		model.addAttribute("list",rService.getAllList());
+		model.addAttribute("listRecipe",rService.getAllList());
 		model.addAttribute("list",oService.getList());
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);

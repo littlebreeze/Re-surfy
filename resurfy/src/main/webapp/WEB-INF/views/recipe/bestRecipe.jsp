@@ -15,7 +15,7 @@
 <h1>[BEST Recipe]</h1>
 <div class="slide_div_wrap">
 	<div class="slide_div">
-	<c:forEach items="${list}" var="recipe">
+	<c:forEach items="${listRecipe}" var="recipe">
 		<div class = "slide_item">
 		<br>
 		<br>
