@@ -133,7 +133,12 @@
 						</div>
 					</div>
 				</div>				
-					<form id='actionForm' action="/recipe/get" method='get'>
+					<form id='actionForm' action="/mypage/list" method='get'>
+						<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+						<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+
+						<input type='hidden' name='type' value='<c:out value="${ pageMaker.cri.type }"/>'> 
+						<input type='hidden' name='keyword' value='<c:out value="${ pageMaker.cri.keyword }"/>'>
 					</form>
 			</div>
 		</div>
@@ -151,6 +156,13 @@
 					actionForm.attr("action","/recipe/detail");
 					actionForm.submit();
 					});
+				
+				$(".paginate_button a").on("click",	function(e) {
+					e.preventDefault();
+					console.log('click');
+					actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+					actionForm.submit();
+				});
 
 			});
 </script>

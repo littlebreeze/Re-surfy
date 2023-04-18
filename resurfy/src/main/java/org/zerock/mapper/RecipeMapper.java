@@ -31,6 +31,8 @@ public interface RecipeMapper {
 	public int getTotalCount(Criteria cri);
 	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") Long amount);
 	
-	public List<String> readIngreName(Long bno); //°¡Áø Àç·á¿¡ ¾ø´Â°Í
-	public List<String> readIngreNameHave(Long bno); //°¡Áø Àç·á¿¡ ÀÖ´Â°Í
+	public List<String> readIngreName(Long bno); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½á¿¡ ï¿½ï¿½ï¿½Â°ï¿½
+	public List<String> readIngreNameHave(Long bno); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½á¿¡ ï¿½Ö´Â°ï¿½
+	public List<RecipeVO> getUserList(Criteria cri);
+	public int getUserTotalCount(Criteria cri);
 }
