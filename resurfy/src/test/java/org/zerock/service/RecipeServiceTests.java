@@ -52,6 +52,11 @@ public class RecipeServiceTests {
 	}
 	
 	@Test
+	public void testGetList2() {
+		service.getAllList();
+	}
+	
+	@Test
 	public void testGet() {
 		log.info(service.get(1L));
 	}

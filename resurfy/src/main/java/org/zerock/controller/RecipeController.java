@@ -49,12 +49,17 @@ public class RecipeController {
 	public void list(@ModelAttribute("cri") Criteria cri , Model model) {
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
+		log.info("list");
+		model.addAttribute("list",rService.getAllList());
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker",new PageDTO(cri, total));
 	}
+		
 	
-	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {}
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
+		
+	}
 	
 	public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		return null;

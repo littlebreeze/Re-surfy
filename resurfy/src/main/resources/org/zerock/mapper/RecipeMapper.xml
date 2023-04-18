@@ -164,8 +164,8 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	  	<update id="updateReplyCnt">
 		update recipe_tbl set replycnt = replycnt + #{amount} where bno = #{bno}
 	</update>
-  
-
+	
+ 
 </mapper>
 
 

@@ -13,6 +13,6 @@ public interface ReplyService {
 	public int remove(Long rno);
 	public List<ReplyVO> getList(Criteria cri, Long bno);
 	public ReplyPageDTO getListPage(Criteria cri, Long bno);
-	//public int getTotal(Criteria cri);
+	public int getTotal(Long bno);
 	
 }

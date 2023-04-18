@@ -32,7 +32,8 @@ public class ReplyMapperTests {
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			ReplyVO board = new ReplyVO();
 			
-			board.setBno(bnoArr[i%5]);
+			board.setBno(bnoArr[i % 5]);
+			board.setId("user" + i);
 			board.setReply("´ñ±Û Å×½ºÆ® " + i);
 			
 			mapper.insert(board);
@@ -67,5 +68,11 @@ public class ReplyMapperTests {
 		List<ReplyVO> replies = mapper.getListWithPaging(cri,2L);
 		
 		replies.forEach(reply -> log.info(reply));
+	}
+	
+	@Test
+	public void testCountTotal() {
+		log.info("Total reply : " + mapper.getCountByBno(3L));
+		
 	}
 }
