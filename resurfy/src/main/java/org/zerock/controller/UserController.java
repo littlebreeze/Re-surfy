@@ -38,15 +38,9 @@ public class UserController {
 	}
 	
 	@PostMapping("join.do")
-<<<<<<< HEAD
-    public String join(UserVO userVO , Model model) {
-        log.info("-------------------È®ÀÎ¿ë-------------------");
-        log.info("joinConfirm(ÀÏ¹Ý È¸¿ø): " + userVO.toString());
-=======
     public String join(UserVO userVO) {
         log.info("-------------------í™•ì¸ìš©------------------");
         log.info("joinConfirm(ì¼ë°˜íšŒì›): " + userVO.toString());
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
         Service.join(userVO);
         return "member/login";
 	}
