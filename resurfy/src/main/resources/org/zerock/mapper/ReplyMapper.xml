@@ -20,22 +20,19 @@
   <update id ="update">
   	update reply_tbl set reply = #{reply}, updatedate = sysdate where rno = #{rno}
   </update>
- 
+  
+
     <select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
 		<![CDATA[
 			select rno,id,bno,reply,replydate,updatedate
 			from (
 				select /*+INDEX_DESC(reply_tbl pk_reply) */
 				rownum rn , rno, id, bno , reply,replydate, updatedate
-				from reply_tbl
-				where bno = #{bno}
-				and rno > 0
-				and rownum <= #{cri.pageNum} * #{cri.amount}
-				)
+
 			where rn > (#{cri.pageNum} -1 ) * #{cri.amount}
 		]]>				
+
   </select>
-  
   
   <select id = "getCountByBno" resultType = "int">
   	<![CDATA[
