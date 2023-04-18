@@ -12,4 +12,5 @@ public interface UserService {
 	public List<UserVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
 	public void join(UserVO userVO);
+	public UserVO loginCheck(UserVO vo) throws Exception;
 }

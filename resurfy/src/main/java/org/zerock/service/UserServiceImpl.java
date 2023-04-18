@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public UserVO loginCheck(UserVO vo) throws Exception {
+		return mapper.loginCheck(vo);
+	}
+
 }

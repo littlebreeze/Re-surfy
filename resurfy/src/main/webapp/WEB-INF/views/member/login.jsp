@@ -15,18 +15,18 @@
 <body>
 <section>
   <div class="left">
-    <img src="../resources/image/logo.jpg" height="550px" alt="" />
+    <img src="../resources/assets/logo.jpg" height="550px" alt="" />
   </div>
   <div class="right">
     <div class="sign-up">
       <h1>JOIN</h1>
       <form action="join.do" id="join_form" method="post">
       <div class="con1">
-	       <input type="text" id="j_id" placeholder="UserId" name="userId" style="float:left; width:265px; margin-right:4px;"/>
+	       <input type="text" id="j_id" placeholder="UserId" name="id" style="float:left; width:265px; margin-right:4px;"/>
 	       <button type="button" style="float:left; width:70px;">중복확인</button>
       </div>
         <input type="text" id="j_name" placeholder="UserName" name="userName" />
-        <input type="password" id="j_pw" name="userPw" placeholder="Password" />
+        <input type="password" id="j_pw" name="password" placeholder="Password" />
         <input type="text"id="j_nick" name="userNick" placeholder="UserNickname" />
         <div class="con2">
 	        <input type="tel" id="j_phone" name="userPhone" placeholder="Phone Number" style="width:265px;" />
@@ -44,9 +44,9 @@
     </div>
     <div class="sign-in">
       <h1>LOGIN</h1>
-      <form id="sign_form" method="post" action="login.do">
+      <form id="sign_form" method="post">
         <input type="text" id="userid" name="id" placeholder="UserId" />
-        <input type="password" id="passwd" name="pw" placeholder="Password" />
+        <input type="password" id="passwd" name="password" placeholder="Password" />
         <input type="submit" id="btnLogin" value="Login" />
       </form>
       <!-- separator -->
@@ -79,10 +79,12 @@
 			  return;
 			}
 			//폼 내부의 데이터를 전송할 주소
-			 document.sign_form.submit(); //제출
+			$("#sign_form").attr("action", "loginCheck.do");
+			$("#sign_form").submit();
 			 });
 			});
-		
+	 
+
 		$(document).ready(function(){
 			//회원가입 버튼(회원가입 기능 작동)
 			$(".btnJoin").click(function(){
