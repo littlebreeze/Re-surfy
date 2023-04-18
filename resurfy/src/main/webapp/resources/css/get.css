@@ -1,9 +1,3 @@
-/* .recommend_recipe {
-	width: 100%;
-	height: auto;	
-	border: 0px solid black;
-}
- */
 .card {
 	width: 250px;
 	border: 1px solid black;
@@ -72,56 +66,3 @@
     overflow: hidden;
 }
 
-/* .image_wrap img{
-	max-width: 85%;
-    height: auto;
-    display: block;
-	margin: auto;    
-}
-*/
- 
-/* .slide_div {
-	width : 100%;
-	height : 100%;
-	overflow : hidden;
-}
-
-.slide_div > div{
-	width : 100%;
-	height : 100%;
-	object-fit : cover;
-	overflow : hidden;
-	margin : 10px;
-}
-
-.slide_item{
-	max-width: 85%;
-    height: auto;
-    display: block;
-	display : flex;
-	margin : 0 auto;
-	position : relative;
-}
-
-.slide_item img
-{
-	position : absolute;
-	top: 0px;
-  	left: 0px;
-  	right: 	0px;
-  	bottom: 0px;
-  	margin: auto;
-  	max-width: 100%;
-  	max-height: 100%;
-	display : block;
-	width : 100%;
-	height : 100%;
-	object-fit : contain;
-	object-position : center;
-	
-}
-
-.slide_item  div{
-
-	
-} */

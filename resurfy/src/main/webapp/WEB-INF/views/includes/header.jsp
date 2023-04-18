@@ -34,7 +34,10 @@
 <body>
 
 		<div id = "header_menu">
-			<div id = "logo" ><img src="/resources/assets/favicon.png"></div>
+			<div id = "logo" >
+			<a href = "/recipe/get">
+			<img src="/resources/assets/favicon.png"></a>
+			</div>
 
 		</div>
 			<div id = "header_menu_move" >
