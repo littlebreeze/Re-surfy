@@ -4,6 +4,8 @@
 	width: 100%;
 	height: auto;	
 	border: 0px solid black;
+	text-align : center;
+	background-color: #CCCCCC;
 }
 .slick-prev{
 	left: 200px;
@@ -19,7 +21,6 @@
 	margin: auto;
 	display : flex;
 	justify-content : center;
-	align-item : center;
 	object-fit : cover;
 }
 
@@ -81,4 +82,5 @@
 
 .slide_item  div{
 	margin : 30px;
+	text-align : center;
 }

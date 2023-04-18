@@ -12,6 +12,7 @@
 
 <!-- Header-->
 <div class = recommend_recipe>
+<h1>[BEST Recipe]</h1>
 <div class="slide_div_wrap">
 	<div class="slide_div">
 	<c:forEach items="${list}" var="recipe">
