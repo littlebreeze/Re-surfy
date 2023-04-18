@@ -34,7 +34,7 @@ public class OwnController {
 	
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
-		log.info("°¡Áø Àç·á ÆäÀÌÁö ÁøÀÔ");
+		log.info("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		
 		model.addAttribute("list", service.getList());
 	}
@@ -49,8 +49,8 @@ public class OwnController {
 			o.setIngreName(ingreArr.get(i));
 			own.add(o);
 		}
-		cService.remove(cno);	//Àå¹Ù±¸´Ï¿¡¼­ »èÁ¦
-		if (service.register(own)) {	//°¡Áø Àç·á·Î µî·Ï
+		cService.remove(cno);	//ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		if (service.register(own)) {	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";
@@ -59,13 +59,13 @@ public class OwnController {
 	@PostMapping("/addOwn")
 	public String ownRegister(String addIngreName, RedirectAttributes rttr) {
 
-		//ÀÖ´Â Àç·á Áßº¹ È®ÀÎÇØ¾ßÇÔ
+		//ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ßºï¿½ È®ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 		List<OwnVO> own = new ArrayList<OwnVO>();
 		OwnVO o = new OwnVO();
 		o.setId("user1");
 		o.setIngreName(addIngreName);
 		own.add(o);
-		if (service.register(own)) {	//°¡Áø Àç·á·Î µî·Ï
+		if (service.register(own)) {	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";
@@ -87,8 +87,14 @@ public class OwnController {
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 
-		model.addAttribute("relist", rService.getList(cri));
-		//model.addAttribute("relist", rService.getUserList(cri));
+			//model.addAttribute("relist", rService.getList(cri));
+			model.addAttribute("relist", rService.getUserList(cri));	//ë¡œê·¸ì¸ ì‚¬ìš©ì ê¸€ ëª©ë¡ ê°€ì ¸ì˜¤ê¸°
+
+			int total = rService.getUserTotal(cri);	//ë¡œê·¸ì¸ ì‚¬ìš©ì ê¸€ ê°œìˆ˜ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜ë¡œ ë°”ê¿€ ê²ƒ
+
+			log.info("total : " + total);
+
+			model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@PostMapping("/autocomplete")

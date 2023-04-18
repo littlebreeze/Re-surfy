@@ -42,7 +42,7 @@
 		</div>
 			<div id = "header_menu_move" >
 				<ul>
-					<li><a href = "/mypage/cart">
+					<li><a href = "/mypage/list">
 					<button type="button" class="btn btn-primary btn-lg">
 					mypage</button></a></li>
 					<li><a href = "/recipe/registerRecipe">
