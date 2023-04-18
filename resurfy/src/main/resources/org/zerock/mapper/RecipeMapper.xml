@@ -138,7 +138,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
   		from 
       (
-      select /*+INDEX_DESC(tbl_board pk_recipe) */
+      select /*+INDEX_DESC(recipe_tbl pk_recipe) */
         rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time
       from 
         recipe_tbl
