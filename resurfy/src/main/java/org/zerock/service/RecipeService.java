@@ -13,4 +13,7 @@ public interface RecipeService {
 	public List<RecipeVO> getList(Criteria cri);
 	public List<RecipeVO> getAllList();
 	public int getTotal(Criteria cri);
+
+	public List<RecipeVO> getUserList(Criteria cri);
+	public int getUserTotal(Criteria cri);
 }

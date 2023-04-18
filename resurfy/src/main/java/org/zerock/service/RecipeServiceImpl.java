@@ -62,5 +62,14 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getTotalCount(cri);
 	}
 
+	@Override
+	public List<RecipeVO> getUserList(Criteria cri) {
+		return mapper.getUserList(cri);
+	}
+
+	@Override
+	public int getUserTotal(Criteria cri) {
+		return mapper.getUserTotalCount(cri);
+	}
 
 }

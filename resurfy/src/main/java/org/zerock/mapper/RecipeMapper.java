@@ -33,4 +33,6 @@ public interface RecipeMapper {
 	
 	public List<String> readIngreName(Long bno); //가진 재료에 없는것
 	public List<String> readIngreNameHave(Long bno); //가진 재료에 있는것
+	public List<RecipeVO> getUserList(Criteria cri);
+	public int getUserTotalCount(Criteria cri);
 }

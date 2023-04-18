@@ -177,6 +177,25 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 		update recipe_tbl set replycnt = replycnt + #{amount} where bno = #{bno}
 	</update>
 	
+	<select id="getUserList" resultType="org.zerock.domain.RecipeVO">
+	<![CDATA[
+	select 
+		bno, RECIPENAME , RECIPEDESCRIPTION  , ID , RECIPEDATE , RECIPEUPDATEDATE 
+	from 
+		(
+		select /*+INDEX_DESC(RECIPE_TBL PK_RECIPE ) */
+		rownum rn, bno, RECIPENAME, RECIPEDESCRIPTION , ID, RECIPEDATE, RECIPEUPDATEDATE
+		from 
+		RECIPE_TBL
+		where id = 'user1' AND rownum <= #{pageNum} * #{amount}
+		)
+	where rn > (#{pageNum} -1) * #{amount} 
+	]]>
+</select>
+
+	<select id="getUserTotalCount" resultType="int">
+		select count(*) from recipe_tbl where bno > 0 and id='user1'		
+	</select>
  
 </mapper>
 

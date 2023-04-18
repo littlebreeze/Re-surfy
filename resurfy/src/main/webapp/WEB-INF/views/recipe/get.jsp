@@ -11,21 +11,19 @@
 <script type = "text/javascript" src = "/resources/js/reply.js"></script>
 
 <br>
-<br>
-
-	<c:if test="${pageMaker.cri.type == 'O' }">
-			<div class="container">
-	    	<form id='searchForm' action="/recipe/get" method='get'>
-			<div class="row row-cols-1 row-cols-md-4 g-3 text-center">
-			<c:if test="${empty list}">
+<c:if test="${pageMaker.cri.type == 'O' }">
+<div class="container">
+	    <form id='searchForm' action="/recipe/get" method='get'>
+		<div class="row row-cols-1 row-cols-md-4 g-3 text-center">
+		<c:if test="${empty list}">
 			<div>가진 재료 없음</div>
-			</c:if>
-			<c:forEach items="${list}" var="own">
-				<div class="col themed-grid-col" id="ownGroup">
+		</c:if>
+		<c:forEach items="${list}" var="own">
+			<div class="col themed-grid-col" id="ownGroup">
 				<input type="checkbox" class="form-check-input flex-shrink-0" style="margin-right:30px;" name="chk" value="${own.ingreName}"
 				<c:out value="${pageMaker.cri.chk.contains(own.ingreName)?'checked':''}"/>>${own.ingreName}
 			</div>
-			</c:forEach>
+		</c:forEach>
 		</div>
 		</form>
 	            <br><br>
