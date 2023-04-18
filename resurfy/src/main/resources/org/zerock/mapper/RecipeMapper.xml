@@ -130,6 +130,16 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 			</foreach>
 		</trim>
 	</sql>
+	
+	<sql id="ingre">		
+		<if test="type == 'O'.toString()">
+			<trim prefix="bno in (" suffix=") AND " prefixOverrides="OR">
+				<foreach item='chk' collection="chk" separator="INTERSECT">
+					select bno from INGREDIENT_TBL where INGRENAME=#{chk}
+				</foreach>
+			</trim>
+		</if>
+	</sql>
 
 	<select id = "getListWithPaging" 
 	resultType = "org.zerock.domain.RecipeVO">
@@ -146,6 +156,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   ]]>
       
       <include refid = "criteria"></include>
+      <include refid = "ingre"></include>
   <![CDATA[    
       rownum <= #{pageNum} * #{amount}
       )
@@ -156,7 +167,8 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	<select id="getTotalCount" resultType="int">
 		select count(*) from recipe_tbl where 
 		
-		<include refid="criteria"></include> 
+		<include refid="criteria"></include>
+		<include refid = "ingre"></include> 
 		
 		bno > 0
 		

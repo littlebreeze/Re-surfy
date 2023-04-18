@@ -40,19 +40,22 @@
 					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll" style="margin-right:30px;">전체 선택
 					      </div>
 					    </div>
+					    <form id='searchForm' action="/recipe/get" method='get'>
 						<div class="row row-cols-1 row-cols-md-3 g-3 text-center">
 						<c:if test="${empty list}">
 							<div>데이터 없음</div>
 						</c:if>
 						<c:forEach items="${list}" var="own">
 							<div class="col themed-grid-col" id="ownGroup">
-								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}">${own.ingreName}
+								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}" value="${own.ingreName}">${own.ingreName}
 							</div>
 						</c:forEach>
 						</div>
+						<input type="hidden" name='type' value="O"/>
+						</form>
 				<div style="margin-top: 1rem !important;">		
-					<input type="button" value="편집" id="editBtn" class="btn mypageBtn pull-left">
-					<input type="button" value="검색" id="searchBtn" class="btn mypageBtn pull-left">	
+					<input type="button" value="편집 및 검색" id="editBtn" class="btn mypageBtn pull-left">
+					<input type="button" style="display:none;" value="검색" id="searchBtn" class="btn mypageBtn pull-left">	
 					<input type="button" style="display:none;"  value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
 					<input type="button" style="display:none;"  value="취소" id="cancleBtn" class="btn mypageBtn pull-left">
 				</div>
@@ -162,6 +165,22 @@
 					 addOwnForm.submit();
 			}
 				
+		});	//end click
+		
+		var searchForm = $("#searchForm")
+		$("#searchBtn").click(function(){
+			var cnt=0;
+			   
+			   $("input[name=chk]:checked").each(function(){
+				   cnt=cnt+1;
+			    	console.log("값은 "+ $(this).val());
+			   });
+			   
+			   if(cnt == 0){
+				   alert("선택된 재료가 없습니다.");
+			   }else{
+				   searchForm.submit();
+			   }
 		});	//end click
 	});
 </script>
