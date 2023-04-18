@@ -20,30 +20,30 @@
         <link href="/resources/css/styles_detail.css" rel="stylesheet" />
        <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
        
-       <!-- Bootstrap Core CSS -->
-<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+<!--        Bootstrap Core CSS -->
+<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
-MetisMenu CSS
+<!-- MetisMenu CSS -->
 <link href="/resources/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
 
-DataTables CSS
+<!-- DataTables CSS -->
 <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
 	rel="stylesheet">
 
-DataTables Responsive CSS
+<!-- DataTables Responsive CSS -->
 <link
 	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
 	rel="stylesheet">
 
-Custom CSS
+<!-- Custom CSS -->
 <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
 
-Custom Fonts
+<!-- Custom Fonts -->
 <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css"> -->
+	rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Navigation-->
@@ -200,7 +200,7 @@ Custom Fonts
 						<button id='listBtn' data-oper='modify' class='py-3  btn btn-primary btn-xs pull-right' onclick = "location.href='/recipe/get'">List</button>
 						</div>
 						
-						
+						</div>
 						
 						<%-- <!-- 레시피 과정 start -->
 						<br><br>
@@ -240,11 +240,13 @@ Custom Fonts
 							</div>
 						</div> --%>
 					
+			
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
-						<br><br>
+						<br><br><br><br><br>
+						
 						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">댓글
-						<button id='addReplyBtn'
-											class='btn btn-primary btn-xs pull-right'>등록</button>
+						<!-- <button id='addReplyBtn'
+											class='btn btn-primary btn-xs pull-right'>등록</button> -->
 						</div>
                         <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
 						<div class="row">
@@ -255,7 +257,8 @@ Custom Fonts
 			</div> -->
 									<!-- /.panel-heading -->
 									<div class="panel-heading">
-										
+									<i class="fa fa-comments fa=fw"></i> Reply
+									<button id='addReplyBtn' class = 'btn btn-primary btn-xs pull-right'>New Reply</button>
 									</div>
 									<div class="panel-body">
 										<ul class="chat">
@@ -265,7 +268,7 @@ Custom Fonts
 													<img src="https://cdn-icons-png.flaticon.com/512/9386/9386837.png" width=20px height=20px  alt="...">
 													
 														<strong style="font-size:13px">user1</strong> 
-														<small
+														<small class="rtime"
 															style="font-size:12px">2023-03-16 10:25</small>
 													</div>
 													<p style="font-size:15px">Good job!</p>
@@ -340,53 +343,7 @@ Custom Fonts
         </div>
     </div>
 </section>
-<script>
-$(document).ready(function() {
-$("#addCartBtn").on("click", function(e){
-var priceArr = new Array();
-var titleArr = new Array();
-var ingreArr = new Array();
-var imageArr = new Array();
-var pIdArr = new Array();
- 
- $("input[name=chk]:checked").each(function(){
- priceArr.push($(this).attr("data-price"));
- titleArr.push($(this).attr("data-title"));
- ingreArr.push($(this).attr("data-ingre"));
- imageArr.push($(this).attr("data-image"));
- pIdArr.push($(this).attr("data-pid"));
- });
- 
- console.log(priceArr);
- console.log(titleArr);
- console.log(ingreArr);
- console.log(imageArr);
- console.log(pIdArr);
- 
- if(priceArr.length == 0){
- alert("선택된 제품이 없습니다.");
- }else{
- var confirm_val = confirm("장바구니에 추가하시겠습니까?");
- 
- if(confirm_val) {
- $.ajax({
- url : "/mypage/addCart",
- method : "post",
- data : { pArr : priceArr,
- tArr : titleArr,
- igArr : ingreArr,
- imArr : imageArr,
- pIdArr : pIdArr },
- success : function(){
- console.log("장바구니 추가 성공");
- alert("장바구니에 추가 되었습니다.");
- }
-});
- } 
- }
-});
-});
-</script>
+
 
         </section>
         <!-- Related items section-->
@@ -508,6 +465,199 @@ var pIdArr = new Array();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
        <!--  <script src="js/scripts.js"></script> -->
-       
+<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Reply</label>
+						<input class="form-control" name='reply' value='New Reply!!!!'>
+					</div>
+					<div class="form-group">
+						<label>Replyer</label>
+						<input class="form-control" name='replyer' value='replyer'>
+					</div>
+					<div class="form-group">
+						<label>Reply Date</label>
+						<input class="form-control" name='replyDate' value=''>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
+					<button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
+					
+					<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>       
+       <script type="text/javascript" src="/resources/js/reply.js"></script>
+       <script>
+$(document).ready(function(){
+	var bnoValue = '<c:out value="${recipe.bno}"/>';
+	var replyUL = $(".chat");
+//함수를 만드는 function() 익명함수이고 function showList(page) 함수명이 showList이고 매개변수는 page	
+	showList(1);
+	function showList(page){
+		//console.log("show list " + page);
+		//함수호출(매개값, list함수매개값{})
+		replyService.getList({bno:bnoValue, page: page||1}, 
+				function(list){
+		
+			var str="";
+			if(list == null || list.length==0){
+				replyUL.html("");
+				return;
+			}
+			for (var i=0, len=list.length || 0; i<len; i++){
+				str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
+				str+= "<div><div class='header'><strong class='primary-font'>" + list[i].id + "</strong>";
+				str+="<small class='rtime'>" + replyService.displayTime(list[i].replyDate)+"</small></div>";
+				str+="<p>" + list[i].reply+"</p></div></li>";
+			}
+			replyUL.html(str);
+			//showReplyPage(replyCnt);
+		}); //end function
+	}// end showList
+	var modal = $(".modal");
+	var modalInputReply = modal.find("input[name='reply']");
+	var modalInputReplyer = modal.find("input[name='replyer']");
+	var modalInputReplyDate = modal.find("input[name='replyDate']");
+	
+	var modalModBtn = $("#modalModBtn");
+	var modalRemoveBtn = $("#modalRemoveBtn");
+	var modalRegisterBtn = $("#modalRegisterBtn");
+	
+	
+	$("#addReplyBtn").on("click", function(e) {
+		modal.find("input").val("");
+		modalInputReplyDate.closest("div").hide();
+		modal.find("button[id!='modalCloseBtn']").hide();
+		
+		modalRegisterBtn.show();
+		$(".modal").modal("show");
+	});
+	
+});
+</script>
+		<script>
+		 
+		console.log("===============");
+		console.log("JS TEST");
+		 
+		var bnoValue = '<c:out value="${recipe.bno}"/>';
+		
+		/*replyService.add(
+				{reply:"JS Test", id:"user1", bno:bnoValue}
+				,
+				function(result){
+					alert("RESULT : " + result);
+				}
+		);*/
+		/*replyService.getList({bno:bnoValue, page:1}, function(list){
+			  var bnoValue='<c:out value="${board.bno}"/>';
+		    for(var i = 0,  len = list.length||0; i < len; i++ ){
+		      console.log(list[i]);
+		    }
+		});*/
+		/*
+		replyService.remove(22, function(count) {
+			console.log(count);
+			if(count==="success") {
+				alert("REMOVED");
+			}
+		}, function(err) {
+			alert('ERROR....');
+		
+			});
+		*/
+		/*var bnoValue='<c:out value="${recipe.bno}"/>';
+		replyService.update({
+			  rno : 3,
+			  bno : bnoValue,
+			  reply : "너무 맛있어요!..."
+			}, function(result) {
+			 
+			  alert("수정 완료...");
+			 
+			});  */
+		
+		replyService.get(7, function(data){
+		    console.log(data);
+		});
+		 
+		</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			console.log(replyService);
+		  var operForm = $("#operForm"); 
+		  
+		  $("button[data-oper='modify']").on("click", function(e){
+		    
+		    operForm.attr("action","/board/modify").submit();
+		    
+		  });
+		</script>
+		
+		<!-- <script type="text/javascript">
+		$(document).ready(function() {
+			console.log(replyService);
+		});
+		</script>-->
+		
+		<script>
+$(document).ready(function() {
+$("#addCartBtn").on("click", function(e){
+var priceArr = new Array();
+var titleArr = new Array();
+var ingreArr = new Array();
+var imageArr = new Array();
+var pIdArr = new Array();
+ 
+ $("input[name=chk]:checked").each(function(){
+ priceArr.push($(this).attr("data-price"));
+ titleArr.push($(this).attr("data-title"));
+ ingreArr.push($(this).attr("data-ingre"));
+ imageArr.push($(this).attr("data-image"));
+ pIdArr.push($(this).attr("data-pid"));
+ });
+ 
+ console.log(priceArr);
+ console.log(titleArr);
+ console.log(ingreArr);
+ console.log(imageArr);
+ console.log(pIdArr);
+ 
+ if(priceArr.length == 0){
+ alert("선택된 제품이 없습니다.");
+ }else{
+ var confirm_val = confirm("장바구니에 추가하시겠습니까?");
+ 
+ if(confirm_val) {
+ $.ajax({
+ url : "/mypage/addCart",
+ method : "post",
+ data : { pArr : priceArr,
+ tArr : titleArr,
+ igArr : ingreArr,
+ imArr : imageArr,
+ pIdArr : pIdArr },
+ success : function(){
+ console.log("장바구니 추가 성공");
+ alert("장바구니에 추가 되었습니다.");
+ }
+});
+ } 
+ }
+});
+});
+</script>
+	
 </body>
 </html>
