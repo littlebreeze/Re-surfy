@@ -12,7 +12,7 @@
 <div class = recommend_recipe>
 <div class="slide_div_wrap">
 	<div class="slide_div">
-	<c:forEach items="${all}" var="recipe">
+	<c:forEach items="${get}" var="recipe">
 		<div>
 			<a>
 				<img src="${recipe.image}">
