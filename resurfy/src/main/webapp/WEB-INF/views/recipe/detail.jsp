@@ -245,9 +245,9 @@
 						<br><br><br><br><br>
 						
 						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">댓글
-						<!-- <button id='addReplyBtn'
-											class='btn btn-primary btn-xs pull-right'>등록</button> -->
-						</div>
+						<button id='addReplyBtn'
+											class='btn btn-primary btn-xs pull-right'>등록</button>
+						</div><br>
                         <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
 						<div class="row">
 							<div class="col-lg-12">
@@ -257,19 +257,19 @@
 			</div> -->
 									<!-- /.panel-heading -->
 									<div class="panel-heading">
-									<i class="fa fa-comments fa=fw"></i> Reply
-									<button id='addReplyBtn' class = 'btn btn-primary btn-xs pull-right'>New Reply</button>
+									<i class="fa fa-comments fa=fw"></i> <!-- Reply -->
+									<!-- <button id='addReplyBtn' class = 'btn btn-primary btn-xs pull-right'>New Reply</button>-->
 									</div>
 									<div class="panel-body">
-										<ul class="chat">
-											<li class="left clearfix" data-rno='12' style=" list-style:none; width: 50%; margin: 0 auto; text-align:left" >
+										<ul class="chat" style=" list-style:none">
+											<li class="left clearfix" data-rno='12' style=" width: 50%; margin: 0 auto; text-align:left" >
 												<div>
 													<div class="header">
 													<img src="https://cdn-icons-png.flaticon.com/512/9386/9386837.png" width=20px height=20px  alt="...">
 													
-														<strong style="font-size:13px">user1</strong> 
+														<strong style="font-size:13px"><img src="https://cdn-icons-png.flaticon.com/512/9386/9386837.png" width=20px height=20px  alt="...">user1</strong> 
 														<small class="rtime"
-															style="font-size:12px">2023-03-16 10:25</small>
+															style="font-size:12px ">2023-03-16 10:25</small>
 													</div>
 													<p style="font-size:15px">Good job!</p>
 												</div>
@@ -475,11 +475,11 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Reply</label>
+						<label>댓글</label>
 						<input class="form-control" name='reply' value='New Reply!!!!'>
 					</div>
 					<div class="form-group">
-						<label>Replyer</label>
+						<label>작성자</label>
 						<input class="form-control" name='id' value='user1'>
 					</div>
 					<div class="form-group">
@@ -564,10 +564,13 @@ $(document).ready(function(){
 				return;
 			}
 			for (var i=0, len=list.length || 0; i<len; i++){
-				str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-				str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
+				str += "<li class='left clearfix' data-rno='"+list[i].rno+"' style='width: 50%; margin: 0 auto; text-align:left'>";
+				//str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
+				//str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
+				str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
 				str+="<small class='rtime'>" + replyService.displayTime(list[i].replyDate)+"</small></div>";
 				str+="<p>" + list[i].reply+"</p></div></li>";
+				str+="<hr class='my-2' align='center' style='width: 60%; margin: 0 auto;'>";
 			}
 			replyUL.html(str);
 			showReplyPage(replyCnt);
