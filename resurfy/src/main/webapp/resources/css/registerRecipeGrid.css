@@ -9,7 +9,7 @@
     color: #33afe9;
 }
 
-.wrapper_box {
+.wrapper_box2 {
     padding: 26px 50px;
     border-bottom: 10px solid #f1f1f2;
     margin: 0 -1px;
@@ -117,16 +117,20 @@ ul {
     padding-inline-start: 0px;
 }
 
-
-.wrapper_box2 .step_title_1 {
-    width: 100px;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: normal;
-    vertical-align: top;
-    color: #33afe9;
+.tip .tip_title{
+	width: 100px; 
+	display: inline-block; 
+	font-size: 18px; 
+	font-weight: normal; 
+	vertical-align: top; 
+	color: #33afe9;
     margin-left: 40px;
 }
+    
+
+    
+
+
 .wrapper_box2 .wrapper_title2 {
     font-size: 20px;
     font-weight: normal;
@@ -135,7 +139,8 @@ ul {
     color: #33afe9;
 }
 
-.step_cont {
+
+.recipeDescription, .stepDescription, .tipDescription {
     display: inline-block;
     vertical-align: middle;
     background: #f5f5f5;
@@ -150,7 +155,7 @@ ul {
     vertical-align: middle;
 }
 
-.wrapper_box2 .tip_title_1 {
+.wrapper_box2 .tip_text {
     width: 100px;
     display: inline-block;
     font-size: 18px;
