@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -54,10 +55,30 @@ public class RecipeController {
 		log.info("list");
 		model.addAttribute("listRecipe",rService.getAllList());
 		model.addAttribute("list",oService.getList());
-		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker",new PageDTO(cri, total));
+	}
+	
+	@PostMapping("/remove")
+	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
+		log.info("remove recipe..." + bno);
+		if(sService.remove(bno)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		if(iService.remove(bno)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		if(rService.remove(bno)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:/recipe/get";
+	}
+	
+	@GetMapping("/TopTen")
+	public void ListSort(Model model) {
+		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 	}
 		
 	

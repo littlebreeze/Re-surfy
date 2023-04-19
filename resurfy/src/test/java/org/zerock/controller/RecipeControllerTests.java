@@ -60,6 +60,15 @@ public class RecipeControllerTests {
 				.andReturn().getModelAndView().getModelMap());
 		
 	}
+	
+	@Test
+	public void testRemove() throws Exception{
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/recipe/remove")
+				.param("bno", "195455")
+				).andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+	}
 
 	
 }

@@ -44,7 +44,7 @@ public class IngredientServiceImpl implements IngredientService {
 	@Override
 	public boolean remove(Long bno) {
 		log.info("removeIngre......." + bno);
-		return mapper.deleteRecipe(bno)==1;	
+		return mapper.deleteIngredient(bno)==1;	
 	}
 
 	@Override

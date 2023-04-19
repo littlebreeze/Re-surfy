@@ -45,21 +45,9 @@
 	</div>	
 </div>
 
-<button onclick="location.href= '/recipe/TopTen'">Go to Example.com</button>
-
-<%-- <br>
-<br>
-<h1>댓글 수 Top 10 Resurfy</h1>
-<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
-<c:if test="${status.index < 10}">
-<div>
-<img src="${bestRecipe.image}" />
-</div>
-<div>
-<c:out value="${bestRecipe.recipeName}" />
-</div>
-</c:if>
-</c:forEach> --%>
+<button onclick="location.href='/recipe/TopTen'">
+	댓글 수 Top 10 레시피가 궁금하시다면?
+</button>
 
 <script>
 $(document).ready(function(){

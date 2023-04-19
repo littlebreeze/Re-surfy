@@ -60,11 +60,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   delete from recipe_tbl where bno=#{bno}
   </delete>
     <delete id="deleteStep">
-  delete from step_tbl where sno=#{sno}
+  delete from step_tbl where bno=#{bno}
   </delete>
   
     <delete id="deleteIngredient">
-  delete from ingredient_tbl where ino=#{ino}
+  delete from ingredient_tbl where bno=#{bno}
   </delete>
   
   <update id="updateRecipe">
@@ -197,6 +197,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 		select count(*) from recipe_tbl where bno > 0 and id = 'user1'		
 	</select>
 	
+
 <select id="getRecipeOrderByReplycnt" resultType="org.zerock.domain.RecipeVO">
   select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt
   from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno
@@ -204,6 +205,14 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   order by r.replycnt desc, count(re.rno) desc
 </select>	
 
+
+	
+	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.RecipeVO">
+		select bno ,count(replycnt) from recipe_tbl
+		 group by bno
+		 order by replycnt DESC;
+	</select>
+ 
 </mapper>
 
 
