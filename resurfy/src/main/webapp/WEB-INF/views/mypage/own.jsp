@@ -22,18 +22,18 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">작성 글 모아보기</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">사용자 정보</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/own">가진 재료</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/own">가진 재료</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Page content-->
 				<div class="container-fluid">
-					<div class="col-lg-12"><br><br>
-						<h1 class="page-header">가진 재료</h1>
-					<br><br></div>
+					<div class="col-lg-12">
+						<h2 class="page-header">가진 재료</h2>
+					<br></div>
 					<div class="container">
 						<div class="row mb-3 text-center" id="chkAll" style="display:none;">
 					      <div class="col-md-2 themed-grid-col">
@@ -41,15 +41,21 @@
 					      </div>
 					    </div>
 					    <form id='searchForm' action="/recipe/get" method='get'>
-						<div class="row row-cols-1 row-cols-md-3 g-3 text-center">
-						<c:if test="${empty list}">
-							<div>데이터 없음</div>
-						</c:if>
-						<c:forEach items="${list}" var="own">
-							<div class="col themed-grid-col" id="ownGroup">
-								<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}" value="${own.ingreName}">${own.ingreName}
+					    <c:if test="${empty list}">
+							<div class="col" style="margin-bottom:30px;">
+								<div class="p-5 text-center">
+									<img src="/resources/assets/bluelogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
+								    <h1 class="mb-3">재료를 추가해보세요!</h1>
+								    <h4 class="mb-3">더 다양한 검색이 가능합니다</h4>
+								  </div>
 							</div>
-						</c:forEach>
+						</c:if>
+						<div class="row row-cols-1 row-cols-md-3 g-3 text-center">
+							<c:forEach items="${list}" var="own">
+								<div class="col themed-grid-col" id="ownGroup">
+									<input type="checkbox" class="form-check-input flex-shrink-0" style="display:none; margin-right:30px;" name="chk" data-ownno="${own.ownNo}" data-name="${own.ingreName}" value="${own.ingreName}">${own.ingreName}
+								</div>
+							</c:forEach>
 						</div>
 						<input type="hidden" name='type' value="O"/>
 						</form>

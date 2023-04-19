@@ -28,7 +28,7 @@ public class CartController {
 	
 	@GetMapping("/cart")
 	public void cartList(Criteria cri, Model model) {
-		log.info("장바구니 페이지 진입");
+		log.info("enter Cart page");
 		
 		model.addAttribute("list", service.getList(cri));
 	}
@@ -48,7 +48,6 @@ public class CartController {
 			@RequestParam(value = "imArr[]") List<String> imArr,@RequestParam(value = "pIdArr[]") List<Long> pIdArr, RedirectAttributes rttr) {
 
 		List<Long> pidList = service.getpIDList();
-		//이미 있는 제품이면 update를 하고 없으면 insert를 하고싶은디
 		
 		List<CartVO> cart = new ArrayList<CartVO>();
 		List<CartVO> cartUpdate = new ArrayList<CartVO>();
@@ -57,13 +56,13 @@ public class CartController {
 			CartVO c = new CartVO();
 			c.setId("user1");
 			c.setPrice(pArr.get(i));
-			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i); // DB에 맞춰 문자열 길이 변경
+			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i);
 			c.setCount(1L);
 			c.setPname(str);
 			c.setIname(igArr.get(i));
 			c.setPimage(imArr.get(i));
 			c.setProductid(pIdArr.get(i));
-			if(pidList.contains(pIdArr.get(i)))	//이미 있으면 update 해야하니까
+			if(pidList.contains(pIdArr.get(i)))
 				cartUpdate.add(c);
 			else
 				cart.add(c);
