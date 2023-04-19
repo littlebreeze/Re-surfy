@@ -39,7 +39,7 @@ public class RecipeMapperTests {
 	
 	@Test
 	public void testRecipeRead() {
-		RecipeVO board = mapper.readRecipe(1L); //ÄáºñÁö µ¿±×¶û¶¯ ³ª¿À¸é Á¤»óÀÔ´Ï´Ù
+		RecipeVO board = mapper.readRecipe(1L); //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½
 		log.info(board);
 	}
 	
@@ -57,18 +57,18 @@ public class RecipeMapperTests {
 		log.info(board);
 	}
 	
-//	recipe ¸ÕÀú Ãß°¡ÇÏ°í , bno °ª È®ÀÎ ÇÑ ÈÄ¿¡ step, ingredient insert ÇÏ¸é µË´Ï´Ù
+//	recipe ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï°ï¿½ , bno ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ ï¿½Ä¿ï¿½ step, ingredient insert ï¿½Ï¸ï¿½ ï¿½Ë´Ï´ï¿½
 	@Test
 	public void testInsertRecipe() {
 		RecipeVO board = new RecipeVO();
 		board.setId("user1");
-		board.setRecipeName("ÈÄ¶óÀÌ°è¶õ");
-		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù.");
+		board.setRecipeName("ï¿½Ä¶ï¿½ï¿½Ì°ï¿½ï¿½");
+		board.setRecipeDescription("ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸®ï¿½Ô´Ï´ï¿½.");
 		board.setFoodTypeNo(3020001L);
-		board.setFoodType("ÇÑ½Ä");
-		board.setTime("3ºÐ");
-		board.setPerson("1ÀÎºÐ");
-		board.setDifficulty("ÃÊº¸");
+		board.setFoodType("ï¿½Ñ½ï¿½");
+		board.setTime("3ï¿½ï¿½");
+		board.setPerson("1ï¿½Îºï¿½");
+		board.setDifficulty("ï¿½Êºï¿½");
 		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		
 		mapper.insertRecipe(board);
@@ -80,9 +80,9 @@ public class RecipeMapperTests {
 		StepVO board = new StepVO();
 		board.setBno(195457L);
 		board.setStepNo(1L);
-		board.setStepDescription("°è¶õÀ» ±ü´Ù.");
+		board.setStepDescription("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
-		board.setTip("³Ê¹« ½±½À´Ï´Ù.");
+		board.setTip("ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		
 		mapper.insertStep(board);
 		log.info(board);
@@ -92,15 +92,15 @@ public class RecipeMapperTests {
 	public void testInsertIngredient() {
 		IngredientVO board = new IngredientVO();
 		board.setBno(195457L);
-		board.setIngreName("°è¶õ");
-		board.setIngreMeasure("¾à°£");
+		board.setIngreName("ï¿½ï¿½ï¿½");
+		board.setIngreMeasure("ï¿½à°£");
 		board.setIngreTypeNo(3060001L);
-		board.setIngreType("ÁÖÀç·á");
+		board.setIngreType("ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		mapper.insertIngredient(board);
 		log.info(board);
 	}
-	// ±âº»Å° , ¿Ü·¡Å°°ª È®ÀÎ
+	// ï¿½âº»Å° , ï¿½Ü·ï¿½Å°ï¿½ï¿½ È®ï¿½ï¿½
 	@Test
 	public void testStepDelete() {
 		log.info("DELETE COUNT : " + mapper.deleteStep(3025L));
@@ -115,20 +115,20 @@ public class RecipeMapperTests {
 	public void testRecipeDelete() {
 		log.info("DELETE COUNT : " + mapper.deleteRecipe(195456L));
 	}
-	// »õ·Î ÇÏ³ª recipe,step,ingredient »ý¼ºÇÏ°í Å×½ºÆ®, ±âº»Å°, ¿Ü·¡Å°¸¦ º¯°æÇÏÁö ¸»°í ÇÏ¸é Å×½ºÆ® °¡´É
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ recipe,step,ingredient ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½×½ï¿½Æ®, ï¿½âº»Å°, ï¿½Ü·ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½×½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	
 	@Test
 	public void testUpdateRecipe() {
 		RecipeVO board = new RecipeVO();
 		board.setBno(195457L);
 		board.setId("user1");
-		board.setRecipeName("ÈÄ¶óÀÌ°è¶õÀÌ");
-		board.setRecipeDescription("ÀÌ°ÍÀº °£´ÜÇÑ ¿ä¸®ÀÔ´Ï´Ù!");
+		board.setRecipeName("ï¿½Ä¶ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½");
+		board.setRecipeDescription("ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ä¸®ï¿½Ô´Ï´ï¿½!");
 		board.setFoodTypeNo(3020001L);
-		board.setFoodType("ÇÑ½Ä");
-		board.setTime("3ºÐ");
-		board.setPerson("1ÀÎºÐ");
-		board.setDifficulty("ÃÊº¸");
+		board.setFoodType("ï¿½Ñ½ï¿½");
+		board.setTime("3ï¿½ï¿½");
+		board.setPerson("1ï¿½Îºï¿½");
+		board.setDifficulty("ï¿½Êºï¿½");
 		board.setImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		
 		int count = mapper.updateRecipe(board);
@@ -141,9 +141,9 @@ public class RecipeMapperTests {
 		board.setSno(3026L);
 		board.setBno(195457L);
 		board.setStepNo(1L);
-		board.setStepDescription("¼Ò±ÝÀ» ³Ö´Â´Ù.");
+		board.setStepDescription("ï¿½Ò±ï¿½ï¿½ï¿½ ï¿½Ö´Â´ï¿½.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
-		board.setTip("ÀßÀß");
+		board.setTip("ï¿½ï¿½ï¿½ï¿½");
 		
 		int count = mapper.updateStep(board);
 		log.info("UPDATE COUNT : " + count);
@@ -154,10 +154,10 @@ public class RecipeMapperTests {
 		IngredientVO board = new IngredientVO();
 		board.setIno(195468L);
 		board.setBno(195457L);
-		board.setIngreName("¼Ò±Ý");
-		board.setIngreMeasure("¾à°£");
+		board.setIngreName("ï¿½Ò±ï¿½");
+		board.setIngreMeasure("ï¿½à°£");
 		board.setIngreTypeNo(3060003L);
-		board.setIngreType("¾ç³ä");
+		board.setIngreType("ï¿½ï¿½ï¿½");
 		
 		int count = mapper.updateIngredient(board);
 		log.info("UPDATE COUNT : " + count);
@@ -177,5 +177,11 @@ public class RecipeMapperTests {
 		log.info("Total....." + count);
 		
 	}
-
+	
+	
+	@Test
+	public void testSortReplyCnt() {
+		log.info("sorting...."+ mapper.getRecipeOrderByReplycnt());
+		
+	}
 }

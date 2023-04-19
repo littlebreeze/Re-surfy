@@ -54,6 +54,7 @@ public class RecipeController {
 		log.info("list");
 		model.addAttribute("listRecipe",rService.getAllList());
 		model.addAttribute("list",oService.getList());
+		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker",new PageDTO(cri, total));

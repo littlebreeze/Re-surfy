@@ -37,8 +37,6 @@ public interface RecipeMapper {
 	public List<RecipeVO> getUserList(Criteria cri);
 	public int getUserTotalCount(Criteria cri);
 	
-	
-	public void listPage();
-	
+	public List<RecipeVO> getRecipeOrderByReplycnt();
 	
 }

@@ -194,16 +194,16 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 </select>
 
 	<select id="getUserTotalCount" resultType="int">
-		select count(*) from recipe_tbl where bno > 0 and id='user1'		
+		select count(*) from recipe_tbl where bno > 0 and id = 'user1'		
 	</select>
 	
-	
-	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.recipeVO">
-		select bno ,count(replycnt) from recipe_tbl
-		 group by bno
-		 order by replycnt DESC;
-	</select>
- 
+<select id="getRecipeOrderByReplycnt" resultType="org.zerock.domain.RecipeVO">
+  select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt
+  from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno
+  group by r.bno, r.image, r.recipename, r.replycnt
+  order by r.replycnt desc, count(re.rno) desc
+</select>	
+
 </mapper>
 
 

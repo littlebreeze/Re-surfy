@@ -16,4 +16,6 @@ public interface RecipeService {
 
 	public List<RecipeVO> getUserList(Criteria cri);
 	public int getUserTotal(Criteria cri);
+	
+	public List<RecipeVO> sortByReplyCnt();
 }

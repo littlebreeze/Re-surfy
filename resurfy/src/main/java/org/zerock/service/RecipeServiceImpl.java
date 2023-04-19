@@ -72,4 +72,9 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getUserTotalCount(cri);
 	}
 
+	@Override
+	public List<RecipeVO> sortByReplyCnt() {
+		return mapper.getRecipeOrderByReplycnt();
+	}
+
 }
