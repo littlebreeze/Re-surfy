@@ -135,13 +135,13 @@ pageEncoding="UTF-8"%>
                   <div style="position:absolute;left:-3000px">
                     <input type="file" name="q_step_file_1" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
                   </div>
-			      <div id="stepImageBox_1" is_over="0" onclick="browseStepFile(1)" style="cursor:pointer">
-					<img id="stepImageHolder_1" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px;" class="bi bi-file-image" viewBox="0 0 16 16"">
-				  </div>
+				  <div id="stepImageBox_STEP" is_over="0" onclick="browseStepFile(STEP)" style="cursor:pointer">
+					<img id="stepImageHolder_STEP" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px" class="bi bi-file-image" viewBox="0 0 16 16"">
+			      </div>
                 </div>
                 <div id="tipItem_1" class="tip">
                   <p class="tip_title">팁</p>
-                  <textarea name="tip_text[]" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요." style="height:50px; width:620px; resize:none;"></textarea>          
+                  <textarea name="tip_text[]" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea>          
 				  <button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>    
               </div>
@@ -168,7 +168,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="tipItem_STEP" class="tip">
                 <p class="tip_title">팁</p>
-                <textarea name="tip_text[]" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요." style="height:50px; width:620px; resize:none;"></textarea> 
+                <textarea name="tip_text[]" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea> 
 					<button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>
               </div>
@@ -182,20 +182,8 @@ pageEncoding="UTF-8"%>
         </div><!--레시피 등록 finish box-->
 
         <div class="regi_btm">
-          <button type="button" onclick="save()" class="btn-lg btn-success" id="save" control-id="ControlID-44">저장</button>
-          <div class="modal" tabindex="-1" id="openModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <p>레시피 등록이 완료되었습니다.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" onclick="confirm()" class="btn btn-primary" id="confirm">확인</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button type="button" onclick="cancle()" class="btn-lg btn-danger" control-id="ControlID-49" id="cancle">취소</button>
+          <button type="button" onclick="save()" class="save" id="save" control-id="ControlID-44">저장</button>
+          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-danger" id="cancel" control-id="ControlID-49" >취소</button>
         </div><!--save and cancel-->        
       </div><!--container finish-->
     </form>

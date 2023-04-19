@@ -110,130 +110,166 @@
     document.getElementById('addIngredient').addEventListener('click', addIngredient);
     
     //순서 추가 함수
-    let stepCounter = 1;
-	
-	function addStep() {
-	    stepCounter++;
-	    const stepTemplate = document.getElementById('stepTemplate');
-	    const stepArea = document.getElementById('stepArea');
-	    const newStep = stepTemplate.innerHTML.replace(/STEP/g, stepCounter);
-	    stepArea.insertAdjacentHTML('beforeend', newStep);
-	    const deleteButton = document.getElementById(`stepItem_${stepCounter}`).getElementsByClassName("deleteStepBtn")[0];
-	    deleteButton.setAttribute('onclick', `deleteStep(${stepCounter})`);
-	    const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${stepCounter}`);
-		stepImageBoxToUpdate.setAttribute('onclick', `browseStepFile(${stepCounter})`);
-	    
-	}
-	
-	function browseStepFile(step) {
-	    const fileInput = document.getElementById(`q_step_file_${step}`);
-	    fileInput.addEventListener('change', function (event) {
-	        const file = event.target.files[0];
-	        if (file) {
-	            const reader = new FileReader();
-	            reader.onload = function (e) {
-	                const img = document.getElementById(`stepImageHolder_${step}`);
-	                img.src = e.target.result;
-	            };
-	            reader.readAsDataURL(file);
-	        }
-	    });
-	    fileInput.click();
-	}
-	
+  let stepCounter = 1;
 
+function addStep() {
+    stepCounter++;
+    const stepTemplate = document.getElementById('stepTemplate');
+    const stepArea = document.getElementById('stepArea');
+    const newStep = stepTemplate.innerHTML.replace(/STEP/g, stepCounter);
+    stepArea.insertAdjacentHTML('beforeend', newStep);
+    const deleteButton = document.getElementById(`stepItem_${stepCounter}`).getElementsByClassName("deleteStepBtn")[0];
+    deleteButton.setAttribute('onclick', `deleteStep(${stepCounter})`);
+    const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${stepCounter}`);
+    stepImageBoxToUpdate.setAttribute('onclick', `browseStepFile(${stepCounter})`);
+        const newFileInput = document.getElementById(`q_step_file_${stepCounter}`);
+    newFileInput.setAttribute('id', `q_step_file_${stepCounter}`);
+    newFileInput.setAttribute('name', `q_step_file_${stepCounter}`);
+    setFileInputEventListener(stepCounter);
 
+    // Add event listener to the new file input
+    const fileInput = document.getElementById(`q_step_file_${stepCounter}`);
+    fileInput.addEventListener('change', function (event) {
+        const step = this.id.split('_')[2];
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.getElementById(`stepImageHolder_${step}`);
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
-    
-    //순서 제거 함수
-	function deleteStep(step) {
+function browseStepFile(step) {
+    const fileInput = document.getElementById(`q_step_file_${step}`);
+    fileInput.click();
+}
+
+// 순서 제거 함수
+function deleteStep(step) {
     const stepElement = document.getElementById(`stepItem_${step}`);
     stepElement.remove();
-    
+
     for (let i = step + 1; i <= stepCounter; i++) {
         const stepToUpdate = document.getElementById(`stepItem_${i}`);
         const stepNumToUpdate = document.getElementById(`stepNum_${i}`);
         const stepDescToUpdate = document.getElementById(`stepDescription_${i}`);
         const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${i}`);
-        
+        const stepFileInput = document.getElementById(`q_step_file_${i}`);
+
         stepNumToUpdate.innerHTML = `Step ${i - 1}`;
         stepToUpdate.id = `stepItem_${i - 1}`;
         stepNumToUpdate.id = `stepNum_${i - 1}`;
         stepDescToUpdate.id = `stepDescription_${i - 1}`;
+        stepImageBoxToUpdate.id = `stepImageBox_${i - 1}`;
         stepImageBoxToUpdate.setAttribute('onclick', `browseStepFile(${i - 1})`);
+        stepFileInput.id = `q_step_file_${i - 1}`;
     }
-    
+
     stepCounter--;
 }
+
+// Initialize event listener for the first step
+document.addEventListener("DOMContentLoaded", function () {
+    setFileInputEventListener(1);
+});
+
+function setFileInputEventListener(step) {
+    const fileInput = document.getElementById(`q_step_file_${step}`);
+    fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.getElementById(`stepImageHolder_${step}`);
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+
+
+
 
     
     //과정 이미지 업로드
     
-  
-    
-    //등록 버튼 구현
-    function save() {
-    // 저장 버튼 클릭 시 실행될 로직
-    // 모든 정보가 입력되었는지 확인하는 코드 작성
-    // 입력이 완료되면 모달창 열기
-    const openModal = document.getElementById("openModal");
-    openModal.style.display = "block";
-    }
-    
-    function confirm() {
-    const title = document.getElementById("title").value;
-    const category = document.getElementById("category").value;
-    const mainPhoto = document.getElementById("main_photo").value;
-    const content = document.getElementById("content").value;
-    const ingredients = document.getElementsByClassName("ingre");
-    
-    // 필수 입력 항목 검증
-    if (title === "" || category === "" || mainPhoto === "" || content === "") {
-    alert("필수 입력 항목을 모두 입력해주세요.");
-    return;
-    }
-    
-    // 재료 입력 항목 검증
-    for (let i = 0; i < ingredients.length; i++) {
-    const ingredient = ingredients[i].value;
-    if (ingredient === "") {
-    alert("재료 입력 항목을 모두 입력해주세요.");
-    return;
-    }
-    }
-    
-    // 서버로 데이터 전송 (예시)
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("category", category);
-    formData.append("mainPhoto", mainPhoto);
-    formData.append("content", content);
-    
-    for (let i = 0; i < ingredients.length; i++) {
-    const ingredient = ingredients[i].value;
-    formData.append("ingredients", ingredient);
-    }
-    
-    fetch("/save", {
-    method: "POST",
-    body: formData,
-    })
-    .then((response) => response.json())
-    .then((data) => {
-    if (data.success) {
-    // 저장 성공 시 처리
-    alert("저장되었습니다.");
-    location.href = "/recipe/get";
-    } else {
-    // 저장 실패 시 처리
-    alert("저장에 실패하였습니다.");
-    }
-    });
-    
-    // 확인 버튼 클릭 시 실행될 로직
-    // 서버로 저장할 수 있는 자바스크립트 코드 작성
-    }
-    
-    function cancle() {
-    // 취소 버튼 클릭 시 실행될 로직
-    }
+$(document).ready(function(){
+			//등록 버튼
+			$(".save").click(function(){
+				var recipeName=$("#recipeName").val();
+				var recipeDescription=$("#recipeDescription").val();
+				var image=$("#mainImage").val();
+				var foodType=$("#foodType").val();
+				var difficulty=$("#difficulty").val();
+				var person=$("#person").val();
+				var time=$("#time").val();
+				var ingreName=$("#ingreName").val();
+				var ingreType=$("#ingreType").val();
+				var ingreMeasure=$("#ingreMeasure").val();
+				var stepDescription=$("#stepDescription").val();
+				if(recipeName == ""){
+					  alert("레시피 명을 입력하세요");
+					  $("#recipeName").focus(); //입력포커스 이동
+
+					  return; //함수 종료
+					}
+				if(recipeDescription == ""){
+					  alert("요리소개를 입력하세요");
+					  $("#recipeDescription").focus(); //입력포커스 이동
+
+					  return; //함수 종료
+					}
+				if(image == ""){
+					  alert("메인 이미지를 입력하세요");
+					  $("#image").focus(); //입력포커스 이동
+
+					  return; //함수 종료
+					}
+				if(difficulty == ""){
+					  alert("난이도를 입력하세요");
+					  $("#difficulty").focus(); //입력포커스 이동
+
+					  return; //함수 종료
+					}
+				if(person == ""){
+				  alert("인원을 입력하세요");
+				  $("#person").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				if(time == ""){
+				  alert("시간을 입력하세요");
+				  $("#time").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				if(ingreName == ""){
+				  alert("재료명을 입력하세요");
+				  $("#ingreName").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				if(ingreType == ""){
+				  alert("재료타입을 입력하세요");
+				  $("#ingreType").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				if(ingreMeasure == ""){
+				  alert("재료양을 입력하세요");
+				  $("#ingreMeasure").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				if(stepDescription == ""){
+				  alert("과정을 입력하세요");
+				  $("#stepDescription_").focus(); //입력포커스 이동
+				  return; //함수 종료
+				}
+				$("#registerRecipe").attr("action", "/recipe/registerRecipe");
+				$("#registerRecipe").submit();
+				alert( "레시피가 등록되었습니다.");
+				
+			});
+		});
