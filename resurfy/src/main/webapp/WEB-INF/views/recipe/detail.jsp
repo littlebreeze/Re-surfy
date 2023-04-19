@@ -156,7 +156,7 @@
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<span style="font-size:13px"><c:out value="${st.stepDescription}" /></span>
 								<c:choose>
-      							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
+      							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
 								<div style="font-size:13px"></div>
 								</c:when>
 								<c:otherwise>
@@ -175,7 +175,7 @@
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<span style="font-size:13px"><c:out value="${st.stepDescription}" /></span>
 									<c:choose>
-      							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
+      							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
 								<div style="font-size:13px"></div>
 								</c:when>
 								<c:otherwise>
