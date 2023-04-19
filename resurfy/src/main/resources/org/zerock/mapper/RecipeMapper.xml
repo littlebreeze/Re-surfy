@@ -60,11 +60,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   delete from recipe_tbl where bno=#{bno}
   </delete>
     <delete id="deleteStep">
-  delete from step_tbl where sno=#{sno}
+  delete from step_tbl where bno=#{bno}
   </delete>
   
     <delete id="deleteIngredient">
-  delete from ingredient_tbl where ino=#{ino}
+  delete from ingredient_tbl where bno=#{bno}
   </delete>
   
   <update id="updateRecipe">
@@ -198,7 +198,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	</select>
 	
 	
-	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.recipeVO">
+	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.RecipeVO">
 		select bno ,count(replycnt) from recipe_tbl
 		 group by bno
 		 order by replycnt DESC;
