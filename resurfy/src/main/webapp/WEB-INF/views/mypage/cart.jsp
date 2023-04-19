@@ -22,8 +22,8 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">작성 글 모아보기</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">사용자 정보</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/cart">장바구니</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/own">가진 재료</a>
                 </div>
             </div>
@@ -31,9 +31,9 @@
             <div id="page-content-wrapper">
                 <!-- Page content-->
                 <div class="container-fluid">
-                    <div class="col-lg-12"><br><br>
-						<h1 class="page-header">장바구니</h1>
-					<br><br></div>
+                    <div class="col-lg-12">
+						<h2 class="page-header">장바구니</h2>
+					<br></div>
                     <div class="container">
                     	<div class="row mb-3 text-center">
 					      <div class="col-md-2 themed-grid-col">
@@ -47,7 +47,13 @@
 					      <div class="col-md-2 themed-grid-col">수량</div>
 					    </div>
 					<c:if test="${empty list}">
-						<div>데이터 없음</div>
+						<div class="col" style="margin-bottom:30px;">
+							<div class="p-5 text-center">
+								<img src="/resources/assets/bluelogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
+							    <h1 class="mb-3">장바구니가 비어있습니다!</h1>
+							    <h4 class="mb-3">레시피를 살펴보고 장바구니에 담아보세요</h4>
+							  </div>
+						</div>
 					</c:if>
 					<c:forEach items="${list}" var="cart">
 					    <div class="row mb-3 text-center" id="cartGroup">

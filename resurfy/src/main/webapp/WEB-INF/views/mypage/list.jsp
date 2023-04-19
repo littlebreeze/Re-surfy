@@ -21,7 +21,7 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">작성 글 모아보기</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/list">사용자 정보</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/own">가진 재료</a>
                 </div>
@@ -30,9 +30,9 @@
             <div id="page-content-wrapper">
                 <!-- Page content-->
                 <div class="container-fluid">
-					<div class="col-lg-12"><br><br>
-						<h1 class="page-header">사용자 정보</h1>
-					<br><br></div>
+					<div class="col-lg-12">
+						<h2 class="page-header">사용자 정보</h2>
+					<br></div>
 					<div class="container">
 					    <div class="row d-flex justify-content-center align-items-center h-100">
 					      <div class="col col-md-12 col-lg-7 col-xl-5">
@@ -45,7 +45,7 @@
 					                  style="width: 180px; border-radius: 10px;">
 					              </div>
 					              <div class="flex-grow-1 ms-3">
-					                <h5 class="mb-1">닉네임</h5>
+					                <h5 class="mb-1">Re-surfer</h5>
 					                <p class="mb-2 pb-1" style="color: #2b2a2a;">아이디</p>
 					                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
 					                  style="background-color: #efefef;">
@@ -89,7 +89,11 @@
 										</thead>
 										<tbody>
 											<c:if test="${empty relist}">
-												<div>데이터 없음</div>
+												<div class="col" style="margin-bottom:30px;">
+													<div class="p-5 text-center">
+													    <h4 class="mb-3">레시피를 공유해보세요!</h4>
+													  </div>
+												</div>
 											</c:if>
 											<c:forEach items="${relist}" var="board">
 												<tr>

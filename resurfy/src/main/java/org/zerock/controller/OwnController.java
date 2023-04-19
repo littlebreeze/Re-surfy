@@ -34,7 +34,7 @@ public class OwnController {
 	
 	@GetMapping("/own")
 	public void ownList(Criteria cri, Model model) {
-		log.info("���� ��� ������ ����");
+		log.info("enter Own page");
 		
 		model.addAttribute("list", service.getList());
 	}
@@ -49,8 +49,8 @@ public class OwnController {
 			o.setIngreName(ingreArr.get(i));
 			own.add(o);
 		}
-		cService.remove(cno);	//��ٱ��Ͽ��� ����
-		if (service.register(own)) {	//���� ���� ���
+		cService.remove(cno);
+		if (service.register(own)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";
@@ -59,7 +59,6 @@ public class OwnController {
 	@PostMapping("/addOwn")
 	public String ownRegister(String addIngreName, RedirectAttributes rttr) {
 
-		//�ִ� ��� �ߺ� Ȯ���ؾ���
 		List<OwnVO> own = new ArrayList<OwnVO>();
 		OwnVO o = new OwnVO();
 		o.setId("user1");
@@ -87,10 +86,9 @@ public class OwnController {
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 
-			//model.addAttribute("relist", rService.getList(cri));
-			model.addAttribute("relist", rService.getUserList(cri));	//로그인 사용자 글 목록 가져오기
+			model.addAttribute("relist", rService.getUserList(cri));
 
-			int total = rService.getUserTotal(cri);	//로그인 사용자 글 개수 가져오는 함수로 바꿀 것
+			int total = rService.getUserTotal(cri);
 
 			log.info("total : " + total);
 

@@ -31,8 +31,8 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-5">
-	<div class="container px-4 px-lg-5 mt-5">
+<div class="py-3">
+	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 		<div class='row'>
 			<div class="col-lg-12">
@@ -47,12 +47,10 @@
 						<option value="FR"
 							<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>음식 이름
 							or 종류</option>
-					</select> <input type='text' name='keyword'
-						value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
-						type='hidden' name='pageNum'
-						value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
-						type='hidden' name='amount'
-						value='<c:out value="${pageMaker.cri.amount}"/>' />
+					</select> 
+					<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
+					<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
+					<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
 					<button  class="btn btn-primary btn-sm">Search</button>
 				</form>
 			</div>
@@ -90,6 +88,7 @@
 						</div>
 					</div>
 				</c:forEach>
+			</div>
 
 				<!-- start Paging -->
 				<div class='pull-right'>
@@ -124,7 +123,6 @@
 						<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 					</c:forEach>
 				</form>
-</div>
 
 <script type="text/javascript">
 	$(document).ready(
@@ -191,6 +189,10 @@
 				$("input[name=chk]:checked").each(function(){
 					actionForm.append("<input type='hidden' name='chk' value='"+ $(this).val()+"'>");
 				});
+				if(!actionForm.find("input[name='chk']").val()){
+					alert("재료를 한가지 이상 선택하세요!");
+					actionForm.find("input[name='type']").remove();
+				}
 				actionForm.submit();
 			});	
 
