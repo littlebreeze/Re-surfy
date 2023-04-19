@@ -49,8 +49,8 @@ public class OwnController {
 			o.setIngreName(ingreArr.get(i));
 			own.add(o);
 		}
-		cService.remove(cno);	//��ٱ��Ͽ��� ����
-		if (service.register(own)) {	//���� ���� ���
+		cService.remove(cno);	
+		if (service.register(own)) {	
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";
@@ -65,7 +65,7 @@ public class OwnController {
 		o.setId("user1");
 		o.setIngreName(addIngreName);
 		own.add(o);
-		if (service.register(own)) {	//���� ���� ���
+		if (service.register(own)) {	
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/mypage/own";

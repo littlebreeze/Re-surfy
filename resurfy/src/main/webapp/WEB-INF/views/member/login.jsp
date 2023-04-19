@@ -15,11 +15,8 @@
 <body>
 <section>
   <div class="left">
-<<<<<<< HEAD
     <img src="/resources/assets/logo.jpg" height="550px" alt="" />
-=======
     <img src="../resources/assets/logo.jpg" height="550px" alt="" />
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
   </div>
   <div class="right">
     <div class="sign-up">

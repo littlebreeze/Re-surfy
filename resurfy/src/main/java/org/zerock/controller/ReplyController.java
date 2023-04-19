@@ -44,19 +44,18 @@ public class ReplyController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	
-	/*@GetMapping(value = "/pages/{bno}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<ReplyVO>> getList(
-
-			@PathVariable("page") int page, @PathVariable("bno") Long bno) {
-
-		log.info("getList.................");
-		Criteria cri = new Criteria(page, 10);
-		log.info(cri);
-
-		return new ResponseEntity<>(reService.getList(cri, bno), HttpStatus.OK);
-	}*/
+	/*
+	 * @GetMapping(value = "/pages/{bno}/{page}", produces = {
+	 * MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	 * public ResponseEntity<List<ReplyVO>> getList1(
+	 * 
+	 * @PathVariable("page") int page, @PathVariable("bno") Long bno) {
+	 * log.info("getList................."); Criteria cri = new Criteria(page, 10);
+	 * log.info(cri);
+	 * 
+	 * return new ResponseEntity<>(reService.getList(cri, bno), HttpStatus.OK); }
+	 */
+	 
 	 
 	@GetMapping(value = "/pages/{bno}/{page}", produces = { MediaType.APPLICATION_XML_VALUE,
 	         MediaType.APPLICATION_JSON_UTF8_VALUE })
@@ -64,7 +63,7 @@ public class ReplyController {
 	    log.info("getList.................");
 	      Criteria cri = new Criteria(page, 10);
 	      log.info("get Reply List bno: " + bno);
-
+	      log.info("get Total bno : " + reService.getTotal(bno));
 	      log.info("cri:" + cri);
 
 	      return new ResponseEntity<>(reService.getListPage(cri, bno), HttpStatus.OK);

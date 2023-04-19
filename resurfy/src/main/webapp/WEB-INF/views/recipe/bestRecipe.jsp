@@ -53,7 +53,7 @@ $(document).ready(function(){
 				  slidesToShow: 4,
 				  slidesToScroll : 1,
 				  autoplay : true,
-				  autoplaySpeed : 1500,
+				  autoplaySpeed : 1000,
 				  responsive: [
 				    {
 				      breakpoint: 768,
