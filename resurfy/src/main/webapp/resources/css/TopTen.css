@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.TopTen_recipe > h1 {
+	text-align : center;
+}
+
+.TopTen_recipe > img{
+	width : 300px;
+	height : auto;
+	
+}

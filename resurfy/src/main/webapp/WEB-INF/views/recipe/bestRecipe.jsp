@@ -27,9 +27,7 @@
 		<br>
 
 			<div>
-				<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 				<img src="${recipe.image}"/>
-				</a>
 			</div>
 		<br>
 		<br>
@@ -45,7 +43,7 @@
 	</div>	
 </div>
 
-<button onclick="location.href='/recipe/TopTen'">
+<button onclick="location.href='/recipe/TopTen'" class="btn btn-primary btn-sm">
 	댓글 수 Top 10 레시피가 궁금하시다면?
 </button>
 

@@ -26,11 +26,11 @@
 <link href="<%=request.getContextPath()%>/resources/css/styles.css"
 	rel="stylesheet" />
 
-<link href="../resources/css/pagingButton.css" rel="stylesheet">
+<link href="/resources/css/pagingButton.css" rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../resources/css/mypageStyles.css" rel="stylesheet" />
-<link href="../resources/css/mypageGrid.css" rel="stylesheet">
-<link href="../resources/css/header.css" rel="stylesheet">
+<link href="/resources/css/mypageStyles.css" rel="stylesheet" />
+<link href="/resources/css/mypageGrid.css" rel="stylesheet">
+<link href="/resources/css/header.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
