@@ -299,8 +299,11 @@
 			console.log(operation);
 
 			if (operation === 'remove') {
-				formObj.attr("action", "/recipe/remove");
+				var deleteYN = confirm("삭제하시겠습니까?");
+                if(deleteYN == true){
 
+				formObj.attr("action", "/recipe/remove");
+                }
 			} else if (operation === 'list') {
 				//move to list
 				self.location  = "/recipe/get";
