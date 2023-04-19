@@ -8,9 +8,15 @@
 	background-color:  #00FF00;
 }
 
-.recommend_recipe h1{
+.recommend_recipe >  h1{
 	color : #FFFFFF;
+	font-family: 'Jua', sans-serif;
 }
+
+.recommend_recipe > div{
+	background-color:  #00FF00;
+}
+
 .slick-prev{
 	left: 200px;
     z-index: 1;
@@ -29,8 +35,6 @@
 }
 
 .slide_div_wrap{
-	padding: 15px 0 15px 0;
-    text-align : center;
     overflow: hidden;
 
 }
