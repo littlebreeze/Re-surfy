@@ -31,6 +31,7 @@
                 <!-- Page content-->
                 <div class="container-fluid">
 					<div class="col-lg-12">
+						<button class="btn mypageBtn" id="sidebarToggle">></button>
 						<h2 class="page-header">사용자 정보</h2>
 					<br></div>
 					<div class="container">
