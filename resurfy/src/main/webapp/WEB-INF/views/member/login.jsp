@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?after1"/>
+<link rel="stylesheet" href="../resources/css/login.css?after4"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -15,26 +15,44 @@
 <body>
 <section>
   <div class="left">
-    <img src="/resources/assets/logo.jpg" height="550px" alt="" />
-    <img src="../resources/assets/logo.jpg" height="550px" alt="" />
+    <img src="/resources/assets/logo.jpg" height="600px" alt="" />
   </div>
   <div class="right">
     <div class="sign-up">
       <h1>JOIN</h1>
       <form action="join.do" id="join_form" method="post">
       <div class="con1">
+      		<div>
+      	   <h3><label for="j_id">아이디</label></h3>
 	       <input type="text" id="j_id" placeholder="UserId" name="id" style="float:left; width:265px; margin-right:4px;"/>
-	       <button type="button" style="float:left; width:70px;">중복확인</button>
+	       </div>
+	       <button type="button" style="float:left; width:90px;">중복확인</button>
       </div>
-        <input type="text" id="j_name" placeholder="UserName" name="userName" />
+      <span>
+      	<h3><label for="j_name">이름</label></h3>
+        <input type="text" id="j_name" placeholder="UserName" name="userName"  />
+       </span>
+       <span>
+        <h3><label for="j_pw" >비밀번호</label></h3>
         <input type="password" id="j_pw" name="password" placeholder="Password" />
+        </span>
+        <span>
+        <h3><label for="j_nick">닉네임</label></h3>
         <input type="text"id="j_nick" name="nickname" placeholder="UserNickname" />
+        </span>
         <div class="con2">
+        <div>
+ 	        <h3><label for="j_phone" >휴대폰번호</label></h3>
 	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:265px;" />
+	        </div>
 	        <button type="button" style="float:left; width:80px;">인증번호</br>전송</button>
+	        
         </div>
         <div class="con3">
-        	<input type="text" style="width:265px;"/>
+        <div>
+ 	        <h3><label for="j_num">인증번호</label></h3>
+        	<input id="j_num" type="text" style="width:265px;"/>
+        </div>
 			<button type="button" style="float:left; width:80px;">인증</button>
         </div>
         <input class="btnJoin" type="button" value="Sing Up" onclick="formCheck(this.form)" />
@@ -46,8 +64,14 @@
     <div class="sign-in">
       <h1>LOGIN</h1>
       <form id="sign_form" method="post">
+      <span>
+      	<h3><label for="userid">아이디</label></h3>
         <input type="text" id="userid" name="id" placeholder="UserId" />
+      </span>
+      <span>
+        <h3><label for="passwd" >비밀번호</label></h3>  
         <input type="password" id="passwd" name="password" placeholder="Password" />   
+      </span>
         <input type="submit" id="btnLogin" value="Login" />
       </form>
       <!-- separator -->
