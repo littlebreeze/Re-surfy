@@ -40,6 +40,7 @@ public interface RecipeMapper {
 	public List<RecipeVO> getRecipeOrderByReplycnt();
 	
 	public void updateVisitCnt(@Param("bno") Long bno, @Param("amount") int amount);
+	
 
 	
 }

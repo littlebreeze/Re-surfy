@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
-.TopTen_recipe > h1 {
+.TopTen_recipe {
 	text-align : center;
+	font-family: 'Jua', sans-serif;
 }
 
 .TopTen_recipe > img{

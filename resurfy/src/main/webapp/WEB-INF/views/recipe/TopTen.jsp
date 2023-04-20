@@ -40,37 +40,41 @@
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <body>
-<div class = "TopTen_recipe">
-<h1>댓글 수 Top 10 Resurfy</h1>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">순위</th>
-      <th scope="col">레시피</th>
-      <th scope="col">레시피 이름</th>
-      <th scope="col">레시피 댓글 수</th>
-    </tr>
-  </thead>
- <c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
-  <c:if test="${status.index < 10}">
-  <tbody>
-    <tr class="table-active">
-      <th scope="row">TOP ${status.index + 1}</th>
-      <td><img src="${bestRecipe.image}" /></td>
-      <td>
-      <b><a href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
-      <c:out value="${bestRecipe.recipeName}" /></a></b>
-      </td>
-      <td><c:out value="${bestRecipe.replycnt}" /></td>
-    </tr>
-   </tbody>
-  </c:if>
-  </c:forEach>
-</table>
-</div>
+	<div class="TopTen_recipe">
+		<h1>댓글 수 Top 10 Resurfy</h1>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">순위</th>
+					<th scope="col">레시피</th>
+					<th scope="col">레시피 이름</th>
+					<th scope="col">레시피 댓글 수</th>
+				</tr>
+			</thead>
+			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
+				<c:if test="${status.index < 10}">
+					<tbody>
+						<tr class="table-active">
+							<th scope="row">TOP ${status.index + 1}</th>
+							<td><img src="${bestRecipe.image}" /></td>
+							<td><b><a
+									href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
+										<c:out value="${bestRecipe.recipeName}" />
+								</a></b></td>
+							<td><c:out value="${bestRecipe.replycnt}" /></td>
+						</tr>
+					</tbody>
+				</c:if>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

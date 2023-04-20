@@ -32,53 +32,64 @@
 <link href="/resources/css/mypageStyles.css" rel="stylesheet" />
 <link href="/resources/css/mypageGrid.css" rel="stylesheet">
 <link href="/resources/css/header.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css"
+	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 <body>
 
-		<div id = "header_menu">
-			<div id = "logo" >
-			<a href = "/recipe/get">
-			<img src="/resources/assets/favicon.png"></a>
-			</div>
-
+	<div id="header_menu">
+		<div id="logo">
+			<a href="/recipe/get"> <img src="/resources/assets/favicon.png"></a>
 		</div>
-			<div id = "header_menu_move" >
-				<ul>
-					<li><a href = "/mypage/list">
-					<button type="button" class="btn btn-primary btn-lg">
-					mypage</button></a></li>
-					<li><a href = "/recipe/registerRecipe">
-					<button type="button" class="btn btn-primary btn-lg">
-					register</button></a></li>
-					
-					<% UserVO user = (UserVO) session.getAttribute("member"); %>
-					
-					<%if(user == null){  %>
-					<li><a href = "/member/login.do">
-					<button type="button" class="btn btn-primary btn-lg">
-					Login</button></a></li>
-					<% } else { %>
-					<form action="/member/logout.do" id="logout"  method="post">
-						<li><a href = "/member/login.do">
-						<button class="btn btn-primary btn-lg" id="btnLogout">
-						Logout</button></a></li>
-					</form>
-					<% } %>
-				</ul>
-			</div>
-			
-	<script type="text/javascript">
-	var btnLogout = document.getElementById('btnLogout');
-	if(btnLogout != null){
-		btnLogout.onclick = function(){
-			alert("로그아웃 되었습니다.");
-		}
-	}
-	</script>
 
-		
-		
+	</div>
+	<div id="header_menu_move">
+		<ul>
+			<%
+			UserVO user = (UserVO) session.getAttribute("member");
+			%>
+
+			<%
+			if (user == null) {
+			%>
+			<li><a href="/member/login.do">
+					<button type="button" class="btn btn-primary btn-lg">
+						Login</button>
+			</a></li>
+			<%
+			} else {
+			%>
+			<form action="/member/logout.do" id="logout" method="post">
+				<li><a href="/member/login.do">
+						<button class="btn btn-primary btn-lg" id="btnLogout">
+							Logout</button>
+				</a></li>
+				<li><a href="/mypage/list">
+						<button type="button" class="btn btn-primary btn-lg">
+							mypage</button>
+				</a></li>
+				<li><a href="/recipe/registerRecipe">
+						<button type="button" class="btn btn-primary btn-lg">
+							register</button>
+				</a></li>
+			</form>
+			<%
+			}
+			%>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var btnLogout = document.getElementById('btnLogout');
+		if (btnLogout != null) {
+			btnLogout.onclick = function() {
+				alert("로그아웃 되었습니다.");
+			}
+		}
+	</script>

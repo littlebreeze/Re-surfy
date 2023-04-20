@@ -5,8 +5,7 @@
         <!-- Core theme JS-->
         <script src="/resources/js/scripts.js"></script>
             <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({

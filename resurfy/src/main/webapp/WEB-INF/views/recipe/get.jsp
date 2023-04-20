@@ -112,7 +112,6 @@
 				</div>
 				<!-- end paging -->
 			</div>
-		</div>
 				<form id='actionForm' action="/recipe/get" method='get'>
 					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
@@ -123,6 +122,8 @@
 						<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 					</c:forEach>
 				</form>
+		</div>
+
 
 <script type="text/javascript">
 	$(document).ready(
