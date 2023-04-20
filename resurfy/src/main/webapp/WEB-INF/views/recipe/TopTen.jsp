@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="../includes/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +49,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <body>
+
 	<div class="TopTen_recipe">
 		<h1>댓글 수 Top 10 Resurfy</h1>
 		<table class="table table-hover">
@@ -75,6 +77,5 @@
 				</c:if>
 			</c:forEach>
 		</table>
-	</div>
 </body>
 </html>

@@ -47,7 +47,7 @@
 </div>
 
 <button onclick="location.href='/recipe/TopTen'" class="btn btn-primary btn-sm">
-	댓글 수 Top 10 레시피가 궁금하시다면?
+	Recipe Ranking
 </button>
 
 <script>
