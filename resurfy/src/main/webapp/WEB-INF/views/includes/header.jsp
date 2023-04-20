@@ -3,9 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page import="org.zerock.domain.UserVO"%>
-<%-- <%@ page import = "org.zerock.domain.UserVO" %> --%>
 
-<%-- <% UserVO user = (UserVO) request.getAttribute("user");%> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,6 +76,10 @@
 						<button type="button" class="btn btn-primary btn-lg">
 							register</button>
 				</a></li>
+				<li>
+					<h3><%=user.getId()%>님 환영합니다.
+					</h3>
+				</li>
 			</form>
 			<%
 			}
