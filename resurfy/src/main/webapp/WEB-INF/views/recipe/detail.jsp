@@ -211,7 +211,7 @@
 						<c:if test="${recipe.id eq member.id}">
 						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:50px; background-color: #33afe9; border:none; margin-left:10px">수정하기</button>
 						</c:if>
-						  <div class="space" style="width: 6px; height: auto; display: inline-block;"></div>
+						  <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
 						<button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:50px; background-color: #33afe9; border:none">목록</button>
 						</div>
 						
