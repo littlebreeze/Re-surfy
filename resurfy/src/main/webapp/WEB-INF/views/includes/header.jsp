@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@page import="org.zerock.domain.UserVO"%>
 <%-- <%@ page import = "org.zerock.domain.UserVO" %> --%>
 
 <%-- <% UserVO user = (UserVO) request.getAttribute("user");%> --%>
@@ -53,11 +54,31 @@
 					<li><a href = "/recipe/registerRecipe">
 					<button type="button" class="btn btn-primary btn-lg">
 					register</button></a></li>
+					
+					<% UserVO user = (UserVO) session.getAttribute("member"); %>
+					
+					<%if(user == null){  %>
 					<li><a href = "/member/login.do">
 					<button type="button" class="btn btn-primary btn-lg">
 					Login</button></a></li>
+					<% } else { %>
+					<form action="/member/logout.do" id="logout"  method="post">
+						<li><a href = "/member/login.do">
+						<button class="btn btn-primary btn-lg" id="btnLogout">
+						Logout</button></a></li>
+					</form>
+					<% } %>
 				</ul>
 			</div>
+			
+	<script type="text/javascript">
+	var btnLogout = document.getElementById('btnLogout');
+	if(btnLogout != null){
+		btnLogout.onclick = function(){
+			alert("로그아웃 되었습니다.");
+		}
+	}
+	</script>
 
 		
 		
