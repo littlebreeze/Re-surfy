@@ -554,9 +554,10 @@ function showReplyPage(replyCnt) {
 	replyPageFooter.html(str);
 }
 </script>
-       <script>
+        <script>
 $(document).ready(function(){
 	var bnoValue = '<c:out value="${recipe.bno}"/>';
+	var writer = '<c:out value="${member.id}"/>';
 	var replyUL = $(".chat");
 //함수를 만드는 function() 익명함수이고 function showList(page) 함수명이 showList이고 매개변수는 page	
 	showList(1);
@@ -606,6 +607,7 @@ $(document).ready(function(){
 	
 	$("#addReplyBtn").on("click", function(e) {
 		modal.find("input").val("");
+		modalInputReplyer.closest("div").hide();
 		modalInputReplyDate.closest("div").hide();
 		modal.find("button[id!='modalCloseBtn']").hide();
 		
@@ -616,7 +618,8 @@ $(document).ready(function(){
 	modalRegisterBtn.on("click", function(e) {
 		var reply ={
 				reply: modalInputReply.val(),
-				id: modalInputReplyer.val(),
+				/*id: modalInputReplyer.val(),*/
+				id : writer,
 				bno: bnoValue
 		};
 		replyService.add(reply, function (result){
@@ -631,7 +634,7 @@ $(document).ready(function(){
 	
 	//댓글 조회 클릭 이벤트 처리 
     $(".chat").on("click", "li", function(e){
-      
+    
       var rno = $(this).data("rno");
       
       replyService.get(rno, function(reply){
@@ -641,14 +644,18 @@ $(document).ready(function(){
         modalInputReplyDate.val(replyService.displayTime( reply.replyDate))
         .attr("readonly","readonly");
         modal.data("rno", reply.rno);
-        
         modal.find("button[id !='modalCloseBtn']").hide();
-        modalModBtn.show();
-        modalRemoveBtn.show();
-        
+    	if(reply.id!=writer){
+	   		 modal.find("button[id !='modalRemoveBtn']").hide();
+	   		 modal.find("button[id !='modalModBtn']").hide();
+   		}else{
+	        modalModBtn.show();
+	        modalRemoveBtn.show();
+   		}
         $(".modal").modal("show");
             
       });
+
     });
 	
     modalModBtn.on("click", function(e) {
