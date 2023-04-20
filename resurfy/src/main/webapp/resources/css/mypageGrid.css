@@ -5,6 +5,15 @@
   border: 1px solid white;
 }
 
+#cartVerticalP, #calCount {
+	display: flex;
+	align-items: center;
+}
+
+#cartVertical {
+	margin: auto;
+}
+
 #cartGroup {
   border: 1px solid #E9ECEF;
 }
@@ -14,12 +23,14 @@
 }
 
 #cartGroup:hover .themed-grid-col{
-  background-color: #B6E6F0;
+  background-color: #6BD0FE;
+  color:white;
 }
 
 #ownGroup:hover {
-  background-color: #B6E6F0;
+  background-color: #6BD0FE;
   border: 1px solid white;
+  color:white;
 }
 
 .themed-container {
@@ -36,7 +47,8 @@
 
 .mypageBtn:hover {	
   border: 1px solid white;
-  background-color: #B6E6F0;
+  background-color: #6BD0FE;
+  color:white;
 }
 
 .ui-autocomplete {
