@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?"/>
+<link rel="stylesheet" href="../resources/css/login.css?after1"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -28,9 +28,9 @@
       </div>
         <input type="text" id="j_name" placeholder="UserName" name="userName" />
         <input type="password" id="j_pw" name="password" placeholder="Password" />
-        <input type="text"id="j_nick" name="userNick" placeholder="UserNickname" />
+        <input type="text"id="j_nick" name="nickname" placeholder="UserNickname" />
         <div class="con2">
-	        <input type="tel" id="j_phone" name="userPhone" placeholder="Phone Number" style="width:265px;" />
+	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:265px;" />
 	        <button type="button" style="float:left; width:80px;">인증번호</br>전송</button>
         </div>
         <div class="con3">
@@ -47,7 +47,7 @@
       <h1>LOGIN</h1>
       <form id="sign_form" method="post">
         <input type="text" id="userid" name="id" placeholder="UserId" />
-        <input type="password" id="passwd" name="password" placeholder="Password" />
+        <input type="password" id="passwd" name="password" placeholder="Password" />   
         <input type="submit" id="btnLogin" value="Login" />
       </form>
       <!-- separator -->
@@ -57,6 +57,7 @@
     </div>
   </div>
 </section>
+		
 <script>
 		function toggle() {
 			  section = document.querySelector("section");

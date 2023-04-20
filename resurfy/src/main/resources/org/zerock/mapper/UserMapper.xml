@@ -5,8 +5,8 @@
 <mapper namespace="org.zerock.mapper.UserMapper">
 
 	<insert id="insert">
-	insert into user_tbl (id, password, username, nickname, phone)
-      values(#{id}, #{password}, #{userName}, #{userNick}, #{userPhone})
+	insert into user_tbl (id, password, userName, nickname, phone)
+      values(#{id}, #{password}, #{userName}, #{nickname}, #{phone})
     </insert>
     
     <select id="loginCheck" resultType="org.zerock.domain.UserVO" >
