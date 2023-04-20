@@ -46,8 +46,8 @@
 					                  style="width: 180px; border-radius: 10px;">
 					              </div>
 					              <div class="flex-grow-1 ms-3">
-					                <h5 class="mb-1">Re-surfer</h5>
-					                <p class="mb-2 pb-1" style="color: #2b2a2a;">아이디</p>
+					                <h5 class="mb-1">${member.nickname }</h5>
+					                <p class="mb-2 pb-1" style="color: #2b2a2a;">${member.id }</p>
 					                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
 					                  style="background-color: #efefef;">
 					                  <div>
@@ -64,7 +64,7 @@
 					                  </div>
 					                </div>
 					                <div class="d-flex pt-1">
-					                  <p class="mb-2 pb-1" style="color: #2b2a2a;">전화번호</p>
+					                  <p class="mb-2 pb-1" style="color: #2b2a2a;">${member.phone }</p>
 					                </div>
 					              </div>
 					            </div>
@@ -168,6 +168,13 @@
 					actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 					actionForm.submit();
 				});
+				
+				if(('<c:out value="${member.id}"/>')=='') {
+       			    console.log("로그인 안됨");
+       			 	actionForm.find("input").remove();
+       			    actionForm.attr("action","/member/login.do");
+       				actionForm.submit();
+       		  }
 
 			});
 </script>

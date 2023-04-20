@@ -197,6 +197,13 @@
 				   searchForm.submit();
 			   }
 		});	//end click
+		
+		if(('<c:out value="${member.id}"/>')=='') {
+		    console.log("로그인 안됨");
+		    searchForm.find("input[name='type']").remove();
+		    searchForm.attr("action","/member/login.do");
+		    searchForm.submit();
+	  }
 	});
 </script>
 <script type="text/javascript">

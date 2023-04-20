@@ -296,6 +296,13 @@
         <!-- 없는 재료 -->
         <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        	<c:if test="${empty shopNotIn}">
+				<div class="col" style="margin-bottom:30px;">
+					<div class="p-7 text-center">
+					    <h5 class="mb-3">레시피에 필요한 재료를 모두 가지고 있습니다!</h5>
+					  </div>
+				</div>
+			</c:if>
         	<c:forEach items="${shopNotIn}" var="sni">
             <div class="col mb-5">
                 <div class="card h-100">
@@ -321,6 +328,13 @@
         <!-- 있는 재료 -->
         <h2 class="fw-bolder mb-4 h4">있는 재료</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        	<c:if test="${empty shopIn}">
+				<div class="col" style="margin-bottom:30px;">
+					<div class="p-7 text-center">
+					    <h5 class="mb-3">가지고 있는 재료를 추가해보세요!</h5>
+					  </div>
+				</div>
+			</c:if>
         	<c:forEach items="${shopIn}" var="si">
             <div class="col mb-5">
                 <div class="card h-100">

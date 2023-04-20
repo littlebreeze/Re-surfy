@@ -44,6 +44,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 			}
 
 			String apiURL = "https://openapi.naver.com/v1/search/shop?query=" + text; // json 결과
+			apiURL+="&display=1&sort=sim";
 			// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
 			// // xml 결과
 
@@ -139,8 +140,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 
 		/*---------------body------------------------------*/
 		JSONArray blogs = (JSONArray) jsonObject.get("items");
-		//for (int i = 0; i < blogs.size(); i++) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < blogs.size(); i++) {
 
 			JSONObject blog = (JSONObject) blogs.get(i);			
 			
