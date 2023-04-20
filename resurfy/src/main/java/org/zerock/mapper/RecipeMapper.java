@@ -34,8 +34,8 @@ public interface RecipeMapper {
 	public List<String> readIngreName(Long bno); 
 	public List<String> readIngreNameHave(Long bno);
 
-	public List<RecipeVO> getUserList(Criteria cri);
-	public int getUserTotalCount(Criteria cri);
+	public List<RecipeVO> getUserList(@Param(value = "cri") Criteria cri, @Param(value = "userID") String userID);
+	public int getUserTotalCount(@Param(value = "cri") Criteria cri, @Param(value = "userID") String userID);
 	
 	public List<RecipeVO> getRecipeOrderByReplycnt();
 	

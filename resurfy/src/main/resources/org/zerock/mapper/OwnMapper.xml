@@ -5,7 +5,7 @@
 
 	<select id="getList" resultType="org.zerock.domain.OwnVO">
 	<![CDATA[
-		select * from OWN_TBL where ID = 'user1'
+		select * from OWN_TBL where ID = #{userID}
 	]]>
 	</select>
 

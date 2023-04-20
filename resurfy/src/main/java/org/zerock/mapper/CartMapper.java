@@ -7,7 +7,7 @@ import org.zerock.domain.Criteria;
 
 public interface CartMapper {
 
-	public List<CartVO> getList();
+	public List<CartVO> getList(String userID);
 	
 	public int insert(CartVO cart);
 	

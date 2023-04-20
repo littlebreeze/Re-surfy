@@ -36,8 +36,8 @@ public class OwnServiceImpl implements OwnService {
 	}
 
 	@Override
-	public List<OwnVO> getList() {
-		return mapper.getList();
+	public List<OwnVO> getList(String userID){
+		return mapper.getList(userID);
 	}
 	
 	@Override

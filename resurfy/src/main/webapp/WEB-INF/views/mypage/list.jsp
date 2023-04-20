@@ -21,7 +21,7 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/list">사용자 정보</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/list">작성 글 모아보기</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/own">가진 재료</a>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="container-fluid">
 					<div class="col-lg-12">
 						<button class="btn mypageBtn" id="sidebarToggle">></button>
-						<h2 class="page-header">사용자 정보</h2>
+						<h2 class="page-header">작성 글 모아보기</h2>
 					<br></div>
 					<div class="container">
 					    <div class="row d-flex justify-content-center align-items-center h-100">

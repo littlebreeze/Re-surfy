@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
+import org.zerock.domain.UserVO;
 import org.zerock.service.IngredientService;
 import org.zerock.service.OwnService;
 import org.zerock.service.RecipeService;
-import org.zerock.service.ReplyService;
 import org.zerock.service.ShoppingService;
 import org.zerock.service.StepService;
 
@@ -49,12 +52,19 @@ public class RecipeController {
 	} 
 		
 	@GetMapping("/get")
-	public void list(@ModelAttribute("cri") Criteria cri , Model model) {
+	public void list(HttpServletRequest request, @ModelAttribute("cri") Criteria cri , Model model) {
 		log.info("get" + cri);
 		model.addAttribute("get",rService.getList(cri));
 		log.info("list");
 		model.addAttribute("listRecipe",rService.getAllList());
-		model.addAttribute("list",oService.getList());
+		
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+		if(sessionUser!=null) {
+			String userID = sessionUser.getId();		
+			model.addAttribute("list",oService.getList(userID));
+		}
+		
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker",new PageDTO(cri, total));

@@ -14,8 +14,8 @@ public interface RecipeService {
 	public List<RecipeVO> getAllList();
 	public int getTotal(Criteria cri);
 
-	public List<RecipeVO> getUserList(Criteria cri);
-	public int getUserTotal(Criteria cri);
+	public List<RecipeVO> getUserList(Criteria cri, String userID);
+	public int getUserTotal(Criteria cri, String userID);
 	
 	public List<RecipeVO> sortByReplyCnt();
 }

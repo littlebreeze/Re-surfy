@@ -8,7 +8,7 @@ import org.zerock.domain.OwnVO;
 
 public interface OwnMapper {
 
-	public List<OwnVO> getList();
+	public List<OwnVO> getList(String userID);
 	
 	public int insert(OwnVO cart);
 	
