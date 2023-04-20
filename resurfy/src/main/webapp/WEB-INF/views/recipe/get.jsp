@@ -65,7 +65,7 @@
 						<div class="card-head">
 							<c:out value="${recipe.recipeName}" />
 							<div>
-								<b>[ <c:out value="${recipe.visitcnt }" /> ]</b>
+								<b>조회수 : [ <c:out value="${recipe.visitcnt }" /> ]</b>
 							</div>							
 						</div>
 						<div class="card-main">
