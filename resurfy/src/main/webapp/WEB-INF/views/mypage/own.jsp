@@ -22,7 +22,7 @@
             <div class="border-end bg-white" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light">마이 페이지</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">사용자 정보</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/list">작성 글 모아보기</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="/mypage/cart">장바구니</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="font-weight:bold; font-size:1.2rem;" href="/mypage/own">가진 재료</a>
                 </div>

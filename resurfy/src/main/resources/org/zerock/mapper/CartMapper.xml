@@ -5,7 +5,7 @@
 
 	<select id="getList" resultType="org.zerock.domain.CartVO">
 	<![CDATA[
-		select * from CART_TBL where ID = 'user1'
+		select * from CART_TBL where ID = #{userID}
 	]]>
 	</select>
 

@@ -48,13 +48,13 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartVO> getList(Criteria cri) {
-		return mapper.getList();
+	public List<CartVO> getList(String userID) {
+		return mapper.getList(userID);
 	}
 	
 	@Override
-	public List<Long> getpIDList() {
-		return mapper.getpIdList("user1");
+	public List<Long> getpIDList(String userID) {
+		return mapper.getpIdList(userID);
 	}
 	
 	@Override

@@ -3,6 +3,9 @@ package org.zerock.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.CartVO;
 import org.zerock.domain.Criteria;
-import org.zerock.domain.PageDTO;
+import org.zerock.domain.UserVO;
 import org.zerock.service.CartService;
 
 import lombok.AllArgsConstructor;
@@ -27,10 +30,16 @@ public class CartController {
 	private CartService service;
 	
 	@GetMapping("/cart")
-	public void cartList(Criteria cri, Model model) {
+	public void cartList(HttpServletRequest request, Criteria cri, Model model) {
 		log.info("enter Cart page");
 		
-		model.addAttribute("list", service.getList(cri));
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+		String userID = "";
+		if(sessionUser!=null)
+			userID=sessionUser.getId();
+
+		model.addAttribute("list", service.getList(userID));
 	}
 	
 	@PostMapping("/deleteCart")
@@ -43,18 +52,21 @@ public class CartController {
 	}
 	
 	@PostMapping("/addCart")
-	public String register(@RequestParam(value = "pArr[]") List<Long> pArr,
+	public String register(HttpServletRequest request, @RequestParam(value = "pArr[]") List<Long> pArr,
 			@RequestParam(value = "tArr[]") List<String> tArr, @RequestParam(value = "igArr[]") List<String> igArr,
 			@RequestParam(value = "imArr[]") List<String> imArr,@RequestParam(value = "pIdArr[]") List<Long> pIdArr, RedirectAttributes rttr) {
 
-		List<Long> pidList = service.getpIDList();
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+
+		List<Long> pidList = service.getpIDList(sessionUser.getId());
 		
 		List<CartVO> cart = new ArrayList<CartVO>();
 		List<CartVO> cartUpdate = new ArrayList<CartVO>();
 		
 		for (int i = 0; i < pArr.size(); i++) {
 			CartVO c = new CartVO();
-			c.setId("user1");
+			c.setId(sessionUser.getId());
 			c.setPrice(pArr.get(i));
 			String str = tArr.get(i).length() > 30 ? tArr.get(i).substring(0, 30) : tArr.get(i);
 			c.setCount(1L);

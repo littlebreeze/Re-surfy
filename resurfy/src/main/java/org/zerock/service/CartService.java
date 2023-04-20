@@ -13,9 +13,9 @@ public interface CartService {
 
 	public boolean remove(List<Long> cno);
 
-	public List<CartVO> getList(Criteria cri);
+	public List<CartVO> getList(String userID);
 	
-	public List<Long> getpIDList();
+	public List<Long> getpIDList(String string);
 	
 	public boolean modifyCount(CartVO cart);
 }

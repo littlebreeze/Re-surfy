@@ -66,13 +66,13 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public List<RecipeVO> getUserList(Criteria cri) {
-		return mapper.getUserList(cri);
+	public List<RecipeVO> getUserList(Criteria cri, String userID) {
+		return mapper.getUserList(cri, userID);
 	}
 
 	@Override
-	public int getUserTotal(Criteria cri) {
-		return mapper.getUserTotalCount(cri);
+	public int getUserTotal(Criteria cri, String userID) {
+		return mapper.getUserTotalCount(cri, userID);
 	}
 
 	@Override
