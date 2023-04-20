@@ -80,4 +80,9 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getRecipeOrderByReplycnt();
 	}
 
+	@Override
+	public List<RecipeVO> sortByVisitCnt() {
+		return mapper.getRecipeOrderByVisitcnt();
+	}
+
 }

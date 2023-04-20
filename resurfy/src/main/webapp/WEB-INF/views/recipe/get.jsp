@@ -56,6 +56,8 @@
 			</div>
 		</div>
 		</c:if>
+<!-- 		<button id="sort-by-reply">Sort By Replycnt</button>
+		<button id="sort-by-visit">Sort By Visitcnt</button> -->
 			<div class="card-container">
 				<c:forEach items="${get}" var="recipe">
 					<div class="card">
@@ -143,26 +145,26 @@
 							$("#myModal").modal("show");
 			}
 			
-			$("#regBtn").on("click", function() {
-				self.location = "/recipe/registerRecipe";
-			});
 			
 			var actionForm = $("#actionForm");
 			
-			//게시글 제목 눌렀을 때 이벤트 처리
-			$(".move").on("click", function(e){
-				e.preventDefault();
-				actionForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+"'>");
-				actionForm.attr("action","/recipe/detail");
-				actionForm.submit();
+	/* 		$("#sort-by-reply").on("click", function(e){
+				 $.get("/get", function(data) {
+				      location.reload(); 
+				    });
 				});
+			$("#sort-by-visit").on("click", function(e){
+				 $.get("/get", function(data) {
+				      location.reload(); 
+				    });
+				}); */
 			
-			$(".paginate_button a").on("click",	function(e) {
+			 $(".paginate_button a").on("click",	function(e) {
 				e.preventDefault();
 				console.log('click');
 				actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 				actionForm.submit();
-			});
+			}); 
 			
 						var searchForm = $("#searchForm");
 						$("#searchForm button").on(

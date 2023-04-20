@@ -18,4 +18,5 @@ public interface RecipeService {
 	public int getUserTotal(Criteria cri, String userID);
 	
 	public List<RecipeVO> sortByReplyCnt();
+	public List<RecipeVO> sortByVisitCnt();
 }

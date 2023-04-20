@@ -199,24 +199,23 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	
 
 <select id="getRecipeOrderByReplycnt" resultType="org.zerock.domain.RecipeVO">
-  select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt
+  select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt,r.foodtype,r.difficulty,r.person,r.time,r.recipedescription
   from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno
-  group by r.bno, r.image, r.recipename, r.replycnt
+  group by r.bno, r.image, r.recipename, r.replycnt, r.recipedescription,r.foodtype,r.difficulty,r.person,r.time
   order by r.replycnt desc, count(re.rno) desc
 </select>	
 
-
-	
-<!-- 	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.RecipeVO">
-		select bno ,count(replycnt) from recipe_tbl
-		 group by bno
-		 order by replycnt DESC;
-	</select>
-  -->
   
   <update id = "updateVisitCnt">
 	update recipe_tbl set visitcnt = visitcnt + #{amount} where bno = #{bno}
   </update>
+  
+  
+  <select id = "getRecipeOrderByVisitcnt" resultType = "org.zerock.domain.RecipeVO">
+  select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt
+  from recipe_tbl 
+  order by visitcnt desc
+  </select>
 </mapper>
 
 

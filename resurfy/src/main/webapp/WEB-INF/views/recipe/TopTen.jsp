@@ -58,6 +58,7 @@
 					<th scope="col">순위</th>
 					<th scope="col">레시피</th>
 					<th scope="col">레시피 이름</th>
+					<th scope="col">레시피 설명</th>
 					<th scope="col">레시피 댓글 수</th>
 				</tr>
 			</thead>
@@ -71,6 +72,8 @@
 									href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 										<c:out value="${bestRecipe.recipeName}" />
 								</a></b></td>
+								
+							<td><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.replycnt}" /></td>
 						</tr>
 					</tbody>

@@ -57,6 +57,8 @@ public class RecipeController {
 		model.addAttribute("get",rService.getList(cri));
 		log.info("list");
 		model.addAttribute("listRecipe",rService.getAllList());
+		model.addAttribute("sortByReply",rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
 		
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
@@ -89,6 +91,11 @@ public class RecipeController {
 	@GetMapping("/TopTen")
 	public void ListSort(Model model) {
 		model.addAttribute("sortByReply",rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
+	}
+	@GetMapping("/get/visitcnt")
+	public void sortByVisit(Model model) {
+	    model.addAttribute("listRecipe", rService.sortByVisitCnt());
 	}
 		
 	
