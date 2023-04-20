@@ -19,5 +19,6 @@ public class RecipeVO {
 	private String person;
 	private String time;
 	private Long replycnt;
+	private Long visitcnt;
 
 }

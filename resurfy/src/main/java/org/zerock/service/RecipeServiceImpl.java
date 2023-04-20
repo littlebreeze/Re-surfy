@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.RecipeVO;
 
@@ -24,7 +25,7 @@ public class RecipeServiceImpl implements RecipeService {
 		mapper.insertRecipe(board);
 
 	}
-
+	
 	@Override
 	public List<RecipeVO> getList(Criteria cri) {
 		log.info("get List with Criteria" + cri);
@@ -37,9 +38,11 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getRecipeList();
 	}
 	
+	@Transactional
 	@Override
 	public RecipeVO get(Long bno) {
 		log.info("get......." + bno);
+		mapper.updateVisitCnt(bno, 1);
 		return mapper.readRecipe(bno);
 	}
 	

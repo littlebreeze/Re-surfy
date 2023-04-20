@@ -46,8 +46,6 @@
 <body>
 <div class = "TopTen_recipe">
 <h1>댓글 수 Top 10 Resurfy</h1>
-<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
-<c:if test="${status.index < 10}">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -57,20 +55,22 @@
       <th scope="col">레시피 댓글 수</th>
     </tr>
   </thead>
+ <c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
+  <c:if test="${status.index < 10}">
   <tbody>
     <tr class="table-active">
       <th scope="row">TOP ${status.index + 1}</th>
-      <td><b><img src="${bestRecipe.image}" /></b></td>
+      <td><img src="${bestRecipe.image}" /></td>
       <td>
-      <a href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
-      <c:out value="${bestRecipe.recipeName}" /></a>
+      <b><a href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
+      <c:out value="${bestRecipe.recipeName}" /></a></b>
       </td>
       <td><c:out value="${bestRecipe.replycnt}" /></td>
     </tr>
    </tbody>
-   </c:if>
+  </c:if>
+  </c:forEach>
 </table>
-</c:forEach>
 </div>
 </body>
 </html>

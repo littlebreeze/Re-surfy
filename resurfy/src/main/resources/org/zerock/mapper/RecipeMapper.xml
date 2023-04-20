@@ -145,11 +145,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	resultType = "org.zerock.domain.RecipeVO">
 	<![CDATA[
   	select 
-    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt
+    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt
   		from 
       (
       select /*+INDEX_DESC(recipe_tbl pk_recipe) */
-        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt
+        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt
       from 
         recipe_tbl
       where 
@@ -207,12 +207,16 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 
 
 	
-	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.RecipeVO">
+<!-- 	<select id = "getTotalReplyCnt" resultType = "org.zerock.domain.RecipeVO">
 		select bno ,count(replycnt) from recipe_tbl
 		 group by bno
 		 order by replycnt DESC;
 	</select>
- 
+  -->
+  
+  <update id = "updateVisitCnt">
+	update recipe_tbl set visitcnt = visitcnt + #{amount} where bno = #{bno}
+  </update>
 </mapper>
 
 
