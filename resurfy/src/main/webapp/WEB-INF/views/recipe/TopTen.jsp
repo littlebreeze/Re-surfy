@@ -64,7 +64,7 @@
 			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
 				<c:if test="${status.index < 10}">
 					<tbody>
-						<tr class="table-active">
+						<tr class="table-primary">
 							<th scope="row">TOP ${status.index + 1}</th>
 							<td><img src="${bestRecipe.image}" /></td>
 							<td><b><a
