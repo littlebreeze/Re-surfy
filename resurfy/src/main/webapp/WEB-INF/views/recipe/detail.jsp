@@ -247,8 +247,10 @@
 						<br><br><br><br><br>
 						
 						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">댓글
+						<c:if test="${not empty member.id}">
 						<button id='addReplyBtn'
 											class='btn btn-primary btn-xs pull-right'>등록</button>
+						</c:if>	
 						</div><br>
                         <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
 						<div class="row">
