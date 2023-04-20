@@ -20,9 +20,14 @@ pageEncoding="UTF-8"%>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/resources/css/registerRecipeStyle.css" rel="stylesheet" />
     <link href="/resources/css/registerRecipeGrid.css" rel="stylesheet"/>
+	
+	<!-- Font-->
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+
+
   </head>
   <body>
-    <form action="/recipe/registerRecipe" method="post" id="registerRecipe">
+    <form action="/recipe/registerRecipe" id="registerRecipe" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
       <div class="register_recipe_wrapper">
         <div class="register_wrapper">
           <div class="register_title">레시피 등록</div>
@@ -32,7 +37,7 @@ pageEncoding="UTF-8"%>
               <input type="hidden" name="new_main_image" id="new_main_image" value="">
               <input type="hidden" name="del_main_photo" id="del_main_image" value="">
               <div style="position:absolute;left:-3000px">
-                <input type="file" name="mainImage" id="mainImage" file_gubun="main" accept="jpeg,png,gif" style="display:;width:250px;height:250px;font-size:0px;" text="">
+                <input type="file" name="image" id="mainImage" file_gubun="main" accept="jpeg,png,gif" style="display:;width:250px;height:250px;font-size:0px;" text="">
               </div>
               <div id="divMainImageContainer">
                 <img id="mainImageHolder" onclick="browseMainFile()" src="../resources/assets/uploadimage.png" style="width:100%; heigh:100%; margin-top:30px; resize:none; cursor:pointer;">
@@ -50,40 +55,40 @@ pageEncoding="UTF-8"%>
             <div class="wrapper_line">
               <p class="wrapper_title1">카테고리</p>
               <select class="form-select" id="food_type" name="foodType" control-id="ControlID-11">
-                <option>유형별</option>
-                <option>한식</option>
-                <option>중국</option>
-                <option>일본</option>
-                <option>서양</option>
-                <option>이탈리아</option>
-                <option>동남아시아</option>
-                <option>퓨전</option>
+                <option value="">유형별</option>
+                <option value="3020001|한식">한식</option>
+                <option value="3020004|중국">중국</option>
+                <option value="3020003|일본">일본</option>
+                <option value="3020002|서양">서양</option>
+                <option value="3020006|이탈리아">이탈리아</option>
+                <option value="3020005|동남아시아">동남아시아</option>
+                <option value="3020009|퓨전">퓨전</option>
               </select>
               <select class="form-select" id="person" name="person" control-id="ControlID-11">
                 <option value="" >인원</option>
-                <option value="1">1인분</option>
-                <option value="2">2인분</option>
-                <option value="3">3인분</option>
-                <option value="4">4인분</option>
-                <option value="5">5인분이상</option>
+                <option value="1인분">1인분</option>
+                <option value="2인분">2인분</option>
+                <option value="3인분">3인분</option>
+                <option value="4인분">4인분</option>
+                <option value="5인분이상">5인분이상</option>
               </select>
               <span class="pad_l_30"> </span>
               <select class="form-select" id="time" name="time" control-id="ControlID-11">
                 <option value="" >시간</option>
-                <option value="5">5분이내</option>
-                <option value="10">10분이내</option>
-                <option value="15">15분이내</option>
-                <option value="20">20분이내</option>
-                <option value="30">30분이내</option>
-                <option value="60">1시간이내</option>
-                <option value="999">1시간이상</option>
+                <option value="5분이내">5분이내</option>
+                <option value="10분이내">10분이내</option>
+                <option value="15분이내">15분이내</option>
+                <option value="20분이내">20분이내</option>
+                <option value="30분이내">30분이내</option>
+                <option value="1시간이내">1시간이내</option>
+                <option value="1시간이상">1시간이상</option>
               </select>
               <span class="pad_l_30"> </span>
               <select class="form-select" id="difficulty" name="difficulty" control-id="ControlID-11">
                 <option value="" >난이도</option>
-                <option value="31">초보환영</option>
-                <option value="32">보통</option>
-                <option value="33">어려움</option>
+                <option value="초보환영">초보환영</option>
+                <option value="보통">보통</option>
+                <option value="어려움">어려움</option>
               </select>
             </div>
           </div>
@@ -94,16 +99,16 @@ pageEncoding="UTF-8"%>
               <div class="wrapper_line">
                 <p class="wrapper_title1">재료</p>
                 <ul id="ingredientAra_1" class="ingredientGroup">
-                  <select class="form-select" id="ingredient_type" control-id="ControlID-11">
+                  <select class="form-select" id="ingredient_type" name="ingreType" control-id="ControlID-11">
                     <option value="">재료별</option>
-                    <option value="23">주재료</option>
-                    <option value="28">부재료</option>
-                    <option value="24">양념</option>
+                    <option value="3060001|주재료">주재료</option>
+                    <option value="3060002|부재료">부재료</option>
+                    <option value="3060003|양념">양념</option>
                   </select>		
                   <li id="liIngredient_1_1">
-                    <input type="text" name="addIngredient_name_1[]" id="recipIngredient_name_1_1"
+                    <input type="text" name="ingreName_1[]" id="recipIngredient_name_1_1"
                     class="addIngredient_name" style="width:285px; border-radius: 0.375rem" placeholder="예) 돼지고기" control-id="ControlID-19">
-                    <input type="text" name="addIngredient_amount_1[]" id="recipIngredient_amount_1_1"
+                    <input type="text" name="ingreMeasure_1[]" id="recipIngredient_amount_1_1"
                     class="addIngredient_amount" style="width:210px; border-radius: 0.375rem" placeholder="예) 300g" control-id="ControlID-20">
                     <button type="button" class="btn btn-danger deleteIngredientBtn">삭제</button>
                   </li>
@@ -123,9 +128,9 @@ pageEncoding="UTF-8"%>
             <p class="wrapper_title2">요리순서</p>
             <div id="stepArea" class="stepArea">
               <div id="stepItem_STEP" class="step">
-                <p id="stepNum_STEP" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #33afe9; margin-left: 40px;">Step 1</p>
+                <p id="stepNum_STEP" name="stepNo" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #33afe9; margin-left: 40px;">Step 1</p>
                 <div id="stepDescription_STEP" style="display:inline-block">
-                  <textarea name="stepDescription[]" id="stepDescription_STEP" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:100px; width:410px; resize:none;" control-id="ControlID-29"></textarea>
+                  <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:100px; width:410px; resize:none;" control-id="ControlID-29"></textarea>
                 </div>
                 <div id="stepUpload_STEP" style="display:inline-block">
                   <input type="hidden" name="step_no[]" id="step_no_STEP" value="" control-id="ControlID-30">
@@ -133,7 +138,7 @@ pageEncoding="UTF-8"%>
                   <input type="hidden" name="new_step_image[]" id="new_step_image_STEP" value="">
                   <input type="hidden" name="del_step_image[]" id="del_step_image_STEP" value="">
                   <div style="position:absolute;left:-3000px">
-                    <input type="file" name="q_step_file_1" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
+                    <input type="file" name="stepImage" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
                   </div>
 				  <div id="stepImageBox_STEP" is_over="0" onclick="browseStepFile(STEP)" style="cursor:pointer">
 					<img id="stepImageHolder_STEP" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px" class="bi bi-file-image" viewBox="0 0 16 16"">
@@ -141,7 +146,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="tipItem_1" class="tip">
                   <p class="tip_title">팁</p>
-                  <textarea name="tip_text[]" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea>          
+                  <textarea name="tip" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea>          
 				  <button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>    
               </div>
@@ -160,7 +165,7 @@ pageEncoding="UTF-8"%>
                   <input type="hidden" name="new_step_image[]" id="new_step_image_STEP" value="">
                   <input type="hidden" name="del_step_image[]" id="del_step_image_STEP" value="">
                   <div style="position:absolute;left:-3000px">
-                    <input type="file" name="q_step_file_1" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
+                    <input type="file" name="stepImage" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
                   </div>
 				  <div id="stepImageBox_STEP" is_over="0" onclick="browseStepFile(STEP)" style="cursor:pointer">
 					<img id="stepImageHolder_STEP" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px" class="bi bi-file-image" viewBox="0 0 16 16"">
@@ -168,7 +173,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div id="tipItem_STEP" class="tip">
                 <p class="tip_title">팁</p>
-                <textarea name="tip_text[]" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea> 
+                <textarea name="tip" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea> 
 					<button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>
               </div>
@@ -182,7 +187,7 @@ pageEncoding="UTF-8"%>
         </div><!--레시피 등록 finish box-->
 
         <div class="regi_btm">
-          <button type="button" onclick="save()" class="save" id="save" control-id="ControlID-44">저장</button>
+          <button type="submit" onclick="save()" class="save" id="save" control-id="ControlID-44">저장</button>
           <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-danger" id="cancel" control-id="ControlID-49" >취소</button>
         </div><!--save and cancel-->        
       </div><!--container finish-->
@@ -195,7 +200,6 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="../resources/js/registerRecipeScripts.js">
     
     </script>
-    
   </body>
   <%@include file="../includes/footer.jsp"%>
 
