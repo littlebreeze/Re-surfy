@@ -115,7 +115,7 @@ pageEncoding="UTF-8"%>
                     class="addIngredient_name" style="width:285px; border-radius: 0.375rem" placeholder="예) 돼지고기" control-id="ControlID-19">
                     <input type="text" name="ingreMeasure_1[]" id="ingreMeasure_1_1"
                     class="addIngredient_amount" style="width:210px; border-radius: 0.375rem" placeholder="예) 300g" control-id="ControlID-20">
-                    <button type="button" class="btn btn-danger deleteIngredientBtn">삭제</button>
+                    <button type="button" class="btn btn-warning deleteIngredientBtn">삭제</button>
                   </li>
                 </ul>
               </div>
@@ -152,7 +152,7 @@ pageEncoding="UTF-8"%>
                 <div id="tipItem_1" class="tip">
                   <p class="tip_title" style="color:black;">팁</p>
                   <textarea name="tip" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea>          
-				  <button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
+				  <button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>    
               </div>
             </div> <!--step regi box-->
@@ -179,7 +179,7 @@ pageEncoding="UTF-8"%>
                 <div id="tipItem_STEP" class="tip">
                 <p class="tip_title"  style="color:black;">팁</p>
                 <textarea name="tip" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea> 
-					<button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
+					<button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>
               </div>
             </div><!--step template finish-->
@@ -192,8 +192,8 @@ pageEncoding="UTF-8"%>
         </div><!--레시피 등록 finish box-->
 
         <div class="regi_btm">
-          <button type="submit" onclick="save()" class="save" id="save" control-id="ControlID-44">저장</button>
-          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-danger" id="cancel" control-id="ControlID-49" >취소</button>
+          <button type="submit" onclick="save()" class="btn-lg btn-primary" id="save" control-id="ControlID-44">저장</button>
+          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-warning" id="cancel" control-id="ControlID-49" >취소</button>
         </div><!--save and cancel-->        
       </div><!--container finish-->
     </form>

@@ -87,7 +87,7 @@
     
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
-    deleteButton.className = 'btn btn-danger deleteIngredientBtn';
+    deleteButton.className = 'btn btn-warning deleteIngredientBtn';
     deleteButton.textContent = '삭제';
     deleteButton.onclick = function () {
     const remainingIngredientGroups = document.getElementsByClassName('ingredientGroup');
@@ -126,7 +126,7 @@ function addStep() {
     newFileInput.setAttribute('id', `q_step_file_${stepCounter}`);
     newFileInput.setAttribute('name', `q_step_file_${stepCounter}`);
     setFileInputEventListener(stepCounter);
-
+	
     // Add event listener to the new file input
     const fileInput = document.getElementById(`q_step_file_${stepCounter}`);
     fileInput.addEventListener('change', function (event) {
