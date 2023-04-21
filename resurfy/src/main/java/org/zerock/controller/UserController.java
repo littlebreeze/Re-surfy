@@ -106,7 +106,7 @@ public class UserController {
 		}
 		
 	}
-    
+    // 문자인증
     @RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
     @ResponseBody
     public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기

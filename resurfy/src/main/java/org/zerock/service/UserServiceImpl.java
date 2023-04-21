@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
 		return mapper.idCheck(memberId);
 	}
 
+	// 문자인증
 	@Override
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
 		String api_key = "NCSU4KF20BKCLMGU";
@@ -87,7 +88,7 @@ public class UserServiceImpl implements UserService {
 	      } catch (CoolsmsException e) {
 	        System.out.println(e.getMessage());
 	        System.out.println(e.getCode());
-	      }//push
+	      }
 		
 	}
 

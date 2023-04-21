@@ -224,7 +224,7 @@
 		        }
 		    });
 		});
-		
+		// 문자인증
 		$("#phoneChk2").click(function(){
 			var userPhone=$("#j_phone").val();
 			var Chknum=$("#j_num").val();
