@@ -100,15 +100,6 @@ public class RecipeController {
 		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
 	}
 	
-	@GetMapping("/get/visitcnt")
-	public void sortByVisit(Model model) {
-	    model.addAttribute("listRecipe", rService.sortByVisitCnt());
-	}
-	
-	@GetMapping("/get/replycnt")
-	public void sortByReply(Model model) {
-	    model.addAttribute("listRecipe", rService.sortByReplyCnt());
-	}
 		
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {

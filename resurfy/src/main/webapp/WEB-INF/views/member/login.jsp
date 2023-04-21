@@ -18,7 +18,7 @@
 <section>
   <div class="left">
   <a href = "/recipe/get">
-    <img src="/resources/assets/logo.jpg" height="600px" alt="" />
+    <img src="/resources/assets/logo.png" height="600px" alt="" />
     </a>
   </div>
   <div class="right">

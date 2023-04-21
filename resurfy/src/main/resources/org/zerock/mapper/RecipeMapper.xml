@@ -197,9 +197,9 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 	
 
 <select id="getRecipeOrderByReplycnt" resultType="org.zerock.domain.RecipeVO">
-  select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt,r.foodtype,r.difficulty,r.person,r.time,r.recipedescription
+  select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt,r.foodtype,r.difficulty,r.person,r.time,r.recipedescription,r.visitcnt
   from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno
-  group by r.bno, r.image, r.recipename, r.replycnt, r.recipedescription,r.foodtype,r.difficulty,r.person,r.time
+  group by r.bno, r.image, r.recipename, r.replycnt, r.recipedescription,r.foodtype,r.difficulty,r.person,r.time,r.visitcnt
   order by r.replycnt desc, count(re.rno) desc
 </select>	
 

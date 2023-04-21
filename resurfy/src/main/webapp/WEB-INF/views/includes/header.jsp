@@ -44,7 +44,8 @@
 
 	<div id="header_menu">
 		<div id="logo">
-			<a href="/recipe/get"> <img src="/resources/assets/favicon.png"></a>
+			<a href="/recipe/get"> <img src="/resources/assets/bigredlogo.png"
+			></a>
 		</div>
 	</div>
 
@@ -66,7 +67,7 @@
 				<li>비회원 입니다.</li>
 				
 				<%
-				} else {
+					} else {
 				%>
 				
 				<form action="/member/logout.do" id="logout" method="post">
@@ -86,7 +87,9 @@
 								<font face='NanumGothic'>레시피등록</button>
 					</a></li>
 					<li> | </li>
-					<li id="welcome-text"><%=user.getId()%>님 환영합니다.
+					<li id="welcome-text">
+					<font color='#000000'>
+					<%=user.getId()%>님 환영합니다.
 					</li>
 				
 				</form>
