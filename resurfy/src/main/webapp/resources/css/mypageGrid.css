@@ -1,7 +1,7 @@
 .themed-grid-col {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: #E9ECEF;
+  background-color: #E9F0EA;
   border: 1px solid white;
 }
 
@@ -15,7 +15,7 @@
 }
 
 #cartGroup {
-  border: 1px solid #E9ECEF;
+  border: 1px solid #E9F0EA;
 }
 
 #cartGroup .themed-grid-col {
@@ -23,12 +23,12 @@
 }
 
 #cartGroup:hover .themed-grid-col{
-  background-color: #6BD0FE;
+  background-color: #e95420;
   color:white;
 }
 
 #ownGroup:hover {
-  background-color: #6BD0FE;
+  background-color: #e95420;
   border: 1px solid white;
   color:white;
 }
@@ -41,13 +41,13 @@
 }
 
 .mypageBtn{	
-  border: 1px solid #E9ECEF;
+  border: 1px solid #E9F0EA;
   border-radius: .5rem;
 }
 
 .mypageBtn:hover {	
   border: 1px solid white;
-  background-color: #6BD0FE;
+  background-color: #e95420;
   color:white;
 }
 
@@ -109,4 +109,20 @@
 .container-fluid{
 	margin-left:30px;
 	margin-top:30px;
+}
+
+.form-check-input:focus {
+	border-color: #38b44a;
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-check-input:checked {
+	background-color: #38b44a;
+	border-color: #38b44a;
+}
+
+.form-check-input:checked[type=checkbox] {
+	background-image:
+		url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
 }
