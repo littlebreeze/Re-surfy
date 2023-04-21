@@ -133,7 +133,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 		<if test="type == 'O'.toString()">
 			<trim prefix="bno in (" suffix=") AND " prefixOverrides="OR">
 				<foreach item='chk' collection="chk" separator="INTERSECT">
-					select bno from INGREDIENT_TBL where INGRENAME=#{chk}
+					select bno from INGREDIENT_TBL where INGRENAME like '%'||#{chk}
 				</foreach>
 			</trim>
 		</if>

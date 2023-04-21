@@ -9,11 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
-        
-		<link href="../resources/css/pagingButton.css" rel="stylesheet">
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../resources/css/mypageStyles.css" rel="stylesheet" />
         <link href="../resources/css/mypageGrid.css" rel="stylesheet">
     </head>
     <body>
