@@ -16,10 +16,11 @@ pageEncoding="UTF-8"%>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="../resources/assets/RE-SURFY.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/resources/css/registerRecipeStyle.css" rel="stylesheet" />
-    <link href="/resources/css/registerRecipeGrid.css" rel="stylesheet"/>
+    <link href="../resources/css/registerRecipeStyle.css" rel="stylesheet" />
+    <link href="../resources/css/registerRecipeGrid.css" rel="stylesheet"/>
 	
 	<!-- Font-->
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
@@ -27,10 +28,10 @@ pageEncoding="UTF-8"%>
 
   </head>
   <body>
-    <form action="/recipe/registerRecipe" id="registerRecipe" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+    <form action="/recipe/registerRecipe" id="registerRecipe" onsubmit="return validateForm();" method="post">
       <div class="register_recipe_wrapper">
         <div class="register_wrapper">
-          <div class="register_title">레시피 등록</div>
+          <div class="register_title" style="color:black;">레시피 등록</div>
           <div class="wrapper_box pad_l_60">
             <div id="MainImageBox" class="cont_pic2">
               <input type="hidden" name="main_image" id="main_image" value="">
@@ -45,16 +46,16 @@ pageEncoding="UTF-8"%>
             </div>
 
             <div class="wrapper_line">
-              <p class="wrapper_title1">레시피 제목</p>
+              <p class="wrapper_title1" style="color:black;">레시피 제목</p>
               <input type="text" name="recipeName" id="recipeName" value="" class="form-control" placeholder="예) 10분 완성 김치찌개" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30">              
             </div>
             <div class="wrapper_line pad_b_25">
-              <p class="wrapper_title1">요리소개</p>
+              <p class="wrapper_title1" style="color:black;">요리소개</p>
               <textarea name="recipeDescription" id="recipeDescription" class="form-control recipeDescription" placeholder="예) 최대한 빠르고 간편하게 만드는 김치찌개입니다." style="height:100px; width:600px; resize:none;"></textarea>
             </div>
             <div class="wrapper_line">
-              <p class="wrapper_title1">카테고리</p>
-              <select class="form-select" id="food_type" name="foodType" control-id="ControlID-11">
+              <p class="wrapper_title1" style="color:black;">카테고리</p>
+              <select class="form-select" id="foodType" name="foodType" control-id="ControlID-11">
                 <option value="">유형별</option>
                 <option value="3020001|한식">한식</option>
                 <option value="3020004|중국">중국</option>
@@ -75,13 +76,17 @@ pageEncoding="UTF-8"%>
               <span class="pad_l_30"> </span>
               <select class="form-select" id="time" name="time" control-id="ControlID-11">
                 <option value="" >시간</option>
-                <option value="5분이내">5분이내</option>
-                <option value="10분이내">10분이내</option>
-                <option value="15분이내">15분이내</option>
-                <option value="20분이내">20분이내</option>
-                <option value="30분이내">30분이내</option>
-                <option value="1시간이내">1시간이내</option>
-                <option value="1시간이상">1시간이상</option>
+                <option value="5분">5분</option>
+                <option value="10분">10분</option>
+                <option value="15분">15분</option>
+                <option value="20분">20분</option>
+                <option value="30분">30분</option>
+                <option value="40분">40분</option>
+                <option value="50분">50분</option>
+                <option value="60분">60분</option>
+                <option value="90분">90분</option>
+                <option value="120분">120분</option>
+                <option value="180분">180분</option>
               </select>
               <span class="pad_l_30"> </span>
               <select class="form-select" id="difficulty" name="difficulty" control-id="ControlID-11">
@@ -97,18 +102,18 @@ pageEncoding="UTF-8"%>
           <div class="wrapper_box pad_l_60">
             <div class="mag_b_25 ui-sortable" id="divIngredientGroupArea">
               <div class="wrapper_line">
-                <p class="wrapper_title1">재료</p>
+                <p class="wrapper_title1" style="color:black;">재료</p>
                 <ul id="ingredientAra_1" class="ingredientGroup">
-                  <select class="form-select" id="ingredient_type" name="ingreType" control-id="ControlID-11">
+                  <select class="form-select" id="ingreType" name="ingreType" control-id="ControlID-11">
                     <option value="">재료별</option>
                     <option value="3060001|주재료">주재료</option>
                     <option value="3060002|부재료">부재료</option>
                     <option value="3060003|양념">양념</option>
                   </select>		
                   <li id="liIngredient_1_1">
-                    <input type="text" name="ingreName_1[]" id="recipIngredient_name_1_1"
+                    <input type="text" name="ingreName_1[]" id="ingreName_1_1"
                     class="addIngredient_name" style="width:285px; border-radius: 0.375rem" placeholder="예) 돼지고기" control-id="ControlID-19">
-                    <input type="text" name="ingreMeasure_1[]" id="recipIngredient_amount_1_1"
+                    <input type="text" name="ingreMeasure_1[]" id="ingreMeasure_1_1"
                     class="addIngredient_amount" style="width:210px; border-radius: 0.375rem" placeholder="예) 300g" control-id="ControlID-20">
                     <button type="button" class="btn btn-danger deleteIngredientBtn">삭제</button>
                   </li>
@@ -125,10 +130,10 @@ pageEncoding="UTF-8"%>
 			<!-- 과정 등록 박스 -->
           <div class="wrapper_box2 pad_l_60">
             <input type="file" name="file" id="multifile_1" file_gubun="step" style="display:none;" multiple/>
-            <p class="wrapper_title2">요리순서</p>
+            <p class="wrapper_title2" style="color:black;">요리순서</p>
             <div id="stepArea" class="stepArea">
               <div id="stepItem_STEP" class="step">
-                <p id="stepNum_STEP" name="stepNo" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #33afe9; margin-left: 40px;">Step 1</p>
+                <p id="stepNum_STEP" name="stepNo" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
                 <div id="stepDescription_STEP" style="display:inline-block">
                   <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:100px; width:410px; resize:none;" control-id="ControlID-29"></textarea>
                 </div>
@@ -145,7 +150,7 @@ pageEncoding="UTF-8"%>
 			      </div>
                 </div>
                 <div id="tipItem_1" class="tip">
-                  <p class="tip_title">팁</p>
+                  <p class="tip_title" style="color:black;">팁</p>
                   <textarea name="tip" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea>          
 				  <button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>    
@@ -155,7 +160,7 @@ pageEncoding="UTF-8"%>
             <!-- step template -->
             <div id="stepTemplate" style="display:none">
               <div id="stepItem_STEP" class="step">
-                <p id="stepNum_STEP" class="stepNo_STEP ui sortable handle" style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #33afe9; margin-left: 40px;">Step STEP</p>
+                <p id="stepNum_STEP" class="stepNo_STEP ui sortable handle" style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: black; margin-left: 40px;">Step STEP</p>
                 <div id="stepDescription_STEP" style="display:inline-block">
                   <textarea name="stepDescrption[]" id="stepDescription_STEP" class="form-control stepDescription" placeholder="과정을 적어주세요." style="height:100px; width:410px; resize:none;"></textarea>
                 </div>
@@ -172,14 +177,14 @@ pageEncoding="UTF-8"%>
 			      </div>
                 </div>
                 <div id="tipItem_STEP" class="tip">
-                <p class="tip_title">팁</p>
+                <p class="tip_title"  style="color:black;">팁</p>
                 <textarea name="tip" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." style="height:50px; width:620px; resize:none;"></textarea> 
 					<button type="button" class="btn btn-danger deleteStepBtn" onclick="deleteStep(STEP)">삭제</button>
                 </div>
               </div>
             </div><!--step template finish-->
             <div class="btn_add mag_b_25" style="padding:0 0 20px 410px; width:820px;">
-              <button type="button" onclick="addStep()" class="btn btn-primary" control-id="ControlID-83">
+              <button type="button" onclick="addStep()" class="btn btn-primary" control-id="ControlID-83" style="background-color:#e95420;">
                 <span class="glyphicon glyphicon-plus-sign"></span>순서추가
               </button>              
             </div>
