@@ -95,7 +95,7 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/TopTen")
-	public void ListSort(Model model) {
+	public void ListSort(Model model ,@ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
 	}

@@ -79,45 +79,6 @@
 					<a class="dropdown-item" href="?orderBy=replycnt">댓글수</a>
 				</div></li>
 		</ul>
-		<div class="card-container">
-			<c:forEach items="${get}" var="recipe">
-				<div class="card">
-					<div class="card-img">
-						<img class="card-img-top" src="${recipe.image}" alt="..." />
-					</div>
-					<div class="card-head">
-						<c:out value="${recipe.recipeName}" />
-						<div>
-							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
-							</b>
-						</div>
-					</div>
-					<div class="card-main">
-						<div>
-							난이도 :
-							<c:out value="${recipe.difficulty}" />
-						</div>
-						<div>
-							종류 :
-							<c:out value="${recipe.foodType}" />
-						</div>
-						<div>
-							기준인분 :
-							<c:out value="${recipe.person}" />
-						</div>
-						<div>
-							조리시간 :
-							<c:out value="${recipe.time}" />
-						</div>
-					</div>
-					<div class="card-footer">
-						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피
-							보기</a>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
 		<c:choose>
 		<c:when test="${param.orderBy eq 'visitcnt'}">
 		<div class="card-container">
@@ -170,7 +131,7 @@
 					<div class="card-head">
 						<c:out value="${recipe.recipeName}" />
 						<div>
-							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
 							</b>
 						</div>
 					</div>
@@ -201,6 +162,47 @@
 			</c:forEach>
 		</div>
 		</c:when>
+		<c:otherwise>
+					<div class="card-container">
+			<c:forEach items="${get}" var="recipe">
+				<div class="card">
+					<div class="card-img">
+						<img class="card-img-top" src="${recipe.image}" alt="..." />
+					</div>
+					<div class="card-head">
+						<c:out value="${recipe.recipeName}" />
+						<div>
+							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
+							</b>
+						</div>
+					</div>
+					<div class="card-main">
+						<div>
+							난이도 :
+							<c:out value="${recipe.difficulty}" />
+						</div>
+						<div>
+							종류 :
+							<c:out value="${recipe.foodType}" />
+						</div>
+						<div>
+							기준인분 :
+							<c:out value="${recipe.person}" />
+						</div>
+						<div>
+							조리시간 :
+							<c:out value="${recipe.time}" />
+						</div>
+					</div>
+					<div class="card-footer">
+						<a class="btn btn-outline-dark mt-auto"
+							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피
+							보기</a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		</c:otherwise>
 		</c:choose>
 
 		<!-- start Paging -->

@@ -25,7 +25,7 @@
 			select rno, bno, reply, id, replyDate, updateDate
 			from
 				(
-				select /*+INDEX(tbl_reply idx_reply) */
+				select /*+INDEX(reply_tbl idx_reply) */
 				rownum rn, rno, bno, reply, id, replyDate, updateDate
 				from reply_tbl
 				where bno=#{bno}

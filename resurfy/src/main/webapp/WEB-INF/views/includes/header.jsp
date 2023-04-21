@@ -45,12 +45,9 @@
 	<div id="header_menu">
 		<div id="logo">
 			<a href="/recipe/get"> 
-			<img src="/resources/assets/bigredlogo.png" width = "300" height = "auto">
+			<img src="/resources/assets/bigredlogo.png" width = "200" height = "auto">
 			</a>
 		</div>
-	</div>
-
-
 		<div id="header_menu_move">
 			<ul>
 				<%
@@ -99,6 +96,8 @@
 				%>
 			</ul>
 		</div>
+	</div>
+
 
 	<script type="text/javascript">
 		var btnLogout = document.getElementById('btnLogout');
