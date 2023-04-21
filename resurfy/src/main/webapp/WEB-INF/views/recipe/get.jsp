@@ -56,8 +56,15 @@
 			</div>
 		</div>
 		</c:if>
-<!-- 		<button id="sort-by-reply">Sort By Replycnt</button>
-		<button id="sort-by-visit">Sort By Visitcnt</button> -->
+		<ul class="nav nav-pills">
+			<li class="nav-item dropdown">
+				 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">정렬</a>
+				 	<div class="dropdown-menu" style="">
+      				<a class="dropdown-item" href="#">조회수</a>
+      				<a class="dropdown-item" href="#">댓글수</a>
+      				</div>
+			</li>
+		</ul>
 			<div class="card-container">
 				<c:forEach items="${get}" var="recipe">
 					<div class="card">
@@ -124,7 +131,9 @@
 						<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 					</c:forEach>
 				</form>
+				
 		</div>
+		
 
 
 <script type="text/javascript">
@@ -159,7 +168,7 @@
 				    });
 				}); 
 			
-			 $(".paginate_button a").on("click",	function(e) {
+			 $(".paginate_button a").on("click", function(e) {
 				e.preventDefault();
 				console.log('click');
 				actionForm.find("input[name='pageNum']").val($(this).attr("href"));

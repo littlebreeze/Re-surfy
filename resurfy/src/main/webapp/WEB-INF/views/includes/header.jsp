@@ -39,10 +39,7 @@
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
-	rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-eco.css" rel="stylesheet">
 <body>
 
 	<div id="header_menu">
@@ -63,7 +60,7 @@
 				%>
 				<li><a href="/member/login.do">
 						<button type="button" class="btn btn-primary btn-lg">
-						<font face="Jua, sans-serif">
+						<font face='NanumGothicEco'>
 							Login</button>
 				</a></li>
 				<%
@@ -73,15 +70,15 @@
 				<form action="/member/logout.do" id="logout" method="post">
 					<li><a href="/member/login.do">
 							<button class="btn btn-primary btn-lg" id="btnLogout">
-								<font face="Jua, sans-serif">Logout</button>
+								<font face='NanumGothicEco'>Logout</button>
 					</a></li>
 					<li><a href="/mypage/list">
 							<button type="button" class="btn btn-primary btn-lg">
-								<font face="Jua, sans-serif">mypage</button>
+								<font face='NanumGothicEco'>mypage</button>
 					</a></li>
 					<li><a href="/recipe/registerRecipe">
 							<button type="button" class="btn btn-primary btn-lg">
-								<font face="Jua, sans-serif">register</button>
+								<font face='NanumGothicEco'>register</button>
 					</a></li>
 					<li id="welcome-text"><%=user.getId()%>님 환영합니다.
 					</li>
