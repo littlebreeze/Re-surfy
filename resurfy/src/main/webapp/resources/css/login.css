@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 
 *,
 *::after,
@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Jua', sans-serif;
+  font-family: 'NanumGothic';
 }
 
 body {
@@ -23,7 +23,7 @@ section {
   display: flex;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 15px 30px rgba(135,206,250, 0.36);
+  box-shadow: 0 15px 30px rgba(250, 173, 135, 0.36);
 }
 
 section.active .left {
@@ -60,25 +60,27 @@ section.active .right {
 }
 
 .sign-in h1 {
-  color:#33afe9;
+  color:#e95420;
   font-size:42px;
   margin-top:120px;
   margin-bottom: 18px;
   text-align: center;
   transition:0.2s linear;
   letter-spacing: -3px;
-  font-family: 'Jua', sans-serif;
+  font-family: 'NanumGothic';
+  font-weight: bold;
 }
 
 .sign-up h1 {
-  color:#33afe9;
+  color:#e95420;
   font-size:42px;
-  margin-top:40px;
+  margin-top:20px;
   margin-bottom: 10px;
   text-align: center;
   transition:0.2s linear;
   letter-spacing: -3px;
-  font-family: 'Jua', sans-serif;
+  font-family: 'NanumGothic';
+  font-weight: bold;
 }
 
 h3 {
@@ -107,37 +109,39 @@ h3 {
   gap: 5px;
 }
 
-.con1 button,
 .con2 button,
 .con3 button{
-	background: #33afe9;
+	background: #e95420;
 	border-radius:7px;
 	border: 0px;
 	color:#f5f5f5;
 	cursor: pointer;
-	font-family: 'Jua', sans-serif;
+	font-family: 'NanumGothic';
 	text-align: center;
 	height: 35px;
-	margin-top: 12px;
+	margin-top: 22px;
 	margin-left: 5px;
+	width:80px;
 }
 
 /* 중복아이디 존재하지 않는경우 */
-.id_input_re_1{
+.id_input_re_1,
+.j_input_re_3{
 	color : green;
 	display : none;
 	font-size: 5px;
 }
 /* 중복아이디 존재하는 경우 */
-.id_input_re_2{
+.id_input_re_2,
+.j_input_re_4{
 	color : red;
 	display : none;
 	font-size: 5px;
 }
 
-span input,
+.sing-up span input,
 .sign-up div input{
-  width:340px;
+  width:320px;
   border: 0;
   outline: 0;
   background: #f5f5f5;
@@ -149,6 +153,7 @@ span input,
 
 .sign-up form input:nth-child(n+1):nth-child(-n+6),
 .sign-in form input {
+  width: 320px;
   border: 0;
   outline: 0;
   background: #f5f5f5;
@@ -170,7 +175,7 @@ span input,
 
 .btnJoin,
 .sign-in form [type=submit] {
-  background: #33afe9;
+  background: #e95420;
   color: white;
   display: block;
   width : 100%;
@@ -180,7 +185,7 @@ span input,
   border: none;
   cursor: pointer;
   font-size: 1.2em;
-  font-family: 'Jua', sans-serif;
+  font-family: 'NanumGothic';
   transition: 0.2s linear;
 }
 
@@ -198,7 +203,7 @@ span input,
 }
 .sign-up p a:is(:hover, :visited),
 .sign-in p a:is(:hover, :visited) {
-  color: #00a4cc;
+  color: #e95420;
 }
 
 
@@ -237,9 +242,10 @@ span input,
 .sign-in div a {
   text-decoration: none;
   font-weight: bold;
-  color: #33afe9;
+  color: #e95420;
 }
 .sign-up div a:is(:hover, :visited),
 .sign-in div a:is(:hover, :visited) {
-  color: #33afe9;
+  color: #e95420;
 }
+/**/
