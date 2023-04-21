@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@page import="org.zerock.domain.UserVO"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,9 +14,12 @@
   </script>
 </head>
 <body>
+<% session.invalidate(); %>
 <section>
   <div class="left">
+  <a href = "/recipe/get">
     <img src="/resources/assets/logo.jpg" height="600px" alt="" />
+    </a>
   </div>
   <div class="right">
     <div class="sign-up">

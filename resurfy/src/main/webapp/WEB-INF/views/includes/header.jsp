@@ -59,27 +59,33 @@
 				if (user == null) {
 				%>
 				<li><a href="/member/login.do">
-						<button type="button" class="btn btn-primary btn-lg">
 						<font face='NanumGothic'>
-							Login</button>
+							로그인</button>
 				</a></li>
+				<li> | </li>
+				<li>비회원 입니다.</li>
+				
 				<%
 				} else {
 				%>
 				
 				<form action="/member/logout.do" id="logout" method="post">
-					<li><a href="/member/login.do">
-							<button class="btn btn-primary btn-lg" id="btnLogout">
-								<font face='NanumGothic'>Logout</button>
-					</a></li>
+					<li>
+					<div id = "btnLogout">
+					<a href="/member/login.do">
+								<font face='NanumGothic'>로그아웃</button>
+					</a>
+					</div>
+					</li>
+					<li> | </li>
 					<li><a href="/mypage/list">
-							<button type="button" class="btn btn-primary btn-lg">
-								<font face='NanumGothic'>mypage</button>
+								<font face='NanumGothic'>마이페이지</button>
 					</a></li>
+					<li> | </li>
 					<li><a href="/recipe/registerRecipe">
-							<button type="button" class="btn btn-primary btn-lg">
-								<font face='NanumGothic'>register</button>
+								<font face='NanumGothic'>레시피등록</button>
 					</a></li>
+					<li> | </li>
 					<li id="welcome-text"><%=user.getId()%>님 환영합니다.
 					</li>
 				

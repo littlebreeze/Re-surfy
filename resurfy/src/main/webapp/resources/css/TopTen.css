@@ -2,13 +2,18 @@
 
 .TopTen_recipe {
 	text-align : center;
-	font-family: 'Jua', sans-serif;
+	font-family: 'NanumGothic';
 }
 
-.TopTen_recipe > img{
-	width : 300px;
+.TopTen_recipe > tr{
+	max-width : 100% ;
 	height : auto;
 	
+}
+
+td img{
+	max-width : 100%;
+	height : auto;
 }
 
 table {

@@ -5,17 +5,17 @@
 	height: auto;	
 	border: 0px solid black;
 	text-align : center;
-	background-color:  #6BD0FE;
+	background-color:  #e95420;
 }
 
 .recipe_carousel >  h1{
 	margin-top : 10px;
 	color : #FFFFFF;
-	font-family: 'Jua', sans-serif;
+	font-family: 'NanumGothic';
 }
 
 .recipe_carousel > div{
-	background-color:  #6BD0FE;
+	background-color:  #e95420
 }
 
 .slick-prev{
