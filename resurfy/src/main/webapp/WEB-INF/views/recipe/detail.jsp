@@ -304,10 +304,11 @@
                      
   				</div> <!-- 전체 end -->
 			</div>
-			<button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>
+			<!-- <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>-->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료</h2>
+        <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>
         <!-- 없는 재료 -->
         <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -346,7 +347,7 @@
         	<c:if test="${empty shopIn}">
 				<div class="col" style="margin-bottom:30px;">
 					<div class="p-7 text-center">
-					    <h5 class="mb-3">가지고 있는 재료를 추가해보세요!</h5>
+					    <h5 class="mb-3">가지고 있는 재료를<br> 추가해보세요!</h5>
 					  </div>
 				</div>
 			</c:if>
