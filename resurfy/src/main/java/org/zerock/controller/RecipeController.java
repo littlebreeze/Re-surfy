@@ -41,13 +41,19 @@ public class RecipeController {
 	}	
 	
 	@GetMapping({"/detail", "/modify"})
-	public void get(@RequestParam("bno") Long bno, Model model) {
+	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));
 		model.addAttribute("step", sService.get(bno));
-		model.addAttribute("shopNotIn", shService.searchFromAPI(iService.getIngreList(bno)));
-		model.addAttribute("shopIn", shService.searchFromAPI(iService.getIngreListHave(bno)));
+		
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+		String userID = "";
+		if(sessionUser!=null)
+			userID=sessionUser.getId();
+		model.addAttribute("shopNotIn", shService.searchFromAPI(iService.getIngreList(bno, userID)));
+		model.addAttribute("shopIn", shService.searchFromAPI(iService.getIngreListHave(bno, userID)));
 
 	} 
 		

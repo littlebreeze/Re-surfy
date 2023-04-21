@@ -103,13 +103,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 
 <select id="readIngreName" resultType="String">
 	select INGRENAME from INGREDIENT_TBL where bno = #{bno}
-	and INGRENAME not in (select INGRENAME from own_tbl where
-	id='로그인한 사용자')
+	and INGRENAME not in (select INGRENAME from own_tbl where id=#{userID})
 </select>
 	<select id="readIngreNameHave" resultType="String">
 		select INGRENAME from INGREDIENT_TBL where bno = #{bno}
-		and INGRENAME in (select INGRENAME from own_tbl where id='
-		로그인한 사용자')
+		and INGRENAME in (select INGRENAME from own_tbl where id=#{userID})
 	</select>
 
 	<sql id="criteria">

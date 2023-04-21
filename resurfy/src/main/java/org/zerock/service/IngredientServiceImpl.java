@@ -55,13 +55,13 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 	
 	@Override
-	public List<String> getIngreList(Long bno) {
-		return mapper.readIngreName(bno);
+	public List<String> getIngreList(Long bno, String userID) {
+		return mapper.readIngreName(bno, userID);
 	}
 
 	@Override
-	public List<String> getIngreListHave(Long bno) { 
-		return mapper.readIngreNameHave(bno);
+	public List<String> getIngreListHave(Long bno, String userID) { 
+		return mapper.readIngreNameHave(bno, userID);
 	}
 
 

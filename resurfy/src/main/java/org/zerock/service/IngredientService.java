@@ -13,6 +13,6 @@ public interface IngredientService {
 	//public List<IngredientVO> getList(Criteria cri);
 	public List<IngredientVO> getList();
 	
-	public List<String> getIngreList(Long bno);
-	public List<String> getIngreListHave(Long bno); 
+	public List<String> getIngreList(Long bno, String userID);
+	public List<String> getIngreListHave(Long bno, String userID); 
 }
