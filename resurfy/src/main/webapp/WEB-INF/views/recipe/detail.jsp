@@ -13,7 +13,7 @@
         <meta name="author" content="" />
 <title>Resurfy - <c:out value="${recipe.recipeName }"/></title>
 <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/assets/logo.jpg" />
+        <link rel="icon" type="image/x-icon" href="/resources/assets/logo.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -163,7 +163,7 @@
 
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/logo.jpg" width=220px height=220px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/logo.png" width=220px height=220px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<span style="font-size:17px"><c:out value="${st.stepDescription}" /></span>
