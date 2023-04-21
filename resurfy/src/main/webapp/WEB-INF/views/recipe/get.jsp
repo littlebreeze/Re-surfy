@@ -148,16 +148,16 @@
 			
 			var actionForm = $("#actionForm");
 			
-	/* 		$("#sort-by-reply").on("click", function(e){
-				 $.get("/get", function(data) {
+	 		$("#sort-by-reply").on("click", function(e){
+				 $.get("/get/replycnt", function(data) {
 				      location.reload(); 
 				    });
 				});
 			$("#sort-by-visit").on("click", function(e){
-				 $.get("/get", function(data) {
+				 $.get("/get/visitcnt", function(data) {
 				      location.reload(); 
 				    });
-				}); */
+				}); 
 			
 			 $(".paginate_button a").on("click",	function(e) {
 				e.preventDefault();

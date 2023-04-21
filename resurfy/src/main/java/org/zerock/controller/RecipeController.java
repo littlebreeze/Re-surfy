@@ -93,9 +93,15 @@ public class RecipeController {
 		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
 	}
+	
 	@GetMapping("/get/visitcnt")
 	public void sortByVisit(Model model) {
 	    model.addAttribute("listRecipe", rService.sortByVisitCnt());
+	}
+	
+	@GetMapping("/get/replycnt")
+	public void sortByReply(Model model) {
+	    model.addAttribute("listRecipe", rService.sortByReplyCnt());
 	}
 		
 	
