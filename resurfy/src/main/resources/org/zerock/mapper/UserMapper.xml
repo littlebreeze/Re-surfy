@@ -12,4 +12,8 @@
     <select id="loginCheck" resultType="org.zerock.domain.UserVO" >
    	select * from user_tbl where id=#{id} and password=#{password}
     </select>
+    
+    <select id="idCheck" resultType="int">
+  		select count(*) from user_tbl where id = #{id}
+  	</select>
 </mapper>

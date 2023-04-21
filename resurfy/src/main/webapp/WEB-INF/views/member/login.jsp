@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?after4"/>
+<link rel="stylesheet" href="../resources/css/login.css?"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -24,10 +24,11 @@
       <div class="con1">
       		<div>
       	   <h3><label for="j_id">아이디</label></h3>
-	       <input type="text" id="j_id" placeholder="UserId" name="id" style="float:left; width:265px; margin-right:4px;"/>
+	       <input type="text" id="j_id" placeholder="UserId" name="id" style="float:left; width:340px; margin-right:4px;"/>
 	       </div>
-	       <button type="button" style="float:left; width:90px;">중복확인</button>
       </div>
+      <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+		   <span class="id_input_re_2">아이디가 이미 존재합니다.</span>
       <span>
       	<h3><label for="j_name">이름</label></h3>
         <input type="text" id="j_name" placeholder="UserName" name="userName"  />
@@ -156,6 +157,29 @@
 			});
 		});
 		
+		//아이디 중복검사
+		$('#j_id').on("propertychange change keyup paste input", function(){
+
+			/* console.log("keyup 테스트"); */	
+			var memberId = $('#j_id').val();			// #j_id에 입력되는 값
+			var data = {memberId : memberId}			// '컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+			
+			$.ajax({
+				type : "post",
+				url  : "/member/memberIdChk",
+				data : data,
+				success : function(result){
+					if(result != 'fail'){
+						$('.id_input_re_1').css("display","inline-block");
+						$('.id_input_re_2').css("display", "none");				
+					} else {
+						$('.id_input_re_2').css("display","inline-block");
+						$('.id_input_re_1').css("display", "none");				
+					}
+				}
+			}); // ajax 종료	
+
+		});// function 종료
 	</script>
 </body>
 </html>

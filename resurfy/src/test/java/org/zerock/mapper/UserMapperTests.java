@@ -28,4 +28,12 @@ public class UserMapperTests {
         System.out.println("결과 값 : " + usermapper.loginCheck(vo));
         
     }
+    
+    @Test
+	public void memberIdChk() throws Exception{
+		String id = "admin";	// 존재하는 아이디
+		String id2 = "test123";	// 존재하지 않는 아이디
+		usermapper.idCheck(id);
+		usermapper.idCheck(id2);
+	}
 }

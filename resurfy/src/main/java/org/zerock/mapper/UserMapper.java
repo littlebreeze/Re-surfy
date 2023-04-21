@@ -7,4 +7,5 @@ public interface UserMapper {
 	public int delete(String id);
 	public UserVO read(String id);
 	public UserVO loginCheck(UserVO vo);
+	public int idCheck(String memberId);
 }

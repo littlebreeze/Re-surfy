@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.UserVO;
 import org.zerock.service.UserService;
@@ -80,7 +85,30 @@ public class UserController {
        	request.getSession(true).invalidate();
    		return "redirect:/recipe/get";
    	}
-	
+    
+    // 아이디 중복 검사
+	// 아이디 중복 검사
+    @RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberIdChkPOST(String memberId) throws Exception{
+		
+//		log.info("memberIdChk() 진입");
+		
+		int result = Service.idCheck(memberId);
+		
+//		log.info("결과값 = " + result);
+		
+		if(result != 0) {
+			
+			return "fail";	// 중복 아이디가 존재
+			
+		} else {
+			
+			return "success";	// 중복 아이디 x
+			
+		}
+		
+	} // memberIdChkPOST() 종료
 	 
 	
 }

@@ -56,5 +56,11 @@ public class UserServiceImpl implements UserService {
 	public UserVO loginCheck(UserVO vo) throws Exception {
 		return mapper.loginCheck(vo);
 	}
+	
+	@Override
+	public int idCheck(String memberId) throws Exception {
+		
+		return mapper.idCheck(memberId);
+	}
 
 }
