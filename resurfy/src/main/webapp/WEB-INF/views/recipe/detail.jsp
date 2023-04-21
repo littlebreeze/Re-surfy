@@ -119,8 +119,16 @@
               
                                       
                              <!-- 재료칸(재료, 양념) -->
+                        	<c:set var = "doneLoop" value="false"/>
+                               <c:forEach items="${ingre}" var="ing">
+                               <c:if test="${not doneLoop}">
+						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
                              <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">재료</div>
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
+                             <c:set var = "doneLoop" value="true"/>
+                           </c:if>     
+                           </c:if>
+						</c:forEach>
 						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:17px;">
 						
 						<c:forEach items="${ingre}" var="ing">
@@ -133,11 +141,18 @@
 						</c:forEach>
 						</div><br>
                   
-                  
+                  <c:set var = "doneLoop" value="false"/>
+                               <c:forEach items="${ingre}" var="ing">
+                               
+                               <c:if test="${not doneLoop}">
+                               <c:if test="${ing.ingreType eq '양념'}">
                   <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">양념</div>
                 
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-                     
+                     <c:set var = "doneLoop" value="true"/>
+                           </c:if>     
+                           </c:if>
+						</c:forEach>
 						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:17px;">
 						
 						<c:forEach items="${ingre}" var="ing">
