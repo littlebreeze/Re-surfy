@@ -39,7 +39,7 @@
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-eco.css" rel="stylesheet">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 <body>
 
 	<div id="header_menu">
@@ -60,7 +60,7 @@
 				%>
 				<li><a href="/member/login.do">
 						<button type="button" class="btn btn-primary btn-lg">
-						<font face='NanumGothicEco'>
+						<font face='NanumGothic'>
 							Login</button>
 				</a></li>
 				<%
@@ -70,15 +70,15 @@
 				<form action="/member/logout.do" id="logout" method="post">
 					<li><a href="/member/login.do">
 							<button class="btn btn-primary btn-lg" id="btnLogout">
-								<font face='NanumGothicEco'>Logout</button>
+								<font face='NanumGothic'>Logout</button>
 					</a></li>
 					<li><a href="/mypage/list">
 							<button type="button" class="btn btn-primary btn-lg">
-								<font face='NanumGothicEco'>mypage</button>
+								<font face='NanumGothic'>mypage</button>
 					</a></li>
 					<li><a href="/recipe/registerRecipe">
 							<button type="button" class="btn btn-primary btn-lg">
-								<font face='NanumGothicEco'>register</button>
+								<font face='NanumGothic'>register</button>
 					</a></li>
 					<li id="welcome-text"><%=user.getId()%>님 환영합니다.
 					</li>
