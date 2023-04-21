@@ -209,10 +209,10 @@
 						</div>
 						<div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
 						<c:if test="${recipe.id eq member.id}">
-						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:50px; background-color: #33afe9; border:none; margin-left:10px">수정하기</button>
+						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정하기</button>
 						</c:if>
 						  <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
-						<button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:50px; background-color: #33afe9; border:none">목록</button>
+						<button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:60px; background-color: #e95420; border:none; font-size:20px">목록</button>
 						</div>
 						
 						</div>
@@ -262,7 +262,7 @@
 						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">댓글
 						<c:if test="${not empty member.id}">
 						<button id='addReplyBtn'
-											class='btn btn-primary btn-jelly' style="width:80px; height:50px; background-color: #33afe9; border:none; float:right">등록</button>
+											class='btn btn-primary btn-jelly' style="width:80px; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button>
 						</c:if>	
 						</div><br>
                         <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
@@ -305,13 +305,19 @@
   				</div> <!-- 전체 end -->
 			</div>
 			<!-- <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>-->
-<section class="py-5 bg-light">
+<section class="py-5" style="background-clor:white">
     <div class="container px-4 px-lg-5 mt-5">
-        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료</h2>
-        <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>
+    	<div>
+        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #e95420; border:none; float:right">장바구니 담기</button></h2>
+        
+        </div>
+        <br>
+        <hr class="my-2" align="center" style="margin: 0 auto;">
+        <br>
         <!-- 없는 재료 -->
         <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #e95420; border-radius:30px; padding: 10px">
+        
         	<c:if test="${empty shopNotIn}">
 				<div class="col" style="margin-bottom:30px;">
 					<div class="p-7 text-center">
@@ -342,12 +348,13 @@
             </c:forEach>
         </div>
         <!-- 있는 재료 -->
+        <br><br>
         <h2 class="fw-bolder mb-4 h4">있는 재료</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #e95420; border-radius:30px;  text-align : center; padding : 100px 0; text-align:center">
         	<c:if test="${empty shopIn}">
 				<div class="col" style="margin-bottom:30px;">
 					<div class="p-7 text-center">
-					    <h5 class="mb-3">가지고 있는 재료를<br> 추가해보세요!</h5>
+					    <h5 class="mb-3" style="align-items: center">가지고 있는 재료를<br> 추가해보세요!</h5>
 					  </div>
 				</div>
 			</c:if>
@@ -486,7 +493,7 @@
         </section> -->
         
         <!-- Footer-->
-        <footer class="p-3 mb-2 bg-info text-white">
+        <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
             <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br>
            <!--  저작권 표기 문제 고민
             <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">Github 아이콘  제작자: Pixel perfect - Flaticon</a> -->
