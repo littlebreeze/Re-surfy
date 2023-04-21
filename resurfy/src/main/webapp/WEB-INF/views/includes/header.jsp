@@ -44,8 +44,9 @@
 
 	<div id="header_menu">
 		<div id="logo">
-			<a href="/recipe/get"> <img src="/resources/assets/bigredlogo.png"
-			></a>
+			<a href="/recipe/get"> 
+			<img src="/resources/assets/bigredlogo.png" width = "300" height = "auto">
+			</a>
 		</div>
 	</div>
 
