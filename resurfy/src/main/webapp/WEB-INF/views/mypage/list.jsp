@@ -37,7 +37,7 @@
 					          <div class="card-body p-4">
 					            <div class="d-flex text-black">
 					              <div class="flex-shrink-0">
-					                <img src="/resources/assets/favicon.png"
+					                <img src="/resources/assets/logo.png"
 					                  alt="Generic placeholder image" class="img-fluid"
 					                  style="width: 180px; border-radius: 10px;">
 					              </div>
