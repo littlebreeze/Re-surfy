@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.UserVO;
@@ -86,17 +87,13 @@ public class UserController {
    		return "redirect:/recipe/get";
    	}
     
-    // 아이디 중복 검사
 	// 아이디 중복 검사
     @RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String memberIdChkPOST(String memberId) throws Exception{
 		
-//		log.info("memberIdChk() 진입");
-		
 		int result = Service.idCheck(memberId);
 		
-//		log.info("결과값 = " + result);
 		
 		if(result != 0) {
 			
@@ -108,7 +105,17 @@ public class UserController {
 			
 		}
 		
-	} // memberIdChkPOST() 종료
+	}
+    // 문자인증
+    @RequestMapping(value = "/phoneCheck", method = RequestMethod.GET)
+    @ResponseBody
+    public String sendSMS(@RequestParam("phone") String userPhoneNumber) { // 휴대폰 문자보내기
+    	int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);//난수 생성
+
+    	Service.certifiedPhoneNumber(userPhoneNumber,randomNumber);
+    	
+    	return Integer.toString(randomNumber);
+    }
 	 
 	
 }

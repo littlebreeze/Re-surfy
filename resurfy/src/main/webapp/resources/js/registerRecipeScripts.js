@@ -87,7 +87,7 @@
     
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
-    deleteButton.className = 'btn btn-danger deleteIngredientBtn';
+    deleteButton.className = 'btn btn-warning deleteIngredientBtn';
     deleteButton.textContent = '삭제';
     deleteButton.onclick = function () {
     const remainingIngredientGroups = document.getElementsByClassName('ingredientGroup');
@@ -115,7 +115,6 @@
 function addStep() {
     stepCounter++;
     const stepTemplate = document.getElementById('stepTemplate');
-    const stepArea = document.getElementById('stepArea');
     const newStep = stepTemplate.innerHTML.replace(/STEP/g, stepCounter);
     stepArea.insertAdjacentHTML('beforeend', newStep);
     const deleteButton = document.getElementById(`stepItem_${stepCounter}`).getElementsByClassName("deleteStepBtn")[0];
@@ -125,8 +124,7 @@ function addStep() {
         const newFileInput = document.getElementById(`q_step_file_${stepCounter}`);
     newFileInput.setAttribute('id', `q_step_file_${stepCounter}`);
     newFileInput.setAttribute('name', `q_step_file_${stepCounter}`);
-    setFileInputEventListener(stepCounter);
-
+	
     // Add event listener to the new file input
     const fileInput = document.getElementById(`q_step_file_${stepCounter}`);
     fileInput.addEventListener('change', function (event) {
@@ -199,97 +197,81 @@ function setFileInputEventListener(step) {
 		
 		
 		//등록권한
-    function validateForm() {
-        // 유효성 검사를 수행할 모든 필드를 가져옵니다.
-        const recipeName = document.getElementById('recipeName');
-        const recipeDescription = document.getElementById('recipeDescription');
-        const image = document.getElementById('image');
-        const foodType = document.getElementById('foodType');
-        const person = document.getElementById('person');
-        const difficulty = document.getElementById('difficulty');
-        const time = document.getElementById('time');
-        const ingreType = document.getElementById('ingreType');
-        const ingreName = document.getElementById('ingreName');
-        const ingreMeasure = document.getElementById('ingreMeasure');
-        const stepDescription = document.getElementById('stepDescription');
+   function validateForm() {
+  const recipeName = document.getElementById("recipeName").value;
+  const recipeDescription = document.getElementById("recipeDescription").value;
+  const mainImage = document.getElementById("mainImage").value;
+  const foodType = document.getElementById("foodType").value;
+  const person = document.getElementById("person").value;
+  const time = document.getElementById("time").value;
+  const difficulty = document.getElementById("difficulty").value;
+  const ingreType = document.getElementById("ingreType").value;
+  
 
-        // 레시피 이름 유효성 검사
-        if (recipeName.value.trim() === "") {
-            alert("레시피 이름을 입력해주세요.");
-            recipeName.focus();
-            return false;
-        }
+  if (recipeName === "") {
+    alert("레시피 제목을 입력하세요.");
+    return false;
+  }
 
-        // 레시피 설명 유효성 검사
-        if (recipeDescription.value.trim() === "") {
-            alert("레시피 설명을 입력해주세요.");
-            recipeDescription.focus();
-            return false;
-        }
+  if (recipeDescription === "") {
+    alert("요리 소개를 입력하세요.");
+    return false;
+  }
+  
+   if (mainImage === "") {
+    alert("레시피 대표 이미지를 업로드하세요.");
+    return false;
+  }
 
-        // 이미지 유효성 검사
-        if (image.value.trim() === "") {
-            alert("이미지를 업로드해주세요.");
-            image.focus();
-            return false;
-        }
+  if (foodType === "") {
+    alert("음식 유형을 선택하세요.");
+    return false;
+  }
 
-        // 음식 유형 유효성 검사
-        if (foodType.selectedIndex === 0) {
-            alert("음식 유형을 선택해주세요.");
-            foodType.focus();
-            return false;
-        }
+  if (person === "") {
+    alert("인원을 선택하세요.");
+    return false;
+  }
 
-        // 인원 수 유효성 검사
-        if (person.selectedIndex === 0) {
-            alert("인원 수를 선택해주세요.");
-            person.focus();
-            return false;
-        }
+  if (time === "") {
+    alert("시간을 선택하세요.");
+    return false;
+  }
 
-        // 난이도 유효성 검사
-        if (difficulty.selectedIndex === 0) {
-            alert("난이도를 선택해주세요.");
-            difficulty.focus();
-            return false;
-        }
+  if (difficulty === "") {
+    alert("난이도를 선택하세요.");
+    return false;
+  }
+  
+  if (ingreType === "") {
+    alert("재료 유형을 선택하세요.");
+    return false;
+  }
 
-        // 시간 유효성 검사
-        if (time.selectedIndex === 0) {
-            alert("시간을 입력해주세요.");
-            time.focus();
-            return false;
-        }
-        // 재료 유형 유효성 검사
-        if (ingreType.selectedIndex === 0) {
-            alert("시간을 입력해주세요.");
-            ingreType.focus();
-            return false;
-        }
-        // 재료명 유효성 검사
-        if (ingreName.value.trim() === "") {
-            alert("시간을 입력해주세요.");
-            ingreName.focus();
-            return false;
-        }
-        // 재료양 유효성 검사
-        if (ingreMeasure.value.trim() === "") {
-            alert("시간을 입력해주세요.");
-            ingreMeasure.focus();
-            return false;
-        }
-        // 과정 설명 유효성 검사
-        if (stepDescription.value.trim() === "") {
-            alert("시간을 입력해주세요.");
-            stepDescription.focus();
-            return false;
-        }
-        
-        
+  const ingredientNames = document.querySelectorAll("input[name^='ingreName']");
+  const ingredientMeasures = document.querySelectorAll("input[name^='ingreMeasure']");
+  const stepDescriptions = document.querySelectorAll("textarea[name='stepDescription']");
 
-        // ... (다른 필드에 대한 유효성 검사 추가)
+  for (let i = 0; i < ingredientNames.length; i++) {
+    if (ingredientNames[i].value === "") {
+      alert("재료명을 입력하세요.");
+      return false;
+    }
+  }
 
-        // 모든 유효성 검사를 통과하면 폼을 제출합니다.
-        return true;
-    }		
+  for (let i = 0; i < ingredientMeasures.length; i++) {
+    if (ingredientMeasures[i].value === "") {
+      alert("재료양을 입력하세요.");
+      return false;
+    }
+  }
+
+  for (let i = 0; i < stepDescriptions.length; i++) {
+    if (stepDescriptions[i].value === "") {
+      alert("과정 설명을 입력하세요.");
+      return false;
+    }
+  }
+
+  return true;
+}

@@ -14,4 +14,6 @@ public interface UserService {
 	public void join(UserVO userVO);
 	public UserVO loginCheck(UserVO vo) throws Exception;
 	public int idCheck(String memberId) throws Exception;
+	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber);// 문자인증
+	//push
 }
