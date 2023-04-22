@@ -66,12 +66,12 @@
             </div>
         </div>
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">새로운 재료 추가</h4>
+					<h4 class="modal-title" id="addModalLabel">새로운 재료 추가</h4>
 				</div>
 				<div class="modal-body">
 					<form class="p-2 mb-2 bg-body-tertiary border-bottom" id="addOwnForm" action="/mypage/addOwn" method="post">
@@ -239,7 +239,7 @@ $(document).ready(function(){
 		 }
 	});
 	
-	$(".modal").on("shown.bs.modal", function() {
+	$("#addModal").on("shown.bs.modal", function() {
 		  $("#autoComplete").autocomplete("option", "appendTo", ".modal")
 	})
 });
@@ -247,10 +247,10 @@ $(document).ready(function(){
 <script>
 	$(document).ready(function() {
 		
-		var modal = $(".modal");
+		var modal = $("#addModal");
 		
 		$("#addNewBtn").on("click", function(e) {
-			$(".modal").modal("show");
+			modal.modal("show");
 		});
 		
 		var modalCloseBtn = $("#modalCloseBtn");
