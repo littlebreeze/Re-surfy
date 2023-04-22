@@ -41,6 +41,7 @@ public class RecipeController {
 	public void register() {
 		log.info("/registerRecipe");
 	}
+
 	/*
 	 * @PostMapping("/registerRecipe") public String register(RecipeVO recipe,
 	 * StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
@@ -51,6 +52,8 @@ public class RecipeController {
 	 * 
 	 * }
 	 */
+
+
 	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
@@ -128,13 +131,13 @@ public class RecipeController {
 	public void ListSort(Model model ,@ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply",rService.sortByReplyCnt());
 		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
-
 	}
 
 	
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
 	
+
 	}
 
 	public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {

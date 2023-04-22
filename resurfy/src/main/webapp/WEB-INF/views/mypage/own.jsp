@@ -40,7 +40,7 @@
 					    <c:if test="${empty list}">
 							<div class="col" style="margin-bottom:30px;">
 								<div class="p-5 text-center">
-									<img src="/resources/assets/orangelogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
+									<img src="/resources/assets/fadefadeBlueLogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
 								    <h1 class="mb-3">재료를 추가해보세요!</h1>
 								    <h4 class="mb-3">더 다양한 검색이 가능합니다</h4>
 								  </div>

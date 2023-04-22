@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?after1"/>
+<link rel="stylesheet" href="../resources/css/login.css?"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -18,7 +18,7 @@
 <section>
   <div class="left">
   <a href = "/recipe/get">
-    <img src="/resources/assets/logo.png" height="600px" alt="" />
+    <img src="/resources/assets/bluebackground.png" height="600px" alt="" />
     </a>
   </div>
   <div class="right">
@@ -116,6 +116,7 @@
 			//폼 내부의 데이터를 전송할 주소
 			$("#sign_form").attr("action", "loginCheck.do");
 			$("#sign_form").submit();
+			
 			 });
 			});
 	 
