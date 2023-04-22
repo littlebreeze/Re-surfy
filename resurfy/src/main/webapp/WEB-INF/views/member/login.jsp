@@ -49,7 +49,7 @@
         <div class="con2">
         <div>
  	        <h3><label for="j_phone" >휴대폰번호</label></h3>
-	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:240px;" />
+	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:240px;" required/>
 	        </div>
 	        <button id="phoneChk" type="button" style="float:left;">인증번호</br>전송</button>
 	        
@@ -57,7 +57,7 @@
         <div class="con3">
         <div>
  	        <h3><label for="j_num">인증번호</label></h3>
-        	<input id="j_num" type="text" style="width:240px;"/>
+        	<input id="j_num" type="text" style="width:240px;" disabled required/>
         	<span class="j_input_re_3">* 인증완료</span>
 			<span class="j_input_re_4">* 인증실패</span>
         </div>
@@ -129,6 +129,7 @@
 				var userNick=$("#j_nick").val();
 				var userPhone=$("#j_phone").val();
 				var Chknum=$("#j_num").val();
+				var phoneChk2=$("#phoneChk2").val();
 				
 				if(userId == ""){
 					  alert("아이디를 입력하세요");
@@ -165,6 +166,12 @@
 
 					  return; //함수 종료
 				}
+				if($("#j_num").val() != code2){
+					alert("휴대폰 인증을 완료해주세요 :");
+					
+					return;
+		    	}
+				
 				$("#join_form").attr("action", "join.do");
 				$("#join_form").submit();
 				alert( userNick+"("+userId+") 님 \n회원가입이 완료되었습니다.");
@@ -215,10 +222,12 @@
 		        url:"phoneCheck?phone=" + phone,
 		        cache : false,
 		        success:function(data){
-		        	if(data == " "){
+		        	if(data == "fail"){
 		        		alert("휴대폰 번호가 올바르지 않습니다.")
 		        	}else{	        		
 		        		alert("전송완료");
+		        		$("#j_num").attr("disabled",false);
+		        		$("#j_phone").attr("readonly",true);
 		        		code2 = data;
 		        	}
 		        }
