@@ -96,7 +96,7 @@
 				%>
 			</ol>
 <div class="modal">
-  <div class="modal-dialog" id ="myModal" role="dialog">
+  <div class="modal-dialog" id ="RegisterModal" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="myModalLabel">Modal title</h5>
@@ -144,7 +144,7 @@
 								"게시글 " + parseInt(result)
 										+ " 번이 등록되었습니다.");
 					}
-					$("#myModal").modal("show");
+					$("#RegisterModal").modal("show");
 				});
 	</script>
 	

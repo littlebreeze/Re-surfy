@@ -80,6 +80,8 @@
 						<div>
 							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
 							</b>
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</b>
 						</div>
 					</div>
 					<div class="card-main">
@@ -119,6 +121,8 @@
 					<div class="card-head">
 						<c:out value="${recipe.recipeName}" />
 						<div>
+							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
+							</b>
 							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
 							</b>
 						</div>
@@ -151,7 +155,7 @@
 		</div>
 		</c:when>
 		<c:otherwise>
-					<div class="card-container">
+		<div class="card-container">
 			<c:forEach items="${get}" var="recipe">
 				<div class="card">
 					<div class="card-img">
@@ -161,6 +165,8 @@
 						<c:out value="${recipe.recipeName}" />
 						<div>
 							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
+							</b>
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
 							</b>
 						</div>
 					</div>
