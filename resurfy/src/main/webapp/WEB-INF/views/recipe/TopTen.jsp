@@ -24,7 +24,6 @@
 <link href="<%=request.getContextPath()%>/resources/css/styles.css"
 	rel="stylesheet" />
 
-<link href="/resources/css/pagingButton.css" rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/resources/css/TopTen.css" rel="stylesheet">
 <script
@@ -62,7 +61,7 @@
 			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
 				<c:if test="${status.index < 10}">
 					<tbody>
-						<tr class="table-primary">
+						<tr class="table-danger">
 							<th scope="row">TOP ${status.index + 1}</th>
 							<td><img src="${bestRecipe.image}" /></td>
 							<td><b><a

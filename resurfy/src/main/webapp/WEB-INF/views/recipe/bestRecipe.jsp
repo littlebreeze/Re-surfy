@@ -44,7 +44,8 @@
 	</div>	
 </div>
 
-<button onclick="location.href='/recipe/TopTen'" class="btn btn-primary btn-sm">
+<button onclick ="location.href='/recipe/TopTen'" 
+class="btn btn-primary btn-lg" id = "recipe_rank">
 	Recipe Ranking
 </button>
 

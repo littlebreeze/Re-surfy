@@ -4,19 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../recipe/bestRecipe.jsp"%>
 <link href="/resources/css/get.css" rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootStrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<script type="text/javascript"
-	src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script type="text/javascript" src="/resources/js/reply.js"></script>
-
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <br>
 <c:if test="${pageMaker.cri.type == 'O' }">
 	<div class="container">
@@ -65,7 +53,7 @@
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
-						<button class="btn btn-primary btn-sm">Search</button>
+						<button class="btn btn-primary btn-sm" id = "search_button">Search</button>
 					</form>
 				</div>
 			</div>
@@ -247,20 +235,6 @@
 	$(document)
 			.ready(
 					function() {
-						var result = '<c:out value="${result}"/>';
-						checkModal(result);
-						history.replaceState({}, null, null);
-						function checkModal(result) {
-							if (result === '' || history.state) {
-								return;
-							}
-							if (parseInt(result) > 0) {
-								$(".modal-body").html(
-										"게시글 " + parseInt(result)
-												+ " 번이 등록되었습니다.");
-							}
-							$("#myModal").modal("show");
-						}
 
 						var actionForm = $("#actionForm");
 

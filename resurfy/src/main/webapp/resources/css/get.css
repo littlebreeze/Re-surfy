@@ -42,28 +42,27 @@
 }
 
 
-.slick-prev{
-	left: 200px;
-    z-index: 1;
-}
-.slick-next{
-	right : 200px;
-    z-index: 1;
+#searchForm {
+	  	display: flex;
+  		width: 100%;
+  		max-width: 600px;
+	
 }
 
-
-.slide_div img{
-	margin: auto;
-	display : flex;
-	justify-content : center;
-	align-item : center;
-	object-fit : cover;
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
 }
 
-.slide_div_wrap{
-	padding: 15px 0 15px 0;
-    background-color: #CCCCCC;
-    text-align : center;
-    overflow: hidden;
+#search_button{
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
 }
-

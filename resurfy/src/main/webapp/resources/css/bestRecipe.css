@@ -91,6 +91,16 @@
   transition: visibility 0s, opacity 0.5s ease-in-out;
 }
 
+.slide_item : hover{
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+	
+}
+
 
 .slide_caption.show {
   visibility: visible;
@@ -98,4 +108,14 @@
 }
 .item.blur img {
   filter: blur(3px);
+}
+
+#recipe_rank{
+	display : flex;
+	justify-content : space-between;
+	align-item : center;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+	
 }

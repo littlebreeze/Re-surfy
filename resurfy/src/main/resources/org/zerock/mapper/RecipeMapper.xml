@@ -19,7 +19,6 @@
   </select>
   
   <insert id="insertRecipe">
-  <!-- 쿼리문을 규칙에 맞게 지정삽입 필드와 필드값을 쌍으로 맞춘다. -->
   insert into recipe_tbl (bno, id, recipeName, recipeDescription, foodTypeNo, foodType, time, person, difficulty, image)
       values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription}, #{foodTypeNo}, #{foodType}, #{time}, #{person}, #{difficulty}, #{image})
    </insert>   
@@ -31,6 +30,8 @@
    insert into ingredient_tbl (ino, bno, ingrename, ingremeasure, ingretypeno, ingretype)
       values (seq_ingre.nextval, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreTypeNo}, #{ingreType})       
   </insert>
+  
+  
   
 <!-- <insert id="insertStep">
   쿼리문을 규칙에 맞게 지정삽입 필드와 필드값을 쌍으로 맞춘다.

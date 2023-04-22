@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
 .pagination {
 	display: inline-block;
 	padding-left: 0;
@@ -52,8 +53,8 @@
 	z-index: 3;
 	color: #fff;
 	cursor: default;
-	background-color: #337ab7;
-	border-color: #337ab7
+	background-color:  #FF4500;
+	border-color:  #FF4500;
 }
 
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover,

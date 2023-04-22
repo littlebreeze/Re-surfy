@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.IngredientVO;
 import org.zerock.domain.PageDTO;
+import org.zerock.domain.RecipeVO;
+import org.zerock.domain.StepVO;
 import org.zerock.domain.UserVO;
 import org.zerock.service.IngredientService;
 import org.zerock.service.OwnService;
@@ -34,12 +37,20 @@ public class RecipeController {
 	private ShoppingService shService;
 	private OwnService oService;
 
-		
 	@GetMapping("/registerRecipe")
 	public void register() {
 		log.info("/registerRecipe");
-	}	
-	
+	}
+	/*
+	 * @PostMapping("/registerRecipe") public String register(RecipeVO recipe,
+	 * StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
+	 * rService.register(recipe); sService.register(step); iService.register(ingre);
+	 * rttr.addFlashAttribute("result",recipe.getBno()); return
+	 * 
+	 * "redirect:/recipe/get";
+	 * 
+	 * }
+	 */
 	@GetMapping({"/detail", "/modify"})
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
@@ -100,7 +111,6 @@ public class RecipeController {
 		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
 	}
 	
-		
 	
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
 		

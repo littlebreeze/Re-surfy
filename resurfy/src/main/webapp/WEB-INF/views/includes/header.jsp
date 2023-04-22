@@ -13,6 +13,7 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>resurfy-레시피를 공유하고 공유받는 우리는.</title>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- 사이트 이모티콘(픽토그램) 테마-->
 <link rel="icon" type="image/x-icon"
 	href="<%=request.getContextPath()%>/resources/assets/orangelogo.png"
@@ -48,7 +49,7 @@
 			</a>
 		</div>
 		<div id="header_menu_move">
-			<ul>
+			<ol class="breadcrumb">
 				<%
 				UserVO user = (UserVO) session.getAttribute("member");
 				%>
@@ -56,6 +57,7 @@
 				<%
 				if (user == null) {
 				%>
+				
 				<li><a href="/member/login.do">
 						<font face='NanumGothic'>
 							로그인</button>
@@ -71,18 +73,18 @@
 					<li>
 					<div id = "btnLogout">
 					<a href="/member/login.do">
-								<font face='NanumGothic'>로그아웃</button>
+								<font face='NanumGothic'>로그아웃
 					</a>
 					</div>
 					</li>
 					<li> | </li>
 					<li><a href="/mypage/list">
-								<font face='NanumGothic'>마이페이지</button>
+								<font face='NanumGothic'>마이페이지
 					</a></li>
 					<li> | </li>
-					<li><a href="/recipe/registerRecipe">
-								<font face='NanumGothic'>레시피등록</button>
-					</a></li>
+					<li><a href ="/recipe/registerRecipe">
+								<font face='NanumGothic'>레시피등록</a>
+					</li>
 					<li> | </li>
 					<li id="welcome-text">
 					<font color='#000000'>
@@ -93,7 +95,26 @@
 				<%
 				}
 				%>
-			</ul>
+			</ol>
+<div class="modal">
+  <div class="modal-dialog" id ="myModal" role="dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>처리가 완료되었습니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 		</div>
 	</div>
 
@@ -107,3 +128,24 @@
 		}
 		document.getElementById("welcome-text").style.color = "#FFFFFF";
 	</script>
+	
+	<script type="text/javascript">
+	$(document)
+	.ready(
+			function() {
+				var result = '<c:out value="${result}"/>';
+				checkModal(result);
+				history.replaceState({}, null, null);
+				function checkModal(result) {
+					if (result === '' || history.state) {
+						return;
+					}
+					if (parseInt(result) > 0) {
+						$(".modal-body").html(
+								"게시글 " + parseInt(result)
+										+ " 번이 등록되었습니다.");
+					}
+					$("#myModal").modal("show");
+				});
+	</script>
+	
