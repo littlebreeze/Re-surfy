@@ -240,7 +240,7 @@ $(document).ready(function(){
 	});
 	
 	$("#addModal").on("shown.bs.modal", function() {
-		  $("#autoComplete").autocomplete("option", "appendTo", ".modal")
+		  $("#autoComplete").autocomplete("option", "appendTo", "#addModal")
 	})
 });
 </script>
