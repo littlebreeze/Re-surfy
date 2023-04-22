@@ -46,7 +46,7 @@
 
 <button onclick ="location.href='/recipe/TopTen'" 
 class="btn btn-primary btn-lg" id = "recipe_rank">
-	Recipe Ranking
+<img src = "/resources/assets/ranking.png" width = "20" height = "auto">
 </button>
 
 

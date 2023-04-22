@@ -38,17 +38,19 @@
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
 	href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
+<link
+	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
+	rel="stylesheet">
 <body>
 
 	<div id="header_menu">
 		<div id="logo">
-			<a href="/recipe/get"> 
-			<img src="/resources/assets/fadeblueLogo.png" width = "200" height = "auto">
+			<a href="/recipe/get"> <img
+				src="/resources/assets/fadeblueLogo.png" width="200" height="auto">
 			</a>
 		</div>
 		<div id="header_menu_move">
-			<ol class="breadcrumb">
+			<ul class="nav nav-pills">
 				<%
 				UserVO user = (UserVO) session.getAttribute("member");
 				%>
@@ -56,64 +58,70 @@
 				<%
 				if (user == null) {
 				%>
-				
-				<li><a href="/member/login.do">
-						<font face='NanumGothic'>
-							로그인</button>
+
+				<li class="nav-item"><a href="/member/login.do"> <img
+						src="/resources/assets/unlocked.png" width="20" height="auto">
 				</a></li>
-				<li> | </li>
-				<li>비회원 입니다.</li>
-				
+				<li class="nav-item">비회원 입니다.</li>
+
 				<%
-					} else {
+				} else {
 				%>
-				
+
 				<form action="/member/logout.do" id="logout" method="post">
 					<li>
-					<div id = "btnLogout">
-					<a href="/member/login.do">
-								<font face='NanumGothic'>로그아웃
+						<div id="btnLogout">
+							<a href="/member/login.do"> <img
+								src="/resources/assets/lock.png" width="20" height="auto">
+							</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+						href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							<img src="/resources/assets/user.png" width="20" height="auto">
 					</a>
-					</div>
-					</li>
-					<li> | </li>
-					<li><a href="/mypage/list">
-								<font face='NanumGothic'>마이페이지
-					</a></li>
-					<li> | </li>
-					<li><a href ="/recipe/registerRecipe">
-								<font face='NanumGothic'>레시피등록</a>
-					</li>
-					<li> | </li>
-					<li id="welcome-text">
-					<font color='#000000'>
-					<%=user.getId()%>님 환영합니다.
-					</li>
-				
+						<div class="dropdown-menu" style="">
+							<a class="dropdown-item" href="/mypage/list"><font
+								face='NanumGothic'>작성글 모아보기 </a> 
+							<a class="dropdown-item"
+								href="/mypage/cart"><font face='NanumGothic'>장바구니 </a> <a
+								class="dropdown-item" href="/mypage/own"><font
+								face='NanumGothic'>가진 재료 </a>
+						</div></li>
+					<li class="nav-item"><a href="/recipe/registerRecipe"> <font
+							face='NanumGothic'> <img src="/resources/assets/edit.png"
+								width="20" height="auto"></a></li>
+					<li class="nav-item" id="welcome-text"><font color='#000000'>
+							<%=user.getId()%>님 환영합니다. </li>
+
 				</form>
 				<%
 				}
 				%>
-			</ol>
-<div class="modal">
-  <div class="modal-dialog" id ="RegisterModal" role="dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>처리가 완료되었습니다.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+				</ol>
+				<div class="modal">
+					<div class="modal-dialog" id="RegisterModal" role="dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="myModalLabel">Modal title</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true"></span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>등록 처리가 완료되었습니다.</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary">Save
+									changes</button>
+								<button type="button" class="btn btn-secondary"
+									data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
 		</div>
 	</div>
 
@@ -127,7 +135,7 @@
 		}
 		document.getElementById("welcome-text").style.color = "#FFFFFF";
 	</script>
-	
+
 	<script type="text/javascript">
 	$(document)
 	.ready(
@@ -147,4 +155,3 @@
 					$("#RegisterModal").modal("show");
 				});
 	</script>
-	

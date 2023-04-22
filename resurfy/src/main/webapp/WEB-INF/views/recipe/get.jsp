@@ -53,7 +53,7 @@
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
-						<button class = "btn btn-primary btn-lg">Search</button>
+						<button class = "btn btn-primary btn-lg"><img src = "/resources/assets/search.png" width = "20" height = "auto"></button>
 					</form>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 		<ul class="nav nav-pills">
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-				role="button" aria-haspopup="true" aria-expanded="false">정렬</a>
+				role="button" aria-haspopup="true" aria-expanded="false"><img src="/resources/assets/filter.png" width="30" height="auto"></a>
 				<div class="dropdown-menu" style="">
 					<a class="dropdown-item" href="?orderBy=visitcnt">조회수</a> 
 					<a class="dropdown-item" href="?orderBy=replycnt">댓글수</a>
@@ -104,8 +104,8 @@
 					</div>
 					<div class="card-footer">
 						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피
-							보기</a>
+							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+							<img src="/resources/assets/enter.png" width="30" height="auto"></a>
 					</div>
 				</div>
 			</c:forEach>
@@ -147,8 +147,8 @@
 					</div>
 					<div class="card-footer">
 						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피
-							보기</a>
+							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+							<img src="/resources/assets/enter.png" width="30" height="auto"></a>
 					</div>
 				</div>
 			</c:forEach>
@@ -190,8 +190,9 @@
 					</div>
 					<div class="card-footer">
 						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">레시피
-							보기</a>
+							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+							<img src="/resources/assets/enter.png" width="30" height="auto">
+							</a>
 					</div>
 				</div>
 			</c:forEach>
