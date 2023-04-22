@@ -129,8 +129,7 @@
 	</script>
 	
 	<script type="text/javascript">
-	$(document)
-	.ready(
+	$(document).ready(
 			function() {
 				var result = '<c:out value="${result}"/>';
 				checkModal(result);
@@ -140,11 +139,10 @@
 						return;
 					}
 					if (parseInt(result) > 0) {
-						$(".modal-body").html(
-								"게시글 " + parseInt(result)
-										+ " 번이 등록되었습니다.");
+						$(".modal-body").html("게시글 " + parseInt(result) + " 번이 등록되었습니다.");
 					}
 					$("#RegisterModal").modal("show");
-				});
+				};
+			});
 	</script>
 	
