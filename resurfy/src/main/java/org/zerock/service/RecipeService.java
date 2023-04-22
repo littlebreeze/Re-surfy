@@ -9,6 +9,7 @@ public interface RecipeService {
 	public void register(RecipeVO board);
 	public RecipeVO get(Long bno);
 	public boolean modify(RecipeVO board);
+	public boolean modifyw(RecipeVO board);//필요한 부분만 수정(레시피)
 	public boolean remove(Long bno);
 	public List<RecipeVO> getList(Criteria cri);
 	public List<RecipeVO> getAllList();

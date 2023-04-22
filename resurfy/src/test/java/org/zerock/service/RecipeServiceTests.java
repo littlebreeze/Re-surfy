@@ -74,6 +74,18 @@ public class RecipeServiceTests {
 	}
 	
 	@Test
+	public void testUpdatew() {
+		RecipeVO board = service.get(195454L);
+		
+		if (board==null) {
+			return;
+		}
+		
+		board.setRecipeDescription("간단하고 맛있습니다.");
+		log.info("MODIFY RESULT : " + service.modifyw(board));
+	}
+	
+	@Test
 	public void testDelete() {
 		log.info("REMOVE RESULT : " + service.remove(1L));
 	}

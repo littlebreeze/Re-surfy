@@ -51,6 +51,12 @@ public class RecipeServiceImpl implements RecipeService {
 		log.info("modify......." + board);
 		return mapper.updateRecipe(board) == 1;
 	}
+	
+	@Override
+	public boolean modifyw(RecipeVO board) {
+		log.info("modify......." + board);
+		return mapper.updateRecipew(board) == 1;
+	}
 
 	@Override
 	public boolean remove(Long bno) {

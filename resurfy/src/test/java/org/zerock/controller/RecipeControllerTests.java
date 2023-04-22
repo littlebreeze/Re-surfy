@@ -62,6 +62,22 @@ public class RecipeControllerTests {
 	}
 	
 	@Test
+	public void testModify() throws Exception{
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/recipe/modify")
+				.param("bno", "195454")
+				.param("recipeName", "계란 후라이")
+				.param("recipeDescription", "간단하고 맛있는 요리!")
+				.param("foodTypeNo", "2020001")
+				.param("foodType", "한식")
+				.param("time", "10분")
+				.param("person", "1인분")
+				.param("difficulty", "초보환영"))
+				
+				.andReturn().getModelAndView().getViewName();
+		log.info(resultPage);
+	}
+	
+	@Test
 	public void testRemove() throws Exception{
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/recipe/remove")
 				.param("bno", "195455")

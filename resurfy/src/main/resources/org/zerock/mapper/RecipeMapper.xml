@@ -82,6 +82,19 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     where bno = #{bno}
   </update>
   
+   <update id="updateRecipew" parameterType="org.zerock.domain.RecipeVO">
+    update recipe_tbl
+    set recipeName=#{recipeName},
+    recipeDescription = #{recipeDescription},
+    foodTypeNo = #{foodTypeNo},
+    foodType = #{foodType},
+    time = #{time},
+    person = #{person},
+    difficulty = #{difficulty},
+    recipeUpdateDate = sysdate
+    where bno = #{bno}
+  </update>
+  
     <update id="updateStep">
     update step_tbl
     set stepNo= #{stepNo},
