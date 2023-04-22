@@ -525,7 +525,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="reModalLabel">REPLY MODAL</h4>
+					<h4 class="modal-title" id="reModalLabel">댓글창</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
@@ -537,16 +537,16 @@
 						<input class="form-control" name='id' value='user1'>
 					</div>
 					<div class="form-group">
-						<label>Reply Date</label>
+						<label>등록 날짜</label>
 						<input class="form-control" name='replyDate' value=''>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-					<button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
-					<button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
+					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
+					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
+					<button id='modalRegisterBtn' type="button" class="btn btn-primary">등록</button>
 					
-					<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
+					<!-- <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>-->
 				</div>
 			</div>
 		</div>
