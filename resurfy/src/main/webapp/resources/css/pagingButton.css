@@ -21,8 +21,8 @@
 	float: left;
 	padding: 6px 12px;
 	margin-left: -1px;
-	line-height: 1.42857143;
-	color: #337ab7;
+	line-height: 1.42857143;	
+	color: #6cc3d5;
 	text-decoration: none;
 	background-color: #fff;
 	border: 1px solid #ddd
@@ -43,7 +43,8 @@
 	.pagination>li>span:hover {
 	z-index: 2;
 	color: #23527c;
-	background-color: #eee;
+	color: #ff7851;
+	background-color: #E4EEF0;
 	border-color: #ddd
 }
 
@@ -53,8 +54,8 @@
 	z-index: 3;
 	color: #fff;
 	cursor: default;
-	background-color:  #FF4500;
-	border-color:  #FF4500;
+	background-color: #ff7851;
+	border-color: #ff7851;
 }
 
 .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover,

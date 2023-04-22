@@ -65,7 +65,7 @@
 }
 
 #wrapper {
-	border-top: 2px solid #E4EEF0;
+	/* border-top: 2px solid #E4EEF0; */
 	overflow-x: hidden;
 }
 
@@ -180,11 +180,18 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .mypageBtn {
 	border: 1px solid #E4EEF0;
 	border-radius: .5rem;
+	background-color: #ff7851;
+	color: white;
+}
+
+.col-lg-12>.mypageBtn {
+	background-color: transparent;
+	color: #343a40;
 }
 
 .mypageBtn:hover {
 	border: 1px solid white;
-	background-color: #ff7851;
+	background-color: #6cc3d5;
 	color: white;
 }
 
