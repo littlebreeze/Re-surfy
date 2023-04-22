@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.IngredientVO;
 import org.zerock.domain.PageDTO;
+import org.zerock.domain.RecipeVO;
+import org.zerock.domain.StepVO;
 import org.zerock.domain.UserVO;
 import org.zerock.service.IngredientService;
 import org.zerock.service.OwnService;
@@ -34,84 +37,100 @@ public class RecipeController {
 	private ShoppingService shService;
 	private OwnService oService;
 
-		
 	@GetMapping("/registerRecipe")
 	public void register() {
 		log.info("/registerRecipe");
-	}	
-	
-	@GetMapping({"/detail", "/modify"})
+	}
+
+	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
 		model.addAttribute("ingre", iService.get(bno));
 		model.addAttribute("step", sService.get(bno));
-		
+
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
-		if(sessionUser!=null)
-			userID=sessionUser.getId();
+		if (sessionUser != null)
+			userID = sessionUser.getId();
 		model.addAttribute("shopNotIn", shService.searchFromAPI(iService.getIngreList(bno, userID)));
 		model.addAttribute("shopIn", shService.searchFromAPI(iService.getIngreListHave(bno, userID)));
 
-	} 
-		
+	}
+
 	@GetMapping("/get")
-	public void list(HttpServletRequest request, @ModelAttribute("cri") Criteria cri , Model model) {
+	public void list(HttpServletRequest request, @ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("get" + cri);
-		model.addAttribute("get",rService.getList(cri));
+		model.addAttribute("get", rService.getList(cri));
 		log.info("list");
-		model.addAttribute("listRecipe",rService.getAllList());
-		model.addAttribute("sortByReply",rService.sortByReplyCnt());
-		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
-		
+		model.addAttribute("listRecipe", rService.getAllList());
+		model.addAttribute("sortByReply", rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
+
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
-		if(sessionUser!=null) {
-			String userID = sessionUser.getId();		
-			model.addAttribute("list",oService.getList(userID));
+		if (sessionUser != null) {
+			String userID = sessionUser.getId();
+			model.addAttribute("list", oService.getList(userID));
 		}
-		
+
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
-		model.addAttribute("pageMaker",new PageDTO(cri, total));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
-	
+
+	@PostMapping("/modify")
+	public String modify(RecipeVO board, IngredientVO iboard, StepVO sboard, RedirectAttributes rttr) {
+
+		log.info("modfiy:" + iboard);
+		String str = iboard.getIngreName();
+		log.info("str : " + str);
+
+		if (rService.modifyw(board)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
+		/*
+		 * if(iService.modify(iboard)) { rttr.addFlashAttribute("result", "success"); }
+		 * 
+		 * if(sService.modifyw(sboard)) { rttr.addFlashAttribute("result", "success"); }
+		 */
+		return "redirect:/recipe/get";
+	}
+
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
 		log.info("remove recipe..." + bno);
-		if(sService.remove(bno)) {
+		if (sService.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		if(iService.remove(bno)) {
+		if (iService.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		if(rService.remove(bno)) {
+		if (rService.remove(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		
+
 		return "redirect:/recipe/get";
 	}
-	
+
 	@GetMapping("/TopTen")
 	public void ListSort(Model model) {
-		model.addAttribute("sortByReply",rService.sortByReplyCnt());
-		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
+		model.addAttribute("sortByReply", rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
-	
-		
-	
-	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
-		
+
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+
 	}
-	
+
 	public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		return null;
 	}
-	
-	public String remove(@RequestParam("bno")Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+
+	public String remove(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		return null;
 	}
-	
+
 }

@@ -136,6 +136,22 @@ public class RecipeMapperTests {
 	}
 	
 	@Test
+	public void testUpdateRecipew() { //필요한 부분만 udpate(레시피)
+		RecipeVO board = new RecipeVO();
+		board.setBno(195454L);
+		board.setRecipeName("계란후라이");
+		board.setRecipeDescription("매우 간단한 요리!!");
+		board.setFoodTypeNo(3020001L);
+		board.setFoodType("한식");
+		board.setTime("5분");
+		board.setPerson("1인분");
+		board.setDifficulty("초보환영");
+		
+		int count = mapper.updateRecipew(board);
+		log.info("UPDATE COUNT : " + count);
+	}
+	
+	@Test
 	public void testUpdateStep() {
 		StepVO board = new StepVO();
 		board.setSno(3026L);

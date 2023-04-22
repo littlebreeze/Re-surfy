@@ -55,12 +55,12 @@
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 
-				<form role="form" action="/board/modify" method="post">
+				<form role="form" action="/recipe/modify" method="post">
 
-					<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
+					<%-- <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
 					<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'> 
 					<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
-					<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+					<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'> --%>
 
 
 						<div class="form-group" style=" width: 50%; margin: 0 auto; text-align:center">
@@ -75,48 +75,58 @@
 						</div>
 
 					<div class="form-group">
-						<label>레시피 제목</label> <input class="form-control" name='title'
+						<label>레시피 제목</label> <input class="form-control" name='recipeName'
 							value='<c:out value="${recipe.recipeName }"/>'>
 					</div>
 
 					<div class="form-group">
 						<label>요리 소개</label>
-						<textarea class="form-control" rows="3" name='content'><c:out
+						<textarea class="form-control" rows="3" name='recipeDescription'><c:out
 								value="${recipe.recipeDescription}" /></textarea>
 					</div>
 
 					<div class="form-group">
-						<label>작성자</label> <input class="form-control" name='writer'
+						<label>작성자</label> <input class="form-control" name='id'
 							value='<c:out value="${recipe.id}"/>' readonly="readonly">
 					</div>
 
 					<div class="form-group">
-						<label>RegDate</label> <input class="form-control" name='regDate'
-							value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${recipe.recipeDate}" />'
+						<label>RegDate</label> <input class="form-control" name='recipeDate'
+							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeDate}" />'
 							readonly="readonly">
 					</div>
 
 					<div class="form-group">
 						<label>Update Date</label> <input class="form-control"
-							name='updateDate'
-							value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${recipe.recipeUpdateDate}" />'
+							name='recipeUpdateDate'
+							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeUpdateDate}" />'
 							readonly="readonly">
 					</div>
 					
 					<div class="form-group">
 						<label>카테고리</label> 
 						<div>
-			              <select class="form-select" id="food_type" control-id="ControlID-11">
+						   <select class="form-select" id="food_type" control-id="ControlID-11" name="foodTypeNo">
+			                <option value="" >유형별</option>
+			                <option value="3020001" <c:if test ="${recipe.foodType eq '한식'}">selected="selected"</c:if>>3020001 </option>
+			                <option value="3020004" <c:if test ="${recipe.foodType eq '중국'}">selected="selected"</c:if>>3020004</option>
+			                <option value="3020003" <c:if test ="${recipe.foodType eq '일본'}">selected="selected"</c:if>>3020003</option>
+			                <option value="3020002" <c:if test ="${recipe.foodType eq '서양'}">selected="selected"</c:if>>3020002</option>
+			                <option value="3020006" <c:if test ="${recipe.foodType eq '이탈리아'}">selected="selected"</c:if>>3020006</option>
+			                <option value="3020005" <c:if test ="${recipe.foodType eq '동남아시아'}">selected="selected"</c:if>>3020005</option>
+							<option value="3020009" <c:if test ="${recipe.foodType eq '퓨전'}">selected="selected"</c:if>>3020009</option>
+			              </select>
+			              <select class="form-select" id="food_type" control-id="ControlID-11" name="foodType">
 			                <option value="" >유형별</option>
 			                <option value="한식" <c:if test ="${recipe.foodType eq '한식'}">selected="selected"</c:if>>한식 </option>
 			                <option value="중국" <c:if test ="${recipe.foodType eq '중국'}">selected="selected"</c:if>>중국</option>
 			                <option value="일본" <c:if test ="${recipe.foodType eq '일본'}">selected="selected"</c:if>>일본</option>
-			                <option value="서양식" <c:if test ="${recipe.foodType eq '서양식'}">selected="selected"</c:if>>서양식</option>
+			                <option value="서양" <c:if test ="${recipe.foodType eq '서양'}">selected="selected"</c:if>>서양</option>
 			                <option value="이탈리아" <c:if test ="${recipe.foodType eq '이탈리아'}">selected="selected"</c:if>>이탈리아</option>
 			                <option value="동남아시아" <c:if test ="${recipe.foodType eq '동남아시아'}">selected="selected"</c:if>>동남아시아</option>
 							<option value="퓨전" <c:if test ="${recipe.foodType eq '퓨전'}">selected="selected"</c:if>>퓨전</option>
 			              </select>
-			             <select class="form-select" id="person" control-id="ControlID-11">
+			             <select class="form-select" id="person" control-id="ControlID-11" name="person">
 			                <option value="" >인원</option>
 			                <option value="1인분" <c:if test ="${recipe.person eq '1인분'}">selected="selected"</c:if>>1인분</option>
 			                <option value="2인분" <c:if test ="${recipe.person eq '2인분'}">selected="selected"</c:if>> 2인분</option>
@@ -125,18 +135,25 @@
 			                <option value="5인분이상" <c:if test ="${recipe.person eq '5인분이상'}">selected="selected"</c:if>> 5인분이상</option>
 			            </select>
 			            <span class="pad_l_30"> </span>
-			            <select class="form-select" id="time" control-id="ControlID-11">
+			            <select class="form-select" id="time" control-id="ControlID-11" name="time">
 			              <option value="" >시간</option>
-			              <option value="5">5분이내</option>
-			              <option value="10">10분이내</option>
-			              <option value="15">15분이내</option>
-			              <option value="20">20분이내</option>
-			              <option value="30">30분이내</option>
-			              <option value="60">1시간이내</option>
-			              <option value="999">1시간이상</option>
+			              <option value="5분" <c:if test ="${recipe.time eq '5분'}">selected="selected"</c:if>> 5분</option>
+			              <option value="10분" <c:if test ="${recipe.time eq '10분'}">selected="selected"</c:if>> 10분</option>
+			              <option value="15분" <c:if test ="${recipe.time eq '15분'}">selected="selected"</c:if>> 15분</option>
+			              <option value="20분" <c:if test ="${recipe.time eq '20분'}">selected="selected"</c:if>> 20분</option>
+			              <option value="25분" <c:if test ="${recipe.time eq '25분'}">selected="selected"</c:if>> 25분</option>
+			              <option value="30분" <c:if test ="${recipe.time eq '30분'}">selected="selected"</c:if>> 30분</option>
+			              <option value="35분" <c:if test ="${recipe.time eq '35분'}">selected="selected"</c:if>> 35분</option>
+			              <option value="40분" <c:if test ="${recipe.time eq '40분'}">selected="selected"</c:if>> 40분</option>
+			              <option value="50분" <c:if test ="${recipe.time eq '50분'}">selected="selected"</c:if>> 50분</option>
+			              <option value="60분" <c:if test ="${recipe.time eq '60분'}">selected="selected"</c:if>> 60분</option>
+			              <option value="90분" <c:if test ="${recipe.time eq '90분'}">selected="selected"</c:if>> 90분</option>
+			              <option value="120분" <c:if test ="${recipe.time eq '120분'}">selected="selected"</c:if>> 120분</option>
+			              <option value="140분" <c:if test ="${recipe.time eq '140분'}">selected="selected"</c:if>> 140분</option>
+			              <option value="180분" <c:if test ="${recipe.time eq '175분' || recipe.time eq '180분'}">selected="selected"</c:if>> 180분</option>
 			            </select>
 			            <span class="pad_l_30"> </span>
-			            <select class="form-select" id="difficulty" control-id="ControlID-11">
+			            <select class="form-select" id="difficulty" control-id="ControlID-11" name="difficulty">
 			              <option value="" >난이도</option>
 			              <option value="초보환영" <c:if test ="${recipe.difficulty eq '초보환영'}">selected="selected"</c:if>> 초보환영</option>
 			              <option value="보통" <c:if test ="${recipe.difficulty eq '보통'}">selected="selected"</c:if>> 보통</option>
@@ -151,15 +168,15 @@
 				            <c:if test="${ing.ingreType eq '주재료'}">
 				             <ul id="ingredientAra_1" class="ingredientGroup" style="list-style: none;">
 				              <li id="liIngredient_1_1">
-				               <select class="form-select" id="ingredient_type" control-id="ControlID-11">
+				               <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
 				                <option value="부재료" <c:if test ="${ing.ingreType eq '부재료'}">selected="selected"</c:if>>부재료</option>
 				                <option value="양념" <c:if test ="${ing.ingreType eq '양념'}">selected="selected"</c:if>>양념</option>
 				              </select>		
-				                <input type="text" name="addIngredient_name_1[]" id="recipIngredient_name_1_1"
+				                <input type="text" name="ingreName" id="recipIngredient_name_1_1"
 				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; border-radius: 0.375rem" control-id="ControlID-19">
-				                <input type="text" name="addIngredient_amount_1[]" id="recipIngredient_amount_1_1"
+				                <input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
 				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; border-radius: 0.375rem"  control-id="ControlID-20">
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
@@ -171,15 +188,17 @@
 				            <c:if test="${ing.ingreType eq '부재료'}">
 				             <ul id="ingredientAra_1" class="ingredientGroup" style="list-style: none;">
 				              <li id="liIngredient_1_1">
-				               <select class="form-select" id="ingredient_type" control-id="ControlID-11">
+				               <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
 				                <option value="부재료" <c:if test ="${ing.ingreType eq '부재료'}">selected="selected"</c:if>>부재료</option>
 				                <option value="양념" <c:if test ="${ing.ingreType eq '양념'}">selected="selected"</c:if>>양념</option>
-				              </select>		
-				                <input type="text" name="addIngredient_name_1[]" id="recipIngredient_name_1_1"
+				              </select>
+				              <c:set var = "ino" value='<c:out value="${ing.ino }"/>'/>
+				            		
+				                <input type="text" name="ingreName" id="recipIngredient_name_1_1"
 				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; border-radius: 0.375rem" control-id="ControlID-19">
-				                <input type="text" name="addIngredient_amount_1[]" id="recipIngredient_amount_1_1"
+				                <input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
 				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; border-radius: 0.375rem"  control-id="ControlID-20">
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
@@ -190,15 +209,15 @@
 				                 <c:if test="${ing.ingreType eq '양념'}">
 				             <ul id="ingredientAra_1" class="ingredientGroup" style="list-style: none;">
 				              <li id="liIngredient_1_1">
-				               <select class="form-select" id="ingredient_type" control-id="ControlID-11">
+				               <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
 				                <option value="부재료" <c:if test ="${ing.ingreType eq '부재료'}">selected="selected"</c:if>> 부재료</option>
 				                <option value="양념" <c:if test ="${ing.ingreType eq '양념'}">selected="selected"</c:if>>양념</option>
 				              </select>		
-				                <input type="text" name="addIngredient_name_1[]" id="recipIngredient_name_1_1"
+				                <input type="text" name="ingreName" id="recipIngredient_name_1_1"
 				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; border-radius: 0.375rem" control-id="ControlID-19">
-				                <input type="text" name="addIngredient_amount_1[]" id="recipIngredient_amount_1_1"
+				                <input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
 				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; border-radius: 0.375rem"  control-id="ControlID-20">
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
@@ -211,13 +230,12 @@
 						<label>요리순서</label>
 						 <c:forEach items="${step}" var="st">
 							<c:choose>
-
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/logo.jpg" width=200px height=200px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/logo.png" width=200px height=200px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
-								<%-- <input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30"> --%>              
+								<input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30">              
 								<textarea name="recipeDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
               					<c:out value="${st.stepDescription }"/>
               					</textarea>
@@ -269,7 +287,7 @@
 					</div>
 
 
-					<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
+					<button type="submit" data-oper='modifyw' class="btn btn-default">Modify</button>
 					<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
 					<button type="submit" data-oper='list' class="btn btn-info">List</button>
 				</form>
@@ -309,6 +327,12 @@
 				self.location  = "/recipe/get";
 				return;
 
+			} else if (operation === 'modifyw'){
+				var modifyYN = confirm("수정하시겠습니까?");
+				 if(modifyYN == true){
+
+						formObj.attr("action", "/recipe/modify");
+		         }
 			}
 
 			formObj.submit();
