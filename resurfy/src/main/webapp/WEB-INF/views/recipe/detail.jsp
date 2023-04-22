@@ -21,25 +21,25 @@
        <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
        
 <!--        Bootstrap Core CSS -->
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">-->
 
 <!-- MetisMenu CSS -->
-<link href="/resources/vendor/metisMenu/metisMenu.min.css"
-	rel="stylesheet">
+<!-- <link href="/resources/vendor/metisMenu/metisMenu.min.css"
+	rel="stylesheet">-->
 
 <!-- DataTables CSS -->
-<link
+<!-- <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
-	rel="stylesheet">
+	rel="stylesheet">-->
 
 <!-- DataTables Responsive CSS -->
-<link
+<!-- <link
 	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
-	rel="stylesheet">
+	rel="stylesheet">-->
 
 <!-- Custom CSS -->
-<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+<!-- <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">-->
 
 <style>
 
@@ -178,7 +178,7 @@
 
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/logo.png" width=220px height=220px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=220px height=220px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<span style="font-size:17px"><c:out value="${st.stepDescription}" /></span>
@@ -520,12 +520,12 @@
         <!-- Core theme JS-->
        <!--  <script src="js/scripts.js"></script> -->
 <!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="reModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
+					<h4 class="modal-title" id="reModalLabel">REPLY MODAL</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
@@ -631,7 +631,7 @@ $(document).ready(function(){
 			showReplyPage(replyCnt);
 		}); //end function
 	}// end showList
-	var modal = $(".modal");
+	var modal = $("#reModal");
 	var modalInputReply = modal.find("input[name='reply']");
 	var modalInputReplyer = modal.find("input[name='id']");
 	var modalInputReplyDate = modal.find("input[name='replyDate']");
@@ -648,7 +648,7 @@ $(document).ready(function(){
 		modal.find("button[id!='modalCloseBtn']").hide();
 		
 		modalRegisterBtn.show();
-		$(".modal").modal("show");
+		modal.modal("show");
 	});
 	
 	modalRegisterBtn.on("click", function(e) {
@@ -688,7 +688,7 @@ $(document).ready(function(){
 	        modalModBtn.show();
 	        modalRemoveBtn.show();
    		}
-        $(".modal").modal("show");
+        modal.modal("show");
             
       });
 
