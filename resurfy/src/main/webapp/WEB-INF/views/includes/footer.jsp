@@ -6,7 +6,12 @@
         <script src="/resources/js/scripts.js"></script>
             <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
+      
+    </body>
+</html>
+
+
+ <script type="text/javascript">
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
@@ -17,5 +22,3 @@
         .attr("style","height:1px");
     });
     </script>
-    </body>
-</html>

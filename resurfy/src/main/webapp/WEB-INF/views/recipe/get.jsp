@@ -53,7 +53,7 @@
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
-						<button class="btn btn-primary btn-sm" id = "search_button">Search</button>
+						<button class = "btn btn-primary btn-lg">Search</button>
 					</form>
 				</div>
 			</div>
@@ -226,9 +226,8 @@
 			<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 		</c:forEach>
 	</form>
-
+	
 </div>
-
 
 
 <script type="text/javascript">
@@ -297,6 +296,5 @@
 
 					});
 </script>
-
 
 <%@include file="../includes/footer.jsp"%>

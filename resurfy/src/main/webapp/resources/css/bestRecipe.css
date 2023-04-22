@@ -5,11 +5,11 @@
 	height: auto;	
 	border: 0px solid black;
 	text-align : center;
-	background-color:  #e95420;
+	background-color:  #ff7851;
 }
 
 .recipe_carousel > div{
-	background-color:  #e95420
+	background-color: #ff7851;
 }
 
 .slick-prev{
@@ -89,16 +89,6 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s ease-in-out;
-}
-
-.slide_item : hover{
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fff;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s ease-in-out;
-	
 }
 
 

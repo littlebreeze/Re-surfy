@@ -31,8 +31,6 @@
       values (seq_ingre.nextval, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreTypeNo}, #{ingreType})       
   </insert>
   
-  
-  
 <!-- <insert id="insertStep">
   쿼리문을 규칙에 맞게 지정삽입 필드와 필드값을 쌍으로 맞춘다.
 insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
@@ -44,6 +42,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
       values (#{ino}, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreTypeNo}, #{ingreType})     
   </insert>
    -->
+   
   <!-- bno를 통해 recipe,step,ingre data를 불러온다  -->
   <select id="readRecipe" resultType="org.zerock.domain.RecipeVO">
    select * from recipe_tbl where bno=#{bno}
