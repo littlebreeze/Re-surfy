@@ -5,11 +5,11 @@
 	height: auto;	
 	border: 0px solid black;
 	text-align : center;
-	background-color:  #ff7851;
+	background-color:  #F0DDD8
 }
 
 .recipe_carousel > div{
-	background-color: #ff7851;
+	background-color:  #F0DDD8
 }
 
 .slick-prev{

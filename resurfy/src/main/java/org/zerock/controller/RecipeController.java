@@ -41,22 +41,8 @@ public class RecipeController {
 	public void register() {
 		log.info("/registerRecipe");
 	}
-<<<<<<< HEAD
-	/*
-	 * @PostMapping("/registerRecipe") public String register(RecipeVO recipe,
-	 * StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
-	 * rService.register(recipe); sService.register(step); iService.register(ingre);
-	 * rttr.addFlashAttribute("result",recipe.getBno()); return
-	 * 
-	 * "redirect:/recipe/get";
-	 * 
-	 * }
-	 */
-	@GetMapping({"/detail", "/modify"})
-=======
 
 	@GetMapping({ "/detail", "/modify" })
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
@@ -130,26 +116,13 @@ public class RecipeController {
 	}
 
 	@GetMapping("/TopTen")
-<<<<<<< HEAD
-	public void ListSort(Model model ,@ModelAttribute("cri") Criteria cri) {
-		model.addAttribute("sortByReply",rService.sortByReplyCnt());
-		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
-=======
 	public void ListSort(Model model) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 	}
-<<<<<<< HEAD
-	
-	
-	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
-		
-=======
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 	}
 
 	public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {

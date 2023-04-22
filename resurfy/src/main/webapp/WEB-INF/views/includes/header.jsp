@@ -13,10 +13,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>resurfy-레시피를 공유하고 공유받는 우리는.</title>
-<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- 사이트 이모티콘(픽토그램) 테마-->
 <link rel="icon" type="image/x-icon"
-	href="<%=request.getContextPath()%>/resources/assets/orangelogo.png"
+	href="<%=request.getContextPath()%>/resources/assets/fadeblueLogo.png"
 	rel="stylesheet" />
 <!-- Bootstrap에서 사용되는 아이콘들-->
 <link
@@ -45,7 +44,7 @@
 	<div id="header_menu">
 		<div id="logo">
 			<a href="/recipe/get"> 
-			<img src="/resources/assets/bigredlogo.png" width = "200" height = "auto">
+			<img src="/resources/assets/fadeblueLogo.png" width = "200" height = "auto">
 			</a>
 		</div>
 		<div id="header_menu_move">
