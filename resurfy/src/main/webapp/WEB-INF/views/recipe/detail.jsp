@@ -828,10 +828,24 @@ var pIdArr = new Array();
  pIdArr : pIdArr },
  success : function(){
  console.log("장바구니 추가 성공");
- alert("장바구니에 추가 되었습니다.");
+ /* alert("장바구니에 추가 되었습니다."); */
+ 
+ var move_val = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
+ 
+ if(move_val) {
+	   
+	   $.ajax({
+		    success : function(){
+		    	
+		    	location.href = "/mypage/cart";
+		    }
+		});
+}
  }
 });
- } 
+ }
+
+ 
  }
 });
 });
