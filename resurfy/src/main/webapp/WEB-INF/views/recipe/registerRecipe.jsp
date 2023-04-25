@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@include file="../includes/header.jsp"%>
+<%@page import="org.zerock.domain.RecipeVO"%>
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -28,6 +29,7 @@ pageEncoding="UTF-8"%>
 
   </head>
   <body>
+  <%String id = request.getParameter("id"); %>
     <form action="/recipe/registerRecipe" id="registerRecipe" onsubmit="return validateForm();" method="post">
       <div class="register_recipe_wrapper">
         <div class="register_wrapper">

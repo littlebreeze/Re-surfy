@@ -1,8 +1,12 @@
 package org.zerock.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,28 +35,95 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/recipe/*")
 @AllArgsConstructor
 public class RecipeController {
+	
+	@Autowired
 	private RecipeService rService;
+	@Autowired
 	private StepService sService;
+	@Autowired
 	private IngredientService iService;
+	@Autowired
 	private ShoppingService shService;
+	@Autowired
 	private OwnService oService;
 
 	@GetMapping("/registerRecipe")
 	public void register() {
-		log.info("/registerRecipe");
 	}
 
-	
-	@PostMapping("/registerRecipe") 
-	public String register(RecipeVO recipe, StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
-	  rService.register(recipe); 
-	  sService.register(step); 
-	  iService.register(ingre);
-	  rttr.addFlashAttribute("result",recipe.getBno()); 
-	  return "redirect:/recipe/get";
-	  }
-	 
+	@PostMapping("/registerRecipe.do")
+	public String register(HttpServletRequest request, @RequestParam("recipeName") String recipeName, @RequestParam("recipeDescription") String recipeDescription,
+			@RequestParam("image") String image, @RequestParam("foodType") String combinedFoodValue, @RequestParam("person") String person, 
+			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time, 
+			@RequestParam("ingreType") String [] ingreType, @RequestParam("ingreMeasure") String [] ingreMeasure, @RequestParam("ingreName") String [] ingreName, 
+			@RequestParam("stepNo") Long [] stepNo, @RequestParam("stepDescription") String [] StepDescription, @RequestParam("stepImage") String [] stepImage,
+			@RequestParam("tip") String [] tip,
+			RedirectAttributes rttr) {
+		
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+		String userID = "";
+		if(sessionUser!=null) 
+			userID=sessionUser.getId();
+		
+        RecipeVO rvo = new RecipeVO();
+        rvo.setRecipeName(recipeName);
+        rvo.setRecipeDescription(recipeDescription);
+        rvo.setImage(image);
+        rvo.setId(userID);
+        rvo.setRecipeDate(null);
+        
+        String[] FoodValue = combinedFoodValue.split("\\|");
+        Long foodTypeNo = Long.parseLong(FoodValue[0]);
+        String foodType = FoodValue[1];
+        
+        rvo.setFoodType(foodType);
+        rvo.setFoodTypeNo(foodTypeNo);
+        rvo.setPerson(person);
+        rvo.setDifficulty(difficulty);
+        rvo.setTime(time);
+        
+        List<IngredientVO> ingredientList = new ArrayList<>();
+        for (int i = 0; i < ingreType.length; i++) {
+            IngredientVO ingredient = new IngredientVO();
+            
+            // ingreType 파라미터 값에서 ingreTypeNo와 ingreType을 추출하여 IngredientVO 객체에 설정
+            String[] ingreTypeValue = ingreType[i].split("\\|");
+            Long ingreTypeNo = Long.parseLong(ingreTypeValue[0]);
+            String ingreType1 = ingreTypeValue[1];
+            ingredient.setIngreTypeNo(ingreTypeNo);
+            ingredient.setIngreType(ingreType1);
+            
+            ingredient.setIngreMeasure(ingreMeasure[i]);
+            ingredient.setIngreName(ingreName[i]);
+            ingredientList.add(ingredient);
+        }
+        
+        List<StepVO> stepList = new ArrayList<>();
+        for (int i = 0; i < stepNo.length; i++) {
+            StepVO step = new StepVO();
+            step.setStepNo(stepNo[i]);
+            step.setStepDescription(StepDescription[i]);
+            step.setStepImage(stepImage[i]);
+            step.setTip(tip[i]);
+            stepList.add(step);
+        }
+        
+        rService.register(rvo);
+        boolean iSuccess = iService.register(ingredientList);
+        boolean sSuccess = sService.register(stepList);
+        
+        		
+        if (iSuccess && sSuccess) {
+        rttr.addFlashAttribute("result", "success");
+        } else {
+        rttr.addFlashAttribute("result", "failure");
+        }
 
+        rttr.addFlashAttribute("message", "register success");
+        return "redirect:/recipe/get";
+		
+	}	
 
 	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {

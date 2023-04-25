@@ -2,6 +2,7 @@ package org.zerock.service;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -24,13 +25,15 @@ public class IngredientServiceTests {
 	@Test
 	public void testRegister() {
 		IngredientVO board = new IngredientVO();
+		List<IngredientVO> list = new ArrayList<IngredientVO>();
 		board.setBno(195457L);
 		board.setIngreName("계란");
 		board.setIngreMeasure("약간");
 		board.setIngreTypeNo(3060001L);
 		board.setIngreType("주재료");
+		list.add(board);
 		
-		service.register(board);
+		service.register(list);
 		log.info("생성된 게시물의 번호 : " + board.getIno());
 		
 	}

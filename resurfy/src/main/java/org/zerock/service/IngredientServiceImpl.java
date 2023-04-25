@@ -16,9 +16,17 @@ import lombok.extern.log4j.Log4j;
 public class IngredientServiceImpl implements IngredientService {
 	private RecipeMapper mapper;
 	@Override
-	public void register(IngredientVO board) {
-		log.info("register....." );
-		mapper.insertIngredient(board);
+	public boolean register(List<IngredientVO> boards) {
+	    try {
+	        log.info("register ingredients...");
+	        for (IngredientVO board : boards) {
+	            mapper.insertIngredient(board);
+	        }
+	        return true;
+	    } catch (Exception e) {
+	        log.error("Error registering ingredients", e);
+	        return false;
+	    }
 	}
 
 	/*@Override
