@@ -2,10 +2,11 @@ package org.zerock.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.domain.Criteria;
+import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.RecipeVO;
 import org.zerock.domain.StepVO;
-
 import org.zerock.mapper.RecipeMapper;
 
 import lombok.AllArgsConstructor;
@@ -15,20 +16,11 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor 
 public class StepServiceImpl implements StepService {
 	private RecipeMapper mapper;
-
-	@Override
-	public boolean register(List<StepVO> boards) {
-	    try {
-	        log.info("register steps...");
-	        for (StepVO board : boards) {
-	            mapper.insertStep(board);
-	        }
 	
-	    } catch (Exception e) {
-	        log.error("Error registering steps", e);
-	        return false;
-	    }
-		return true;
+	@Override
+	public void register(StepVO board) {
+		log.info("register....." + board);
+		mapper.insertStep(board);;
 	}
 
 	@Override
@@ -53,6 +45,13 @@ public class StepServiceImpl implements StepService {
 	public List<StepVO> getList() {
 		log.info("getList.......");
 		return mapper.getStepList();
+	}
+
+	@Transactional
+	@Override
+	public void registerAll(List<StepVO> list) {
+		list.forEach(step -> mapper.insertStep(step));
+		
 	}
 	
 

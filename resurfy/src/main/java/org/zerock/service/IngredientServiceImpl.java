@@ -2,10 +2,11 @@ package org.zerock.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.domain.Criteria;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.IngredientVO;
-import org.zerock.mapper.RecipeMapper;
+import org.zerock.domain.RecipeVO;
 import org.zerock.mapper.RecipeMapper;
 
 import lombok.AllArgsConstructor;
@@ -15,18 +16,12 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor 
 public class IngredientServiceImpl implements IngredientService {
 	private RecipeMapper mapper;
+	
+	
 	@Override
-	public boolean register(List<IngredientVO> boards) {
-	    try {
-	        log.info("register ingredients...");
-	        for (IngredientVO board : boards) {
-	            mapper.insertIngredient(board);
-	        }
-	        return true;
-	    } catch (Exception e) {
-	        log.error("Error registering ingredients", e);
-	        return false;
-	    }
+	public void register(IngredientVO board) {
+		log.info("register....." );
+		mapper.insertIngredient(board);
 	}
 
 	/*@Override
@@ -70,6 +65,12 @@ public class IngredientServiceImpl implements IngredientService {
 	@Override
 	public List<String> getIngreListHave(Long bno, String userID) { 
 		return mapper.readIngreNameHave(bno, userID);
+	}
+
+	@Transactional
+	@Override
+	public void registerAll(List<IngredientVO> list) {
+		list.forEach(ingredient -> mapper.insertIngredient(ingredient));
 	}
 
 

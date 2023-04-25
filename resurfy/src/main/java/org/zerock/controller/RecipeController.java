@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
@@ -51,79 +55,39 @@ public class RecipeController {
 	public void register() {
 	}
 
-	@PostMapping("/registerRecipe.do")
-	public String register(HttpServletRequest request, @RequestParam("recipeName") String recipeName, @RequestParam("recipeDescription") String recipeDescription,
-			@RequestParam("image") String image, @RequestParam("foodType") String combinedFoodValue, @RequestParam("person") String person, 
-			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time, 
-			@RequestParam("ingreType") String [] ingreType, @RequestParam("ingreMeasure") String [] ingreMeasure, @RequestParam("ingreName") String [] ingreName, 
-			@RequestParam("stepNo") Long [] stepNo, @RequestParam("stepDescription") String [] StepDescription, @RequestParam("stepImage") String [] stepImage,
-			@RequestParam("tip") String [] tip,
-			RedirectAttributes rttr) {
-		
+	@PostMapping("/registerRecipe")
+	public String registerRecipe(HttpServletRequest request, RecipeVO recipe , RedirectAttributes rttr){		
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
 		if(sessionUser!=null) 
 			userID=sessionUser.getId();
-		
-        RecipeVO rvo = new RecipeVO();
-        rvo.setRecipeName(recipeName);
-        rvo.setRecipeDescription(recipeDescription);
-        rvo.setImage(image);
-        rvo.setId(userID);
-        rvo.setRecipeDate(null);
-        
-        String[] FoodValue = combinedFoodValue.split("\\|");
-        Long foodTypeNo = Long.parseLong(FoodValue[0]);
-        String foodType = FoodValue[1];
-        
-        rvo.setFoodType(foodType);
-        rvo.setFoodTypeNo(foodTypeNo);
-        rvo.setPerson(person);
-        rvo.setDifficulty(difficulty);
-        rvo.setTime(time);
-        
-        List<IngredientVO> ingredientList = new ArrayList<>();
-        for (int i = 0; i < ingreType.length; i++) {
-            IngredientVO ingredient = new IngredientVO();
-            
-            // ingreType 파라미터 값에서 ingreTypeNo와 ingreType을 추출하여 IngredientVO 객체에 설정
-            String[] ingreTypeValue = ingreType[i].split("\\|");
-            Long ingreTypeNo = Long.parseLong(ingreTypeValue[0]);
-            String ingreType1 = ingreTypeValue[1];
-            ingredient.setIngreTypeNo(ingreTypeNo);
-            ingredient.setIngreType(ingreType1);
-            
-            ingredient.setIngreMeasure(ingreMeasure[i]);
-            ingredient.setIngreName(ingreName[i]);
-            ingredientList.add(ingredient);
-        }
-        
-        List<StepVO> stepList = new ArrayList<>();
-        for (int i = 0; i < stepNo.length; i++) {
-            StepVO step = new StepVO();
-            step.setStepNo(stepNo[i]);
-            step.setStepDescription(StepDescription[i]);
-            step.setStepImage(stepImage[i]);
-            step.setTip(tip[i]);
-            stepList.add(step);
-        }
-        
-        rService.register(rvo);
-        boolean iSuccess = iService.register(ingredientList);
-        boolean sSuccess = sService.register(stepList);
-        
-        		
-        if (iSuccess && sSuccess) {
-        rttr.addFlashAttribute("result", "success");
-        } else {
-        rttr.addFlashAttribute("result", "failure");
-        }
-
-        rttr.addFlashAttribute("message", "register success");
-        return "redirect:/recipe/get";
-		
+			recipe.setId(userID);
+	
+		rService.register(recipe);
+		rttr.addFlashAttribute("register...recipe",recipe.getBno());
+		return "redirect:/recipe/get";
 	}	
+	
+	@PostMapping("/registerSteps")
+	public ResponseEntity<String> registerSteps(@RequestBody List<StepVO> steps) {
+	    try {
+	        sService.registerAll(steps);
+	        return new ResponseEntity<>("success", HttpStatus.OK);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
+
+	@PostMapping("/registerIngredients")
+	public ResponseEntity<String> registerIngredients(@RequestBody List<IngredientVO> ingrs) {
+	    try {
+	        iService.registerAll(ingrs);
+	        return new ResponseEntity<>("success", HttpStatus.OK);
+	    } catch (Exception e) {
+	        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
 
 	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {

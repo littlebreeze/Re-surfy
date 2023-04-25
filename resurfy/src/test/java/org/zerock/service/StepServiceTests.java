@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.IngredientVO;
 import org.zerock.domain.StepVO;
 
 import lombok.extern.log4j.Log4j;
@@ -23,15 +24,14 @@ public class StepServiceTests {
 
 	@Test
 	public void testRegister() {
-		List<StepVO> list = new ArrayList<StepVO>();
 		StepVO board = new StepVO();
+		List<StepVO> list = new ArrayList<StepVO>();
 		board.setBno(195457L);
 		board.setStepNo(1L);
 		board.setStepDescription("계란을 깬다.");
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		board.setTip("너무 쉽습니다.");
 		list.add(board);
-		
 		service.register(list);
 		log.info("생성된 게시물 먼호..." + board.getSno());
 	}

@@ -6,7 +6,8 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.StepVO;
 
 public interface StepService {
-	public boolean register(List<StepVO> stepList);
+	public void register(StepVO board);
+	public void registerAll(List<StepVO> list);
 	public List<StepVO> get(Long bno);
 	public boolean modify(StepVO board);
 	public boolean remove(Long bno);
