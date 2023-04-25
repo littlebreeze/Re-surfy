@@ -279,7 +279,6 @@
 				$('#j_num').val('');
 			}
 		});
-
 	</script>
 </body>
 </html>
