@@ -32,7 +32,7 @@ public class StepServiceTests {
 		board.setStepImage("http://file.okdab.com/UserFiles/searching/recipe/173600.jpg");
 		board.setTip("너무 쉽습니다.");
 		list.add(board);
-		service.register(list);
+		service.registerAll(list);
 		log.info("생성된 게시물 먼호..." + board.getSno());
 	}
 	

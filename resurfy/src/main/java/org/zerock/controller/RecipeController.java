@@ -6,18 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
@@ -39,55 +34,28 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/recipe/*")
 @AllArgsConstructor
 public class RecipeController {
-	
-	@Autowired
 	private RecipeService rService;
-	@Autowired
 	private StepService sService;
-	@Autowired
 	private IngredientService iService;
-	@Autowired
 	private ShoppingService shService;
-	@Autowired
 	private OwnService oService;
 
 	@GetMapping("/registerRecipe")
 	public void register() {
+		log.info("/registerRecipe");
 	}
 
-	@PostMapping("/registerRecipe")
-	public String registerRecipe(HttpServletRequest request, RecipeVO recipe , RedirectAttributes rttr){		
-		HttpSession session = request.getSession();
-		UserVO sessionUser = (UserVO) session.getAttribute("member");
-		String userID = "";
-		if(sessionUser!=null) 
-			userID=sessionUser.getId();
-			recipe.setId(userID);
 	
-		rService.register(recipe);
-		rttr.addFlashAttribute("register...recipe",recipe.getBno());
-		return "redirect:/recipe/get";
-	}	
-	
-	@PostMapping("/registerSteps")
-	public ResponseEntity<String> registerSteps(@RequestBody List<StepVO> steps) {
-	    try {
-	        sService.registerAll(steps);
-	        return new ResponseEntity<>("success", HttpStatus.OK);
-	    } catch (Exception e) {
-	        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	}
+	@PostMapping("/registerRecipe") 
+	public String register(RecipeVO recipe, StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
+	  rService.register(recipe); 
+	  sService.register(step); 
+	  iService.register(ingre);
+	  rttr.addFlashAttribute("result",recipe.getBno()); 
+	  return "redirect:/recipe/get";
+	  }
+	 
 
-	@PostMapping("/registerIngredients")
-	public ResponseEntity<String> registerIngredients(@RequestBody List<IngredientVO> ingrs) {
-	    try {
-	        iService.registerAll(ingrs);
-	        return new ResponseEntity<>("success", HttpStatus.OK);
-	    } catch (Exception e) {
-	        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	}
 
 	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
@@ -128,21 +96,52 @@ public class RecipeController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(RecipeVO board, IngredientVO iboard, StepVO sboard, RedirectAttributes rttr) {
-
-		log.info("modfiy:" + iboard);
-		String str = iboard.getIngreName();
-		log.info("str : " + str);
+	public String modify(RecipeVO board, @RequestParam List<Long> ino, @RequestParam List<String> ingreType, @RequestParam List<String> ingreName, @RequestParam List<String> ingreMeasure, 
+			@RequestParam List<Long> sno, @RequestParam List<String> stepDescription, @RequestParam List<String> stepTip, RedirectAttributes rttr) {
 
 		if (rService.modifyw(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		List<IngredientVO> iboard = new ArrayList<>();;
+		List<StepVO> sboard = new ArrayList<>();
+		
+		for(int i=0;i<ino.size();i++) {
+			IngredientVO ivo = new IngredientVO();
+			ivo.setIno(ino.get(i));
+			ivo.setIngreType(ingreType.get(i));
+			ivo.setIngreName(ingreName.get(i));
+			switch(ingreType.get(i)) {
+			case "주재료":
+				ivo.setIngreTypeNo(3060001L);
+				break;
+			case "부재료":
+				ivo.setIngreTypeNo(3060002L);
+				break;
+			case "양념":
+				ivo.setIngreTypeNo(3060003L);
+				break;
+			}
+			ivo.setIngreMeasure(ingreMeasure.get(i));
+			iboard.add(ivo);
+		}
+		
+		for(int i=0;i<sno.size();i++) {
+			StepVO svo = new StepVO();
+			svo.setSno(sno.get(i));
+			svo.setStepDescription(stepDescription.get(i));
+			svo.setStepNo((long) (i+1));
+			svo.setTip(stepTip.get(i));
+			sboard.add(svo);
+		}
 
-		/*
-		 * if(iService.modify(iboard)) { rttr.addFlashAttribute("result", "success"); }
-		 * 
-		 * if(sService.modifyw(sboard)) { rttr.addFlashAttribute("result", "success"); }
-		 */
+		if (iService.modify(iboard)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
+		if (sService.modify(sboard)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
 		return "redirect:/recipe/get";
 	}
 

@@ -32,8 +32,8 @@ public class IngredientServiceTests {
 		board.setIngreTypeNo(3060001L);
 		board.setIngreType("주재료");
 		list.add(board);
-		
-		service.register(list);
+	
+		service.registerAll(list);
 		log.info("생성된 게시물의 번호 : " + board.getIno());
 		
 	}
