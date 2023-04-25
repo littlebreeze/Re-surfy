@@ -47,7 +47,8 @@
 							<option value="FR"
 								<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>음식
 								이름 or 종류</option>
-						</select> <input type='text' name='keyword'
+						</select> 
+						<input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
 							type='hidden' name='pageNum'
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input

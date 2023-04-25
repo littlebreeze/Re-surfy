@@ -42,16 +42,16 @@ public class RecipeController {
 		log.info("/registerRecipe");
 	}
 
-	/*
-	 * @PostMapping("/registerRecipe") public String register(RecipeVO recipe,
-	 * StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
-	 * rService.register(recipe); sService.register(step); iService.register(ingre);
-	 * rttr.addFlashAttribute("result",recipe.getBno()); return
-	 * 
-	 * "redirect:/recipe/get";
-	 * 
-	 * }
-	 */
+	
+	@PostMapping("/registerRecipe") 
+	public String register(RecipeVO recipe, StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
+	  rService.register(recipe); 
+	  sService.register(step); 
+	  iService.register(ingre);
+	  rttr.addFlashAttribute("result",recipe.getBno()); 
+	  return "redirect:/recipe/get";
+	  }
+	 
 
 
 	@GetMapping({ "/detail", "/modify" })
