@@ -239,9 +239,7 @@
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<%-- <input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30"> --%>              
-								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
-              					<c:out value="${st.stepDescription }"/>
-              					</textarea>
+								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;"><c:out value="${st.stepDescription }"/></textarea>
 								<c:choose>
       							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
 								<div style="font-size:13px"></div>
@@ -249,9 +247,8 @@
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
-								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
-              					<c:out value="${st.tip }"/>
-              					</textarea></div>
+								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;"><c:out value="${st.tip }"/></textarea>
+              					</div>
 								</c:otherwise> 
 
 							</c:choose>  
@@ -265,9 +262,7 @@
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								
-								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
-              					<c:out value="${st.stepDescription }"/>
-              					</textarea>            
+								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;"><c:out value="${st.stepDescription }"/></textarea>            
 									<c:choose>
       							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
 								<div style="font-size:13px"></div>
@@ -275,9 +270,8 @@
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
-								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
-              					<c:out value="${st.tip }"/>
-              					</textarea></div>
+								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;"><c:out value="${st.tip }"/></textarea>
+              					</div>
 								</c:otherwise> 
 
 							</c:choose>  
