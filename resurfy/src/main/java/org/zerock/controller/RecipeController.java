@@ -57,7 +57,7 @@ public class RecipeController {
 	 
 
 
-	@GetMapping({ "/detail", "/modify" })
+	@GetMapping("/detail")
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
@@ -93,6 +93,14 @@ public class RecipeController {
 		int total = rService.getTotal(cri);
 		log.info("total : " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
+	
+	@GetMapping("/modify")
+	public void modifyGet(@RequestParam("bno") Long bno, Model model) {
+		log.info("/detail or modify");
+		model.addAttribute("recipe", rService.get(bno));
+		model.addAttribute("ingre", iService.get(bno));
+		model.addAttribute("step", sService.get(bno));
 	}
 
 	@PostMapping("/modify")
