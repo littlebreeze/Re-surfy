@@ -51,9 +51,14 @@ public class IngredientServiceImpl implements IngredientService {
 	}
 
 	@Override
-	public boolean modify(IngredientVO board) {
+	public boolean modify(List<IngredientVO> board) {
 		log.info("modifyIngre......." + board);
-		return mapper.updateIngredient(board) == 1;
+		int cnt=0;
+		for (IngredientVO ingredientVO : board) {
+			if(mapper.updateIngredient(ingredientVO)==1)
+				cnt++;
+		}
+		return cnt == board.size();
 		
 	}
 	

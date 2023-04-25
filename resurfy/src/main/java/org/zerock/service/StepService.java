@@ -9,7 +9,7 @@ public interface StepService {
 	public void register(StepVO board);
 	public void registerAll(List<StepVO> list);
 	public List<StepVO> get(Long bno);
-	public boolean modify(StepVO board);
+	public boolean modify(List<StepVO> board);
 	public boolean remove(Long bno);
 	public List<StepVO> getList();
 }
