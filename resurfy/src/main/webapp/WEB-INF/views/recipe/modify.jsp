@@ -245,7 +245,7 @@
 								<c:choose>
       							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
 								<div style="font-size:13px"></div>
-								<input type='hidden' name='stepTip' value=' '/>
+								<input type='hidden' name='stepTip' value="${st.tip }"/>
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
@@ -271,6 +271,7 @@
 									<c:choose>
       							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
 								<div style="font-size:13px"></div>
+								<input type='hidden' name='stepTip' value="${st.tip }"/>
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
