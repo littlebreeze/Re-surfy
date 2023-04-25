@@ -150,12 +150,7 @@
 						$(".modal-body").html("게시글 " + parseInt(result) + " 번이 등록되었습니다.");
 					}
 					$("#RegisterModal").modal("show");
-<<<<<<< HEAD
-				});
-	</script>
-=======
 				};
 			});
 	</script>
 	
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
