@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?"/>
+<link rel="stylesheet" href="../resources/css/login.css?after2"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -18,7 +18,7 @@
 <section>
   <div class="left">
   <a href = "/recipe/get">
-    <img src="/resources/assets/bluebackground.png" height="600px" alt="" />
+    <img src="/resources/assets/bluebackground.png" height="700px" alt="" />
     </a>
   </div>
   <div class="right">
@@ -49,21 +49,30 @@
         <div class="con2">
         <div>
  	        <h3><label for="j_phone" >휴대폰번호</label></h3>
-	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:240px;" required/>
+	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:210px;" required/>
 	        </div>
-	        <button id="phoneChk" type="button" style="float:left;">인증번호</br>전송</button>
+	        <button id="phoneChk" type="button" style="float:left; width:100px;">인증번호 전송</button>
 	        
         </div>
         <div class="con3">
         <div>
  	        <h3><label for="j_num">인증번호</label></h3>
-        	<input id="j_num" type="text" style="width:240px;" disabled required/>
+        	<input id="j_num" type="text" style="width:210px;" disabled required/>
         	<span class="j_input_re_3">* 인증완료</span>
 			<span class="j_input_re_4">* 인증실패</span>
         </div>
-			<button id="phoneChk2" type="button" style="float:left; width:80px;">인증</button>
+			<button id="phoneChk2" type="button" style="float:left; width:100px;">인증</button>
+        </div> 
+        <div class="agree">
+	        <p style="display: flex;"><input id="agree1" type="checkbox" style="width:15px;" required> 
+	        	<a href="/resources/agree1.html" onClick="window.open(this.href, '','width=400, height=430'); return false;" >이용약관 동의</a> 
+	        	<span class="fil">(필수)</span>
+	        </p>
+	        <p style="display: flex;"><input id="agree2" type="checkbox" style="width:15px;" required> 
+		        <a href="/resources/agree2.html" onClick="window.open(this.href, '','width=400, height=430'); return false;">개인정보 수집 및 이용 동의 </a>
+		        <span class="fil">(필수)</span>
+		    </p>
         </div>
-        	
         <input class="btnJoin" type="button" value="Sing Up" onclick="formCheck(this.form)" />
       </form>
       <div class="separator">
@@ -168,7 +177,17 @@
 					  return; //함수 종료
 				}
 				if($("#j_num").val() != code2){
-					alert("휴대폰 인증을 완료해주세요 :");
+					alert("휴대폰 인증을 완료해주세요");
+					
+					return;
+		    	}
+				if(!$("#agree1").prop("checked")){
+					alert("이용약관 동의를 완료해주세요");
+					
+					return;
+		    	}
+				if(!$("#agree2").prop("checked")){
+					alert("개인정보 제공 및 이용 동의를 완료해주세요");
 					
 					return;
 		    	}
@@ -260,8 +279,7 @@
 				$('#j_num').val('');
 			}
 		});
-		
-		//
+
 	</script>
 </body>
 </html>

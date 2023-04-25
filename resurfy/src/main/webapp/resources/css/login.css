@@ -18,8 +18,8 @@ body {
 }
 
 section {
-  width: 800px;
-  height: 600px;
+  width: 900px;
+  height: 700px;
   display: flex;
   overflow: hidden;
   border-radius: 10px;
@@ -35,7 +35,7 @@ section.active .right {
 
 .left,
 .right {
-  width: 400px;
+  width: 450px;
   height: 1000px;
   background: #fff;
   display: flex;
@@ -48,21 +48,21 @@ section.active .right {
 }
 
 .right {
-  transform: translateY(-600px);
+  transform: translateY(-700px);
 }
 
 .sign-up,
 .sign-in {
   display: grid;
   place-content: center;
-  width: 400px;
-  height: 600px;
+  width: 450px;
+  height: 700px;
 }
 
 .sign-in h1 {
   color:#6cc3d5;
   font-size:42px;
-  margin-top:120px;
+  margin-top:200px;
   margin-bottom: 18px;
   text-align: center;
   transition:0.2s linear;
@@ -74,7 +74,7 @@ section.active .right {
 .sign-up h1 {
   color:#6cc3d5;
   font-size:42px;
-  margin-top:20px;
+  margin-top:40px;
   margin-bottom: 10px;
   text-align: center;
   transition:0.2s linear;
@@ -84,9 +84,10 @@ section.active .right {
 }
 
 h3 {
-    font-size: 5px;
+    font-size: 12px;
     font-weight: 500;
     color: #535354;
+    margin:0px;
 }
 .sign-up form,
 .sign-in form {
@@ -109,6 +110,16 @@ h3 {
   gap: 5px;
 }
 
+.agree {
+	height:80px;
+}
+
+.fil{
+	font-size: 11px;
+	margin-top: 5px;
+	color:#08a600;
+}
+
 .con2 button,
 .con3 button{
 	background: #6cc3d5;
@@ -119,7 +130,7 @@ h3 {
 	font-family: 'NanumGothic';
 	text-align: center;
 	height: 35px;
-	margin-top: 22px;
+	margin-top: 15px;
 	margin-left: 5px;
 	width:80px;
 }
@@ -175,7 +186,7 @@ h3 {
 
 .btnJoin,
 .sign-in form [type=submit] {
-  background:#6cc3d5;
+  background:#5ca6b5;
   color: white;
   display: block;
   width : 100%;
@@ -188,24 +199,6 @@ h3 {
   font-family: 'NanumGothic';
   transition: 0.2s linear;
 }
-
-
-.sign-up p,
-.sign-in p {
-  text-transform: uppercase;
-  margin-top: 20px;
-}
-.sign-up p a,
-.sign-in p a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #00a4cc;
-}
-.sign-up p a:is(:hover, :visited),
-.sign-in p a:is(:hover, :visited) {
-  color: #ff7851;
-}
-
 
 .separator {
   display: block;
@@ -237,14 +230,18 @@ h3 {
   height: 1px;
   width: 40%;
 }
+.agree a{
+	text-decoration: none;
+	color: black;
+}
 
-.sign-up div a,
-.sign-in div a {
+.separator a,
+.separator a {
   text-decoration: none;
   font-weight: bold;
   color: #6cc3d5;
 }
-.sign-up div a:is(:hover, :visited),
-.sign-in div a:is(:hover, :visited) {
+.separator a:is(:hover, :visited),
+.separator a:is(:hover, :visited) {
   color: #6cc3d5;
 }
