@@ -143,6 +143,7 @@
 					</form>
 			</div>
 		</div>
+<script src="../resources/js/mypageScripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {

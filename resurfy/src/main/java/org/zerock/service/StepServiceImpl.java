@@ -29,9 +29,14 @@ public class StepServiceImpl implements StepService {
 	}
 
 	@Override
-	public boolean modify(StepVO board) {
+	public boolean modify(List<StepVO> board) {
 		log.info("modifyStep......" + board);
-		return mapper.updateStep(board) == 1;
+		int cnt=0;
+		for (StepVO stepVO : board) {
+			if(mapper.updateStep(stepVO)==1)
+				cnt++;
+		}
+		return cnt == board.size();
 	}
 
 	@Override

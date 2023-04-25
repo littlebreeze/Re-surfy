@@ -57,7 +57,7 @@ public class StepServiceTests {
 			return;
 		}
 		board.get(0).setStepDescription("양지머리로 육수를 낸 후 식혀 기름을 걷어낸 후, 불린 쌀을 넣어 고슬고슬하게 밥을 짓습니다 ");
-		log.info("MODIFY RESULT : " + service.modify(board.get(0)));
+		//log.info("MODIFY RESULT : " + service.modify(board.get(0)));
 	}
 	
 	@Test

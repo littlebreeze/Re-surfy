@@ -99,7 +99,6 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     update step_tbl
     set stepNo= #{stepNo},
     stepDescription=#{stepDescription},
-    stepImage = #{stepImage},
     tip = #{tip}
     where sno = #{sno}
   </update>

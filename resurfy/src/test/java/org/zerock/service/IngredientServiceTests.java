@@ -58,7 +58,7 @@ public class IngredientServiceTests {
 			return;
 		}
 		board.get(0).setIngreMeasure("400g");
-		log.info("MODIFY RESULT : " + service.modify(board.get(0)));
+		//log.info("MODIFY RESULT : " + service.modify(board.get(0)));
 	}
 	
 	@Test

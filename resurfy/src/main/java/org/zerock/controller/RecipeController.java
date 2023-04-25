@@ -1,5 +1,8 @@
 package org.zerock.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -93,21 +96,52 @@ public class RecipeController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(RecipeVO board, IngredientVO iboard, StepVO sboard, RedirectAttributes rttr) {
-
-		log.info("modfiy:" + iboard);
-		String str = iboard.getIngreName();
-		log.info("str : " + str);
+	public String modify(RecipeVO board, @RequestParam List<Long> ino, @RequestParam List<String> ingreType, @RequestParam List<String> ingreName, @RequestParam List<String> ingreMeasure, 
+			@RequestParam List<Long> sno, @RequestParam List<String> stepDescription, @RequestParam List<String> stepTip, RedirectAttributes rttr) {
 
 		if (rService.modifyw(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		List<IngredientVO> iboard = new ArrayList<>();;
+		List<StepVO> sboard = new ArrayList<>();
+		
+		for(int i=0;i<ino.size();i++) {
+			IngredientVO ivo = new IngredientVO();
+			ivo.setIno(ino.get(i));
+			ivo.setIngreType(ingreType.get(i));
+			ivo.setIngreName(ingreName.get(i));
+			switch(ingreType.get(i)) {
+			case "주재료":
+				ivo.setIngreTypeNo(3060001L);
+				break;
+			case "부재료":
+				ivo.setIngreTypeNo(3060002L);
+				break;
+			case "양념":
+				ivo.setIngreTypeNo(3060003L);
+				break;
+			}
+			ivo.setIngreMeasure(ingreMeasure.get(i));
+			iboard.add(ivo);
+		}
+		
+		for(int i=0;i<sno.size();i++) {
+			StepVO svo = new StepVO();
+			svo.setSno(sno.get(i));
+			svo.setStepDescription(stepDescription.get(i));
+			svo.setStepNo((long) (i+1));
+			svo.setTip(stepTip.get(i));
+			sboard.add(svo);
+		}
 
-		/*
-		 * if(iService.modify(iboard)) { rttr.addFlashAttribute("result", "success"); }
-		 * 
-		 * if(sService.modifyw(sboard)) { rttr.addFlashAttribute("result", "success"); }
-		 */
+		if (iService.modify(iboard)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
+		if (sService.modify(sboard)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+
 		return "redirect:/recipe/get";
 	}
 

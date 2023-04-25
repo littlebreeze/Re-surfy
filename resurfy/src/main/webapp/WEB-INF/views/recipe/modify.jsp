@@ -181,6 +181,7 @@
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
 				            </ul><br>
+				            <input type='hidden' name='ino' value="${ing.ino }"/>
 				            </c:if>
 				            </c:forEach>
 				            
@@ -203,6 +204,7 @@
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
 				            </ul><br>
+				            <input type='hidden' name='ino' value="${ing.ino }"/>
 				            </c:if>
 				            </c:forEach>
 				            <c:forEach items="${ingre}" var="ing">
@@ -222,6 +224,7 @@
 				                <a id="btnIngredientDel_1_1" href="javascript:delIngreidient(1,1)" class="btn-del" style="display: none;"></a>
 				              </li>
 				            </ul><br>
+				            <input type='hidden' name='ino' value="${ing.ino }"/>
 				            </c:if>
 						</c:forEach>
 					</div>
@@ -235,17 +238,18 @@
       							<div class="col"><img src="/resources/assets/logo.png" width=200px height=200px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
-								<input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30">              
-								<textarea name="recipeDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
+								<%-- <input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30"> --%>              
+								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
               					<c:out value="${st.stepDescription }"/>
               					</textarea>
 								<c:choose>
       							<c:when test="${st.tip == ' ' || st.stepImage == '0'}"> 
 								<div style="font-size:13px"></div>
+								<input type='hidden' name='stepTip' value=' '/>
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
-								<textarea name="recipeDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
+								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
               					<c:out value="${st.tip }"/>
               					</textarea></div>
 								</c:otherwise> 
@@ -261,7 +265,7 @@
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								
-								<textarea name="recipeDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
+								<textarea name="stepDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
               					<c:out value="${st.stepDescription }"/>
               					</textarea>            
 									<c:choose>
@@ -270,7 +274,7 @@
 								</c:when>
 								<c:otherwise>
 								<div class="fw-bolder" style="font-size:13px">❈ tip <br> 
-								<textarea name="recipeDescription" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
+								<textarea name="stepTip" id="recipeDescription" class="form-control step_cont" style="height:100px; width:600px; resize:none;">
               					<c:out value="${st.tip }"/>
               					</textarea></div>
 								</c:otherwise> 
@@ -282,7 +286,7 @@
 
 							</c:choose> 
 						
-               
+               				<input type='hidden' name='sno' value="${st.sno }"/>
                      </c:forEach> 
 					</div>
 
