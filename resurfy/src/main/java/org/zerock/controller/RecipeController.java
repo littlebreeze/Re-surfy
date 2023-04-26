@@ -118,17 +118,6 @@ public class RecipeController {
 			ivo.setIno(ino.get(i));
 			ivo.setIngreType(ingreType.get(i));
 			ivo.setIngreName(ingreName.get(i));
-			switch(ingreType.get(i)) {
-			case "주재료":
-				ivo.setIngreTypeNo(3060001L);
-				break;
-			case "부재료":
-				ivo.setIngreTypeNo(3060002L);
-				break;
-			case "양념":
-				ivo.setIngreTypeNo(3060003L);
-				break;
-			}
 			ivo.setIngreMeasure(ingreMeasure.get(i));
 			iboard.add(ivo);
 		}

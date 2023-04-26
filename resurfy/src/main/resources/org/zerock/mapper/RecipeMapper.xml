@@ -19,16 +19,16 @@
   </select>
   
   <insert id="insertRecipe">
-  insert into recipe_tbl (bno, id, recipeName, recipeDescription, foodTypeNo, foodType, time, person, difficulty, image)
-      values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription}, #{foodTypeNo}, #{foodType}, #{time}, #{person}, #{difficulty}, #{image})
+  insert into recipe_tbl (bno, id, recipeName, recipeDescription, foodType, time, person, difficulty, image)
+      values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription}, #{foodType}, #{time}, #{person}, #{difficulty}, #{image})
    </insert>   
   <insert id="insertStep">
    insert into step_tbl (sno, bno, stepno, stepdescription, stepimage, tip)
       values (seq_step.nextval,#{bno},#{stepNo},#{stepDescription}, #{stepImage}, #{tip})
   </insert>
     <insert id="insertIngredient">    
-   insert into ingredient_tbl (ino, bno, ingrename, ingremeasure, ingretypeno, ingretype)
-      values (seq_ingre.nextval, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreTypeNo}, #{ingreType})       
+   insert into ingredient_tbl (ino, bno, ingrename, ingremeasure, ingretype)
+      values (seq_ingre.nextval, #{bno}, #{ingreName}, #{ingreMeasure}, #{ingreType})       
   </insert>
   
 <!-- <insert id="insertStep">
@@ -72,7 +72,6 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     set id= #{id},
     recipeName=#{recipeName},
     recipeDescription = #{recipeDescription},
-    foodTypeno = #{foodTypeNo},
     foodType = #{foodType},
     time = #{time},
     person = #{person},
@@ -86,7 +85,6 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     update recipe_tbl
     set recipeName=#{recipeName},
     recipeDescription = #{recipeDescription},
-    foodTypeNo = #{foodTypeNo},
     foodType = #{foodType},
     time = #{time},
     person = #{person},
@@ -107,7 +105,6 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
     update ingredient_tbl
     set ingreName= #{ingreName},
     ingreMeasure=#{ingreMeasure},
-    ingreTypeNo = #{ingreTypeNo},
     ingreType = #{ingreType}
     where ino = #{ino}
   </update>
