@@ -106,16 +106,6 @@
 					<div class="form-group">
 						<label>카테고리</label> 
 						<div>
-						   <select class="form-select" id="food_type" control-id="ControlID-11" name="foodTypeNo">
-			                <option value="" >유형별</option>
-			                <option value="3020001" <c:if test ="${recipe.foodType eq '한식'}">selected="selected"</c:if>>3020001 </option>
-			                <option value="3020004" <c:if test ="${recipe.foodType eq '중국'}">selected="selected"</c:if>>3020004</option>
-			                <option value="3020003" <c:if test ="${recipe.foodType eq '일본'}">selected="selected"</c:if>>3020003</option>
-			                <option value="3020002" <c:if test ="${recipe.foodType eq '서양'}">selected="selected"</c:if>>3020002</option>
-			                <option value="3020006" <c:if test ="${recipe.foodType eq '이탈리아'}">selected="selected"</c:if>>3020006</option>
-			                <option value="3020005" <c:if test ="${recipe.foodType eq '동남아시아'}">selected="selected"</c:if>>3020005</option>
-							<option value="3020009" <c:if test ="${recipe.foodType eq '퓨전'}">selected="selected"</c:if>>3020009</option>
-			              </select>
 			              <select class="form-select" id="food_type" control-id="ControlID-11" name="foodType">
 			                <option value="" >유형별</option>
 			                <option value="한식" <c:if test ="${recipe.foodType eq '한식'}">selected="selected"</c:if>>한식 </option>

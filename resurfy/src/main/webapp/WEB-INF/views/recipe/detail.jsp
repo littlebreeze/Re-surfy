@@ -622,7 +622,8 @@ $(document).ready(function(){
 				str += "<li class='left clearfix' data-rno='"+list[i].rno+"' style='width: 50%; margin: 0 auto; text-align:left'>";
 				//str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
 				//str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
-				str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
+				//str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
+				str+= "<div><div class='header'><strong class='primary-font'>"+ "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
 				str+="<small class='rtime'>" + replyService.displayTime(list[i].replyDate)+"</small></div>";
 				str+="<p>" + list[i].reply+"</p></div></li>";
 				str+="<hr class='my-2' align='center' style='width: 60%; margin: 0 auto;'>";
