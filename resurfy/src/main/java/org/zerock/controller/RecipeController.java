@@ -130,7 +130,7 @@ public class RecipeController {
 
 	}
 
-	@GetMapping({ "/detail", "/modify" })
+	@GetMapping("/detail")
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
 		model.addAttribute("recipe", rService.get(bno));
@@ -167,6 +167,14 @@ public class RecipeController {
 		log.info("total : " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
+	
+	@GetMapping("/modify")
+	public void modifyGet(@RequestParam("bno") Long bno, Model model) {
+		log.info("/detail or modify");
+		model.addAttribute("recipe", rService.get(bno));
+		model.addAttribute("ingre", iService.get(bno));
+		model.addAttribute("step", sService.get(bno));
+	}
 
 	@PostMapping("/modify")
 	public String modify(RecipeVO board, @RequestParam List<Long> ino, @RequestParam List<String> ingreType,
@@ -185,6 +193,7 @@ public class RecipeController {
 			ivo.setIno(ino.get(i));
 			ivo.setIngreType(ingreType.get(i));
 			ivo.setIngreName(ingreName.get(i));
+<<<<<<< HEAD
 			switch (ingreType.get(i)) {
 			case "주재료":
 				ivo.setIngreTypeNo(3060001L);
@@ -196,6 +205,8 @@ public class RecipeController {
 				ivo.setIngreTypeNo(3060003L);
 				break;
 			}
+=======
+>>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 			ivo.setIngreMeasure(ingreMeasure.get(i));
 			iboard.add(ivo);
 		}
