@@ -1,11 +1,19 @@
 package org.zerock.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +21,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.AttachImageVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
 import org.zerock.domain.PageDTO;
@@ -28,6 +38,7 @@ import org.zerock.service.StepService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @Log4j
@@ -42,20 +53,82 @@ public class RecipeController {
 
 	@GetMapping("/registerRecipe")
 	public void register() {
-		log.info("/registerRecipe");
 	}
 
-	
-	@PostMapping("/registerRecipe") 
-	public String register(RecipeVO recipe, StepVO step, IngredientVO ingre, RedirectAttributes rttr) {
-	  rService.register(recipe); 
-	  sService.register(step); 
-	  iService.register(ingre);
-	  rttr.addFlashAttribute("result",recipe.getBno()); 
-	  return "redirect:/recipe/get";
-	  }
-	 
+	@PostMapping("/registerRecipe")
+	public String register(RecipeVO rvo, HttpServletRequest request, @RequestParam("recipeName") String recipeName,
+			@RequestParam("recipeDescription") String recipeDescription, @RequestParam("image") String image,
+			@RequestParam("combinedFoodValue") String combinedFoodValue, @RequestParam("person") String person,
+			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time,
+			@RequestParam("ingreType") String[] ingreType, @RequestParam("ingreMeasure") String[] ingreMeasure,
+			@RequestParam("ingreName") String[] ingreName, @RequestParam("stepNo") Long[] stepNo,
+			@RequestParam("stepDescription") String[] StepDescription, @RequestParam("stepImage") String[] stepImage,
+			@RequestParam("tip") String[] tip, RedirectAttributes rttr) {
 
+		HttpSession session = request.getSession();
+		UserVO sessionUser = (UserVO) session.getAttribute("member");
+		String userID = "";
+		if (sessionUser != null)
+			userID = sessionUser.getId();
+
+		rvo.setId(userID);
+		rvo.setRecipeName(recipeName);
+		rvo.setRecipeDescription(recipeDescription);
+		rvo.setImage(image);
+		rvo.setId(userID);
+		rvo.setRecipeDate(null);
+
+		String[] FoodValue = combinedFoodValue.split("\\|");
+		String foodType = FoodValue[1];
+		Long foodTypeNo = Long.parseLong(FoodValue[0]);
+
+		rvo.setFoodType(foodType);
+		rvo.setFoodTypeNo(foodTypeNo);
+
+		rvo.setPerson(person);
+		rvo.setDifficulty(difficulty);
+		rvo.setTime(time);
+
+		rService.register(rvo);
+		rttr.addFlashAttribute("result_recipe", rvo.getBno());
+
+		List<IngredientVO> ingredientList = new ArrayList<>();
+		for (int i = 0; i < ingreType.length; i++) {
+			IngredientVO ingredient = new IngredientVO();
+
+			// ingreType 파라미터 값에서 ingreTypeNo와 ingreType을 추출하여 IngredientVO 객체에 설정
+			String[] ingreTypeValue = ingreType[i].split("\\|");
+			Long ingreTypeNo = Long.parseLong(ingreTypeValue[0]);
+			String ingreType1 = ingreTypeValue[1];
+			ingredient.setIngreTypeNo(ingreTypeNo);
+			ingredient.setIngreType(ingreType1);
+			ingredient.setBno(rvo.getBno());
+
+			ingredient.setIngreMeasure(ingreMeasure[i]);
+			ingredient.setIngreName(ingreName[i]);
+			ingredientList.add(ingredient);
+		}
+
+		List<StepVO> stepList = new ArrayList<>();
+		for (int i = 0; i < stepNo.length; i++) {
+			StepVO step = new StepVO();
+			step.setBno(rvo.getBno());
+			step.setStepNo(stepNo[i]);
+			step.setStepDescription(StepDescription[i]);
+			step.setStepImage(stepImage[i]);
+			step.setTip(tip[i]);
+			stepList.add(step);
+		}
+
+		iService.registerAll(ingredientList);
+		sService.registerAll(stepList);
+
+		rttr.addFlashAttribute("register_step", stepList);
+		rttr.addFlashAttribute("register_ingredient", ingredientList);
+
+		return "redirect:/recipe/get";
+
+	}
 
 	@GetMapping({ "/detail", "/modify" })
 	public void get(HttpServletRequest request, @RequestParam("bno") Long bno, Model model) {
@@ -96,21 +169,23 @@ public class RecipeController {
 	}
 
 	@PostMapping("/modify")
-	public String modify(RecipeVO board, @RequestParam List<Long> ino, @RequestParam List<String> ingreType, @RequestParam List<String> ingreName, @RequestParam List<String> ingreMeasure, 
-			@RequestParam List<Long> sno, @RequestParam List<String> stepDescription, @RequestParam List<String> stepTip, RedirectAttributes rttr) {
+	public String modify(RecipeVO board, @RequestParam List<Long> ino, @RequestParam List<String> ingreType,
+			@RequestParam List<String> ingreName, @RequestParam List<String> ingreMeasure, @RequestParam List<Long> sno,
+			@RequestParam List<String> stepDescription, @RequestParam List<String> stepTip, RedirectAttributes rttr) {
 
 		if (rService.modifyw(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		List<IngredientVO> iboard = new ArrayList<>();;
+		List<IngredientVO> iboard = new ArrayList<>();
+		;
 		List<StepVO> sboard = new ArrayList<>();
-		
-		for(int i=0;i<ino.size();i++) {
+
+		for (int i = 0; i < ino.size(); i++) {
 			IngredientVO ivo = new IngredientVO();
 			ivo.setIno(ino.get(i));
 			ivo.setIngreType(ingreType.get(i));
 			ivo.setIngreName(ingreName.get(i));
-			switch(ingreType.get(i)) {
+			switch (ingreType.get(i)) {
 			case "주재료":
 				ivo.setIngreTypeNo(3060001L);
 				break;
@@ -124,12 +199,12 @@ public class RecipeController {
 			ivo.setIngreMeasure(ingreMeasure.get(i));
 			iboard.add(ivo);
 		}
-		
-		for(int i=0;i<sno.size();i++) {
+
+		for (int i = 0; i < sno.size(); i++) {
 			StepVO svo = new StepVO();
 			svo.setSno(sno.get(i));
 			svo.setStepDescription(stepDescription.get(i));
-			svo.setStepNo((long) (i+1));
+			svo.setStepNo((long) (i + 1));
 			svo.setTip(stepTip.get(i));
 			sboard.add(svo);
 		}
@@ -162,15 +237,55 @@ public class RecipeController {
 	}
 
 	@GetMapping("/TopTen")
-	public void ListSort(Model model ,@ModelAttribute("cri") Criteria cri) {
-		model.addAttribute("sortByReply",rService.sortByReplyCnt());
-		model.addAttribute("sortByVisit",rService.sortByVisitCnt());
+	public void ListSort(Model model, @ModelAttribute("cri") Criteria cri) {
+		model.addAttribute("sortByReply", rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
 
-	
-	
-	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri , Model model) {
-	
+	/* 첨부 파일 업로드 */
+	@PostMapping("/uploadAjaxAction")
+	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
+		log.info("uploadAjaxActionPOST..........");
+		String uploadFolder = "C:\\upload";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		String datePath = str.replace("-", File.separator);
+		File uploadPath = new File(uploadFolder, datePath);
+
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		List<AttachImageVO> list = new ArrayList<>();
+		for (MultipartFile multipartFile : uploadFile) {
+			AttachImageVO vo = new AttachImageVO();
+			String uploadFileName = multipartFile.getOriginalFilename();
+			vo.setFileName(uploadFileName);
+			vo.setUploadPath(datePath);
+			String uuid = UUID.randomUUID().toString();
+			vo.setUuid(uuid);
+			uploadFileName = uuid + "_" + uploadFileName;
+			File saveFile = new File(uploadPath, uploadFileName);
+			try {
+				multipartFile.transferTo(saveFile);
+				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+				BufferedImage bo_image = ImageIO.read(saveFile);
+				// 비율
+				double ratio = 3;
+				// 넓이 높이
+				int width = (int) (bo_image.getWidth() / ratio);
+				int height = (int) (bo_image.getHeight() / ratio);
+				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			list.add(vo);
+		}
+		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
+		return result;
+	}
+
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 
 	}
 

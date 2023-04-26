@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
             </div>
             <div class="wrapper_line">
               <p class="wrapper_title1" style="color:black;">카테고리</p>
-              <select class="form-select" id="foodType" name="foodType" control-id="ControlID-11">
+              <select class="form-select" id="foodType" name="combinedFoodValue" control-id="ControlID-11">
                 <option value="">유형별</option>
 		   	    <option value="3020001|한식" <c:if test="${foodType == '3020001|한식'}">selected</c:if>>한식</option>
 			    <option value="3020004|중국" <c:if test="${foodType == '3020004|중국'}">selected</c:if>>중국</option>
@@ -111,9 +111,9 @@ pageEncoding="UTF-8"%>
                     <option value="3060003|양념"<c:if test="${ingreType == '3060003|양념'}">selected</c:if>>양념</option>
                   </select>		
                   <li id="liIngredient_1_1">
-                    <input type="text" name="ingreName_1[]" id="ingreName_1_1" value="<c:out value='${ingreName_1_1}'/>"
+                    <input type="text" name="ingreName" id="ingreName_1_1" value="<c:out value='${ingreName_1_1}'/>"
                     class="addIngredient_name" style="width:285px; border-radius: 0.375rem" placeholder="예) 돼지고기" control-id="ControlID-19">
-                    <input type="text" name="ingreMeasure_1[]" id="ingreMeasure_1_1" value="<c:out value='${ingreMeasure_1_1}'/>"
+                    <input type="text" name="ingreMeasure" id="ingreMeasure_1_1" value="<c:out value='${ingreMeasure_1_1}'/>"
                     class="addIngredient_amount" style="width:210px; border-radius: 0.375rem" placeholder="예) 300g" control-id="ControlID-20">
                     <button type="button" class="btn btn-warning deleteIngredientBtn">삭제</button>
                   </li>
@@ -133,12 +133,12 @@ pageEncoding="UTF-8"%>
             <p class="wrapper_title2" style="color:black;">요리순서</p>
             <div id="stepArea" class="stepArea">
               <div id="stepItem_STEP" class="step">
-                <p id="stepNum_STEP" name="stepNo" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
+                <p id="stepNum_STEP" name="stepNo_arr" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: normal; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
                 <div id="stepDescription_STEP" style="display:inline-block">
                   <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:100px; width:410px; resize:none;" control-id="ControlID-29"><c:out value='${stepDescription_STEP}'/></textarea>
                 </div>
                 <div id="stepUpload_STEP" style="display:inline-block">
-                  <input type="hidden" name="step_no[]" id="step_no_STEP" value="" control-id="ControlID-30">
+                  <input type="hidden" name="stepNo" id="step_no_STEP" value="" control-id="ControlID-30">
                   <input type="hidden" name="step_image[]" id="step_image_STEP" value="">
                   <input type="hidden" name="new_step_image[]" id="new_step_image_STEP" value="">
                   <input type="hidden" name="del_step_image[]" id="del_step_image_STEP" value="">
@@ -205,6 +205,50 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="../resources/js/registerRecipeScripts.js">
     
     </script>
+    <script type="text/javascript">
+    	$("input[type='file']").on("change", function(e){
+    		let formData = new FormData();
+    		let fileInput = $('input[name="image"]');
+    		let fileList = fileInput[0].files;
+    		let fileObj = fileList[0];
+    		
+    		if(!fileCheck(fileObj.name, fileObj.size)){
+    			return false;
+    		}
+    		
+    		formData.append("uploadFile", fileObj);
+    		$.ajax({
+    			url: '/admin/uploadAjaxAction',
+    	    	processData : false,
+    	    	contentType : false,
+    	    	data : formData,
+    	    	type : 'POST',
+    	    	dataType : 'json',
+    	    	success : function(result){
+    	    		console.log(result);
+    	    	}
+    		});
+	});
+    	let regex = new RegExp("(.*?)\.(jpg|png)$");
+    	let maxSize = 1048576; //1MB	
+    	
+    	function fileCheck(fileName, fileSize){
+
+    		if(fileSize >= maxSize){
+    			alert("파일 사이즈 초과");
+    			return false;
+    		}
+    			  
+    		if(!regex.test(fileName)){
+    			alert("해당 종류의 파일은 업로드할 수 없습니다.");
+    			return false;
+    		}
+    		
+    		return true;		
+    		
+    	}
+    </script>
+    
   </body>
   <%@include file="../includes/footer.jsp"%>
 
