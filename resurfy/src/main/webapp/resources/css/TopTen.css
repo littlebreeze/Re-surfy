@@ -5,11 +5,12 @@
 	font-family: 'NanumGothic';
 }
 
-.TopTen_recipe > tr{
+.TopTen_recipe > td{
 	max-width : 100% ;
 	height : auto;
-	
 }
+
+
 
 td img{
 	max-width : 100%;
@@ -19,13 +20,15 @@ td img{
 table {
   height: 500px;
   overflow-y: scroll;
+  border-collapse: collapse;
+  background-color : #187587;
 }
 
 .TopTen_recipe > td,th{
 	line-height : 1.5;
 	width : auto;
+	text-align : "center"
 }
-
 
 
 

@@ -46,11 +46,10 @@
 	<div id="header_menu">
 		<div id="logo">
 		<a href="/recipe/get"> 
-		<img
-			src="/resources/assets/header_logo.png" width="500" height="auto">
+		<img src="/resources/assets/header_logo.png" width="350px" height="auto;">
 		</a>
 	</div>
-		<div id="header_menu_move">
+		<div id="header_menu_move" style = "padding-bottom : 5%; font-size : 20px; ">
 			<ul class="nav nav-pills">
 				<%
 				UserVO user = (UserVO) session.getAttribute("member");
@@ -60,9 +59,10 @@
 				if (user == null) {
 				%>
 
-				<li class="nav-item"><a href="/member/login.do"> <img
-						src="/resources/assets/unlocked.png" width="20" height="auto">
+				<li class="nav-item"><a href="/member/login.do"> 
+				<img src="/resources/assets/unlocked.png" width="20" height="auto">
 				</a></li>
+				
 				<li class="nav-item">비회원 입니다.</li>
 
 				<%

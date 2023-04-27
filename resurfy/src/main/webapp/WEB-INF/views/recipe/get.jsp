@@ -73,7 +73,7 @@
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
 					<div class="card-head">
-						<c:out value="${recipe.recipeName}" />
+						<b><c:out value="${recipe.recipeName}" /></b>
 						<div>
 							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
 							</b>
@@ -116,7 +116,7 @@
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
 					<div class="card-head">
-						<c:out value="${recipe.recipeName}" />
+						<b><c:out value="${recipe.recipeName}" /></b>
 						<div>
 							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
 							</b>
@@ -159,8 +159,9 @@
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
 					<div class="card-head">
-						<c:out value="${recipe.recipeName}" />
-						<div>
+						<b style ="font-size : 30px;">
+						<c:out value="${recipe.recipeName}" /></b>
+						<div style="font-size : 10px;">
 							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
 							</b>
 							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
@@ -186,7 +187,7 @@
 						</div>
 					</div>
 					<div class="card-footer">
-						<a class="btn btn-outline-dark mt-auto"
+						<a class="btn btn-outline-dark mt-auto" 
 							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 							<img src="/resources/assets/enter.png" width="30" height="auto">
 							</a>

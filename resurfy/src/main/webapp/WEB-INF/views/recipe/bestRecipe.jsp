@@ -26,7 +26,7 @@
 <div class="slide_div_wrap">
 				<div class="slide_div">
 					<div>
-						<a href = "#">
+						<a href = "https://github.com/barcataeeon/Re-surfy.git">
 							<img src="/resources/assets/slick_first.png">
 						</a>
 					</div>
@@ -51,7 +51,7 @@
 			slidesToShow : 1,
 			slidesToScroll : 1,
 			autoplay : true,
-			autoplaySpeed : 2000,
+			autoplaySpeed : 5000,
 			infinite: true,
 			adaptiveHeight: true
 		});

@@ -219,7 +219,7 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   
   
  <select id = "getRecipeOrderByVisitcnt" resultType = "org.zerock.domain.RecipeVO">
-  select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt
+  select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
   from recipe_tbl 
   order by visitcnt desc
   </select>

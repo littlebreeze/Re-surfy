@@ -46,28 +46,32 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <body>
 
-	<div class="TopTen_recipe">
-		<h1>댓글 수 Top 10 Resurfy</h1>
-		<table class="table table-hover">
-			<thead>
+	<div class="TopTen_recipe" style="display: flex; justify-content: center; align-items: center;">
+		<table>
+			<thead style="height: 50px; font-size : 20px;
+			border-bottom : 1px solid #ff7851; background-color : #187587;">
 				<tr>
 					<th scope="col">순위</th>
 					<th scope="col">레시피</th>
-					<th scope="col">레시피 이름</th>
 					<th scope="col">레시피 설명</th>
 					<th scope="col">레시피 댓글 수</th>
 				</tr>
 			</thead>
 			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
 				<c:if test="${status.index < 10}">
-					<tbody>
-						<tr class="table-danger">
-							<th scope="row">TOP ${status.index + 1}</th>
-							<td><img src="${bestRecipe.image}" /></td>
-							<td><b><a
-									href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
-										<c:out value="${bestRecipe.recipeName}" />
-								</a></b></td>
+					<tbody style="height: auto; font-size : 20px;
+					border-bottom : 1px solid #ff7851;">
+						<tr >
+							<th scope="row">${status.index + 1}</th>
+							<td><a
+								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
+									<img src="${bestRecipe.image}" 
+									style = "width : 300px; height: 300px;"/> 
+								<div>
+									<b> <c:out value="${bestRecipe.recipeName}" />
+									</b>
+								</div>
+							</a></td>
 								
 							<td><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.replycnt}" /></td>
