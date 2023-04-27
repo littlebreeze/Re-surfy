@@ -262,6 +262,5 @@ function setFileInputEventListener(step) {
   }
 
 
-
   return true;
 }

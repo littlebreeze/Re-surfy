@@ -126,7 +126,7 @@ pageEncoding="UTF-8"%>
               </div>
             </div>
             <div class="btn_add" style="padding: 0 0 20px 400px; witdth:800px">
-              <button type="button" onclick="addIngredient(1)" class="btn btn-primary" id="addIngredient" control-id="ControlID-44" style="width: 100px; height: 50px; letter-spacing: .3rem;">
+              <button type="button" onclick="addIngredient(1)" class="btn btn-primary" id="addIngredient" control-id="ControlID-44" style="width: 100px; height: 50px; letter-spacing: .3rem; font-size:20px;">
                 <span class="glyphicon glypicon-plus-sign"></span>추가
               </button>
             </div>
@@ -138,7 +138,7 @@ pageEncoding="UTF-8"%>
             <p class="wrapper_title2" style="color:black;">요리순서</p>
             <div id="stepArea" class="stepArea">            
               <div id="stepItem_1" class="step" style="margin-bottom:50px">
-                <p id="stepNum_1" name="stepNo" class="stepNo" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
+                <p id="stepNum_1" name="stepNo" class="stepNo" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 20px; font-weight: bold; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
                 <div id="wrapper_stepDescription_1" style="display:inline-block">
                   <textarea name="stepDescription" id="stepDescription_1" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:200px; width:410px; resize:none;" control-id="ControlID-29"><c:out value='${stepDescription_STEP}'/></textarea>
                 </div>
@@ -166,7 +166,7 @@ pageEncoding="UTF-8"%>
             <!-- step template -->
             <div id="stepTemplate" style="display:none;">
               <div id="stepItem_STEP" class="step" style="margin-bottom:50px">
-                <p id="stepNum_STEP" class="stepNo" style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: black; margin-left: 40px;">Step STEP</p>
+                <p id="stepNum_STEP" class="stepNo" style="width: 100px; display: inline-block; font-size: 20px; font-weight: bold; vertical-align: top; color: black; margin-left: 40px;">Step STEP</p>
                 <div id="wrapper_stepDescription_STEP" style="display:inline-block">
                   <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="과정을 적어주세요." 
                   style="height:200px; width:410px; resize:none;"><c:out value='${stepDescription_STEP}'/></textarea>
@@ -194,7 +194,7 @@ pageEncoding="UTF-8"%>
               </div>
             </div><!--step template finish-->
             <div class="btn_add mag_b_25" style="padding:0 0 20px 380px; width:820px;">
-              <button type="button" onclick="addStep()" class="btn btn-primary" control-id="ControlID-83" style="background-color:#e95420; width: 150px; height: 50px; letter-spacing: 6px;">
+              <button type="button" onclick="addStep()" class="btn btn-primary" control-id="ControlID-83" style="background-color:#e95420; width: 150px; height: 50px; font-size:20px; letter-spacing: 6px;">
                 <span class="glyphicon glyphicon-plus-sign"></span>순서추가
               </button>              
             </div>
@@ -202,9 +202,8 @@ pageEncoding="UTF-8"%>
         </div><!--레시피 등록 finish box-->
 
         <div class="regi_btm">
-          <button type="submit" onclick="save()" class="btn-lg btn-primary" id="save" control-id="ControlID-44" style="width: 150px; letter-spacing: 8px;"
-          >저장</button>
-          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-warning" id="cancel" control-id="ControlID-49"style="width: 150px; letter-spacing: 8px;" >취소</button>
+          <button type="submit" onclick="save()" class="btn-lg btn-primary" id="save" control-id="ControlID-44" style="width: 150px; letter-spacing: 8px; font-size:25px;">저장</button>
+          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-warning" id="cancel" control-id="ControlID-49"style="width: 150px; font-size:25px; letter-spacing: 8px;" >취소</button>
         </div><!--save and cancel-->        
       </div><!--container finish-->
     </form>
