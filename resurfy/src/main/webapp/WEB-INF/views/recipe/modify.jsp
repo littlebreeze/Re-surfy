@@ -41,7 +41,7 @@
 <body>
 <div class="row">
 	<div class="col-lg-12">
-		<h3 class="page-header" align="center" style="margin: 0 auto; color: #33afe9">레시피 수정페이지</h3>
+		<h3 class="page-header" align="center" style="margin: 0 auto">레시피 수정페이지</h3>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -51,7 +51,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 
-			<div class="panel-heading" align="center" style="margin: 0 auto; color: #33afe9">레세피 수정</div>
+			<div class="panel-heading" align="center" style="margin: 0 auto; color: #33afe9"></div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 
@@ -225,7 +225,7 @@
 							<c:choose>
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/logo.png" width=200px height=200px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=200px height=200px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<%-- <input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30"> --%>              
@@ -276,9 +276,9 @@
 					</div>
 
 
-					<button type="submit" data-oper='modifyw' class="btn btn-default">Modify</button>
-					<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-					<button type="submit" data-oper='list' class="btn btn-info">List</button>
+					<button type="submit" data-oper='modifyw' class="btn btn-default">수정</button>
+					<button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
+					<button type="submit" data-oper='list' class="btn btn-info">목록</button>
 				</form>
 
 
