@@ -127,75 +127,68 @@
 						<div class="container " style=" width: 90%; margin: 0 auto; text-align:center; font-size:20px;">
 						 <c:set var = "count" value="true"/>
 						<c:forEach items="${ingre}" var="ing">
-						<c:if test="${count}">
+						
 						<c:if test="${ing.ingreType eq '주재료'}">
+						
     						<div class="py-1 row">
+    						<c:if test="${count}">
     							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
+    						</c:if>
+    						<c:if test="${not count}">
+    							<div class="col fw-bolder"></div>
+    						</c:if>
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 								<c:set var = "count" value="two"/>
 							</div>
 						</c:if>
-						</c:if>
-						<c:if test="${not count}">
-						<c:if test="${ing.ingreType eq '주재료'}">
-    						<div class="py-1 row">
-    							<div class="col "></div>
-								<div class="col"><c:out value="${ing.ingreName}" /></div>
-								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
-								<c:set var = "count" value="two"/>
-							</div>
-						</c:if>
-						</c:if>
+					
+				
 						</c:forEach>
 						<br>
-						 <c:set var = "count" value="true"/>
+						<c:set var = "count" value="true"/>
 						<c:forEach items="${ingre}" var="ing">
-						<c:if test="${count}">
+						
 						<c:if test="${ing.ingreType eq '부재료'}">
+						
     						<div class="py-1 row">
+    						<c:if test="${count}">
     							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
+    						</c:if>
+    						<c:if test="${not count}">
+    							<div class="col fw-bolder"></div>
+    						</c:if>
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 								<c:set var = "count" value="two"/>
 							</div>
 						</c:if>
-						</c:if>
-						<c:if test="${not count}">
-						<c:if test="${ing.ingreType eq '부재료'}">
-    						<div class="py-1 row">
-    							<div class="col"></div>
-								<div class="col"><c:out value="${ing.ingreName}" /></div>
-								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
-								<c:set var = "count" value="two"/>
-							</div>
-						</c:if>
-						</c:if>
+					
+				
 						</c:forEach>
 						<br>
-						 <c:set var = "count" value="true"/>
+						<c:set var = "count" value="true"/>
 						<c:forEach items="${ingre}" var="ing">
-						<c:if test="${count}">
+						
 						<c:if test="${ing.ingreType eq '양념'}">
+						
     						<div class="py-1 row">
+    						<c:if test="${count}">
     							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
+    						</c:if>
+    						<c:if test="${not count}">
+    							<div class="col fw-bolder"></div>
+    						</c:if>
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 								<c:set var = "count" value="two"/>
 							</div>
 						</c:if>
-						</c:if>
-						<c:if test="${not count}">
-						<c:if test="${ing.ingreType eq '양념'}">
-    						<div class="py-1 row">
-    							<div class="col"></div>
-								<div class="col"><c:out value="${ing.ingreName}" /></div>
-								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
-								<c:set var = "count" value="two"/>
-							</div>
-						</c:if>
-						</c:if>
+					
+				
 						</c:forEach>
+						<br>
+						
 						
 						</div><br>
 							
