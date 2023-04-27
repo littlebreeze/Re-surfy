@@ -5,7 +5,6 @@
 */
 // 
 // Scripts
-// 
   //메인 이미지 업로드
     function browseMainFile() {
     const fileInput = document.getElementById("mainImage");
@@ -27,6 +26,9 @@
     }
     
     document.getElementById("mainImage").addEventListener("change", onMainFileChange);
+
+document.getElementById("mainImage").addEventListener("change", onMainFileChange);
+
     
     //재료 추가 함수
     let ingredientCounter = 1;

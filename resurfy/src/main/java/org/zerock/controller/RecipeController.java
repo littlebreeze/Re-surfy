@@ -2,6 +2,8 @@ package org.zerock.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,10 +14,12 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.domain.AttachImageVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
 import org.zerock.domain.PageDTO;
@@ -38,7 +41,6 @@ import org.zerock.service.StepService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnails;
 
 @Controller
 @Log4j
@@ -50,6 +52,7 @@ public class RecipeController {
 	private IngredientService iService;
 	private ShoppingService shService;
 	private OwnService oService;
+	static Long bno = 195564L;					//시퀀스 번호 Resurfy 계정마다 다름
 
 	@GetMapping("/registerRecipe")
 	public void register() {
@@ -57,7 +60,8 @@ public class RecipeController {
 
 	@PostMapping("/registerRecipe")
 	public String register(RecipeVO rvo, HttpServletRequest request, @RequestParam("recipeName") String recipeName,
-			@RequestParam("recipeDescription") String recipeDescription, @RequestParam("image") String image,
+			@RequestParam("recipeDescription") String recipeDescription,
+			@RequestParam("image") String image,
 			@RequestParam("combinedFoodValue") String combinedFoodValue, @RequestParam("person") String person,
 			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time,
 			@RequestParam("ingreType") String[] ingreType, @RequestParam("ingreMeasure") String[] ingreMeasure,
@@ -70,11 +74,10 @@ public class RecipeController {
 		String userID = "";
 		if (sessionUser != null)
 			userID = sessionUser.getId();
-
-		rvo.setId(userID);
+		
+		rvo.setBno(bno);
 		rvo.setRecipeName(recipeName);
 		rvo.setRecipeDescription(recipeDescription);
-		rvo.setImage(image);
 		rvo.setId(userID);
 		rvo.setRecipeDate(null);
 
@@ -88,7 +91,8 @@ public class RecipeController {
 		rvo.setPerson(person);
 		rvo.setDifficulty(difficulty);
 		rvo.setTime(time);
-
+		rvo.setImage("" + image);
+		
 		rService.register(rvo);
 		rttr.addFlashAttribute("result_recipe", rvo.getBno());
 
@@ -119,7 +123,7 @@ public class RecipeController {
 			step.setTip(tip[i]);
 			stepList.add(step);
 		}
-
+		bno++;
 		iService.registerAll(ingredientList);
 		sService.registerAll(stepList);
 
@@ -167,7 +171,7 @@ public class RecipeController {
 		log.info("total : " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
-	
+
 	@GetMapping("/modify")
 	public void modifyGet(@RequestParam("bno") Long bno, Model model) {
 		log.info("/detail or modify");
@@ -193,7 +197,7 @@ public class RecipeController {
 			ivo.setIno(ino.get(i));
 			ivo.setIngreType(ingreType.get(i));
 			ivo.setIngreName(ingreName.get(i));
-<<<<<<< HEAD
+
 			switch (ingreType.get(i)) {
 			case "주재료":
 				ivo.setIngreTypeNo(3060001L);
@@ -205,8 +209,6 @@ public class RecipeController {
 				ivo.setIngreTypeNo(3060003L);
 				break;
 			}
-=======
->>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 			ivo.setIngreMeasure(ingreMeasure.get(i));
 			iboard.add(ivo);
 		}
@@ -251,49 +253,6 @@ public class RecipeController {
 	public void ListSort(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
-	}
-
-	/* 첨부 파일 업로드 */
-	@PostMapping("/uploadAjaxAction")
-	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
-		log.info("uploadAjaxActionPOST..........");
-		String uploadFolder = "C:\\upload";
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
-		String str = sdf.format(date);
-		String datePath = str.replace("-", File.separator);
-		File uploadPath = new File(uploadFolder, datePath);
-
-		if (uploadPath.exists() == false) {
-			uploadPath.mkdirs();
-		}
-		List<AttachImageVO> list = new ArrayList<>();
-		for (MultipartFile multipartFile : uploadFile) {
-			AttachImageVO vo = new AttachImageVO();
-			String uploadFileName = multipartFile.getOriginalFilename();
-			vo.setFileName(uploadFileName);
-			vo.setUploadPath(datePath);
-			String uuid = UUID.randomUUID().toString();
-			vo.setUuid(uuid);
-			uploadFileName = uuid + "_" + uploadFileName;
-			File saveFile = new File(uploadPath, uploadFileName);
-			try {
-				multipartFile.transferTo(saveFile);
-				File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
-				BufferedImage bo_image = ImageIO.read(saveFile);
-				// 비율
-				double ratio = 3;
-				// 넓이 높이
-				int width = (int) (bo_image.getWidth() / ratio);
-				int height = (int) (bo_image.getHeight() / ratio);
-				Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			list.add(vo);
-		}
-		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
-		return result;
 	}
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {

@@ -231,8 +231,14 @@
 			<version>1.6.5</version>
 			<scope>provided</scope>
 		</dependency>
-		
-	</dependencies> 
+		<!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-storage -->
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>7.3.0</version>
+		</dependency>
+
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
