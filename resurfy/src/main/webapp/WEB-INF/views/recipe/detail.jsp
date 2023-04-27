@@ -89,7 +89,7 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5" >
             <div class="text-center">
-  		<img src='<c:out value="${recipe.image }"/>' readonly="readonly" alt="...">
+  		<img src='<c:out value="${recipe.image }"/>' readonly="readonly" width=800px height=600px alt="...">
   				<!-- <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" width=500px height=500px  alt="..."> -->
   				<div class="row">
   					<div class="fs-5 mb-5">
@@ -106,7 +106,7 @@
                              <span style="font-size:20px"><c:out value="${recipe.time }"/></span>
                              </div>
                              <!-- 사용자 그림 사진 : https://cdn-icons-png.flaticon.com/512/5393/5393061.png-->
-                             <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
+                             <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
                              
                              <div class="p-2"  style=" width: 50%; margin: 0 auto; text-align:left">
                              <img class="gx-1"  src="https://cdn-icons-png.flaticon.com/512/5393/5393061.png" width=20px height=20px  alt="...">
@@ -119,52 +119,85 @@
               
                                       
                              <!-- 재료칸(재료, 양념) -->
-                        	<c:set var = "doneLoop" value="false"/>
-                               <c:forEach items="${ingre}" var="ing">
-                               <c:if test="${not doneLoop}">
-						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
-                             <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left; font-size:25px">재료</div>
-                             <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-                             <c:set var = "doneLoop" value="true"/>
-                           </c:if>     
-                           </c:if>
-						</c:forEach>
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:20px;">
+                      
 						
+                             <div class="fw-bolder" style=" width: 80%; margin: 0 auto; text-align:left; font-size:25px">재료</div>
+                             <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
+                         
+						<div class="container " style=" width: 90%; margin: 0 auto; text-align:center; font-size:20px;">
+						 <c:set var = "count" value="true"/>
 						<c:forEach items="${ingre}" var="ing">
-						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
+						<c:if test="${count}">
+						<c:if test="${ing.ingreType eq '주재료'}">
     						<div class="py-1 row">
+    							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
 							</div>
 						</c:if>
+						</c:if>
+						<c:if test="${not count}">
+						<c:if test="${ing.ingreType eq '주재료'}">
+    						<div class="py-1 row">
+    							<div class="col "></div>
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
+							</div>
+						</c:if>
+						</c:if>
 						</c:forEach>
-						</div><br>
-                  
-                  <c:set var = "doneLoop" value="false"/>
-                               <c:forEach items="${ingre}" var="ing">
-                               
-                               <c:if test="${not doneLoop}">
-                               <c:if test="${ing.ingreType eq '양념'}">
-                  <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left; font-size:25px">양념</div>
-                
-                             <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-                     <c:set var = "doneLoop" value="true"/>
-                           </c:if>     
-                           </c:if>
-						</c:forEach>
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:20px;">
-						
+						<br>
+						 <c:set var = "count" value="true"/>
 						<c:forEach items="${ingre}" var="ing">
+						<c:if test="${count}">
+						<c:if test="${ing.ingreType eq '부재료'}">
+    						<div class="py-1 row">
+    							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
+							</div>
+						</c:if>
+						</c:if>
+						<c:if test="${not count}">
+						<c:if test="${ing.ingreType eq '부재료'}">
+    						<div class="py-1 row">
+    							<div class="col"></div>
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
+							</div>
+						</c:if>
+						</c:if>
+						</c:forEach>
+						<br>
+						 <c:set var = "count" value="true"/>
+						<c:forEach items="${ingre}" var="ing">
+						<c:if test="${count}">
 						<c:if test="${ing.ingreType eq '양념'}">
     						<div class="py-1 row">
+    							<div class="col fw-bolder"><c:out value="${ing.ingreType}"/></div>
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
 							</div>
 						</c:if>
+						</c:if>
+						<c:if test="${not count}">
+						<c:if test="${ing.ingreType eq '양념'}">
+    						<div class="py-1 row">
+    							<div class="col"></div>
+								<div class="col"><c:out value="${ing.ingreName}" /></div>
+								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
+								<c:set var = "count" value="two"/>
+							</div>
+						</c:if>
+						</c:if>
 						</c:forEach>
+						
 						</div><br>
-						<!-- 재료, 양념 end -->
 							
 																	
 						<br><br>
@@ -189,7 +222,7 @@
 								<div style="font-size:18px"></div>
 								</c:when>
 								<c:otherwise>
-								<div class="fw-bolder" style="font-size:17px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								<div class="fw-bolder" style="font-size:15px">❈ tip <br> <c:out value="${st.tip}" /></div>
 								</c:otherwise> 
 
 							</c:choose>  
@@ -211,7 +244,7 @@
 								</c:when>
 								<c:otherwise>
 								<br>
-								<div class="fw-bolder" style="font-size:17px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								<div class="fw-bolder" style="font-size:15px">❈ tip <br> <c:out value="${st.tip}" /></div>
 								</c:otherwise> 
 
 							</c:choose>  
