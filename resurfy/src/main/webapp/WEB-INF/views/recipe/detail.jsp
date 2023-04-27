@@ -89,31 +89,31 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5" >
             <div class="text-center">
-  		<img src='<c:out value="${recipe.image }"/>' readonly="readonly" width=500px height=500px  alt="...">
+  		<img src='<c:out value="${recipe.image }"/>' readonly="readonly" alt="...">
   				<!-- <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" width=500px height=500px  alt="..."> -->
   				<div class="row">
   					<div class="fs-5 mb-5">
   							<br>
                             
                             <div class="form-group">
-                            <h3 class="p-2 fw-bolder"> <c:out value="${recipe.recipeName }"/> </h3>
+                            <h1 class="p-2 fw-bolder"> <c:out value="${recipe.recipeName }"/> </h1>
 						</div>
                              <div class="p-2 small mb-1">
                              
-                             <span style="font-size:17px">난이도 : </span>
-                             <span style="font-size:17px"><c:out value="${recipe.difficulty }"/> &nbsp &nbsp &nbsp &nbsp &nbsp</span>
-                             <span style="font-size:17px">소요시간 : </span>
-                             <span style="font-size:17px"><c:out value="${recipe.time }"/></span>
+                             <span style="font-size:20px">난이도 : </span>
+                             <span style="font-size:20px"><c:out value="${recipe.difficulty }"/> &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+                             <span style="font-size:20px">소요시간 : </span>
+                             <span style="font-size:20px"><c:out value="${recipe.time }"/></span>
                              </div>
                              <!-- 사용자 그림 사진 : https://cdn-icons-png.flaticon.com/512/5393/5393061.png-->
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
                              
                              <div class="p-2"  style=" width: 50%; margin: 0 auto; text-align:left">
                              <img class="gx-1"  src="https://cdn-icons-png.flaticon.com/512/5393/5393061.png" width=20px height=20px  alt="...">
-                             <span class="gx-2" style="font-size:17px"><c:out value="${recipe.id }"/></span> 
+                             <span class="gx-2" style="font-size:20px"><c:out value="${recipe.id }"/></span> 
                              </div>
                             
-                             <div class="p-3 small mb-1" style=" width: 50%; margin: 0 auto; text-align:left; font-size:15px;">
+                             <div class="p-3 small mb-1" style=" width: 50%; margin: 0 auto; text-align:left; font-size:17px;">
                              <c:out value="${recipe.recipeDescription }"/>
                              </div><br>
               
@@ -123,17 +123,17 @@
                                <c:forEach items="${ingre}" var="ing">
                                <c:if test="${not doneLoop}">
 						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
-                             <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">재료</div>
+                             <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left; font-size:25px">재료</div>
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
                              <c:set var = "doneLoop" value="true"/>
                            </c:if>     
                            </c:if>
 						</c:forEach>
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:17px;">
+						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:20px;">
 						
 						<c:forEach items="${ingre}" var="ing">
 						<c:if test="${ing.ingreType eq '주재료' || ing.ingreType eq '부재료'}">
-    						<div class="row">
+    						<div class="py-1 row">
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 							</div>
@@ -146,18 +146,18 @@
                                
                                <c:if test="${not doneLoop}">
                                <c:if test="${ing.ingreType eq '양념'}">
-                  <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">양념</div>
+                  <div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left; font-size:25px">양념</div>
                 
                              <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
                      <c:set var = "doneLoop" value="true"/>
                            </c:if>     
                            </c:if>
 						</c:forEach>
-						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:17px;">
+						<div class="container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:20px;">
 						
 						<c:forEach items="${ingre}" var="ing">
 						<c:if test="${ing.ingreType eq '양념'}">
-    						<div class="row">
+    						<div class="py-1 row">
 								<div class="col"><c:out value="${ing.ingreName}" /></div>
 								<div class="col"><c:out value="${ing.ingreMeasure}" /></div>
 							</div>
@@ -168,9 +168,10 @@
 							
 																	
 						<br><br>
-						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">레시피</div>
-                        <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-						<div class="container" style=" width: 50%; margin: 0 auto; text-align:left">
+						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left; font-size:30px">레시피</div>
+                        <!-- <hr class="my-2" align="center" style="width: 90%; margin: 0 auto; background: #e95420; height:3px; border:0;"> -->
+                        
+						<div class="container" style=" width: 90%; margin: 0 auto; text-align:left">
 							<div class="py-3 row">
 							
 							<c:forEach items="${step}" var="st">
@@ -178,16 +179,17 @@
 
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=220px height=220px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=350px height=300px  alt="..."></div>
 								<div class="col">
-								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
-								<span style="font-size:17px"><c:out value="${st.stepDescription}" /></span>
+								<div class="fw-bolder" style="font-size:25px; color:#e95420">Step<c:out value="${st.stepNo}" /></div>
+								<hr class="my-2" align="left" style="width: 100%; margin: 0 auto;">
+								<br><span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
 								<c:choose>
       							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
-								<div style="font-size:15px"></div>
+								<div style="font-size:18px"></div>
 								</c:when>
 								<c:otherwise>
-								<div class="fw-bolder" style="font-size:13px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								<div class="fw-bolder" style="font-size:17px">❈ tip <br> <c:out value="${st.tip}" /></div>
 								</c:otherwise> 
 
 							</c:choose>  
@@ -197,16 +199,19 @@
 
       							<c:otherwise>
       							<div class="py-3 row"> 
-								<div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=220px height=220px  alt="..."></div>
+								<div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=350px height=300px  alt="..."></div>
 								<div class="col">
-								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
-								<span style="font-size:17px"><c:out value="${st.stepDescription}" /></span>
+								<div class="fw-bolder" style="font-size:25px; color:#e95420">Step<c:out value="${st.stepNo}" /></div>
+								<hr class="my-2" align="left" style="width: 100%; margin: 0 auto;">
+								<br>
+								<span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
 									<c:choose>
       							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
-								<div style="font-size:15px"></div>
+								<div style="font-size:18px"></div>
 								</c:when>
 								<c:otherwise>
-								<div class="fw-bolder" style="font-size:13px">❈ tip <br> <c:out value="${st.tip}" /></div>
+								<br>
+								<div class="fw-bolder" style="font-size:17px">❈ tip <br> <c:out value="${st.tip}" /></div>
 								</c:otherwise> 
 
 							</c:choose>  
@@ -222,12 +227,13 @@
 								
 							
 						</div>
-						<div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:left; font-size:13px;">
+						<div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:center; font-size:13px;">
 						<c:if test="${recipe.id eq member.id}">
-						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정하기</button>
+						<%-- <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정</button> --%>
+						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:200px; height:70px; background-color: #e95420; font-size:20px; border:none; text-align:center">수정</button>
 						</c:if>
-						  <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
-						<button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:60px; background-color: #e95420; border:none; font-size:20px">목록</button>
+						  <!-- <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
+						<button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:60px; background-color: #e95420; border:none; font-size:20px">목록</button> -->
 						</div>
 						
 						</div>
@@ -274,13 +280,13 @@
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
 						<br><br><br><br><br>
 						
-						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">댓글
+						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글
 						<c:if test="${not empty member.id}">
 						<button id='addReplyBtn'
 											class='btn btn-primary btn-jelly' style="width:80px; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button>
 						</c:if>	
 						</div><br>
-                        <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
+                        <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="panel panel-default">
@@ -294,7 +300,7 @@
 									</div>
 									<div class="panel-body">
 										<ul class="chat" style=" list-style:none">
-											<li class="left clearfix" data-rno='12' style=" width: 50%; margin: 0 auto; text-align:left" >
+											<li class="left clearfix" data-rno='12' style=" width: 90%; margin: 0 auto; text-align:left" >
 												<div>
 													<div class="header">
 													<img src="https://cdn-icons-png.flaticon.com/512/9386/9386837.png" width=20px height=20px  alt="...">
@@ -323,7 +329,7 @@
 <section class="py-5" style="background-clor:white">
     <div class="container px-4 px-lg-5 mt-5">
     	<div>
-        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #e95420; border:none; float:right">장바구니 담기</button></h2>
+        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly text-center' style="font-size: 20px; width:200px; height:70px; background-color: #e95420; border:none; float:right"><img src="/resources/assets/detail/cart.png" width="30px" height="30px">&nbsp 장바구니 담기</button></h2>
         
         </div>
         <br>
@@ -331,7 +337,7 @@
         <br>
         <!-- 없는 재료 -->
         <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #e95420; border-radius:30px; padding: 10px">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center py-5 bg-light" style="border: 3px solid #e95420; border-radius:30px; padding: 10px">
         
         	<c:if test="${empty shopNotIn}">
 				<div class="col" style="margin-bottom:30px;">
@@ -351,12 +357,13 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">${sni.title}</h5>
                             <!-- Product price-->
-                            ${sni.lprice}
+                            
+							<div style="color:blue; font-size:20px"><fmt:formatNumber value="${sni.lprice}" pattern="#,###"/>원</div>
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                       <div class="text-center"><input type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/></div>
+                       <div class="text-center"><input style='zoom:2.5' type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/></div>
                     </div>
                 </div>
             </div>
@@ -384,12 +391,13 @@
                             <!-- Product name-->
                             <h5 class="fw-bolder">${si.title}</h5>
                             <!-- Product price-->
-                            ${si.lprice}
+                            <div style="color:blue; font-size:20px"><fmt:formatNumber value="${si.lprice}" pattern="#,###"/>원</div>
+                            
                         </div>
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><input type='checkbox' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" data-pid="${si.productId}" /></div>
+                        <div class="text-center"><input type='checkbox' style='zoom:2.5' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" data-pid="${si.productId}" /></div>
                     </div>
                 </div>
             </div>
@@ -619,14 +627,14 @@ $(document).ready(function(){
 				return;
 			}
 			for (var i=0, len=list.length || 0; i<len; i++){
-				str += "<li class='left clearfix' data-rno='"+list[i].rno+"' style='width: 50%; margin: 0 auto; text-align:left'>";
+				str += "<li class='left clearfix' data-rno='"+list[i].rno+"' style='width: 90%; margin: 0 auto; text-align:left'>";
 				//str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
 				//str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
 				//str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
-				str+= "<div><div class='header'><strong class='primary-font'>"+ "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
-				str+="<small class='rtime'>" + replyService.displayTime(list[i].replyDate)+"</small></div>";
+				str+= "<div align='left'><div class='header'><strong class='primary-font' style='color:#e95420'>" + "<img src='/resources/assets/detail/user.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
+				str+="<small class='rtime' style='font-size:15px'>&nbsp" + replyService.displayTime(list[i].replyDate)+"</small></div>";
 				str+="<p>" + list[i].reply+"</p></div></li>";
-				str+="<hr class='my-2' align='center' style='width: 60%; margin: 0 auto;'>";
+				str+="<hr class='my-2' align='left' style='width: 93%; margin: 0 auto;'>";
 			}
 			replyUL.html(str);
 			showReplyPage(replyCnt);
