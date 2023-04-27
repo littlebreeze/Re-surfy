@@ -260,13 +260,6 @@ function setFileInputEventListener(step) {
       return false;
     }
   }
-  
-   for (let i = 0; i < stepDescriptions.length; i++) {
-    if (stepDescriptions[i].value === "") {
-      alert("과정을 입력하세요.");
-      return false;
-    }
-  }
 
 
 
