@@ -43,22 +43,22 @@
 					                  alt="Generic placeholder image" class="img-fluid"
 					                  style="width: 180px; border-radius: 10px;">
 					              </div>
-					              <div class="flex-grow-1 ms-3">
+					              <div class="flex-grow-1 ms-4">
 					                <h5 class="mb-1">${member.nickname }</h5>
 					                <p class="mb-2 pb-1" style="color: #2b2a2a;">${member.id }</p>
 					                <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
 					                  style="background-color: #efefef;">
-					                  <div>
+					                  <div style="margin-left:10px;">
 					                    <p class="small text-muted mb-1">작성글</p>
-					                    <p class="mb-0">-</p>
+					                    <p class="mb-0 ms-2">${totalRecipe}</p>
 					                  </div>
 					                  <div class="px-3">
 					                    <p class="small text-muted mb-1">댓글</p>
-					                    <p class="mb-0">-</p>
+					                    <p class="mb-0 ms-2">${totalReply}</p>
 					                  </div>
 					                </div>
 					                <div class="d-flex pt-1">
-					                  <p class="mb-2 pb-1" style="color: #2b2a2a;">${member.phone }</p>
+					                  <p class="mb-2 pb-1" style="color: #2b2a2a;">0${member.phone }</p>
 					                </div>
 					              </div>
 					            </div>
