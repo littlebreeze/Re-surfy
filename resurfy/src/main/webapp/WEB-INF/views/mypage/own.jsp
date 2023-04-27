@@ -27,12 +27,14 @@
                 <!-- Page content-->
 				<div class="container-fluid">
 					<div class="col-lg-12">
-						<button class="btn mypageBtn" id="sidebarToggle">></button>
-						<h2 class="page-header">가진 재료</h2>
+						<h2 class="page-header">
+							<button class="btn mypageBtn" id="sidebarToggle">></button>
+							가진 재료
+						</h2>
 					<br></div>
 					<div class="container">
 						<div class="row mb-3 text-center" id="chkAll" style="display:none;">
-					      <div class="col-md-2 themed-grid-col">
+					      <div class="col-md-2 themed-grid-col" id="div_chkAll">
 					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll" style="margin-right:30px;">전체 선택
 					      </div>
 					    </div>
@@ -55,7 +57,7 @@
 						</div>
 						<input type="hidden" name='type' value="O"/>
 						</form>
-				<div style="margin-top: 1rem !important;">		
+				<div style="margin-top: 1rem !important; text-align: center;">		
 					<input type="button" value="편집 및 검색" id="editBtn" class="btn mypageBtn pull-left">
 					<input type="button" value="추가" id="addNewBtn" class="btn mypageBtn pull-left">
 					<input type="button" style="display:none;" value="검색" id="searchBtn" class="btn mypageBtn pull-left">	
@@ -67,10 +69,9 @@
         </div>
 	<!-- Modal -->
 	<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="addModalLabel">새로운 재료 추가</h4>
 				</div>
 				<div class="modal-body">
@@ -79,8 +80,41 @@
 				    </form>
 				</div>
 				<div class="modal-footer">
-					<button id='addOwnBtn' type="button" class="btn btn-primary">Register</button>					
-					<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
+					<button id='addOwnBtn' type="button" class="btn btn-primary">등록</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+				</div>
+				<div class="modal-body">
+					확인 또는 취소를 눌러주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalConfirmBtn' type="button" class="btn btn-primary">확인</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h3 class="modal-title" id="alertModalLabel">선택된 재료가 없습니다!</h3>
+				</div>
+				<div class="modal-body">
+					다시 확인해주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalAlertBtn' type="button" class="btn btn-primary">확인</button>					
 				</div>
 			</div>
 		</div>
@@ -95,6 +129,24 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		var alertModal = $("#alertModal");
+		var confirmModal = $("#confirmModal");
+		var modal = $("#addModal");
+		
+		$("#addNewBtn").on("click", function(e) {
+			modal.modal("show");
+		});
+		
+		var modalCloseBtn = $("#modalCloseBtn");
+		modalCloseBtn.on("click", function(e){
+				modal.modal("hide");
+		});
+		
+		$("#modalAlertBtn").on("click", function(e){
+			alertModal.modal("hide");
+		});
+		
 		$("#cbx_chkAll").click(function() {
 			if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
 			else $("input[name=chk]").prop("checked", false);
@@ -116,11 +168,13 @@
 		   });
 		   
 		   if(checkArr.length == 0){
-			   alert("선택된 재료가 없습니다.");
+			   alertModal.modal("show");
 		   }else{
-			  var confirm_val = confirm("정말 삭제하시겠습니까?");
-			  
-			  if(confirm_val) {
+			   $(".modal-title").html("정말 삭제하시겠습니까?")
+			   $(".modal-body").html("확인을 누르면 삭제됩니다.")
+			  confirmModal.modal("show");
+
+			$("#modalConfirmBtn").on("click", function(e){
 				   console.log(checkArr);
 				   $.ajax({
 					    url : "/mypage/deleteOwn",
@@ -131,7 +185,7 @@
 					    	location.href = "/mypage/own";
 					    }
 					});
-			  } 
+				});
 		   }
 		});	//end click
 		
@@ -246,21 +300,6 @@ $(document).ready(function(){
 </script>
 <script>
 	$(document).ready(function() {
-		
-		var modal = $("#addModal");
-		
-		$("#addNewBtn").on("click", function(e) {
-			modal.modal("show");
-		});
-		
-		var modalCloseBtn = $("#modalCloseBtn");
-		modalCloseBtn.on("click", function(e){
-				modal.modal("hide");
-		});
-		var CloseBtn = $(".close");
-		CloseBtn.on("click", function(e){
-				modal.modal("hide");
-		});
 		
 	});
 </script>

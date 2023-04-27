@@ -27,12 +27,14 @@
                 <!-- Page content-->
                 <div class="container-fluid">
                     <div class="col-lg-12">
-						<button class="btn mypageBtn" id="sidebarToggle">></button>
-						<h2 class="page-header">장바구니</h2>
+						<h2 class="page-header">
+							<button class="btn mypageBtn" id="sidebarToggle">></button>
+							장바구니
+						</h2>
 					<br></div>
                     <div class="container">
                     	<div class="row mb-3 text-center">
-					      <div class="col-md-2 themed-grid-col">
+					      <div class="col-md-2 themed-grid-col" id="div_chkAll">
 					      	<input type="checkbox" class="form-check-input flex-shrink-0" id="cbx_chkAll" style="margin-right:30px;">전체 선택
 					      </div>
 					    </div>
@@ -71,15 +73,48 @@
 				      <div class="col-md-2 themed-grid-col" id="sumCount">수량</div>
 				    </div>
 					
-					<div>
-						<input type="button" value="선택삭제" id="deleteBtn" class="btn mypageBtn pull-left">
-						<input type="button" value="구매하기" id="buyBtn" class="btn mypageBtn pull-left">
+					<div style="text-align: center;">
+						<input type="button" value="선택삭제" id="deleteBtn" class="btn mypageBtn">
+						<input type="button" value="구매하기" id="buyBtn" class="btn mypageBtn">
 					</div>
 					<br><br><br>
 										
 					 </div>
                 </div>
             </div>
+    <!-- Modal -->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+				</div>
+				<div class="modal-body">
+					확인 또는 취소를 눌러주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalConfirmBtn' type="button" class="btn btn-primary">확인</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h3 class="modal-title" id="alertModalLabel">선택된 제품이 없습니다!</h3>
+				</div>
+				<div class="modal-body">
+					다시 확인해주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalAlertBtn' type="button" class="btn btn-primary">확인</button>					
+				</div>
+			</div>
+		</div>
+	</div>
         </div>
         <form id='actionForm' action="/member/login.do" method='get'>
 		</form>
@@ -90,6 +125,19 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		var alertModal = $("#alertModal");
+		var confirmModal = $("#confirmModal");
+		
+		var modalCloseBtn = $("#modalCloseBtn");
+		modalCloseBtn.on("click", function(e){
+			confirmModal.modal("hide");
+		});
+		
+		$("#modalAlertBtn").on("click", function(e){
+			alertModal.modal("hide");
+		});
+		
 		$("#cbx_chkAll").click(function() {
 			if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
 			else $("input[name=chk]").prop("checked", false);
@@ -123,12 +171,14 @@
 		   });
 		   
 		   if(checkArr.length == 0){
-			   alert("선택된 제품이 없습니다.");
+			   alertModal.modal("show");
 		   }else{
-			  var confirm_val = confirm("정말 삭제하시겠습니까?");
+			   $(".modal-title").html("정말 삭제하시겠습니까?")
+			   $(".modal-body").html("확인을 누르면 삭제됩니다.")
+			  confirmModal.modal("show");
 			  
-			  if(confirm_val) {
-				   console.log(checkArr);
+			  $("#modalConfirmBtn").on("click", function(e){
+				  console.log(checkArr);
 				   $.ajax({
 					    url : "/mypage/deleteCart",
 					    method : "post",
@@ -138,7 +188,7 @@
 					    	location.href = "/mypage/cart";
 					    }
 					});
-			  } 
+				});
 		   }
 		});	//end click
 		
@@ -152,12 +202,15 @@
 		   });
 		   
 		   if(ingreArr.length == 0){
-			   alert("선택된 제품이 없습니다.");
+			   /* alert("선택된 제품이 없습니다."); */
+			   alertModal.modal("show");
 		   }else{
-			  var confirm_val = confirm("구매하시겠습니까?");
+			   $(".modal-title").html("구매하시겠습니까?")
+			   $(".modal-body").html("구매하시려면 확인을 눌러주세요.")
+			  confirmModal.modal("show");
 			  
-			  if(confirm_val) {
-				   console.log(ingreArr);
+			  $("#modalConfirmBtn").on("click", function(e){
+				  console.log(ingreArr);
 				   $.ajax({
 					    url : "/mypage/addOwnFromCart",
 					    method : "post",
@@ -168,12 +221,11 @@
 					    	location.href = "/mypage/own";
 					    }
 					});
-			  } 
+				});
 		   }
 		});	//end click
 		
 		$("input[type=number]").change(function() {
-			alert("수량 변경")
 			var changeCno = $(this).attr("data-cno");
 			var changeCount = $(this).val();
 			

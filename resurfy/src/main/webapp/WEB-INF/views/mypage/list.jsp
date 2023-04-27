@@ -26,9 +26,11 @@
             <div id="page-content-wrapper">
                 <!-- Page content-->
                 <div class="container-fluid">
-					<div class="col-lg-12">
-						<button class="btn mypageBtn" id="sidebarToggle">></button>
-						<h2 class="page-header">작성 글 모아보기</h2>
+					<div class="col-lg-12">						
+						<h2 class="page-header">
+							<button class="btn mypageBtn" id="sidebarToggle">></button>
+							작성 글 모아보기
+						</h2>
 					<br></div>
 					<div class="container">
 					    <div class="row d-flex justify-content-center align-items-center h-100">
@@ -48,15 +50,11 @@
 					                  style="background-color: #efefef;">
 					                  <div>
 					                    <p class="small text-muted mb-1">작성글</p>
-					                    <p class="mb-0">41</p>
+					                    <p class="mb-0">-</p>
 					                  </div>
 					                  <div class="px-3">
 					                    <p class="small text-muted mb-1">댓글</p>
-					                    <p class="mb-0">976</p>
-					                  </div>
-					                  <div>
-					                    <p class="small text-muted mb-1">-</p>
-					                    <p class="mb-0">8.5</p>
+					                    <p class="mb-0">-</p>
 					                  </div>
 					                </div>
 					                <div class="d-flex pt-1">
