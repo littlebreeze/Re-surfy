@@ -19,7 +19,7 @@
     const mainImageHolder = document.getElementById("mainImageHolder");
     mainImageHolder.src = e.target.result;
     mainImageHolder.style.width = "100%";
-    mainImageHolder.style.height = "250px";
+    mainImageHolder.style.height = "280px";
     };
     
     reader.readAsDataURL(file);
@@ -39,23 +39,25 @@ document.getElementById("mainImage").addEventListener("change", onMainFileChange
     const newIngredientGroup = document.createElement('ul');
     newIngredientGroup.id = `ingredientAra_${ingredientCounter}`;
     newIngredientGroup.className = 'ingredientGroup';
+    newIngredientGroup.style = 'margin-left: 140px; display: inline-flex;';
     
     const select = document.createElement('select');
     select.className = 'form-select';
     select.id = 'ingreType';
+    select.name = 'ingreType';
     select.setAttribute('control-id', 'ControlID-11');
     
     const option1 = document.createElement('option');
     option1.value = '';
     option1.text = '재료별';
     const option2 = document.createElement('option');
-    option2.value = '3060001|주재료';
+    option2.value = '주재료';
     option2.text = '주재료';
     const option3 = document.createElement('option');
-    option3.value = '3060002|부재료';
+    option3.value = '부재료';
     option3.text = '부재료';
     const option4 = document.createElement('option');
-    option4.value = '3060003|양념';
+    option4.value = '양념';
     option4.text = '양념';
     
     select.add(option1);
@@ -68,26 +70,26 @@ document.getElementById("mainImage").addEventListener("change", onMainFileChange
     
     const input1 = document.createElement('input');
     input1.type = 'text';
-    input1.name = `ingreName_${ingredientCounter}[]`;
     input1.id = `ingreName_${ingredientCounter}_1`;
+    input1.name = `ingreName`;
     input1.className = 'addIngredient_name';
-    input1.style = 'width:285px; border-radius: 0.375rem';
+    input1.style = 'width:275px; border-radius: 0.375rem';
     input1.placeholder = '예) 돼지고기';
     input1.setAttribute('control-id', 'ControlID-19');
     
     const input2 = document.createElement('input');
     input2.type = 'text';
-    input2.name = `ingreMeasure_${ingredientCounter}[]`;
     input2.id = `ingreMeasure_${ingredientCounter}_1`;
+    input2.name = `ingreMeasure`;
     input2.className = 'addIngredient_amount';
-    input2.style = 'width:210px; border-radius: 0.375rem';
+    input2.style = 'width:180px; border-radius: 0.375rem; margin: 0px 7px 0px 8px';
     input2.placeholder = '예) 300g';
     input2.setAttribute('control-id', 'ControlID-20');
     
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
     deleteButton.className = 'btn btn-warning deleteIngredientBtn';
-    deleteButton.textContent = '삭제';
+    deleteButton.textContent = 'X';
     deleteButton.onclick = function () {
     const remainingIngredientGroups = document.getElementsByClassName('ingredientGroup');
     if (remainingIngredientGroups.length > 1) {
@@ -265,12 +267,7 @@ function setFileInputEventListener(step) {
     }
   }
 
-  for (let i = 0; i < stepDescriptions.length; i++) {
-    if (stepDescriptions[i].value === "") {
-      alert("과정 설명을 입력하세요.");
-      return false;
-    }
-  }
+
 
   return true;
 }
