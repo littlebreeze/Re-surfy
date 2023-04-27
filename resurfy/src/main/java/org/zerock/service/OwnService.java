@@ -15,4 +15,8 @@ public interface OwnService {
 	public List<OwnVO> getList(String userID);
 	
 	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception;
+
+	public int getTotalRecipe(String userID);
+
+	public int getTotalReply(String userID);
 }

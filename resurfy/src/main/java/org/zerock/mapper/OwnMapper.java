@@ -15,4 +15,8 @@ public interface OwnMapper {
 	public int delete(Long bno);
 	
 	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception;
+
+	public int getTotalRecipe(String userID);
+
+	public int getTotalReply(String userID);
 }

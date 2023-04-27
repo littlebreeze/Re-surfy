@@ -8,22 +8,18 @@
 <br>
 <c:if test="${pageMaker.cri.type == 'O' }">
 	<div class="container">
-		<form id='searchForm' action="/recipe/get" method='get'>
-			<div class="row row-cols-1 row-cols-md-4 g-3 text-center">
-				<c:if test="${empty list}">
-					<div>가진 재료 없음</div>
-				</c:if>
-				<c:forEach items="${list}" var="own">
-					<div class="col themed-grid-col" id="ownGroup">
-						<input type="checkbox" class="form-check-input flex-shrink-0"
-							style="margin-right: 30px;" name="chk" value="${own.ingreName}"
-							<c:out value="${pageMaker.cri.chk.contains(own.ingreName)?'checked':''}"/>>${own.ingreName}
-					</div>
-				</c:forEach>
-			</div>
-		</form>
-		<br>
-		<br>
+		<br><div class="row row-cols-1 row-cols-md-4 g-3 text-center">
+			<c:if test="${empty list}">
+				<div>가진 재료 없음</div>
+			</c:if>
+			<c:forEach items="${list}" var="own">
+				<div class="col themed-grid-col" id="ownGroup">
+					<input type="checkbox" class="form-check-input flex-shrink-0"
+						style="margin-right: 30px;" name="chk" value="${own.ingreName}"
+						<c:out value="${pageMaker.cri.chk.contains(own.ingreName)?'checked':''}"/>>${own.ingreName}
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 	<!-- end .container -->
 </c:if>
@@ -58,7 +54,6 @@
 					</form>
 				</div>
 			</div>
-		</c:if>
 		<ul class="nav nav-pills">
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
@@ -67,7 +62,8 @@
 					<a class="dropdown-item" href="?orderBy=visitcnt">조회수</a> 
 					<a class="dropdown-item" href="?orderBy=replycnt">댓글수</a>
 				</div></li>
-		</ul>
+		</ul>		
+		</c:if>
 		<c:choose>
 		<c:when test="${param.orderBy eq 'visitcnt'}">
 		<div class="card-container">
@@ -276,33 +272,21 @@
 								});
 
 						//체크 박스 선택하면 재검색
-						$("input[name=chk]")
-								.click(
-										function() {
-											actionForm
-													.find("input[name='chk']")
-													.remove();
-											$("input[name=chk]:checked")
-													.each(
-															function() {
-																actionForm
-																		.append("<input type='hidden' name='chk' value='"
-																				+ $(
-																						this)
-																						.val()
-																				+ "'>");
-															});
-											if (!actionForm.find(
-													"input[name='chk']").val()) {
-												alert("재료를 한가지 이상 선택하세요!");
-												actionForm.find(
-														"input[name='type']")
-														.remove();
-											}
-											actionForm.submit();
-										});
+						$("input[name=chk]").click(function() {
+								actionForm.find("input[name='chk']").remove();
+								$("input[name=chk]:checked").each(function() {
+									actionForm.append("<input type='hidden' name='chk' value='" + $(this).val() + "'>");
+								});
+								
+								if (!actionForm.find(
+										"input[name='chk']").val()) {
+									alert("재료를 한가지 이상 선택하세요!");
+									actionForm.find("input[name='type']").remove();
+								}
+								actionForm.submit();
+							});
 
-					});
+});
 </script>
 
 <%@include file="../includes/footer.jsp"%>

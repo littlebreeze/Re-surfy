@@ -39,7 +39,7 @@ document.getElementById("mainImage").addEventListener("change", onMainFileChange
     const newIngredientGroup = document.createElement('ul');
     newIngredientGroup.id = `ingredientAra_${ingredientCounter}`;
     newIngredientGroup.className = 'ingredientGroup';
-    newIngredientGroup.style = 'margin-left: 140px; display: inline-flex;';
+    newIngredientGroup.style = 'margin-left: 145px; display: inline-flex;';
     
     const select = document.createElement('select');
     select.className = 'form-select';
@@ -110,85 +110,79 @@ document.getElementById("mainImage").addEventListener("change", onMainFileChange
     
     document.getElementById('addIngredient').addEventListener('click', addIngredient);
     
-    //순서 추가 함수
-  let stepCounter = 1;
+//순서 추가 함수
+let stepCounter = 1;
 
 function addStep() {
-    stepCounter++;
-    const stepTemplate = document.getElementById('stepTemplate');
-    const newStep = stepTemplate.innerHTML.replace(/STEP/g, stepCounter);
-    stepArea.insertAdjacentHTML('beforeend', newStep);
-    const deleteButton = document.getElementById(`stepItem_${stepCounter}`).getElementsByClassName("deleteStepBtn")[0];
-    deleteButton.setAttribute('onclick', `deleteStep(${stepCounter})`);
-    const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${stepCounter}`);
-    stepImageBoxToUpdate.setAttribute('onclick', `browseStepFile(${stepCounter})`);
-        const newFileInput = document.getElementById(`q_step_file_${stepCounter}`);
-    newFileInput.setAttribute('id', `q_step_file_${stepCounter}`);
-    newFileInput.setAttribute('name', `q_step_file_${stepCounter}`);
-	
-    // Add event listener to the new file input
-    const fileInput = document.getElementById(`q_step_file_${stepCounter}`);
-    fileInput.addEventListener('change', function (event) {
-        const step = this.id.split('_')[2];
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.getElementById(`stepImageHolder_${step}`);
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+  stepCounter++;
+  const stepTemplate = document.getElementById("stepTemplate");
+  const newStep = stepTemplate.innerHTML.replace(/STEP/g, stepCounter);
+  stepArea.insertAdjacentHTML("beforeend", newStep);
+
+  const deleteButton = document.getElementById(`stepItem_${stepCounter}`).getElementsByClassName("deleteStepBtn")[0];
+  deleteButton.setAttribute("onclick", `deleteStep(${stepCounter})`);
+
+  const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${stepCounter}`);
+  stepImageBoxToUpdate.setAttribute("onclick", `browseStepFile(${stepCounter})`);
+
+  const newFileInput = document.getElementById(`q_step_file_${stepCounter}`);
+  newFileInput.setAttribute("id", `q_step_file_${stepCounter}`);
+  newFileInput.setAttribute("name", `q_step_file_${stepCounter}`);
+
+  // Add event listener to the new file input
+  setFileInputEventListener(stepCounter);
 }
 
 function browseStepFile(step) {
-    const fileInput = document.getElementById(`q_step_file_${step}`);
-    fileInput.click();
+  const fileInput = document.getElementById(`q_step_file_${step}`);
+  fileInput.click();
 }
 
 // 순서 제거 함수
 function deleteStep(step) {
-    const stepElement = document.getElementById(`stepItem_${step}`);
-    stepElement.remove();
+  const stepElement = document.getElementById(`stepItem_${step}`);
+  stepElement.remove();
 
-    for (let i = step + 1; i <= stepCounter; i++) {
-        const stepToUpdate = document.getElementById(`stepItem_${i}`);
-        const stepNumToUpdate = document.getElementById(`stepNum_${i}`);
-        const stepDescToUpdate = document.getElementById(`stepDescription_${i}`);
-        const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${i}`);
-        const stepFileInput = document.getElementById(`q_step_file_${i}`);
+  for (let i = step + 1; i <= stepCounter; i++) {
+    const stepToUpdate = document.getElementById(`stepItem_${i}`);
+    const stepNumToUpdate = document.getElementById(`stepNum_${i}`);
+    const stepDescToUpdate = document.getElementById(`stepDescription_${i}`);
+    const stepImageBoxToUpdate = document.getElementById(`stepImageBox_${i}`);
+    const stepFileInput = document.getElementById(`q_step_file_${i}`);
+    const stepDelete = document.getElementById(`deleteStepBtn_${i}`);
 
-        stepNumToUpdate.innerHTML = `Step ${i - 1}`;
-        stepToUpdate.id = `stepItem_${i - 1}`;
-        stepNumToUpdate.id = `stepNum_${i - 1}`;
-        stepDescToUpdate.id = `stepDescription_${i - 1}`;
-        stepImageBoxToUpdate.id = `stepImageBox_${i - 1}`;
-        stepImageBoxToUpdate.setAttribute('onclick', `browseStepFile(${i - 1})`);
-        stepFileInput.id = `q_step_file_${i - 1}`;
-    }
+    stepNumToUpdate.innerHTML = `Step ${i - 1}`;
+    stepToUpdate.id = `stepItem_${i - 1}`;
+    stepNumToUpdate.id = `stepNum_${i - 1}`;
+    stepDescToUpdate.id = `stepDescription_${i - 1}`;
+    stepImageBoxToUpdate.id = `stepImageBox_${i - 1}`;
+    stepImageBoxToUpdate.setAttribute("onclick", `browseStepFile(${i - 1})`);
+    stepFileInput.id = `q_step_file_${i - 1}`;
+    stepDelete.id = `deleteStepBtn_${i-1}`;
+    stepDelete.setAttribute("onclick", `deleteStep(${i - 1})`);
+  }
 
-    stepCounter--;
+  stepCounter--;
 }
 
 // Initialize event listener for the first step
 document.addEventListener("DOMContentLoaded", function () {
-    setFileInputEventListener(1);
+  setFileInputEventListener(1);
 });
 
 function setFileInputEventListener(step) {
-    const fileInput = document.getElementById(`q_step_file_${step}`);
-    fileInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const img = document.getElementById(`stepImageHolder_${step}`);
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+  const fileInput = document.getElementById(`q_step_file_${step}`);
+  fileInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.getElementById(`stepImageHolder_${step}`);
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
 }
 
 
@@ -263,6 +257,13 @@ function setFileInputEventListener(step) {
   for (let i = 0; i < ingredientMeasures.length; i++) {
     if (ingredientMeasures[i].value === "") {
       alert("재료양을 입력하세요.");
+      return false;
+    }
+  }
+  
+   for (let i = 0; i < stepDescriptions.length; i++) {
+    if (stepDescriptions[i].value === "") {
+      alert("과정을 입력하세요.");
       return false;
     }
   }

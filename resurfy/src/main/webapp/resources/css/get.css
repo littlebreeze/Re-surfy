@@ -59,3 +59,19 @@ input[type="text"] {
   display : flex;
   justify-content : center;
 }
+
+/* 가진 재료 검색 */
+
+#ownGroup {
+	padding-top: .75rem;
+	padding-bottom: .75rem;
+	background-color: #E4EEF0;
+	border: 1px solid white;
+}
+
+#ownGroup:hover {
+	background-color: #ff7851;
+	border: 1px solid white;
+	color: white;
+}
+

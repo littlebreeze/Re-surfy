@@ -111,6 +111,8 @@ public class OwnController {
 			userID=sessionUser.getId();
 
 		model.addAttribute("relist", rService.getUserList(cri, userID));
+		model.addAttribute("totalRecipe", service.getTotalRecipe(userID));
+		model.addAttribute("totalReply", service.getTotalReply(userID));
 
 		int total = rService.getUserTotal(cri, userID);
 

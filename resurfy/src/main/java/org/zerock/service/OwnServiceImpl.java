@@ -44,4 +44,14 @@ public class OwnServiceImpl implements OwnService {
 	public List<Map<String, Object>>autocomplete(Map<String, Object> paramMap) throws Exception{
 		return mapper.autocomplete(paramMap);
 	}
+
+	@Override
+	public int getTotalRecipe(String userID) {
+		return mapper.getTotalRecipe(userID);
+	}
+
+	@Override
+	public int getTotalReply(String userID) {
+		return mapper.getTotalReply(userID);
+	}
 }

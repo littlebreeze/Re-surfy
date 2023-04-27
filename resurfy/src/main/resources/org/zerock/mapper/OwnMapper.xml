@@ -24,4 +24,12 @@
 		WHERE INGRENAME LIKE  '%'|| #{value} || '%'
 	</select>
 
+	<select id="getTotalRecipe" resultType="int">
+		select count(*) from recipe_tbl where ID = #{userID}
+	</select>
+
+	<select id="getTotalReply" resultType="int">
+		select count(*) from reply_tbl where ID = #{userID}
+	</select>
+
 </mapper>

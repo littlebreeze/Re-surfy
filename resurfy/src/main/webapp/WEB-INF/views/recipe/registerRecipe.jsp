@@ -105,9 +105,9 @@ pageEncoding="UTF-8"%>
           <div class="wrapper_box pad_l_60">
             <div class="mag_b_25 ui-sortable" id="divIngredientGroupArea">
               <div class="wrapper_line" style="height:0px; display:flex">
-                <p class="wrapper_title_ingredient" style="color:black;">재료</p>
+                <p class="wrapper_title_ingredient" style="color:black; margin-top: 5px;">재료</p>
               </div>
-              <div class="wrapper_ingredient" style="margin-left: 140px; display: inline-flex;">
+              <div class="wrapper_ingredient" style="margin-left: 145px; display: inline-flex;">
                 <ul id="ingredientAra_1" class="ingredientGroup">
                   <select class="form-select" id="ingreType" name="ingreType" control-id="ControlID-11" style="justify-content: flex-end;">
                     <option value="">재료별</option>
@@ -137,28 +137,28 @@ pageEncoding="UTF-8"%>
             <input type="file" name="file" id="multifile_1" file_gubun="step" style="display:none;" multiple/>
             <p class="wrapper_title2" style="color:black;">요리순서</p>
             <div id="stepArea" class="stepArea">            
-              <div id="stepItem_STEP" class="step" style="margin-bottom:50px">
-                <p id="stepNum_STEP" name="stepNo" class="stepNo_STEP ui-sortable-handle" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
-                <div id="stepDescription_STEP" style="display:inline-block">
-                  <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:200px; width:410px; resize:none;" control-id="ControlID-29"><c:out value='${stepDescription_STEP}'/></textarea>
+              <div id="stepItem_1" class="step" style="margin-bottom:50px">
+                <p id="stepNum_1" name="stepNo" class="stepNo" data-original-title="" title=""  style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: #black; margin-left: 40px;">Step 1</p>
+                <div id="wrapper_stepDescription_1" style="display:inline-block">
+                  <textarea name="stepDescription" id="stepDescription_1" class="form-control stepDescription" placeholder="예) 김치를 적당한 크기로 썰어 팬에 볶아주세요." style="height:200px; width:410px; resize:none;" control-id="ControlID-29"><c:out value='${stepDescription_STEP}'/></textarea>
                 </div>
-                <div id="stepUpload_STEP" style="display:inline-block">
-                  <input type="hidden" name="step_no" id="step_no_STEP" value="" control-id="ControlID-30">
-                  <input type="hidden" name="step_image" id="step_image_STEP" value="">
-                  <input type="hidden" name="new_step_image" id="new_step_image_STEP" value="">
-                  <input type="hidden" name="del_step_image" id="del_step_image_STEP" value="">
+                <div id="stepUpload_1" style="display:inline-block">
+                  <input type="hidden" name="step_no" id="step_no_1" value="" control-id="ControlID-30">
+                  <input type="hidden" name="step_image" id="step_image_1" value="">
+                  <input type="hidden" name="new_step_image" id="new_step_image_1" value="">
+                  <input type="hidden" name="del_step_image" id="del_step_image_1" value="">
                   <div style="position:absolute;left:-3000px">
-                    <input type="file" name="stepImage" id="q_step_file_STEP" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
+                    <input type="file" name="stepImage" id="q_step_file_1" file_gubun="step" accept="jpeg,png,gif" style="display:none;width:0px;height:0px;font-size:0px;" text="" control-id="ControlID-31">
                   </div>
-				  <div id="stepImageBox_STEP" is_over="0" onclick="browseStepFile(STEP)" style="cursor:pointer">
-					<img id="stepImageHolder_STEP" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px" class="bi bi-file-image" viewBox="0 0 16 16"">
+				  <div id="stepImageBox_1" is_over="0" onclick="browseStepFile(1)" style="cursor:pointer">
+					<img id="stepImageHolder_1" src="../resources/assets/uploadimage.png" style="width:200px; height:200px; fill:200px" class="bi bi-file-image" viewBox="0 0 16 16"">
 			      </div>
                 </div>
                 <div id="tipItem_1" class="tip">
-                  <p class="tip_title" style="color:black;">팁</p>
+                  <p class="tip_title" style="color:black; margin-top:10px;">팁</p>
                   <textarea name="tip" id="tip_text_1" class="form-control tipDescription" placeholder="조리 과정에 특별한 팁이 있다면 공유해주세요. 없다면 생략 가능합니다." 
                   style="height:50px; width:620px; resize:none;"><c:out value='${tip_text_1}'/></textarea>          
-				  <button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(STEP)">X</button>
+				  <button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(1)">X</button>
                 </div>    
               </div>
             </div> <!--step regi box-->
@@ -166,8 +166,8 @@ pageEncoding="UTF-8"%>
             <!-- step template -->
             <div id="stepTemplate" style="display:none;">
               <div id="stepItem_STEP" class="step" style="margin-bottom:50px">
-                <p id="stepNum_STEP" class="stepNo_STEP ui sortable handle" style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: black; margin-left: 40px;">Step STEP</p>
-                <div id="stepDescription_STEP" style="display:inline-block">
+                <p id="stepNum_STEP" class="stepNo" style="width: 100px; display: inline-block; font-size: 18px; font-weight: bold; vertical-align: top; color: black; margin-left: 40px;">Step STEP</p>
+                <div id="wrapper_stepDescription_STEP" style="display:inline-block">
                   <textarea name="stepDescription" id="stepDescription_STEP" class="form-control stepDescription" placeholder="과정을 적어주세요." 
                   style="height:200px; width:410px; resize:none;"><c:out value='${stepDescription_STEP}'/></textarea>
                 </div>
@@ -185,10 +185,11 @@ pageEncoding="UTF-8"%>
 			      </div>
                 </div>
                 <div id="tipItem_STEP" class="tip">
-                <p class="tip_title"  style="color:black;">팁</p>
-                <textarea name="tip" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." 
-                style="height:50px; width:620px; resize:none;"><c:out value='${tip_text_STEP}'/></textarea> 
-					<button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(STEP)">X</button>
+              		<p class="tip_title"  style="color:black; margin-top:10px;">팁</p>
+                
+	                <textarea name="tip" id="tip_text_STEP" class="form-control tipDescription" placeholder="팁을 공유해주세요. 없다면 생략 가능합니다." 
+	                style="height:50px; width:620px; resize:none;"><c:out value='${tip_text_STEP}'/></textarea> 
+					<button type="button" class="btn btn-warning deleteStepBtn" onclick="deleteStep(STEP)" id="deleteStepBtn_STEP">X</button>
                 </div>
               </div>
             </div><!--step template finish-->
