@@ -240,9 +240,13 @@ public class RecipeController {
 		return "redirect:/recipe/get";
 	}
 
-	@GetMapping("/TopTen")
-	public void ListSort(Model model, @ModelAttribute("cri") Criteria cri) {
+	@GetMapping("/TopTenByReply")
+	public void ListSortByReply(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
+	}
+	
+	@GetMapping("/TopTenByVisit")
+	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
 

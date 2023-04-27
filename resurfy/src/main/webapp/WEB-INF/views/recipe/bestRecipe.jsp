@@ -23,91 +23,40 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <!-- Header-->
-<div class="recipe_carousel">
-	<div class="slide_div_wrap">
-		<div class="slide_div">
-			<c:forEach items="${listRecipe}" var="recipe">
-				<div class="slide_item">
-					<br>
-					<br> 
-					<br> 
-					<br> 
-					<br> 
-					<br> 
-					<br>
-					<br>
-					<div class = "slide_element">
-						<img src="${recipe.image}" data-text="${recipe.recipeDescription}"
-							onmouseover="showText(this);" onmouseout="hideText();" />
+<div class="slide_div_wrap">
+				<div class="slide_div">
+					<div>
+						<a href = "#">
+							<img src="/resources/assets/slick_first.png">
+						</a>
 					</div>
-					<br> 
-					<br> 
-					<br> 
-					<br> 
-					<br> 
-					<br> 
-					<br>
-					<br>
-				</div>
-			</c:forEach>
-		</div>
-	</div>
-</div>
-
-<button onclick="location.href='/recipe/TopTen'"
-	class="btn btn-primary btn-lg" id="recipe_rank">
-	<img src="/resources/assets/ranking.png" width="20" height="auto">
-</button>
-
+					<div>
+						<a href = "/recipe/TopTenByReply">
+							<img src="/resources/assets/slick_second.png">
+						</a>
+					</div>
+					<div>
+						<a href = "/recipe/TopTenByVisit">
+							<img src="/resources/assets/slick_third.png">
+						</a>
+					</div>				
+				</div>	
+			</div>
 
 <script>
 	$(document).ready(function() {
 		$(".slide_div").slick({
 			centerMode : true,
 			centerPadding : '90px',
-			slidesToShow : 4,
+			slidesToShow : 1,
 			slidesToScroll : 1,
 			autoplay : true,
-			autoplaySpeed : 1000,
-			responsive : [ {
-				breakpoint : 768,
-				settings : {
-					arrows : false,
-					centerMode : true,
-					centerPadding : '30px',
-					slidesToShow : 3
-				}
-			}, {
-				breakpoint : 480,
-				settings : {
-					arrows : false,
-					centerMode : true,
-					centerPadding : '30px',
-					slidesToShow : 1
-				}
-			} ]
+			autoplaySpeed : 2000,
+			infinite: true,
+			adaptiveHeight: true
 		});
 	});
 </script>
 
-<script>
-	function showText(element) {
-		var text = element.getAttribute("data-text");
-		var tooltip = document.createElement("div");
-		tooltip.innerHTML = text;
-		tooltip.style.position = "absolute";
-		tooltip.style.top = (element.offsetTop - 20) + "px";
-		tooltip.style.left = element.offsetLeft + "px";
-		tooltip.style.backgroundColor = "#333";
-		tooltip.style.color = "#fff";
-		tooltip.style.padding = "5px";
-		tooltip.style.borderRadius = "5px";
-		tooltip.style.zIndex = "999";
-		element.parentNode.appendChild(tooltip);
-	}
-	function hideText(element) {
-		var tooltip = element.parentNode.getElementsByTagName("div");
-		element.parentNode.removeChild(tooltip);
-	}
-</script>
+
 

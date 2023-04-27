@@ -42,12 +42,14 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
 	rel="stylesheet">
 <body>
-	<div id="logo">
-		<a href="/recipe/get"> <img
+	
+	<div id="header_menu">
+		<div id="logo">
+		<a href="/recipe/get"> 
+		<img
 			src="/resources/assets/header_logo.png" width="500" height="auto">
 		</a>
 	</div>
-	<div id="header_menu">
 		<div id="header_menu_move">
 			<ul class="nav nav-pills">
 				<%
