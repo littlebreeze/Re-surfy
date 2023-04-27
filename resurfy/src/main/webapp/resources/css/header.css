@@ -1,44 +1,42 @@
 #header_menu{
-	width : 100%;
-	height : auto;
-	background-color : #FFFFFF;
-	overflow : hidden;
-    display : flex;
-	justify-content : space-between;
-	align-item : center;
-	background-position: center;
-  	background-repeat: no-repeat;
-  	background-size: cover;
-  	border-bottom: 1px solid #ff7851;
-
+  width: 100%;
+  height: auto;
+  background-color: #FFFFFF;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid #ff7851;
 }
 
 #header_menu_move{
-	overflow : hidden;
-	background-color : #FFFFFF;
-	 margin-left: auto;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  margin-left: auto;
 }
 
-#header_menu_move  ul{
-	list-style-type : none;
-	font-color : #000000;
-	margin : 0;
-	padding : 0;
+#header_menu_move ul{
+  list-style-type: none;
+  color: #000;
+  margin: 0;
+  padding: 0;
 }
 
-#header_menu_move  li{
-	float : right;
-	font-size : 100%;
-	padding : 20px;
-	margin : 10px;
-	font-color : #000000;
-	display : inline-block;
+#header_menu_move li{
+  float: right;
+  font-size: 100%;
+  padding: 20px;
+  margin: 10px;
+  color: #000;
+  display: inline-block;
 }
 
-#logo{
-    margin : 20px -5px;
-    overflow : hidden;
+#logo {
+  position : absolute;
+
+
 }
-
-
 

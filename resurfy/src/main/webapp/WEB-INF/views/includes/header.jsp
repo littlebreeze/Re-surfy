@@ -42,13 +42,12 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
 	rel="stylesheet">
 <body>
-
+	<div id="logo">
+		<a href="/recipe/get"> <img
+			src="/resources/assets/header_logo.png" width="500" height="auto">
+		</a>
+	</div>
 	<div id="header_menu">
-		<div id="logo">
-			<a href="/recipe/get"> <img
-				src="/resources/assets/fadeblueLogo.png" width="200" height="auto">
-			</a>
-		</div>
 		<div id="header_menu_move">
 			<ul class="nav nav-pills">
 				<%
@@ -83,8 +82,7 @@
 					</a>
 						<div class="dropdown-menu" style="">
 							<a class="dropdown-item" href="/mypage/list"><font
-								face='NanumGothic'>작성글 모아보기 </a> 
-							<a class="dropdown-item"
+								face='NanumGothic'>작성글 모아보기 </a> <a class="dropdown-item"
 								href="/mypage/cart"><font face='NanumGothic'>장바구니 </a> <a
 								class="dropdown-item" href="/mypage/own"><font
 								face='NanumGothic'>가진 재료 </a>
@@ -137,20 +135,23 @@
 	</script>
 
 	<script type="text/javascript">
-	$(document).ready(
-			function() {
-				var result = '<c:out value="${result}"/>';
-				checkModal(result);
-				history.replaceState({}, null, null);
-				function checkModal(result) {
-					if (result === '' || history.state) {
-						return;
-					}
-					if (parseInt(result) > 0) {
-						$(".modal-body").html("게시글 " + parseInt(result) + " 번이 등록되었습니다.");
-					}
-					$("#RegisterModal").modal("show");
-				};
-			});
+		$(document)
+				.ready(
+						function() {
+							var result = '<c:out value="${result}"/>';
+							checkModal(result);
+							history.replaceState({}, null, null);
+							function checkModal(result) {
+								if (result === '' || history.state) {
+									return;
+								}
+								if (parseInt(result) > 0) {
+									$(".modal-body").html(
+											"게시글 " + parseInt(result)
+													+ " 번이 등록되었습니다.");
+								}
+								$("#RegisterModal").modal("show");
+							}
+							;
+						});
 	</script>
-	

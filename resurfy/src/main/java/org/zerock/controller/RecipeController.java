@@ -62,9 +62,9 @@ public class RecipeController {
 	public String register(RecipeVO rvo, HttpServletRequest request, @RequestParam("recipeName") String recipeName,
 			@RequestParam("recipeDescription") String recipeDescription,
 			@RequestParam("image") String image,
-			@RequestParam("combinedFoodValue") String combinedFoodValue, @RequestParam("person") String person,
+			@RequestParam("foodType") String foodType, @RequestParam("person") String person,
 			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time,
-			@RequestParam("ingreType") String[] ingreType, @RequestParam("ingreMeasure") String[] ingreMeasure,
+			@RequestParam("ingreType") String ingreType, @RequestParam("ingreMeasure") String[] ingreMeasure,
 			@RequestParam("ingreName") String[] ingreName, @RequestParam("stepNo") Long[] stepNo,
 			@RequestParam("stepDescription") String[] StepDescription, @RequestParam("stepImage") String[] stepImage,
 			@RequestParam("tip") String[] tip, RedirectAttributes rttr) {
@@ -81,31 +81,22 @@ public class RecipeController {
 		rvo.setId(userID);
 		rvo.setRecipeDate(null);
 
-		String[] FoodValue = combinedFoodValue.split("\\|");
-		String foodType = FoodValue[1];
-		Long foodTypeNo = Long.parseLong(FoodValue[0]);
-
 		rvo.setFoodType(foodType);
-		rvo.setFoodTypeNo(foodTypeNo);
 
 		rvo.setPerson(person);
 		rvo.setDifficulty(difficulty);
 		rvo.setTime(time);
-		rvo.setImage("" + image);
+		rvo.setImage("https://drive.google.com/file/d/18rdeNIisvjjhrLrqwuqWOa9MmRGKA26q/view?usp=share_link");
 		
 		rService.register(rvo);
 		rttr.addFlashAttribute("result_recipe", rvo.getBno());
 
 		List<IngredientVO> ingredientList = new ArrayList<>();
-		for (int i = 0; i < ingreType.length; i++) {
+		for (int i = 0; i < ingreName.length; i++) {
 			IngredientVO ingredient = new IngredientVO();
 
 			// ingreType 파라미터 값에서 ingreTypeNo와 ingreType을 추출하여 IngredientVO 객체에 설정
-			String[] ingreTypeValue = ingreType[i].split("\\|");
-			Long ingreTypeNo = Long.parseLong(ingreTypeValue[0]);
-			String ingreType1 = ingreTypeValue[1];
-			ingredient.setIngreTypeNo(ingreTypeNo);
-			ingredient.setIngreType(ingreType1);
+			ingredient.setIngreType(ingreType);
 			ingredient.setBno(rvo.getBno());
 
 			ingredient.setIngreMeasure(ingreMeasure[i]);
