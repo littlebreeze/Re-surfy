@@ -62,7 +62,7 @@
 			<c:forEach items="${sortByVisit}" var="bestRecipe" varStatus="status">
 				<c:if test="${status.index < 10}">
 					<tbody style="height: auto; font-size : 20px;
-					border-bottom: 1px solid #ff7851;">
+					border-bottom: 1px solid #ff7851; background-color : #fff;">
 						<tr>
 							<th scope="row">${status.index + 1}</th>
 							<td><a

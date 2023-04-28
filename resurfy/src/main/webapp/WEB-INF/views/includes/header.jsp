@@ -46,7 +46,7 @@
 	<div id="header_menu">
 		<div id="logo">
 		<a href="/recipe/get"> 
-		<img src="/resources/assets/header_logo.png" width="350px" height="auto;">
+		<img src="/resources/assets/horizontal_logo.png" width="350px" height="auto;">
 		</a>
 	</div>
 		<div id="header_menu_move" style = "padding-bottom : 5%; font-size : 20px; ">
