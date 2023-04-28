@@ -19,6 +19,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
 <link href="<%=request.getContextPath()%>/resources/css/styles.css"
 	rel="stylesheet" />
 
@@ -26,6 +28,8 @@
 <link href="/resources/css/mypageStyles.css" rel="stylesheet" />
 
 <link href="/resources/css/header.css" rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript"
@@ -39,74 +43,83 @@
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css"
 	rel="stylesheet">
 <body>
-	
-	<div id="header_menu">
-		<div id="logo">
-		<a href="/recipe/get"> 
-		<img src="/resources/assets/horizontal_logo.png" width="350px" height="auto;">
-		</a>
-	</div>
-		<div id="header_menu_move" style = "padding-bottom : 5%; font-size : 20px; ">
-			<ul class="nav nav-pills">
-				<%
-				UserVO user = (UserVO) session.getAttribute("member");
-				%>
+	<font face='NanumGothic'>
+		<div id="header_menu" style="border-bottom: 0px;">
+			<div id="logo">
+				<a href="/recipe/get"> <img
+					src="/resources/assets/horizontal_logo.png" width="350px"
+					height="auto;">
+				</a>
+			</div>
+			<div id="header_menu_move"
+				style="padding-bottom: 5%; font-size: 20px;">
+				<ul class="nav nav-pills">
+					<%
+					UserVO user = (UserVO) session.getAttribute("member");
+					%>
 
-				<%
-				if (user == null) {
-				%>
+					<%
+					if (user == null) {
+					%>
 
-				<li class="nav-item"><a href="/member/login.do"> 
-				<img src="/resources/assets/unlocked.png" width="20" height="auto">
-				</a></li>
-				
-				<li class="nav-item">비회원 입니다.</li>
+					<li class="nav-item" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="로그인"><a
+						href="/member/login.do"> <img
+							src="/resources/assets/unlocked.png" width="20" height="auto">
+					</a></li>
 
-				<%
-				} else {
-				%>
+					<li class="nav-item">비회원 입니다.</li>
 
-				<form action="/member/logout.do" id="logout" method="post">
-					<li>
-						<div id="btnLogout">
-							<a href="/member/login.do"> <img
-								src="/resources/assets/lock.png" width="20" height="auto">
-							</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-						href="#" role="button" aria-haspopup="true" aria-expanded="false">
-							<img src="/resources/assets/user.png" width="20" height="auto">
-					</a>
-						<div class="dropdown-menu" style="">
-							<a class="dropdown-item" href="/mypage/list"><font
-								face='NanumGothic'>작성글 모아보기 </a> <a class="dropdown-item"
-								href="/mypage/cart"><font face='NanumGothic'>장바구니 </a> <a
-								class="dropdown-item" href="/mypage/own"><font
-								face='NanumGothic'>가진 재료 </a>
-						</div></li>
-					<li class="nav-item"><a href="/recipe/registerRecipe"> <font
-							face='NanumGothic'> <img src="/resources/assets/edit.png"
-								width="20" height="auto"></a></li>
-					<li class="nav-item" id="welcome-text"><font color='#000000'>
-							<%=user.getId()%>님 환영합니다. </li>
+					<%
+					} else {
+					%>
 
-				</form>
-				<%
+					<form action="/member/logout.do" id="logout" method="post">
+						<li class="nav-item" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="로그아웃">
+							<div id="btnLogout">
+								<a href="/member/login.do"> <img
+									src="/resources/assets/lock.png" width="20" height="auto">
+								</a>
+							</div>
+						</li>
+						<li class="nav-item" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="마이페이지"><a href="/mypage/list"> <img
+								src="/resources/assets/user.png" width="20" height="auto">
+						</a></li>
+						<li class="nav-item" data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="레시피 등록"><a href="/recipe/registerRecipe"> <img
+								src="/resources/assets/edit.png" width="20" height="auto"></a></li>
+						<li class="nav-item" id="welcome-text"><font color='#000000'>
+								<%=user.getId()%>님 환영합니다. </li>
+
+					</form>
+					<%
+					}
+					%>
+					</ol>
+			</div>
+		</div> <script type="text/javascript">
+			var btnLogout = document.getElementById('btnLogout');
+			if (btnLogout != null) {
+				btnLogout.onclick = function() {
+					alert("로그아웃 되었습니다.");
 				}
-				%>
-				</ol>
-		</div>
-	</div>
-
-
-	<script type="text/javascript">
-		var btnLogout = document.getElementById('btnLogout');
-		if (btnLogout != null) {
-			btnLogout.onclick = function() {
-				alert("로그아웃 되었습니다.");
 			}
-		}
-		document.getElementById("welcome-text").style.color = "#FFFFFF";
-	</script>
+			document.getElementById("welcome-text").style.color = "#FFFFFF";
+		</script> 
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			// 툴팁 초기화
+			var tooltipTriggerList = [].slice.call(document
+					.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList
+					.map(function(tooltipTriggerEl) {
+						return new bootstrap.Tooltip(tooltipTriggerEl)
+					})
+		</script>

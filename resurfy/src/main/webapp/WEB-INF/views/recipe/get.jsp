@@ -8,7 +8,8 @@
 <br>
 <c:if test="${pageMaker.cri.type == 'O' }">
 	<div class="container">
-		<br><div class="row row-cols-1 row-cols-md-4 g-3 text-center">
+		<br>
+		<div class="row row-cols-1 row-cols-md-4 g-3 text-center">
 			<c:if test="${empty list}">
 				<div>가진 재료 없음</div>
 			</c:if>
@@ -25,172 +26,176 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-3" >
+<div class="py-3">
 	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
-			<div class='row' >
+			<div class='row'>
 				<div class="col-lg-12">
 					<form id='searchForm' action="/recipe/get" method='get'>
-						<select name='type'>
-							<option value=""
-								<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+						<select name='typ'>
 							<option value="R"
 								<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식
 								이름</option>
 							<option value="F"
 								<c:out value="${pageMaker.cri.type eq 'F'?'selected':''}"/>>음식
 								종류</option>
-							<option value="FR"
-								<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>음식
-								이름 or 종류</option>
-						</select> 
-						<input type='text' name='keyword'
-							value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
+							<option value="D"
+								<c:out value="${pageMaker.cri.type eq 'D'?'selected':''}"/>>난이도
+							</option>
+							<option value="FRD"
+								<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>
+								이름or종류or난이도</option>
+						</select> <input type='text' name='keyword'
+							placeholder="예)[음식이름]-김치찌개 [음식종류]-한식"
+							value='<c:out value="${pageMaker.cri.keyword}" />' /> <input
 							type='hidden' name='pageNum'
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
-						<button class = "btn btn-primary btn-lg"><img src = "/resources/assets/search.png" width = "20" height = "auto"></button>
+						<button class="btn btn-primary btn-lg">
+							<img src="/resources/assets/search.png" width="20" height="auto">
+						</button>
 					</form>
 				</div>
 			</div>
-		<ul class="nav nav-pills">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-				role="button" aria-haspopup="true" aria-expanded="false"><img src="/resources/assets/filter.png" width="30" height="auto"></a>
-				<div class="dropdown-menu" style="">
-					<a class="dropdown-item" href="?orderBy=visitcnt">조회수</a> 
-					<a class="dropdown-item" href="?orderBy=replycnt">댓글수</a>
-				</div></li>
-		</ul>		
+			<br>
+			<div>
+				<button type="button" class="btn btn-light"
+				 style="color: #fff;">
+				<a href="?orderBy=visitcnt">조회 수</a>
+				</button>
+				<button type="button" class="btn btn-light"
+				style="color: #fff;">
+				<a href="?orderBy=replycnt">댓글 수</a>
+				</button>
+			</div>
+			</ul>
 		</c:if>
 		<c:choose>
-		<c:when test="${param.orderBy eq 'visitcnt'}">
-		<div class="card-container">
-			<c:forEach items="${sortByVisit}" var="recipe">
-				<div class="card" style = "border : 0px;">
-				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-					<div class="card-img">
-						<img class="card-img-top" src="${recipe.image}" alt="..." />
-					</div>
-					</a>
-					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
-						<b style ="font-size : 30px;">
-						<c:out value="${recipe.recipeName}" /></b>
-					</div>
-					<div class="card-main">
-						<div>
-							난이도 :
-							<c:out value="${recipe.difficulty}" />
+			<c:when test="${param.orderBy eq 'visitcnt'}">
+				<div class="card-container">
+					<c:forEach items="${sortByVisit}" var="recipe">
+						<div class="card" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+								<b style="font-size: 30px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+
+							</div>
+							<div
+								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</div>
 						</div>
-						<div>
-							종류 :
-							<c:out value="${recipe.foodType}" />
-						</div>
-						<div>
-							기준인분 :
-							<c:out value="${recipe.person}" />
-						</div>
-						<div>
-							조리시간 :
-							<c:out value="${recipe.time}" />
-						</div>
-						
-					</div>
-					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
-							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-							</b> 
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-					</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
-		</div>
-		</c:when>
-		<c:when test="${param.orderBy eq 'replycnt'}">
-		<div class="card-container">
-			<c:forEach items="${sortByReply}" var="recipe">
-				<div class="card" style = "border : 0px;">
-				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-					<div class="card-img">
-						<img class="card-img-top" src="${recipe.image}" alt="..." />
-					</div>
-					</a>
-					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
-						<b style ="font-size : 30px;">
-						<c:out value="${recipe.recipeName}" /></b>
-					</div>
-					<div class="card-main">
-						<div>
-							난이도 :
-							<c:out value="${recipe.difficulty}" />
+			</c:when>
+			<c:when test="${param.orderBy eq 'replycnt'}">
+				<div class="card-container">
+					<c:forEach items="${sortByReply}" var="recipe">
+						<div class="card" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+								<b style="font-size: 30px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+
+							</div>
+							<div
+								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</div>
 						</div>
-						<div>
-							종류 :
-							<c:out value="${recipe.foodType}" />
-						</div>
-						<div>
-							기준인분 :
-							<c:out value="${recipe.person}" />
-						</div>
-						<div>
-							조리시간 :
-							<c:out value="${recipe.time}" />
-						</div>
-						
-					</div>
-					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
-							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-							</b> 
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-					</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
-		</div>
-		</c:when>
-		<c:otherwise>
-		<div class="card-container">
-			<c:forEach items="${get}" var="recipe">
-				<div class="card" style = "border : 0px;">
-				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-					<div class="card-img">
-						<img class="card-img-top" src="${recipe.image}" alt="..." />
-					</div>
-					</a>
-					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
-						<b style ="font-size : 30px;">
-						<c:out value="${recipe.recipeName}" /></b>
-					</div>
-					<div class="card-main">
-						<div>
-							난이도 :
-							<c:out value="${recipe.difficulty}" />
+			</c:when>
+			<c:otherwise>
+				<div class="card-container">
+					<c:forEach items="${get}" var="recipe">
+						<div class="card" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+								<b style="font-size: 30px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+
+							</div>
+							<div
+								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+								
+							</div>
 						</div>
-						<div>
-							종류 :
-							<c:out value="${recipe.foodType}" />
-						</div>
-						<div>
-							기준인분 :
-							<c:out value="${recipe.person}" />
-						</div>
-						<div>
-							조리시간 :
-							<c:out value="${recipe.time}" />
-						</div>
-						
-					</div>
-					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
-							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-							</b> 
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-					</div>
+					</c:forEach>
 				</div>
-			</c:forEach>
-		</div>
-		</c:otherwise>
+			</c:otherwise>
 		</c:choose>
 
 		<!-- start Paging -->
@@ -226,7 +231,7 @@
 			<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 		</c:forEach>
 	</form>
-	
+
 </div>
 
 
@@ -268,21 +273,34 @@
 								});
 
 						//체크 박스 선택하면 재검색
-						$("input[name=chk]").click(function() {
-								actionForm.find("input[name='chk']").remove();
-								$("input[name=chk]:checked").each(function() {
-									actionForm.append("<input type='hidden' name='chk' value='" + $(this).val() + "'>");
-								});
-								
-								if (!actionForm.find(
-										"input[name='chk']").val()) {
-									alert("재료를 한가지 이상 선택하세요!");
-									actionForm.find("input[name='type']").remove();
-								}
-								actionForm.submit();
-							});
+						$("input[name=chk]")
+								.click(
+										function() {
+											actionForm
+													.find("input[name='chk']")
+													.remove();
+											$("input[name=chk]:checked")
+													.each(
+															function() {
+																actionForm
+																		.append("<input type='hidden' name='chk' value='"
+																				+ $(
+																						this)
+																						.val()
+																				+ "'>");
+															});
 
-});
+											if (!actionForm.find(
+													"input[name='chk']").val()) {
+												alert("재료를 한가지 이상 선택하세요!");
+												actionForm.find(
+														"input[name='type']")
+														.remove();
+											}
+											actionForm.submit();
+										});
+
+					});
 </script>
 
 <%@include file="../includes/footer.jsp"%>

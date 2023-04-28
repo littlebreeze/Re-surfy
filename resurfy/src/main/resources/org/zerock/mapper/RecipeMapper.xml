@@ -132,6 +132,10 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 						<when test="type == 'F'.toString()">
 							foodtype like '%'||#{keyword}||'%'
 						</when>
+					<!-- 단계(difficulty) 검색  -->
+						<when test="type == 'D'.toString()">
+							difficulty like '%'||#{keyword}||'%'
+						</when>
 					</choose>
 				</trim>
 			</foreach>

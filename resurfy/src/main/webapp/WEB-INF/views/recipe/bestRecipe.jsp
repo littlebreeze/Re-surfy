@@ -23,7 +23,7 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <!-- Header-->
-<div class="slide_div_wrap">
+<div class="slide_div_wrap" >
 				<div class="slide_div" >
 					<div>
 						<a href = "https://github.com/barcataeeon/Re-surfy.git">
@@ -60,6 +60,5 @@
 		});
 	});
 </script>
-
 
 
