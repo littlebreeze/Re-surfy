@@ -553,6 +553,42 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
        <!--  <script src="js/scripts.js"></script> -->
+          
+          <!-- Confirm Modal-->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+				</div>
+				<div class="modal-body">
+					확인 또는 취소를 눌러주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalConfirmBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default" style="border:1px solid lightgray">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!-- Modal 장바구니에 아무것도 안담겼을 때 -->
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h3 class="modal-title" id="alertModalLabel">선택된 제품이 없습니다!</h3>
+				</div>
+				<div class="modal-body">
+					다시 확인해주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>					
+				</div>
+			</div>
+		</div>
+	</div>
+	       
 <!-- Modal -->
 	<div class="modal fade" id="reModal" tabindex="-1" role="dialog" aria-labelledby="reModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -578,7 +614,7 @@
 				<div class="modal-footer">
 					<button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
 					<button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
-					<button id='modalRegisterBtn' type="button" class="btn btn-primary">등록</button>
+					<button id='modalRegisterBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">등록</button>
 					
 					<!-- <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>-->
 				</div>
@@ -826,6 +862,19 @@ $(document).ready(function(){
 		
 		<script>
 $(document).ready(function() {
+
+	var alertModal = $("#alertModal");
+	var confirmModal = $("#confirmModal");
+	
+	var modalCloseBtn = $("#modalCloseBtn");
+	modalCloseBtn.on("click", function(e){
+		confirmModal.modal("hide");
+	});
+	
+	$("#modalAlertBtn").on("click", function(e){
+		alertModal.modal("hide");
+	});
+	
 $("#addCartBtn").on("click", function(e){
 var priceArr = new Array();
 var titleArr = new Array();
@@ -841,47 +890,52 @@ var pIdArr = new Array();
  pIdArr.push($(this).attr("data-pid"));
  });
  
- console.log(priceArr);
+console.log(priceArr);
  console.log(titleArr);
  console.log(ingreArr);
  console.log(imageArr);
  console.log(pIdArr);
  
  if(priceArr.length == 0){
- alert("선택된 제품이 없습니다.");
+/*  alert("선택된 제품이 없습니다."); */
+	 alertModal.modal("show");
+ 
  }else{
- var confirm_val = confirm("장바구니에 추가하시겠습니까?");
- 
- if(confirm_val) {
- $.ajax({
- url : "/mypage/addCart",
- method : "post",
- data : { pArr : priceArr,
- tArr : titleArr,
- igArr : ingreArr,
- imArr : imageArr,
- pIdArr : pIdArr },
- success : function(){
- console.log("장바구니 추가 성공");
- /* alert("장바구니에 추가 되었습니다."); */
- 
- var move_val = confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?");
- 
- if(move_val) {
-	   
-	   $.ajax({
-		    success : function(){
-		    	
-		    	location.href = "/mypage/cart";
-		    }
+ /* var confirm_val = confirm("장바구니에 추가하시겠습니까?"); */
+
+  $.ajax({
+	  url : "/mypage/addCart",
+	  method : "post",
+	  data : { pArr : priceArr,
+	  tArr : titleArr,
+	  igArr : ingreArr,
+	  imArr : imageArr,
+	  pIdArr : pIdArr },
+	  success : function(){
+	  console.log("장바구니 추가 성공");
+	  /* alert("장바구니에 추가 되었습니다."); */
+	  $(".modal-title").html("🛒 장바구니에 추가되었습니다!")
+	  $(".modal-body").html("장바구니로 이동하시겠습니까?")
+	  confirmModal.modal("show");
+	  
+	  $("#modalConfirmBtn").on("click", function(e){
+		  console.log(ingreArr);
+		   $.ajax({
+
+			    success : function(){
+			    	console.log("페이지 이동 성공");
+			    	location.href = "/mypage/cart";
+			    }
+			});
 		});
-}
- }
-});
- }
+	  
+	  
+	  
+	  }
+	 });
 
  
- }
+ } //else end
 });
 });
 </script>

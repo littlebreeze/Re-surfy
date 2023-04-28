@@ -10823,4 +10823,23 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  
+   #addModalDialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -70%);	/* 좌우, 상하 */
+}
+  
+  #addModalContent {
+	width:500px;
+}
+
+.modal-title {
+	margin-left:10px;
+}
+
+.modal-body {
+	margin-left:15px;
+}
 }
