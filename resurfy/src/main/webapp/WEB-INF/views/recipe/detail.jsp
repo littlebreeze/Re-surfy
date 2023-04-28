@@ -263,56 +263,26 @@
 						</div>
 						
 						</div>
-						
-						<%-- <!-- 레시피 과정 start -->
-						<br><br>
-						<div class="fw-bolder" style=" width: 50%; margin: 0 auto; text-align:left">레시피</div>
-                        <hr class="my-2" align="center" style="width: 60%; margin: 0 auto;">
-						<div class="container" style=" width: 50%; margin: 0 auto; text-align:left">
-							<div class="py-2 row">
-								<div class="col"><img src="http://file.okdab.com/UserFiles/searching/recipe/000200_p01.jpg" width=200px height=200px  alt="..."></div>
-								<div class="col">
-								<div class="fw-bolder">Step1</div><br>
-								<span style="font-size:13px">양지머리로 육수를 낸 후 식혀 기름을 걷어낸 후, 불린 쌀을 넣어 고슬고슬하게 밥을 짓는다.</span>
-								</div>
-							</div>
-							<div class="py-3 row">
-								<div class="col"><img src='<c:out value="${step[0].stepImage }"/>' width=200px height=200px  alt="..."></div>
-								<div class="col">
-								<div class="fw-bolder">Step2</div><br>
-								<span style="font-size:13px">안심은 불고기 양념하여 30분간 재워 국물 없이 구워 한 김 식으면 한입 크기로 자른다.</span>
-								</div>
-							</div>
-							<div class="py-3 row">
-								<div class="col"><img src="https://cdn-icons-png.flaticon.com/512/8346/8346088.png" width=200px height=200px  alt="..."></div>
-								<div class="col"><div class="fw-bolder">Step3</div><br>
-								<span style="font-size:13px">밥을 참기름으로 무쳐 그릇에 담고 준비한 재료를 고루 얹는다.</span></div>
-							</div>
-							<div class="py-3 row">
-								<div class="col"><img src="https://cdn-icons-png.flaticon.com/512/8346/8346088.png" width=200px height=200px  alt="..."></div>
-								<div class="col"><div class="fw-bolder">Step4</div><br>
-								<span style="font-size:13px">콩나물과 숙주, 미나리는 데쳐서 국간장과 참기름으로 간하고, 고사리와 도라지는 참기름을 두른 프라이팬에 살짝 볶아놓는다.</span>
-								</div>
-							</div>
-							<div class="py-3 row">
-								<div class="col"><img src="https://cdn-icons-png.flaticon.com/512/8346/8346088.png" width=200px height=200px  alt="..."></div>
-								<div class="col"><div class="fw-bolder">Step5</div><br>
-								<span style="font-size:13px">청포묵은 고기와 비슷한 크기로 잘라 끓는 물에 데쳐내고 계란은 노른자와 흰자를 분리해 지단부쳐 곱게 채썬다.</span>
-								</div>
-							</div>
-						</div> --%>
 					
 			
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
 						<br><br><br><br><br>
 						
-						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글
-						<c:if test="${not empty member.id}">
+						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글</div>
+						<br>
+						<div class="row"></div>
+						 <div class="row"  style=" width: 90%; margin: 0 auto; text-align:left">
+    						<div class="col-11"><input class="form-control" rows="3" id='replybox' placeholder="댓글을 입력해주세요." style="width:95%; height:60px" ></div>
+    						<div class="col-1"><button id='addReplyBtn'
+											class='btn btn-primary btn-jelly' style="width:150%; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button></div>
+  						
+						
+					<%-- 	<c:if test="${not empty member.id}">
 						<button id='addReplyBtn'
 											class='btn btn-primary btn-jelly' style="width:80px; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button>
-						</c:if>	
+						</c:if>	 --%>
 						</div><br>
-                        <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
+                        <!-- <hr class="my-2" align="center" style="width: 100%; margin: 0 auto;"> -->
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="panel panel-default">
@@ -434,112 +404,7 @@
 
 
         </section>
-        <!-- Related items section-->
-       <!--  <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            Product image
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            Product details
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    Product name
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    Product price
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            Product actions
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            Sale badge
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            Product image
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            Product details
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    Product name
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    Product reviews
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    Product price
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            Product actions
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            Sale badge
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            Product image
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            Product details
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    Product name
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    Product price
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            Product actions
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            Product image
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            Product details
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    Product name
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    Product reviews
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    Product price
-                                    $40.00
-                                </div>
-                            </div>
-                            Product actions
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+        
         
         <!-- Footer-->
         <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
@@ -711,8 +576,10 @@ $(document).ready(function(){
 	var modalRemoveBtn = $("#modalRemoveBtn");
 	var modalRegisterBtn = $("#modalRegisterBtn");
 	
+	var replybox = document.getElementById("replybox").value;
 	
-	$("#addReplyBtn").on("click", function(e) {
+	
+	/* $("#addReplyBtn").on("click", function(e) {
 		modal.find("input").val("");
 		modalInputReplyer.closest("div").hide();
 		modalInputReplyDate.closest("div").hide();
@@ -720,11 +587,11 @@ $(document).ready(function(){
 		
 		modalRegisterBtn.show();
 		modal.modal("show");
-	});
+	}); */
 	
-	modalRegisterBtn.on("click", function(e) {
+	 $("#addReplyBtn").on("click", function(e) {
 		var reply ={
-				reply: modalInputReply.val(),
+				reply: document.getElementById("replybox").value,
 				/*id: modalInputReplyer.val(),*/
 				id : writer,
 				bno: bnoValue
@@ -737,6 +604,8 @@ $(document).ready(function(){
 			//showList(1);
 			showList(-1);
 		});
+		parent.document.getElementById('replybox').value='';
+		/* parent.document.location.reload() */
 });
 	
 	//댓글 조회 클릭 이벤트 처리 
