@@ -13,15 +13,12 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>resurfy-레시피를 공유하고 공유받는 우리는.</title>
-<!-- 사이트 이모티콘(픽토그램) 테마-->
 <link rel="icon" type="image/x-icon"
 	href="<%=request.getContextPath()%>/resources/assets/fadeblueLogo.png"
 	rel="stylesheet" />
-<!-- Bootstrap에서 사용되는 아이콘들-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
 	rel="stylesheet" />
-<!-- CSS CORE 테마-->
 <link href="<%=request.getContextPath()%>/resources/css/styles.css"
 	rel="stylesheet" />
 
@@ -112,26 +109,4 @@
 			}
 		}
 		document.getElementById("welcome-text").style.color = "#FFFFFF";
-	</script>
-
-	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							var result = '<c:out value="${result}"/>';
-							checkModal(result);
-							history.replaceState({}, null, null);
-							function checkModal(result) {
-								if (result === '' || history.state) {
-									return;
-								}
-								if (parseInt(result) > 0) {
-									$(".modal-body").html(
-											"게시글 " + parseInt(result)
-													+ " 번이 등록되었습니다.");
-								}
-								$("#RegisterModal").modal("show");
-							}
-							;
-						});
 	</script>
