@@ -25,10 +25,10 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-3">
+<div class="py-3" >
 	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
-			<div class='row'>
+			<div class='row' >
 				<div class="col-lg-12">
 					<form id='searchForm' action="/recipe/get" method='get'>
 						<select name='type'>
@@ -68,18 +68,15 @@
 		<c:when test="${param.orderBy eq 'visitcnt'}">
 		<div class="card-container">
 			<c:forEach items="${sortByVisit}" var="recipe">
-				<div class="card">
+				<div class="card" style = "border : 0px;">
+				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 					<div class="card-img">
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
-					<div class="card-head">
-						<b><c:out value="${recipe.recipeName}" /></b>
-						<div>
-							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
-							</b>
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-						</div>
+					</a>
+					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+						<b style ="font-size : 30px;">
+						<c:out value="${recipe.recipeName}" /></b>
 					</div>
 					<div class="card-main">
 						<div>
@@ -98,11 +95,13 @@
 							조리시간 :
 							<c:out value="${recipe.time}" />
 						</div>
+						
 					</div>
-					<div class="card-footer">
-						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-							<img src="/resources/assets/enter.png" width="30" height="auto"></a>
+					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
+							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+							</b> 
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</b>
 					</div>
 				</div>
 			</c:forEach>
@@ -111,18 +110,15 @@
 		<c:when test="${param.orderBy eq 'replycnt'}">
 		<div class="card-container">
 			<c:forEach items="${sortByReply}" var="recipe">
-				<div class="card">
+				<div class="card" style = "border : 0px;">
+				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 					<div class="card-img">
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
-					<div class="card-head">
-						<b><c:out value="${recipe.recipeName}" /></b>
-						<div>
-							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
-							</b>
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-						</div>
+					</a>
+					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+						<b style ="font-size : 30px;">
+						<c:out value="${recipe.recipeName}" /></b>
 					</div>
 					<div class="card-main">
 						<div>
@@ -141,11 +137,13 @@
 							조리시간 :
 							<c:out value="${recipe.time}" />
 						</div>
+						
 					</div>
-					<div class="card-footer">
-						<a class="btn btn-outline-dark mt-auto"
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-							<img src="/resources/assets/enter.png" width="30" height="auto"></a>
+					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
+							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+							</b> 
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</b>
 					</div>
 				</div>
 			</c:forEach>
@@ -154,19 +152,15 @@
 		<c:otherwise>
 		<div class="card-container">
 			<c:forEach items="${get}" var="recipe">
-				<div class="card">
+				<div class="card" style = "border : 0px;">
+				 <a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 					<div class="card-img">
 						<img class="card-img-top" src="${recipe.image}" alt="..." />
 					</div>
-					<div class="card-head">
+					</a>
+					<div class="card-head" style="border-bottom: 1px solid #ff7851;">
 						<b style ="font-size : 30px;">
 						<c:out value="${recipe.recipeName}" /></b>
-						<div style="font-size : 10px;">
-							<b>조회수:[ <c:out value="${recipe.visitcnt }" /> ]
-							</b>
-							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-							</b>
-						</div>
 					</div>
 					<div class="card-main">
 						<div>
@@ -185,12 +179,13 @@
 							조리시간 :
 							<c:out value="${recipe.time}" />
 						</div>
+						
 					</div>
-					<div class="card-footer">
-						<a class="btn btn-outline-dark mt-auto" 
-							href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-							<img src="/resources/assets/enter.png" width="30" height="auto">
-							</a>
+					<div style="font-size : 20px; text-align:center; border-bottom: 1px solid #ff7851;">
+							<b>조회수:[ <c:out value="${recipe.visitcnt } " /> ]
+							</b> 
+							<b>댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+							</b>
 					</div>
 				</div>
 			</c:forEach>
