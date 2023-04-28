@@ -32,7 +32,7 @@
 			<div class='row'>
 				<div class="col-lg-12">
 					<form id='searchForm' action="/recipe/get" method='get'>
-						<select name='typ'>
+						<select name='type'>
 							<option value="R"
 								<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식
 								이름</option>
@@ -42,15 +42,14 @@
 							<option value="D"
 								<c:out value="${pageMaker.cri.type eq 'D'?'selected':''}"/>>난이도
 							</option>
-							<option value="FRD"
-								<c:out value="${pageMaker.cri.type eq 'RF'?'selected':''}"/>>
+							<option value="DFR"
+								<c:out value="${pageMaker.cri.type eq 'DRF'?'selected':''}"/>>
 								이름or종류or난이도</option>
 						</select> <input type='text' name='keyword'
-							placeholder="예)[음식이름]-김치찌개 [음식종류]-한식"
-							value='<c:out value="${pageMaker.cri.keyword}" />' /> <input
-							type='hidden' name='pageNum'
-							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
-							type='hidden' name='amount'
+							value='<c:out value="${pageMaker.cri.keyword}" />'
+							placeholder="예)[음식이름]-김치찌개 [음식종류]-한식" /> <input type='hidden'
+							name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
+						<input type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
 						<button class="btn btn-primary btn-lg">
 							<img src="/resources/assets/search.png" width="20" height="auto">
@@ -60,13 +59,11 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" class="btn btn-light"
-				 style="color: #fff;">
-				<a href="?orderBy=visitcnt">조회 수</a>
+				<button type="button" class="btn btn-light" style="color: #fff;">
+					<a href="?orderBy=visitcnt">조회 수</a>
 				</button>
-				<button type="button" class="btn btn-light"
-				style="color: #fff;">
-				<a href="?orderBy=replycnt">댓글 수</a>
+				<button type="button" class="btn btn-light" style="color: #fff;">
+					<a href="?orderBy=replycnt">댓글 수</a>
 				</button>
 			</div>
 			</ul>
@@ -106,8 +103,11 @@
 							</div>
 							<div
 								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
-								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+								조회수:[
+								<c:out value="${recipe.visitcnt } " />
+								] 댓글수 :[
+								<c:out value="${recipe.replycnt }" />
+								]
 							</div>
 						</div>
 					</c:forEach>
@@ -147,8 +147,11 @@
 							</div>
 							<div
 								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
-								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
+								조회수:[
+								<c:out value="${recipe.visitcnt } " />
+								] 댓글수 :[
+								<c:out value="${recipe.replycnt }" />
+								]
 							</div>
 						</div>
 					</c:forEach>
@@ -188,9 +191,12 @@
 							</div>
 							<div
 								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
-								조회수:[ <c:out value="${recipe.visitcnt } " /> ]
-								댓글수 :[ <c:out value="${recipe.replycnt }" /> ]
-								
+								조회수:[
+								<c:out value="${recipe.visitcnt } " />
+								] 댓글수 :[
+								<c:out value="${recipe.replycnt }" />
+								]
+
 							</div>
 						</div>
 					</c:forEach>

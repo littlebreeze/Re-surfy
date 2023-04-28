@@ -126,11 +126,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 					<choose>
 					<!-- 음식 명(foodName)으로 검색  -->
 						<when test="type == 'R'.toString()">
-							recipename like '%'||#{keyword}||'%'
+							recipeName like '%'||#{keyword}||'%'
 						</when>
 				 	<!-- 음식 타입(foodType)으로 검색  -->
 						<when test="type == 'F'.toString()">
-							foodtype like '%'||#{keyword}||'%'
+							foodType like '%'||#{keyword}||'%'
 						</when>
 					<!-- 단계(difficulty) 검색  -->
 						<when test="type == 'D'.toString()">
