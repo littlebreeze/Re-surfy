@@ -87,9 +87,9 @@
 		<div class="modal-dialog" id="addModalDialog">
 			<div class="modal-content" id="addModalContent">
 				<div class="modal-header">
-					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+					<h4 class="modal-title confirm-title" id="confirmModalLabel">confirm</h4>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body confirm-body">
 					확인 또는 취소를 눌러주세요
 				</div>
 				<div class="modal-footer">
@@ -173,8 +173,8 @@
 		   if(checkArr.length == 0){
 			   alertModal.modal("show");
 		   }else{
-			   $(".modal-title").html("정말 삭제하시겠습니까?")
-			   $(".modal-body").html("확인을 누르면 삭제됩니다.")
+			   $(".confirm-title").html("정말 삭제하시겠습니까?")
+			   $(".confirm-body").html("확인을 누르면 삭제됩니다.")
 			  confirmModal.modal("show");
 			  
 			  $("#modalConfirmBtn").on("click", function(e){
@@ -205,8 +205,8 @@
 			   /* alert("선택된 제품이 없습니다."); */
 			   alertModal.modal("show");
 		   }else{
-			   $(".modal-title").html("구매하시겠습니까?")
-			   $(".modal-body").html("구매하시려면 확인을 눌러주세요.")
+			   $(".confirm-title").html("구매하시겠습니까?")
+			   $(".confirm-body").html("구매하시려면 확인을 눌러주세요.")
 			  confirmModal.modal("show");
 			  
 			  $("#modalConfirmBtn").on("click", function(e){
