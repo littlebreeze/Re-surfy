@@ -268,7 +268,7 @@
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
 						<br><br><br><br><br>
 						
-						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글</div>
+						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글&nbsp[<c:out value="${recipe.replycnt }" />]</div>
 						<br>
 						<div class="row"></div>
 						 <div class="row"  style=" width: 90%; margin: 0 auto; text-align:left">
@@ -577,6 +577,18 @@ $(document).ready(function(){
 	var modalRegisterBtn = $("#modalRegisterBtn");
 	
 	var replybox = document.getElementById("replybox").value;
+var confirmModal = $("#confirmModal");
+var alertModal = $("#alertModal");
+
+	
+	var modalCloseBtn = $("#modalCloseBtn");
+	modalCloseBtn.on("click", function(e){
+		confirmModal.modal("hide");
+	});
+	
+	$("#modalAlertBtn").on("click", function(e){
+		alertModal.modal("hide");
+	});
 	
 	
 	/* $("#addReplyBtn").on("click", function(e) {
@@ -590,6 +602,9 @@ $(document).ready(function(){
 	}); */
 	
 	 $("#addReplyBtn").on("click", function(e) {
+
+		if (writer.length > 0){
+		if (document.getElementById("replybox").value.length > 0){
 		var reply ={
 				reply: document.getElementById("replybox").value,
 				/*id: modalInputReplyer.val(),*/
@@ -604,8 +619,31 @@ $(document).ready(function(){
 			//showList(1);
 			showList(-1);
 		});
-		parent.document.getElementById('replybox').value='';
-		/* parent.document.location.reload() */
+		/* parent.document.getElementById('replybox').value=''; */
+		parent.document.location.reload();
+		/* window.location.reload(true); */
+		} else{
+			$(".modal-title").html("댓글 등록 오류")
+   		    $(".modal-body").html("댓글을 남겨주세요!")
+   		 	alertModal.modal("show");
+		}
+		} else{
+			$(".modal-title").html("로그인을 해주세요!") 
+   		    $(".modal-body").html("로그인 페이지로 이동하시겠습니까?")
+			confirmModal.modal("show");
+			
+			$("#modalConfirmBtn").on("click", function(e){
+				  
+				   $.ajax({
+
+					    success : function(){
+					    	console.log("페이지 이동 성공");
+					    	location.href = "/member/login.do";
+					    }
+					});
+				});
+				
+		}
 });
 	
 	//댓글 조회 클릭 이벤트 처리 
