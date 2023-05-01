@@ -58,9 +58,9 @@
 							<img id="mainImageHolder" onclick="browseMainFile()"
 								src="../resources/assets/uploadimage.png"
 								style="width: 100%; height: 280px; margin-top: 30px; resize: none; cursor: pointer;">
-							<form id="uploadForm" enctype="multipart/form-data">
-								<input type='file' name='uploadFile' multiple />
-							</form>
+							<div class='uploadDiv'>
+								<input type='file' name='uploadFile' multiple>
+							</div>
 						</div>
 					</div>
 
@@ -325,60 +325,62 @@
 		src="../resources/js/registerRecipeScripts.js">
 		
 	</script>
-	
-<script src="https://code.jquery.com/jquery-3.6.4.js" \
-integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" 
-crossorigin="anonymous">
-</script>
-		<script>
+
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		\
+integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+		crossorigin="anonymous">
+		
+	</script>
+	<script>
 		$(document).ready(function() {
 			// 파일 확장자와 크기를 설정하고 이를 검사한다. 
 			var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 			var maxSize = 5242880; // 5242880Byte= 5MB
-			
-			function checkExtension(fileName, fileSize){
-				if(fileSize >= maxSize){
+
+			function checkExtension(fileName, fileSize) {
+				if (fileSize >= maxSize) {
 					alert("파일 사이즈 초과입니다.");
 					return false;
 				}
-				
-				if(regex.test(fileName)) {
+
+				if (regex.test(fileName)) {
 					alert("해당 종류의 파일은 업로드할 수 없습니다.");
 					return false;
 				}
 				return true;
 			}
-			
-			$("#uploadForm").on("click", function(e) {
-				var formData=new FormData();
-				var inputFile=$("input[name='uploadFile' ]");
-				var files=inputFile[0].files;
+
+			$("#save").on("click", function(e) {
+				var formData = new FormData();
+				var inputFile = $("input[name='uploadFile' ]");
+				var files = inputFile[0].files;
 				console.log(files);
-				
+
 				//add filedate to formdata
-				for(var i=0; i<files.length; i++) {
-					
-					if(!checkExtension(files[i].name, files[i].size)){
+				for (var i = 0; i < files.length; i++) {
+
+					if (!checkExtension(files[i].name, files[i].size)) {
 						return false;
 					}
 					formData.append("uploadFile", files[i]);
-					
+
 				}// end for
-				
+
 				$.ajax({
-					url: '/recipe/uploadAjaxAction',
+					url : '/recipe/uploadAjaxAction',
 					processData : false,
-					contentType: false,
-					data: formData,
-					type: 'POST',
-					success: function(result) {
+					contentType : false,
+					data : formData,
+					type : 'POST',
+					success : function(result) {
 						alert("Upload");
 					}
-				
+
 				}); // end $.ajax
 			});
 		});
-		</script>
+	</script>
 </body>
 <%@include file="../includes/footer.jsp"%>
 

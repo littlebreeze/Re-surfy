@@ -48,11 +48,11 @@ public class RecipeController {
 	private IngredientService iService;
 	private ShoppingService shService;
 	private OwnService oService;
-	
+
 	@GetMapping("/registerRecipe")
 	public void register() {
 	}
-	
+
 	@PostMapping("/upload")
 	public void upload(@RequestParam("uploadFile") MultipartFile[] uploadFile, Model model) {
 		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
@@ -70,25 +70,22 @@ public class RecipeController {
 	}
 
 	@PostMapping("/registerRecipe.do")
-	public String register(RecipeVO rvo,IngredientVO ingre,StepVO step,
-			HttpServletRequest request, 
-			@RequestParam("recipeName") String recipeName,
-			@RequestParam("recipeDescription") String recipeDescription,
-			@RequestParam("image") String image,
-			@RequestParam("foodType") String foodType, @RequestParam("person") String person,
-			@RequestParam("difficulty") String difficulty, @RequestParam("time") String time,
-			@RequestParam("ingreType") String ingreType, @RequestParam("ingreMeasure") String[] ingreMeasure,
-			@RequestParam("ingreName") String[] ingreName, @RequestParam("stepNo") Long[] stepNo,
-			@RequestParam("stepDescription") String[] StepDescription, @RequestParam("stepImage") String[] stepImage,
-			@RequestParam("tip") String[] tip, RedirectAttributes rttr) {
-		
+	public String register(RecipeVO rvo, IngredientVO ingre, StepVO step, HttpServletRequest request,
+			@RequestParam("recipeName") String recipeName, @RequestParam("recipeDescription") String recipeDescription,
+			@RequestParam("image") String image, @RequestParam("foodType") String foodType,
+			@RequestParam("person") String person, @RequestParam("difficulty") String difficulty,
+			@RequestParam("time") String time, @RequestParam("ingreType") String ingreType,
+			@RequestParam("ingreMeasure") String[] ingreMeasure, @RequestParam("ingreName") String[] ingreName,
+			@RequestParam("stepNo") Long[] stepNo, @RequestParam("stepDescription") String[] StepDescription,
+			@RequestParam("stepImage") String[] stepImage, @RequestParam("tip") String[] tip, RedirectAttributes rttr) {
+
 		Long bno = rService.getNextBno() - 1;
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
 		if (sessionUser != null)
 			userID = sessionUser.getId();
-		
+
 		rvo.setBno(bno);
 		rvo.setRecipeName(recipeName);
 		rvo.setRecipeDescription(recipeDescription);
@@ -234,85 +231,43 @@ public class RecipeController {
 	public void ListSortByReply(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 	}
-	
+
 	@GetMapping("/TopTenByVisit")
 	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
-	
+
 	@PostMapping("/uploadAjaxAction")
-	 public void uploadAjaxPost(MultipartFile[] uploadFile) {
-	
-	 log.info("update ajax post.........");
-	
-	 String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
-	 
-	//make folder
-	 		File uploadPath = new File(uploadFolder, getFolder());
-	 		if(uploadPath.exists()==false) {
-	 			uploadPath.mkdirs();
-			}
-	
-	 for (MultipartFile multipartFile : uploadFile) {
-	
-	 log.info("-------------------------------------");
-	 log.info("Upload File Name: " + multipartFile.getOriginalFilename());
-	 log.info("Upload File Size: " + multipartFile.getSize());
-	
-	 String uploadFileName = multipartFile.getOriginalFilename();
-	
-	 // IE has file path
-	 uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") +
-	 1);
-	 
-	 UUID uuid = UUID.randomUUID();
-	 uploadFileName = uuid.toString() + "_" + uploadFileName;
-	 
-	 log.info("only file name: " + uploadFileName);
-	
-//	 File saveFile = new File(uploadFolder, uploadFileName);
-	
-	 try {
-		 File saveFile = new File(uploadPath, uploadFileName);
-		 multipartFile.transferTo(saveFile);
-		 
-		 if(checkImageType(saveFile)) {
-				FileOutputStream thumbnail = new FileOutputStream(
-						new File(uploadPath, "s_" + uploadFileName));
-				Thumbnailator.createThumbnail(multipartFile.getInputStream(), 
-						thumbnail, 100, 100);
-				thumbnail.close();
-			 
-		 }
-	 } catch (Exception e) {
-	 log.error(e.getMessage());
-	 } // end catch
-	
-	 } // end for
-	
-	 }
-	
-	 private String getFolder() {
-		     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		     Date date = new Date();
-		     String str = sdf.format(date);
-		     return str.replace("-", File.separator);
-		   }
-	 
-	 private boolean checkImageType(File file) {
+	public void uploadAjaxPost(MultipartFile[] uploadFile) {
+
+		log.info("update ajax post.........");
+
+		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			log.info("-------------------------------------");
+			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+			log.info("Upload File Size: " + multipartFile.getSize());
+
+			String uploadFileName = multipartFile.getOriginalFilename();
+
+			// IE has file path
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 
 			try {
-				String contentType = Files.probeContentType(file.toPath());
+				File saveFile = new File(uploadFolder, uploadFileName);
+				multipartFile.transferTo(saveFile);
 
-				return contentType.startsWith("image");
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
+				log.error(e.getMessage());
 			}
 
-			return false;
-		}
+		} // end for
+
+	}
+
+
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 

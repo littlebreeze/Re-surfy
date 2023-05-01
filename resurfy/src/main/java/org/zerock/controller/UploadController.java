@@ -51,7 +51,7 @@ public class UploadController {
 
 		log.info("update ajax post.........");
 
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
 
 		// make folder
 		File uploadPath = new File(uploadFolder, getFolder());
