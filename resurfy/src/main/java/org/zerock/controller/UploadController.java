@@ -27,99 +27,94 @@ public class UploadController {
 
 	@PostMapping("/uploadFormAction")
 	public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
 		for (MultipartFile multipartFile : uploadFile) {
 			log.info("--------------------");
 			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
 			log.info("Upload File size : " + multipartFile.getSize());
 			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
-
 			try {
 				multipartFile.transferTo(saveFile);
 			} catch (Exception e) {
 				log.error(e.getMessage());
-			} // end catch
+			}
 		}
 	}
-	
-	@GetMapping("/uploadAjax") 
+
+	@GetMapping("/uploadAjax")
 	public void uploadAjax() {
 		log.info("upload ajax");
 	}
-	
+
 	@PostMapping("/uploadAjaxAction")
-	 public void uploadAjaxPost(MultipartFile[] uploadFile) {
-	
-	 log.info("update ajax post.........");
-	
-	 String uploadFolder = "C:\\upload";
-	 
-	//make folder
-	 		File uploadPath = new File(uploadFolder, getFolder());
-	 		if(uploadPath.exists()==false) {
-	 			uploadPath.mkdirs();
-			}
-	
-	 for (MultipartFile multipartFile : uploadFile) {
-	
-	 log.info("-------------------------------------");
-	 log.info("Upload File Name: " + multipartFile.getOriginalFilename());
-	 log.info("Upload File Size: " + multipartFile.getSize());
-	
-	 String uploadFileName = multipartFile.getOriginalFilename();
-	
-	 // IE has file path
-	 uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") +
-	 1);
-	 
-	 UUID uuid = UUID.randomUUID();
-	 uploadFileName = uuid.toString() + "_" + uploadFileName;
-	 
-	 log.info("only file name: " + uploadFileName);
-	
+	public void uploadAjaxPost(MultipartFile[] uploadFile) {
+
+		log.info("update ajax post.........");
+
+		String uploadFolder = "C:\\upload";
+
+		// make folder
+		File uploadPath = new File(uploadFolder, getFolder());
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			log.info("-------------------------------------");
+			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+			log.info("Upload File Size: " + multipartFile.getSize());
+
+			String uploadFileName = multipartFile.getOriginalFilename();
+
+			// IE has file path
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+
+			UUID uuid = UUID.randomUUID();
+			uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+			log.info("only file name: " + uploadFileName);
+
 //	 File saveFile = new File(uploadFolder, uploadFileName);
-	
-	 try {
-		 File saveFile = new File(uploadPath, uploadFileName);
-		 multipartFile.transferTo(saveFile);
-		 
-		 if(checkImageType(saveFile)) {
-				FileOutputStream thumbnail = new FileOutputStream(
-						new File(uploadPath, "s_" + uploadFileName));
-				Thumbnailator.createThumbnail(multipartFile.getInputStream(), 
-						thumbnail, 100, 100);
-				thumbnail.close();
-			 
-		 }
-	 } catch (Exception e) {
-	 log.error(e.getMessage());
-	 } // end catch
-	
-	 } // end for
-	
-	 }
-	
-	 private String getFolder() {
-		     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		     Date date = new Date();
-		     String str = sdf.format(date);
-		     return str.replace("-", File.separator);
-		   }
-	 
-	 private boolean checkImageType(File file) {
 
 			try {
-				String contentType = Files.probeContentType(file.toPath());
+				File saveFile = new File(uploadPath, uploadFileName);
+				multipartFile.transferTo(saveFile);
 
-				return contentType.startsWith("image");
+				if (checkImageType(saveFile)) {
+					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
+					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
+					thumbnail.close();
 
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				}
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			} 
 
-			return false;
+		} 
+
+	}
+
+	private String getFolder() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		return str.replace("-", File.separator);
+	}
+
+	private boolean checkImageType(File file) {
+
+		try {
+			String contentType = Files.probeContentType(file.toPath());
+
+			return contentType.startsWith("image");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	
+
+		return false;
+	}
 
 }

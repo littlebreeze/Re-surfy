@@ -20,4 +20,5 @@ public interface RecipeService {
 	
 	public List<RecipeVO> sortByReplyCnt();
 	public List<RecipeVO> sortByVisitCnt();
+	public Long getNextBno();
 }

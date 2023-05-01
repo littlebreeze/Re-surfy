@@ -66,7 +66,7 @@
 						data-bs-placement="bottom"
 						data-bs-original-title="로그인"><a
 						href="/member/login.do"> <img
-							src="/resources/assets/unlocked.png" width="20" height="auto">
+							src="/resources/assets/main/unlocked.png" width="20" height="auto">
 					</a></li>
 
 					<li class="nav-item">비회원 입니다.</li>
@@ -81,19 +81,19 @@
 						data-bs-original-title="로그아웃">
 							<div id="btnLogout">
 								<a href="/member/login.do"> <img
-									src="/resources/assets/lock.png" width="20" height="auto">
+									src="/resources/assets/main/lock.png" width="20" height="auto">
 								</a>
 							</div>
 						</li>
 						<li class="nav-item" data-bs-toggle="tooltip"
 						data-bs-placement="bottom"
 						data-bs-original-title="마이페이지"><a href="/mypage/list"> <img
-								src="/resources/assets/user.png" width="20" height="auto">
+								src="/resources/assets/main/user.png" width="20" height="auto">
 						</a></li>
 						<li class="nav-item" data-bs-toggle="tooltip"
 						data-bs-placement="bottom"
 						data-bs-original-title="레시피 등록"><a href="/recipe/registerRecipe"> <img
-								src="/resources/assets/edit.png" width="20" height="auto"></a></li>
+								src="/resources/assets/main/edit.png" width="20" height="auto"></a></li>
 						<li class="nav-item" id="welcome-text"><font color='#000000'>
 								<%=user.getId()%>님 환영합니다. </li>
 

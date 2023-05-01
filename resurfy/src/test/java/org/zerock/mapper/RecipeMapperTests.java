@@ -94,7 +94,6 @@ public class RecipeMapperTests {
 		board.setBno(195457L);
 		board.setIngreName("���");
 		board.setIngreMeasure("�ణ");
-		board.setIngreTypeNo(3060001L);
 		board.setIngreType("�����");
 		
 		mapper.insertIngredient(board);
@@ -172,7 +171,6 @@ public class RecipeMapperTests {
 		board.setBno(195457L);
 		board.setIngreName("�ұ�");
 		board.setIngreMeasure("�ణ");
-		board.setIngreTypeNo(3060003L);
 		board.setIngreType("���");
 		
 		int count = mapper.updateIngredient(board);

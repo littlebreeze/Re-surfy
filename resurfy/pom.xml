@@ -231,7 +231,6 @@
 			<version>1.6.5</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-storage -->
 		<dependency>
 			<groupId>com.google.firebase</groupId>
 			<artifactId>firebase-admin</artifactId>
@@ -242,7 +241,7 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-eclipse-plugin</artifactId>
+				<artifactId>maven-eclipse-plugin </artifactId>
 				<version>2.9</version>
 				<configuration>
 					<additionalProjectnatures>

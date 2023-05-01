@@ -27,19 +27,19 @@
 				<div class="slide_div" >
 					<div>
 						<a href = "https://github.com/barcataeeon/Re-surfy.git">
-							<img src="/resources/assets/slick_first.png"
+							<img src="/resources/assets/main/slick_first.png"
 							style=" width = 1000px; height: 500px;">
 						</a>
 					</div>
-					<div>
+					<div >
 						<a href = "/recipe/TopTenByReply">
-							<img src="/resources/assets/slick_second.png"
+							<img src="/resources/assets/main/slick_second.png"
 							style=" width = 1000px; height: 500px;">
 						</a>
 					</div>
 					<div>
 						<a href = "/recipe/TopTenByVisit">
-							<img src="/resources/assets/slick_third.png"
+							<img src="/resources/assets/main/slick_third.png"
 							style=" width = 1000px; height: 500px;">
 						</a>
 					</div>				

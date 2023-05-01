@@ -91,4 +91,9 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getRecipeOrderByVisitcnt();
 	}
 
+	@Override
+	public Long getNextBno() {
+		return mapper.getNextBno();
+	}
+
 }

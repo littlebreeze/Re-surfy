@@ -24,7 +24,6 @@
     
     reader.readAsDataURL(file);
     }
-    
     document.getElementById("mainImage").addEventListener("change", onMainFileChange);
 
 document.getElementById("mainImage").addEventListener("change", onMainFileChange);

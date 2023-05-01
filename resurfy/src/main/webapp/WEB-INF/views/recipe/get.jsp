@@ -78,7 +78,8 @@
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px">
 								<b style="font-size: 30px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
@@ -102,7 +103,7 @@
 
 							</div>
 							<div
-								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
 								조회수:[
 								<c:out value="${recipe.visitcnt } " />
 								] 댓글수 :[
@@ -122,7 +123,8 @@
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px">
 								<b style="font-size: 30px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
@@ -146,7 +148,7 @@
 
 							</div>
 							<div
-								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
 								조회수:[
 								<c:out value="${recipe.visitcnt } " />
 								] 댓글수 :[
@@ -166,7 +168,8 @@
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #ff7851;">
+							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px">
 								<b style="font-size: 30px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
@@ -190,13 +193,12 @@
 
 							</div>
 							<div
-								style="font-size: 20px; text-align: center; border-bottom: 1px solid #ff7851;">
+								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
 								조회수:[
 								<c:out value="${recipe.visitcnt } " />
 								] 댓글수 :[
 								<c:out value="${recipe.replycnt }" />
 								]
-
 							</div>
 						</div>
 					</c:forEach>

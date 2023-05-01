@@ -229,4 +229,3 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
   </select>
 </mapper>
 
-

@@ -29,7 +29,6 @@ public class IngredientServiceTests {
 		board.setBno(195457L);
 		board.setIngreName("계란");
 		board.setIngreMeasure("약간");
-		board.setIngreTypeNo(3060001L);
 		board.setIngreType("주재료");
 		list.add(board);
 	

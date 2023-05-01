@@ -51,7 +51,7 @@
 	<div class="TopTen_recipe" style="display: flex; justify-content: center; align-items: center;">
 		<table>
 			 <thead style="height: 50px; font-size : 20px; 
-			 border-bottom : 1px solid #ff7851; background-color : #187587;">
+			 border-bottom : 1px solid #ff7851; background-color : #F0DDD8">
 				<tr>
 					<th scope="col">순위</th>
 					<th scope="col">레시피</th>

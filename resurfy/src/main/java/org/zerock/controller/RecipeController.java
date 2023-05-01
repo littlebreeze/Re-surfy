@@ -1,7 +1,7 @@
 package org.zerock.controller;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -10,16 +10,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +36,7 @@ import org.zerock.service.StepService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @Log4j
@@ -52,14 +48,31 @@ public class RecipeController {
 	private IngredientService iService;
 	private ShoppingService shService;
 	private OwnService oService;
-	static Long bno = 195564L;					//시퀀스 번호 Resurfy 계정마다 다름
-
+	
 	@GetMapping("/registerRecipe")
 	public void register() {
 	}
+	
+	@PostMapping("/upload")
+	public void upload(@RequestParam("uploadFile") MultipartFile[] uploadFile, Model model) {
+		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
+		for (MultipartFile multipartFile : uploadFile) {
+			log.info("--------------------");
+			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
+			log.info("Upload File size : " + multipartFile.getSize());
+			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}
+		}
+	}
 
-	@PostMapping("/registerRecipe")
-	public String register(RecipeVO rvo, HttpServletRequest request, @RequestParam("recipeName") String recipeName,
+	@PostMapping("/registerRecipe.do")
+	public String register(RecipeVO rvo,IngredientVO ingre,StepVO step,
+			HttpServletRequest request, 
+			@RequestParam("recipeName") String recipeName,
 			@RequestParam("recipeDescription") String recipeDescription,
 			@RequestParam("image") String image,
 			@RequestParam("foodType") String foodType, @RequestParam("person") String person,
@@ -68,7 +81,8 @@ public class RecipeController {
 			@RequestParam("ingreName") String[] ingreName, @RequestParam("stepNo") Long[] stepNo,
 			@RequestParam("stepDescription") String[] StepDescription, @RequestParam("stepImage") String[] stepImage,
 			@RequestParam("tip") String[] tip, RedirectAttributes rttr) {
-
+		
+		Long bno = rService.getNextBno() - 1;
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
@@ -82,47 +96,35 @@ public class RecipeController {
 		rvo.setRecipeDate(null);
 
 		rvo.setFoodType(foodType);
-
 		rvo.setPerson(person);
 		rvo.setDifficulty(difficulty);
 		rvo.setTime(time);
-		rvo.setImage("https://drive.google.com/file/d/18rdeNIisvjjhrLrqwuqWOa9MmRGKA26q/view?usp=share_link");
-		
+		String fileurl = "/resources/assets/upload/";
+		rvo.setImage(fileurl + image);
 		rService.register(rvo);
 		rttr.addFlashAttribute("result_recipe", rvo.getBno());
 
-		List<IngredientVO> ingredientList = new ArrayList<>();
 		for (int i = 0; i < ingreName.length; i++) {
-			IngredientVO ingredient = new IngredientVO();
-
-			// ingreType 파라미터 값에서 ingreTypeNo와 ingreType을 추출하여 IngredientVO 객체에 설정
-			ingredient.setIngreType(ingreType);
-			ingredient.setBno(rvo.getBno());
-
-			ingredient.setIngreMeasure(ingreMeasure[i]);
-			ingredient.setIngreName(ingreName[i]);
-			ingredientList.add(ingredient);
+			ingre = new IngredientVO();
+			ingre.setIngreType(ingreType);
+			ingre.setBno(bno);
+			ingre.setIngreMeasure(ingreMeasure[i]);
+			ingre.setIngreName(ingreName[i]);
+			iService.register(ingre);
+			rttr.addFlashAttribute("register_ingredient", ingre.getIno());
 		}
-
-		List<StepVO> stepList = new ArrayList<>();
 		for (int i = 0; i < stepNo.length; i++) {
-			StepVO step = new StepVO();
-			step.setBno(rvo.getBno());
+			step = new StepVO();
+			step.setBno(bno);
 			step.setStepNo(stepNo[i]);
 			step.setStepDescription(StepDescription[i]);
 			step.setStepImage(stepImage[i]);
 			step.setTip(tip[i]);
-			stepList.add(step);
+			sService.register(step);
+			rttr.addFlashAttribute("register_step", step.getSno());
 		}
-		bno++;
-		iService.registerAll(ingredientList);
-		sService.registerAll(stepList);
-
-		rttr.addFlashAttribute("register_step", stepList);
-		rttr.addFlashAttribute("register_ingredient", ingredientList);
 
 		return "redirect:/recipe/get";
-
 	}
 
 	@GetMapping("/detail")
@@ -188,18 +190,6 @@ public class RecipeController {
 			ivo.setIno(ino.get(i));
 			ivo.setIngreType(ingreType.get(i));
 			ivo.setIngreName(ingreName.get(i));
-
-			switch (ingreType.get(i)) {
-			case "주재료":
-				ivo.setIngreTypeNo(3060001L);
-				break;
-			case "부재료":
-				ivo.setIngreTypeNo(3060002L);
-				break;
-			case "양념":
-				ivo.setIngreTypeNo(3060003L);
-				break;
-			}
 			ivo.setIngreMeasure(ingreMeasure.get(i));
 			iboard.add(ivo);
 		}
@@ -249,6 +239,80 @@ public class RecipeController {
 	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
+	
+	@PostMapping("/uploadAjaxAction")
+	 public void uploadAjaxPost(MultipartFile[] uploadFile) {
+	
+	 log.info("update ajax post.........");
+	
+	 String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
+	 
+	//make folder
+	 		File uploadPath = new File(uploadFolder, getFolder());
+	 		if(uploadPath.exists()==false) {
+	 			uploadPath.mkdirs();
+			}
+	
+	 for (MultipartFile multipartFile : uploadFile) {
+	
+	 log.info("-------------------------------------");
+	 log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+	 log.info("Upload File Size: " + multipartFile.getSize());
+	
+	 String uploadFileName = multipartFile.getOriginalFilename();
+	
+	 // IE has file path
+	 uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") +
+	 1);
+	 
+	 UUID uuid = UUID.randomUUID();
+	 uploadFileName = uuid.toString() + "_" + uploadFileName;
+	 
+	 log.info("only file name: " + uploadFileName);
+	
+//	 File saveFile = new File(uploadFolder, uploadFileName);
+	
+	 try {
+		 File saveFile = new File(uploadPath, uploadFileName);
+		 multipartFile.transferTo(saveFile);
+		 
+		 if(checkImageType(saveFile)) {
+				FileOutputStream thumbnail = new FileOutputStream(
+						new File(uploadPath, "s_" + uploadFileName));
+				Thumbnailator.createThumbnail(multipartFile.getInputStream(), 
+						thumbnail, 100, 100);
+				thumbnail.close();
+			 
+		 }
+	 } catch (Exception e) {
+	 log.error(e.getMessage());
+	 } // end catch
+	
+	 } // end for
+	
+	 }
+	
+	 private String getFolder() {
+		     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		     Date date = new Date();
+		     String str = sdf.format(date);
+		     return str.replace("-", File.separator);
+		   }
+	 
+	 private boolean checkImageType(File file) {
+
+			try {
+				String contentType = Files.probeContentType(file.toPath());
+
+				return contentType.startsWith("image");
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return false;
+		}
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 
