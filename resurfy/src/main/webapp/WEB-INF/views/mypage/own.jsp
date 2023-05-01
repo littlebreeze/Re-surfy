@@ -91,14 +91,14 @@
 		<div class="modal-dialog" id="addModalDialog">
 			<div class="modal-content" id="addModalContent">
 				<div class="modal-header">
-					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+					<h4 class="modal-title confirm-title" id="confirmModalLabel">confirm</h4>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body confirm-body">
 					확인 또는 취소를 눌러주세요
 				</div>
 				<div class="modal-footer">
 					<button id='modalConfirmBtn' type="button" class="btn btn-primary">확인</button>					
-					<button id='modalCloseBtn' type="button" class="btn btn-default">취소</button>
+					<button id='modalCCloseBtn' type="button" class="btn btn-default">취소</button>
 				</div>
 			</div>
 		</div>
@@ -143,6 +143,11 @@
 				modal.modal("hide");
 		});
 		
+		var modalCCloseBtn = $("#modalCCloseBtn");
+		modalCCloseBtn.on("click", function(e){
+			confirmModal.modal("hide");
+		});
+		
 		$("#modalAlertBtn").on("click", function(e){
 			alertModal.modal("hide");
 		});
@@ -170,8 +175,8 @@
 		   if(checkArr.length == 0){
 			   alertModal.modal("show");
 		   }else{
-			   $(".modal-title").html("정말 삭제하시겠습니까?")
-			   $(".modal-body").html("확인을 누르면 삭제됩니다.")
+			   $(".confirm-title").html("정말 삭제하시겠습니까?")
+			   $(".confirm-body").html("확인을 누르면 삭제됩니다.")
 			  confirmModal.modal("show");
 
 			$("#modalConfirmBtn").on("click", function(e){
@@ -241,7 +246,7 @@
 			   });
 			   
 			   if(cnt == 0){
-				   alert("선택된 재료가 없습니다.");
+				   alertModal.modal("show");
 			   }else{
 				   searchForm.submit();
 			   }

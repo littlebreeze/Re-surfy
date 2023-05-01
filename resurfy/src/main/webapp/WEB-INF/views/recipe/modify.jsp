@@ -14,29 +14,29 @@
 <title>>UPDATE - <c:out value="${recipe.recipeName }"/></title>
        
 <!--        Bootstrap Core CSS -->
-<link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet"> -->
 
 <!-- MetisMenu CSS -->
-<link href="/resources/vendor/metisMenu/metisMenu.min.css"
-	rel="stylesheet">
+<!-- <link href="/resources/vendor/metisMenu/metisMenu.min.css"
+	rel="stylesheet"> -->
 
 <!-- DataTables CSS -->
-<link
+<!-- <link
 	href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
-	rel="stylesheet">
+	rel="stylesheet">-->
 
 <!-- DataTables Responsive CSS -->
-<link
+<!-- <link
 	href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
-	rel="stylesheet">
+	rel="stylesheet">-->
 
 <!-- Custom CSS -->
-<link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">
+<!-- <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">-->
 
 <!-- Custom Fonts -->
-<link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<!-- <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">-->
 </head>
 <body>
 <div class="row">
@@ -276,7 +276,7 @@
 					</div>
 
 
-					<button type="submit" data-oper='modifyw' class="btn btn-default">수정</button>
+					<button type="submit" data-oper='modifyw' class="btn btn-default" >수정</button>
 					<button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
 					<button type="submit" data-oper='list' class="btn btn-info">목록</button>
 				</form>
@@ -291,10 +291,34 @@
 	<!-- end panel -->
 </div>
 <!-- /.row -->
-
+ <!-- Confirm Modal-->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="addModalDialog">
+			<div class="modal-content" id="addModalContent">
+				<div class="modal-header">
+					<h4 class="modal-title" id="confirmModalLabel">confirm</h4>
+				</div>
+				<div class="modal-body">
+					확인 또는 취소를 눌러주세요
+				</div>
+				<div class="modal-footer">
+					<button id='modalConfirmBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>					
+					<button id='modalCloseBtn' type="button" class="btn btn-default" style="border:1px solid lightgray">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 <script type="text/javascript">
 	$(document).ready(function() {
+		var confirmModal = $("#confirmModal");
+		var alertModal = $("#alertModal");
 
+			
+			var modalCloseBtn = $("#modalCloseBtn");
+			modalCloseBtn.on("click", function(e){
+				confirmModal.modal("hide");
+			});
 		var formObj = $("form");
 
 		$('button').on("click", function(e) {
@@ -306,25 +330,35 @@
 			console.log(operation);
 
 			if (operation === 'remove') {
-				var deleteYN = confirm("삭제하시겠습니까?");
-                if(deleteYN == true){
-
-				formObj.attr("action", "/recipe/remove");
-                }
+				$(".modal-title").html("레시피 삭제") 
+	   		    $(".modal-body").html("레시피를 삭제하시겠습니까?")
+				confirmModal.modal("show");
+				
+				$("#modalConfirmBtn").on("click", function(e){
+					
+					formObj.attr("action", "/recipe/remove");
+					formObj.submit();
+					});
+			
 			} else if (operation === 'list') {
 				//move to list
 				self.location  = "/recipe/get";
 				return;
 
 			} else if (operation === 'modifyw'){
-				var modifyYN = confirm("수정하시겠습니까?");
-				 if(modifyYN == true){
-
-						formObj.attr("action", "/recipe/modify");
-		         }
+				$(".modal-title").html("레시피 수정") 
+	   		    $(".modal-body").html("레시피를 수정하시겠습니까?")
+				confirmModal.modal("show");
+				
+				$("#modalConfirmBtn").on("click", function(e){
+					
+					formObj.attr("action", "/recipe/modify");
+					formObj.submit();
+					});
+				
 			}
 
-			formObj.submit();
+			//formObj.submit();
 		});
 
 	});
