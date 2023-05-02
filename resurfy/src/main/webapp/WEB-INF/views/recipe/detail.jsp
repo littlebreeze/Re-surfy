@@ -659,12 +659,13 @@ var alertModal = $("#alertModal");
         .attr("readonly","readonly");
         modal.data("rno", reply.rno);
         modal.find("button[id !='modalCloseBtn']").hide();
-    	if(reply.id!=writer){
-	   		 modal.find("button[id !='modalRemoveBtn']").hide();
-	   		 modal.find("button[id !='modalModBtn']").hide();
-   		}else{
-	        modalModBtn.show();
+        if(reply.id==writer || writer=='admin'){
+    		modalModBtn.show();
 	        modalRemoveBtn.show();
+    	
+   		}else{
+   			modal.find("button[id !='modalRemoveBtn']").hide();
+	   		modal.find("button[id !='modalModBtn']").hide();    
    		}
         modal.modal("show");
             
