@@ -254,7 +254,7 @@
 							
 						</div>
 						<div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:center; font-size:13px;">
-						<c:if test="${recipe.id eq member.id}">
+						<c:if test="${recipe.id eq member.id || member.id eq 'admin'}">
 						<%-- <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정</button> --%>
 						<button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:200px; height:70px; background-color: #e95420; font-size:20px; border:none; text-align:center">수정</button>
 						</c:if>
@@ -659,12 +659,13 @@ var alertModal = $("#alertModal");
         .attr("readonly","readonly");
         modal.data("rno", reply.rno);
         modal.find("button[id !='modalCloseBtn']").hide();
-    	if(reply.id!=writer){
-	   		 modal.find("button[id !='modalRemoveBtn']").hide();
-	   		 modal.find("button[id !='modalModBtn']").hide();
-   		}else{
-	        modalModBtn.show();
+        if(reply.id==writer || writer=='admin'){
+    		modalModBtn.show();
 	        modalRemoveBtn.show();
+    	
+   		}else{
+   			modal.find("button[id !='modalRemoveBtn']").hide();
+	   		modal.find("button[id !='modalModBtn']").hide();    
    		}
         modal.modal("show");
             
