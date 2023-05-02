@@ -6,7 +6,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.RecipeVO;
 
 public interface RecipeService {
-	public void register(RecipeVO board);
+	public boolean register(RecipeVO board);
 	public RecipeVO get(Long bno);
 	public boolean modify(RecipeVO board);
 	public boolean modifyw(RecipeVO board);//필요한 부분만 수정(레시피)
@@ -20,5 +20,4 @@ public interface RecipeService {
 	
 	public List<RecipeVO> sortByReplyCnt();
 	public List<RecipeVO> sortByVisitCnt();
-	public Long getNextBno();
 }

@@ -169,8 +169,8 @@
 								</div>
 							</a>
 							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px">
-								<b style="font-size: 30px;"> <c:out
+							margin-top : 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
 							<div class="card-main">

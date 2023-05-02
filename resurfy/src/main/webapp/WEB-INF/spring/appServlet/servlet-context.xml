@@ -25,8 +25,10 @@
    <beans:bean id="multipartResolver" 
 	class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
-	
-	
-   
-   
+<beans:bean class="java.lang.String" id="uploadPath">
+<beans:constructor-arg value="C:\upload\temp"/>
+</beans:bean>
+<!--  일반 파일 업로드 경로  -->
+<resources mapping="/imgUpload/**" location="/resources/imgUpload/"/>	
+	  
 </beans:beans>

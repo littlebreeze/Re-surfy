@@ -1,7 +1,7 @@
 package org.zerock.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -10,11 +10,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,10 +38,10 @@ import org.zerock.service.OwnService;
 import org.zerock.service.RecipeService;
 import org.zerock.service.ShoppingService;
 import org.zerock.service.StepService;
+import org.zerock.utils.UploadFileUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnailator;
 
 @Controller
 @Log4j
@@ -48,82 +53,90 @@ public class RecipeController {
 	private IngredientService iService;
 	private ShoppingService shService;
 	private OwnService oService;
+	
+	private String uploadPath;
 
 	@GetMapping("/registerRecipe")
 	public void register() {
 	}
 
-	@PostMapping("/upload")
-	public void upload(@RequestParam("uploadFile") MultipartFile[] uploadFile, Model model) {
-		// 경로는 각자 프로젝트 위치에 맞게 변경
-		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
-		
-		for (MultipartFile multipartFile : uploadFile) {
-			log.info("--------------------");
-			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
-			log.info("Upload File size : " + multipartFile.getSize());
-			File saveFile = new File(uploadFolder, multipartFile.getOriginalFilename());
-			try {
-				multipartFile.transferTo(saveFile);
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-		}
-	}
-
 	@PostMapping("/registerRecipe.do")
-	public String register(RecipeVO rvo, IngredientVO ingre, StepVO step, HttpServletRequest request,
-			@RequestParam("recipeName") String recipeName, @RequestParam("recipeDescription") String recipeDescription,
-			@RequestParam("image") String image, @RequestParam("foodType") String foodType,
-			@RequestParam("person") String person, @RequestParam("difficulty") String difficulty,
-			@RequestParam("time") String time, @RequestParam("ingreType") String ingreType,
-			@RequestParam("ingreMeasure") String[] ingreMeasure, @RequestParam("ingreName") String[] ingreName,
-			@RequestParam("stepNo") Long[] stepNo, @RequestParam("stepDescription") String[] StepDescription,
-			@RequestParam("stepImage") String[] stepImage, @RequestParam("tip") String[] tip, RedirectAttributes rttr) {
+	public String register(HttpServletRequest request, RecipeVO recipe, MultipartFile[] stepImage,
+			@RequestParam List<String> ingreType, @RequestParam List<String> ingreName,
+			@RequestParam List<String> ingreMeasure, @RequestParam List<String> stepDescription,
+			@RequestParam List<String> tip, RedirectAttributes rttr) throws Exception {
 
-		Long bno = rService.getNextBno() - 1;
+		log.info("넘어온 재료 개수 : "+ ingreName.size());
+		log.info("넘어온 재료타입 개수 : "+ ingreType.size());
+		log.info("넘어온 재료용량 개수 : "+ ingreMeasure.size());
+		log.info("넘어온 과정 개수 : "+ stepDescription.size());
+		log.info("넘어온 tip 개수 : "+ tip.size());
+		log.info("넘어온 과정이미지 개수 : "+ stepImage.length); 
+
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if (stepImage[0] != null) {
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[0].getOriginalFilename(), stepImage[0].getBytes(), ymdPath);
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+
+		//vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
 		if (sessionUser != null)
 			userID = sessionUser.getId();
 
-		rvo.setBno(bno);
-		rvo.setRecipeName(recipeName);
-		rvo.setRecipeDescription(recipeDescription);
-		rvo.setId(userID);
-		rvo.setRecipeDate(null);
+		recipe.setId(userID);
+		recipe.setImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		boolean rSuccess = rService.register(recipe);
+		
+		rttr.addFlashAttribute("result_recipe", recipe.getBno());
 
-		rvo.setFoodType(foodType);
-		rvo.setPerson(person);
-		rvo.setDifficulty(difficulty);
-		rvo.setTime(time);
-		String fileurl = "/resources/assets/upload/";
-		rvo.setImage(fileurl + image);
-		rService.register(rvo);
-		rttr.addFlashAttribute("result_recipe", rvo.getBno());
+		List<IngredientVO> iboard = new ArrayList<>();
+        for (int i = 0; i < ingreName.size(); i++) {
+            IngredientVO ivo = new IngredientVO();
+            ivo.setBno(recipe.getBno());
+            ivo.setIngreType(ingreType.get(i));
+            ivo.setIngreName(ingreName.get(i));
+            ivo.setIngreMeasure(ingreMeasure.get(i));
+            iboard.add(ivo);            
+        }
+        
+        List<StepVO> sboard = new ArrayList<>();
+        for (int i = 0; i < stepDescription.size()-1; i++) {	//+1개가 넘어와서 -1을 적어줬다. 
+            StepVO svo = new StepVO();
+            svo.setBno(recipe.getBno());
+            svo.setStepNo((long) (i+1));
+            svo.setStepDescription(stepDescription.get(i));
+            if (!stepImage[i+1].isEmpty()) {
+    			fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[i+1].getOriginalFilename(), stepImage[i+1].getBytes(), ymdPath);
+    			svo.setStepImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+    		} else {
+    			svo.setStepImage("");
+    		}
+            svo.setTip(tip.get(i));
+            sboard.add(svo);
+        }
 
-		for (int i = 0; i < ingreName.length; i++) {
-			ingre = new IngredientVO();
-			ingre.setIngreType(ingreType);
-			ingre.setBno(bno);
-			ingre.setIngreMeasure(ingreMeasure[i]);
-			ingre.setIngreName(ingreName[i]);
-			iService.register(ingre);
-			rttr.addFlashAttribute("register_ingredient", ingre.getIno());
-		}
-		for (int i = 0; i < stepNo.length; i++) {
-			step = new StepVO();
-			step.setBno(bno);
-			step.setStepNo(stepNo[i]);
-			step.setStepDescription(StepDescription[i]);
-			step.setStepImage(stepImage[i]);
-			step.setTip(tip[i]);
-			sService.register(step);
-			rttr.addFlashAttribute("register_step", step.getSno());
-		}
+        boolean iSuccess = iService.register(iboard);
+        boolean sSuccess = sService.register(sboard);
+        
+        		
+        if (rSuccess && iSuccess && sSuccess) {
+        rttr.addFlashAttribute("result", "success");
+        } else {
+        rttr.addFlashAttribute("result", "failure");
+        }
+
+        rttr.addFlashAttribute("message", "register success");
 
 		return "redirect:/recipe/get";
+
 	}
 
 	@GetMapping("/detail")
@@ -233,43 +246,11 @@ public class RecipeController {
 	public void ListSortByReply(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 	}
-
+	
 	@GetMapping("/TopTenByVisit")
 	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
-
-	@PostMapping("/uploadAjaxAction")
-	public void uploadAjaxPost(MultipartFile[] uploadFile) {
-
-		log.info("update ajax post.........");
-		// 경로는 각자 프로젝트 위치에 맞게 변경
-		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
-
-		for (MultipartFile multipartFile : uploadFile) {
-
-			log.info("-------------------------------------");
-			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
-			log.info("Upload File Size: " + multipartFile.getSize());
-
-			String uploadFileName = multipartFile.getOriginalFilename();
-
-			// IE has file path
-			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-
-			try {
-				File saveFile = new File(uploadFolder, uploadFileName);
-				multipartFile.transferTo(saveFile);
-
-			} catch (Exception e) {
-				log.error(e.getMessage());
-			}
-
-		} // end for
-
-	}
-
-
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 

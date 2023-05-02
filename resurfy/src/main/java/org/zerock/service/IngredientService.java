@@ -6,7 +6,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.IngredientVO;
 
 public interface IngredientService {
-	public void register(IngredientVO board);
+	public boolean register(List<IngredientVO> iboard);
 	public void registerAll(List<IngredientVO> list);
 	public List<IngredientVO> get(Long bno);
 	public boolean modify(List<IngredientVO> vo);

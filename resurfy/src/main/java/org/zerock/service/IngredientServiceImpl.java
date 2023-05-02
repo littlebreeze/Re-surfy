@@ -19,9 +19,13 @@ public class IngredientServiceImpl implements IngredientService {
 	
 	
 	@Override
-	public void register(IngredientVO board) {
+	public boolean register(List<IngredientVO> board) {
 		log.info("register....." );
-		mapper.insertIngredient(board);
+		int cnt=0;
+		for (IngredientVO ingredientVO : board) {
+			cnt+=mapper.insertIngredient(ingredientVO);
+		}
+		return cnt==board.size();
 	}
 
 	/*@Override

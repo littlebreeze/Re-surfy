@@ -20,10 +20,9 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	private RecipeMapper mapper;
 	@Override
-	public void register(RecipeVO board) {
+	public boolean register(RecipeVO board) {
 		log.info("register......." + board);
-		mapper.insertRecipe(board);
-
+		return mapper.insertRecipe(board)==1;
 	}
 	
 	@Override
@@ -89,11 +88,6 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public List<RecipeVO> sortByVisitCnt() {
 		return mapper.getRecipeOrderByVisitcnt();
-	}
-
-	@Override
-	public Long getNextBno() {
-		return mapper.getNextBno();
 	}
 
 }

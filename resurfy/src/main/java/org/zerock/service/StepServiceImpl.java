@@ -18,9 +18,13 @@ public class StepServiceImpl implements StepService {
 	private RecipeMapper mapper;
 	
 	@Override
-	public void register(StepVO board) {
+	public boolean register(List<StepVO> board) {
 		log.info("register....." + board);
-		mapper.insertStep(board);;
+		int cnt=0;
+		for (StepVO stepVO : board) {
+			cnt+=mapper.insertStep(stepVO);
+		}
+		return cnt==board.size();
 	}
 
 	@Override
