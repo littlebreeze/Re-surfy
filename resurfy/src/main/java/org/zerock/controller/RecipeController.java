@@ -55,7 +55,9 @@ public class RecipeController {
 
 	@PostMapping("/upload")
 	public void upload(@RequestParam("uploadFile") MultipartFile[] uploadFile, Model model) {
+		// 경로는 각자 프로젝트 위치에 맞게 변경
 		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
+		
 		for (MultipartFile multipartFile : uploadFile) {
 			log.info("--------------------");
 			log.info("Upload File Name : " + multipartFile.getOriginalFilename());
@@ -241,7 +243,7 @@ public class RecipeController {
 	public void uploadAjaxPost(MultipartFile[] uploadFile) {
 
 		log.info("update ajax post.........");
-
+		// 경로는 각자 프로젝트 위치에 맞게 변경
 		String uploadFolder = "C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload";
 
 		for (MultipartFile multipartFile : uploadFile) {
