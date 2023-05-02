@@ -268,7 +268,7 @@
 						<!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
 						<br><br><br><br><br>
 						
-						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글&nbsp[<c:out value="${recipe.replycnt }" />]</div>
+						<div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글</div>
 						<br>
 						<div class="row"></div>
 						 <div class="row"  style=" width: 90%; margin: 0 auto; text-align:left">
@@ -619,9 +619,9 @@ var alertModal = $("#alertModal");
 			//showList(1);
 			showList(-1);
 		});
-		/* parent.document.getElementById('replybox').value=''; */
-		parent.document.location.reload();
-		/* window.location.reload(true); */
+		parent.document.getElementById('replybox').value='';
+		/*parent.document.location.reload();*/
+		/*window.location.reload(true);*/ 
 		} else{
 			$(".modal-title").html("댓글 등록 오류")
    		    $(".modal-body").html("댓글을 남겨주세요!")
