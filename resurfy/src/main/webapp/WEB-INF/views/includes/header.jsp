@@ -72,6 +72,22 @@
 					<%
 					} else if (user != null && user.getId().contains("admin")) {
 					%>
+					<script>
+						$(document)
+								.ready(
+										function() {
+											if (document.cookie
+													.indexOf('adminModalShown=') === -1) {
+												$('#adminModal').modal('show');
+												document.cookie = 'adminModalShown=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+											}
+											var modalCloseBtn = $("#modalCloseBtn");
+											modalCloseBtn.on("click", function(
+													e) {
+												$('#adminModal').modal("hide");
+											}); 
+										});
+					</script>
 					<form action="/member/logout.do" id="logout" method="post">
 						<li class="nav-item" data-bs-toggle="tooltip"
 							data-bs-placement="bottom" data-bs-original-title="로그아웃">
@@ -91,7 +107,7 @@
 							href="/recipe/registerRecipe"> <img
 								src="/resources/assets/main/edit.png" width="20" height="auto"></a></li>
 						<li class="nav-item" id="welcome-text"><font color='#000000'>
-								관리자 계정입니다.</li>
+								관리자(<%=user.getId()%>)</li>
 					</form>
 					<%
 					} else if (user != null) {
@@ -120,9 +136,25 @@
 					<%
 					}
 					%>
-
-
 				</ul>
+			</div>
+			<div class="modal fade" id="adminModal" tabindex="-1" role="dialog"
+				aria-labelledby="adminModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="adminModalLabel">관리자 계정 로그인</h5>
+							<span aria-hidden="true">&times;</span>
+						</div>
+						<div class="modal-body">
+							<p>관리자 계정으로 로그인하셨습니다.</p>
+						</div>
+						<div class="modal-footer">
+							<button id='modalCloseBtn' type="button" class="btn btn-default"
+								style="border: 1px solid lightgray">닫기</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div> <script type="text/javascript">
 			var btnLogout = document.getElementById('btnLogout');
@@ -134,6 +166,7 @@
 			document.getElementById("welcome-text").style.color = "#FFFFFF";
 		</script> <script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
 		<script>
 			// 툴팁 초기화
 			var tooltipTriggerList = [].slice.call(document
