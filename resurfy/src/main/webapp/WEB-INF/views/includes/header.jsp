@@ -62,13 +62,11 @@
 					if (user == null) {
 					%>
 					<li class="nav-item" data-bs-toggle="tooltip"
-						data-bs-placement="bottom" data-bs-original-title="로그인"><a
+						data-bs-placement="bottom" data-bs-original-title="로그인/회원가입"><a
 						href="/member/login.do"> <img
 							src="/resources/assets/main/unlocked.png" width="20"
 							height="auto">
 					</a></li>
-
-					<li class="nav-item">비회원 입니다.</li>
 					<%
 					} else if (user != null && user.getId().contains("admin")) {
 					%>
@@ -131,7 +129,7 @@
 							href="/recipe/registerRecipe"> <img
 								src="/resources/assets/main/edit.png" width="20" height="auto"></a></li>
 						<li class="nav-item" id="welcome-text"><font color='#000000'>
-								<%=user.getId()%>님 환영합니다. </li>
+								회원(<%=user.getId()%>)</li>
 					</form>
 					<%
 					}
