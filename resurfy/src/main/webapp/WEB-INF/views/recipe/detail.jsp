@@ -203,7 +203,7 @@
 							<c:forEach items="${step}" var="st">
 							<c:choose>
 
-      							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
+      							<c:when test="${st.stepImage == ' ' || st.stepImage == '0' || st.stepImage == null}"> 
       							<div class="py-3 row">
       							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=350px height=300px  alt="..."></div>
 								<div class="col">
@@ -211,7 +211,7 @@
 								<hr class="my-2" align="left" style="width: 100%; margin: 0 auto;">
 								<br><span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
 								<c:choose>
-      							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
+      							<c:when test="${st.tip == ' ' || st.tip == '0' || st.tip == null}"> 
 								<div style="font-size:18px"></div>
 								</c:when>
 								<c:otherwise>
@@ -232,7 +232,7 @@
 								<br>
 								<span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
 									<c:choose>
-      							<c:when test="${st.tip == ' ' || st.tip == '0'}"> 
+      							<c:when test="${st.tip == ' ' || st.tip == '0' || st.tip == null}"> 
 								<div style="font-size:18px"></div>
 								</c:when>
 								<c:otherwise>

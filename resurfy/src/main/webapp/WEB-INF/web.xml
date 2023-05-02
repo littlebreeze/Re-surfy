@@ -25,7 +25,7 @@
 		<load-on-startup>1</load-on-startup>
 		
 		<multipart-config>
-			<location>C:\\Users\\user\\git\\resurfy_project\\Re-surfy\\resurfy\\src\\main\\webapp\\resources\\assets\\upload</location>
+			<location>C:\\upload\\temp</location>
 			<max-file-size>20971520</max-file-size> <!--1MB * 20 -->
 			<max-request-size>41943040</max-request-size><!-- 40MB -->
 			<file-size-threshold>20971520</file-size-threshold> <!-- 한번에 올릴수 있는 최대 크기 20MB -->

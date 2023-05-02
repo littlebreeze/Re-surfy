@@ -21,7 +21,10 @@
   <insert id="insertRecipe">
   insert into recipe_tbl (bno, id, recipeName, recipeDescription, foodType, time, person, difficulty, image)
       values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription}, #{foodType}, #{time}, #{person}, #{difficulty}, #{image})
-   </insert>   
+    <selectKey keyProperty="bno" order="AFTER" resultType="long">
+		select max(bno) from recipe_tbl
+	</selectKey>
+   </insert>    
   <insert id="insertStep">
    insert into step_tbl (sno, bno, stepno, stepdescription, stepimage, tip)
       values (seq_step.nextval,#{bno},#{stepNo},#{stepDescription}, #{stepImage}, #{tip})

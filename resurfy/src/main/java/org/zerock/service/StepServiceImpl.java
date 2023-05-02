@@ -2,10 +2,8 @@ package org.zerock.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.domain.RecipeVO;
 import org.zerock.domain.StepVO;
 import org.zerock.mapper.RecipeMapper;
 
@@ -18,9 +16,13 @@ public class StepServiceImpl implements StepService {
 	private RecipeMapper mapper;
 	
 	@Override
-	public void register(StepVO board) {
+	public boolean register(List<StepVO> board) {
 		log.info("register....." + board);
-		mapper.insertStep(board);;
+		int cnt=0;
+		for (StepVO stepVO : board) {
+			cnt+=mapper.insertStep(stepVO);
+		}
+		return cnt==board.size();
 	}
 
 	@Override

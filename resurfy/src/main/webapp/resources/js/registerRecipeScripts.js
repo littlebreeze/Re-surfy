@@ -24,6 +24,7 @@
     
     reader.readAsDataURL(file);
     }
+    
     document.getElementById("mainImage").addEventListener("change", onMainFileChange);
 
 document.getElementById("mainImage").addEventListener("change", onMainFileChange);
@@ -126,7 +127,7 @@ function addStep() {
 
   const newFileInput = document.getElementById(`q_step_file_${stepCounter}`);
   newFileInput.setAttribute("id", `q_step_file_${stepCounter}`);
-  newFileInput.setAttribute("name", `q_step_file_${stepCounter}`);
+  newFileInput.setAttribute("name", `stepImage`);
 
   // Add event listener to the new file input
   setFileInputEventListener(stepCounter);

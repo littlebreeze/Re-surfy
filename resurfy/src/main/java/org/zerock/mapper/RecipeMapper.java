@@ -13,9 +13,9 @@ public interface RecipeMapper {
 	public RecipeVO readRecipe(Long bno);
 	public List<StepVO> readStep(Long bno);
 	public List<IngredientVO> readIngredient(Long bno);
-	public void insertRecipe(RecipeVO board);
-	public void insertStep(StepVO board);
-	public void insertIngredient(IngredientVO board);
+	public int insertRecipe(RecipeVO board);
+	public int insertStep(StepVO board);
+	public int insertIngredient(IngredientVO board);
 	public int updateRecipe(RecipeVO board);
 	public int updateStep(StepVO board);
 	public int updateIngredient(IngredientVO board);
