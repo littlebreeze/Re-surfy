@@ -1,6 +1,5 @@
 package org.zerock.controller;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -53,7 +52,7 @@ public class RecipeController {
 	private IngredientService iService;
 	private ShoppingService shService;
 	private OwnService oService;
-	
+
 	private String uploadPath;
 
 	@GetMapping("/registerRecipe")
@@ -66,25 +65,27 @@ public class RecipeController {
 			@RequestParam List<String> ingreMeasure, @RequestParam List<String> stepDescription,
 			@RequestParam List<String> tip, RedirectAttributes rttr) throws Exception {
 
-		log.info("넘어온 재료 개수 : "+ ingreName.size());
-		log.info("넘어온 재료타입 개수 : "+ ingreType.size());
-		log.info("넘어온 재료용량 개수 : "+ ingreMeasure.size());
-		log.info("넘어온 과정 개수 : "+ stepDescription.size());
-		log.info("넘어온 tip 개수 : "+ tip.size());
-		log.info("넘어온 과정이미지 개수 : "+ stepImage.length); 
+		log.info("넘어온 재료 개수 : " + ingreName.size());
+		log.info("넘어온 재료타입 개수 : " + ingreType.size());
+		log.info("넘어온 재료용량 개수 : " + ingreMeasure.size());
+		log.info("넘어온 과정 개수 : " + stepDescription.size());
+		log.info("넘어온 tip 개수 : " + tip.size());
+		log.info("넘어온 과정이미지 개수 : " + stepImage.length);
 
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
 
 		if (stepImage[0] != null) {
-			fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[0].getOriginalFilename(), stepImage[0].getBytes(), ymdPath);
+			fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[0].getOriginalFilename(),
+					stepImage[0].getBytes(), ymdPath);
 		} else {
 			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
-		//vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		
+		// vo.setGdsImg(File.separator + "imgUpload" + ymdPath + File.separator +
+		// fileName);
+
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		String userID = "";
@@ -93,47 +94,47 @@ public class RecipeController {
 
 		recipe.setId(userID);
 		recipe.setImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		log.info("BNO (전) : " + recipe.getBno());
 		boolean rSuccess = rService.register(recipe);
-		
-		rttr.addFlashAttribute("result_recipe", recipe.getBno());
+		log.info("BNO (전) : " + recipe.getBno());
 
 		List<IngredientVO> iboard = new ArrayList<>();
-        for (int i = 0; i < ingreName.size(); i++) {
-            IngredientVO ivo = new IngredientVO();
-            ivo.setBno(recipe.getBno());
-            ivo.setIngreType(ingreType.get(i));
-            ivo.setIngreName(ingreName.get(i));
-            ivo.setIngreMeasure(ingreMeasure.get(i));
-            iboard.add(ivo);            
-        }
-        
-        List<StepVO> sboard = new ArrayList<>();
-        for (int i = 0; i < stepDescription.size()-1; i++) {	//+1개가 넘어와서 -1을 적어줬다. 
-            StepVO svo = new StepVO();
-            svo.setBno(recipe.getBno());
-            svo.setStepNo((long) (i+1));
-            svo.setStepDescription(stepDescription.get(i));
-            if (!stepImage[i+1].isEmpty()) {
-    			fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[i+1].getOriginalFilename(), stepImage[i+1].getBytes(), ymdPath);
-    			svo.setStepImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-    		} else {
-    			svo.setStepImage("");
-    		}
-            svo.setTip(tip.get(i));
-            sboard.add(svo);
-        }
+		for (int i = 0; i < ingreName.size(); i++) {
+			IngredientVO ivo = new IngredientVO();
+			ivo.setBno(recipe.getBno());
+			ivo.setIngreType(ingreType.get(i));
+			ivo.setIngreName(ingreName.get(i));
+			ivo.setIngreMeasure(ingreMeasure.get(i));
+			iboard.add(ivo);
+		}
 
-        boolean iSuccess = iService.register(iboard);
-        boolean sSuccess = sService.register(sboard);
-        
-        		
-        if (rSuccess && iSuccess && sSuccess) {
-        rttr.addFlashAttribute("result", "success");
-        } else {
-        rttr.addFlashAttribute("result", "failure");
-        }
+		List<StepVO> sboard = new ArrayList<>();
+		for (int i = 0; i < stepDescription.size() - 1; i++) { // +1개가 넘어와서 -1을 적어줬다.
+			StepVO svo = new StepVO();
+			svo.setBno(recipe.getBno());
+			svo.setStepNo((long) (i + 1));
+			svo.setStepDescription(stepDescription.get(i));
+			if (!stepImage[i + 1].isEmpty()) {
+				fileName = UploadFileUtils.fileUpload(imgUploadPath, stepImage[i + 1].getOriginalFilename(),
+						stepImage[i + 1].getBytes(), ymdPath);
+				svo.setStepImage(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			} else {
+				svo.setStepImage("");
+			}
+			svo.setTip(tip.get(i));
+			sboard.add(svo);
+		}
 
-        rttr.addFlashAttribute("message", "register success");
+		boolean iSuccess = iService.register(iboard);
+		boolean sSuccess = sService.register(sboard);
+
+		if (rSuccess && iSuccess && sSuccess) {
+			rttr.addFlashAttribute("result", "success");
+		} else {
+			rttr.addFlashAttribute("result", "failure");
+		}
+
+		rttr.addFlashAttribute("message", "register success");
 
 		return "redirect:/recipe/get";
 
@@ -246,7 +247,7 @@ public class RecipeController {
 	public void ListSortByReply(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 	}
-	
+
 	@GetMapping("/TopTenByVisit")
 	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
 		model.addAttribute("sortByVisit", rService.sortByVisitCnt());

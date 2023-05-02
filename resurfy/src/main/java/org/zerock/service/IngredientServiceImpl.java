@@ -15,8 +15,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor 
 public class IngredientServiceImpl implements IngredientService {
-	private RecipeMapper mapper;
-	
+	private RecipeMapper mapper;	
 	
 	@Override
 	public boolean register(List<IngredientVO> board) {
@@ -74,12 +73,6 @@ public class IngredientServiceImpl implements IngredientService {
 	@Override
 	public List<String> getIngreListHave(Long bno, String userID) { 
 		return mapper.readIngreNameHave(bno, userID);
-	}
-
-	@Transactional
-	@Override
-	public void registerAll(List<IngredientVO> list) {
-		list.forEach(ingredient -> mapper.insertIngredient(ingredient));
 	}
 
 

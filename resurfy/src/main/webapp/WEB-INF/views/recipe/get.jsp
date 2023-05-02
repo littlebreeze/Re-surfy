@@ -71,7 +71,7 @@
 		<c:choose>
 			<c:when test="${param.orderBy eq 'visitcnt'}">
 				<div class="card-container">
-					<c:forEach items="${sortByVisit}" var="recipe">
+					<c:forEach items="${get}" var="recipe">
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img">
@@ -79,11 +79,12 @@
 								</div>
 							</a>
 							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px">
-								<b style="font-size: 30px;"> <c:out
+							margin-top : 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main">
+							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
@@ -116,7 +117,7 @@
 			</c:when>
 			<c:when test="${param.orderBy eq 'replycnt'}">
 				<div class="card-container">
-					<c:forEach items="${sortByReply}" var="recipe">
+					<c:forEach items="${get}" var="recipe">
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img">
@@ -124,11 +125,12 @@
 								</div>
 							</a>
 							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px">
-								<b style="font-size: 30px;"> <c:out
+							margin-top : 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main">
+							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
@@ -173,7 +175,8 @@
 								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main">
+							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
+							margin-top : 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
