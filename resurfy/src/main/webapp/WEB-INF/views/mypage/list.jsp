@@ -12,6 +12,7 @@
         <link href="../resources/css/mypageGrid.css" rel="stylesheet">
     </head>
     <body>
+					
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">

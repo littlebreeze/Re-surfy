@@ -61,25 +61,20 @@
 					<%
 					if (user == null) {
 					%>
-					
-
 					<li class="nav-item" data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="로그인"><a
+						data-bs-placement="bottom" data-bs-original-title="로그인"><a
 						href="/member/login.do"> <img
-							src="/resources/assets/main/unlocked.png" width="20" height="auto">
+							src="/resources/assets/main/unlocked.png" width="20"
+							height="auto">
 					</a></li>
 
 					<li class="nav-item">비회원 입니다.</li>
-
 					<%
-					} else {
+					} else if (user != null && user.getId().contains("admin")) {
 					%>
-
 					<form action="/member/logout.do" id="logout" method="post">
 						<li class="nav-item" data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="로그아웃">
+							data-bs-placement="bottom" data-bs-original-title="로그아웃">
 							<div id="btnLogout">
 								<a href="/member/login.do"> <img
 									src="/resources/assets/main/lock.png" width="20" height="auto">
@@ -87,22 +82,47 @@
 							</div>
 						</li>
 						<li class="nav-item" data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="마이페이지"><a href="/mypage/list"> <img
+							data-bs-placement="bottom" data-bs-original-title="관리자 페이지"><a
+							href="/mypage/list"> <img
 								src="/resources/assets/main/user.png" width="20" height="auto">
 						</a></li>
 						<li class="nav-item" data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="레시피 등록"><a href="/recipe/registerRecipe"> <img
+							data-bs-placement="bottom" data-bs-original-title="레시피 등록"><a
+							href="/recipe/registerRecipe"> <img
+								src="/resources/assets/main/edit.png" width="20" height="auto"></a></li>
+						<li class="nav-item" id="welcome-text"><font color='#000000'>
+								관리자 계정입니다.</li>
+					</form>
+					<%
+					} else if (user != null) {
+					%>
+					<form action="/member/logout.do" id="logout" method="post">
+						<li class="nav-item" data-bs-toggle="tooltip"
+							data-bs-placement="bottom" data-bs-original-title="로그아웃">
+							<div id="btnLogout">
+								<a href="/member/login.do"> <img
+									src="/resources/assets/main/lock.png" width="20" height="auto">
+								</a>
+							</div>
+						</li>
+						<li class="nav-item" data-bs-toggle="tooltip"
+							data-bs-placement="bottom" data-bs-original-title="마이페이지"><a
+							href="/mypage/list"> <img
+								src="/resources/assets/main/user.png" width="20" height="auto">
+						</a></li>
+						<li class="nav-item" data-bs-toggle="tooltip"
+							data-bs-placement="bottom" data-bs-original-title="레시피 등록"><a
+							href="/recipe/registerRecipe"> <img
 								src="/resources/assets/main/edit.png" width="20" height="auto"></a></li>
 						<li class="nav-item" id="welcome-text"><font color='#000000'>
 								<%=user.getId()%>님 환영합니다. </li>
-
 					</form>
 					<%
 					}
 					%>
-					</ol>
+
+
+				</ul>
 			</div>
 		</div> <script type="text/javascript">
 			var btnLogout = document.getElementById('btnLogout');
@@ -112,8 +132,7 @@
 				}
 			}
 			document.getElementById("welcome-text").style.color = "#FFFFFF";
-		</script> 
-		<script
+		</script> <script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 		<script>
 			// 툴팁 초기화
