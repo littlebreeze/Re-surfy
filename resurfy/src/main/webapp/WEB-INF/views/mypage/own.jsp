@@ -32,6 +32,11 @@
 							가진 재료
 						</h2>
 					<br></div>
+					<div class="col-lg-12 themed-container">
+						<div class='pull-right'>
+							<button id="shareBtn" class="btn mypageBtn"><img src="/resources/assets/share.png" width="20" heiht="20"></button>
+						</div>
+					</div>
 					<div class="container">
 						<div class="row mb-3 text-center" id="chkAll" style="display:none;">
 					      <div class="col-md-2 themed-grid-col" id="div_chkAll">
@@ -194,6 +199,23 @@
 		   }
 		});	//end click
 		
+		$("#shareBtn").click(function(){
+			$(".confirm-title").html("가진 재료 공유하기");
+			  $(".confirm-body").html("<textarea id='ownText' cols='50' rows='5'></textarea>");
+			  $("#ownText").val("문자열입니다");
+			  var olist = "가진 재료 리스트는 ";
+			  olist += "<c:forEach items='${list}' var='own'>${own.ingreName}/</c:forEach>";
+			  olist += " 입니다."
+			  $("#ownText").val(olist);
+			  confirmModal.modal("show");
+			  $("#modalConfirmBtn").on("click", function(e){
+				  $("#ownText").select();
+				  document.execCommand('copy');
+				  $("#copyMsg").remove();
+				  $(".confirm-body").append("<div id='copyMsg' style='text-align:center; color:#6cc3d5;'>복사 되었습니다!</div>");
+				});
+		});
+		
 		$("#editBtn").click(function(){
 			if($("input[name=chk]").css("display")=="none"){
 				$("input[name=chk]").toggle();
@@ -302,11 +324,6 @@ $(document).ready(function(){
 		  $("#autoComplete").autocomplete("option", "appendTo", "#addModal")
 	})
 });
-</script>
-<script>
-	$(document).ready(function() {
-		
-	});
 </script>
     </body>
 </html>

@@ -151,6 +151,10 @@
 			else $("#cbx_chkAll").prop("checked", true); 
 		});	
 		
+		$.numberWithCommas = function (x) {
+			  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		}
+		
 		$("input[type=checkbox]").click(function() {	//합계금액 변경하기
 			var sumP=0;
 			var sumC=0;
@@ -158,6 +162,8 @@
 			    sumC = sumC + Number($(this).attr("data-count"));
 			    sumP = sumP + $(this).attr("data-count")*$(this).attr("data-price");
 			});
+			
+			sumP = $.numberWithCommas(parseInt(sumP));
 			$("#sumPrice").html(sumP +" 원");
 			$("#sumCount").html(sumC +" 개");
 		});	
