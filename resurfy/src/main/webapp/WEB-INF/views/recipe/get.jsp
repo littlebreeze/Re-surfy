@@ -59,10 +59,16 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" class="btn btn-light" style="color: #fff;">
+				<button type="button" class="btn btn-light" 
+				data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="내림차순" style="color: #fff;">
 					<a href="?orderBy=visitcnt">조회 수</a>
 				</button>
-				<button type="button" class="btn btn-light" style="color: #fff;">
+				<button type="button" class="btn btn-light" 
+				data-bs-toggle="tooltip"
+						data-bs-placement="bottom"
+						data-bs-original-title="내림차순" style="color: #fff;">
 					<a href="?orderBy=replycnt">댓글 수</a>
 				</button>
 			</div>
@@ -71,10 +77,12 @@
 		<c:choose>
 			<c:when test="${param.orderBy eq 'visitcnt'}">
 				<div class="card-container">
-					<c:forEach items="${get}" var="recipe">
+					<c:forEach items="${sortByVisit}" var="recipe">
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-								<div class="card-img">
+								<div class="card-img" data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
@@ -101,15 +109,6 @@
 									조리시간 :
 									<c:out value="${recipe.time}" />
 								</div>
-
-							</div>
-							<div
-								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
-								조회수:[
-								<c:out value="${recipe.visitcnt } " />
-								] 댓글수 :[
-								<c:out value="${recipe.replycnt }" />
-								]
 							</div>
 						</div>
 					</c:forEach>
@@ -117,10 +116,12 @@
 			</c:when>
 			<c:when test="${param.orderBy eq 'replycnt'}">
 				<div class="card-container">
-					<c:forEach items="${get}" var="recipe">
+					<c:forEach items="${sortByReply}" var="recipe">
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-								<div class="card-img">
+								<div class="card-img" data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
@@ -147,15 +148,6 @@
 									조리시간 :
 									<c:out value="${recipe.time}" />
 								</div>
-
-							</div>
-							<div
-								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
-								조회수:[
-								<c:out value="${recipe.visitcnt } " />
-								] 댓글수 :[
-								<c:out value="${recipe.replycnt }" />
-								]
 							</div>
 						</div>
 					</c:forEach>
@@ -166,7 +158,9 @@
 					<c:forEach items="${get}" var="recipe">
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
-								<div class="card-img">
+								<div class="card-img" data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
@@ -194,14 +188,6 @@
 									<c:out value="${recipe.time}" />
 								</div>
 
-							</div>
-							<div
-								style="font-size: 15px; text-align: center; border-bottom: 1px solid #F0DDD8;">
-								조회수:[
-								<c:out value="${recipe.visitcnt } " />
-								] 댓글수 :[
-								<c:out value="${recipe.replycnt }" />
-								]
 							</div>
 						</div>
 					</c:forEach>
@@ -313,5 +299,17 @@
 
 					});
 </script>
+
+	<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			// 툴팁 초기화
+			var tooltipTriggerList = [].slice.call(document
+					.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList
+					.map(function(tooltipTriggerEl) {
+						return new bootstrap.Tooltip(tooltipTriggerEl)
+					})
+		</script>
 
 <%@include file="../includes/footer.jsp"%>

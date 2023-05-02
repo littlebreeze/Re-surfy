@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
               <span class="pad_l_30"> </span>
               <select class="form-select" id="difficulty" name="difficulty" control-id="ControlID-11">
                 <option value="" >난이도</option>
-                <option value="초보환영"<c:if test="${difficulty == '초보환영'}">selected</c:if>>초보환영</option>
+                <option value="초보"<c:if test="${difficulty == '초보'}">selected</c:if>>초보</option>
                 <option value="보통"<c:if test="${difficulty == '보통'}">selected</c:if>>보통</option>
                 <option value="어려움"<c:if test="${difficulty == '어려움'}">selected</c:if>>어려움</option>
               </select>
