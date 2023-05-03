@@ -114,11 +114,11 @@ insert into step_tbl (sno, bno, stepNo, stepDescription, stepImage, tip)
 
 
 <select id="readIngreName" resultType="String">
-	select INGRENAME from INGREDIENT_TBL where bno = #{bno}
+	select INGRENAME from INGREDIENT_TBL where bno = #{bno} and ingretype != '양념'
 	and INGRENAME not in (select INGRENAME from own_tbl where id=#{userID})
 </select>
 	<select id="readIngreNameHave" resultType="String">
-		select INGRENAME from INGREDIENT_TBL where bno = #{bno}
+		select INGRENAME from INGREDIENT_TBL where bno = #{bno} and ingretype != '양념'
 		and INGRENAME in (select INGRENAME from own_tbl where id=#{userID})
 	</select>
 

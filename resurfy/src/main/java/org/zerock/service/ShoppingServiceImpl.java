@@ -44,7 +44,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 			}
 
 			String apiURL = "https://openapi.naver.com/v1/search/shop?query=" + text; // json 결과
-			apiURL+="&display=1&sort=sim";
+			apiURL+="&display=2&sort=sim";
 			// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
 			// // xml 결과
 
