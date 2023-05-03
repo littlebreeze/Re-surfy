@@ -31,7 +31,7 @@
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
 				<div class="col-lg-12">
-					<form id='searchForm' action="/recipe/get" method='get'>
+					<form id='searchForm' action="/recipe/get" method='get' style = "max-width: 1000px;">
 						<select name='type'>
 							<option value="R"
 								<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식
@@ -47,7 +47,7 @@
 								이름or종류or난이도</option>
 						</select> <input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}" />'
-							placeholder="예)[음식이름]-김치찌개 [음식종류]-한식" /> <input type='hidden'
+							placeholder="예) [음식이름]-김치찌개 [음식종류]-한식 [난이도]- 초보" /> <input type='hidden'
 							name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
 						<input type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
