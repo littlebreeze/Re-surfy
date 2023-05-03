@@ -34,7 +34,7 @@
 					<br></div>
 					<div class="col-lg-12 themed-container">
 						<div class='pull-right'>
-							<button id="shareBtn" class="btn mypageBtn"><img src="/resources/assets/share.png" width="20" heiht="20"></button>
+							<button id="shareBtn" class="btn mypageBtn"><img src="/resources/assets/share.png" width="20" height="20"></button>
 						</div>
 					</div>
 					<div class="container">
@@ -86,7 +86,7 @@
 				</div>
 				<div class="modal-footer">
 					<button id='addOwnBtn' type="button" class="btn btn-primary">등록</button>					
-					<button id='modalCloseBtn' type="button" class="btn btn-default">닫기</button>
+					<button id='closeBtn' type="button" class="btn btn-default">닫기</button>
 				</div>
 			</div>
 		</div>
@@ -143,9 +143,9 @@
 			modal.modal("show");
 		});
 		
-		var modalCloseBtn = $("#modalCloseBtn");
+		var modalCloseBtn = $("#closeBtn");
 		modalCloseBtn.on("click", function(e){
-				modal.modal("hide");
+			modal.modal("hide");
 		});
 		
 		var modalCCloseBtn = $("#modalCCloseBtn");
@@ -182,6 +182,7 @@
 		   }else{
 			   $(".confirm-title").html("정말 삭제하시겠습니까?")
 			   $(".confirm-body").html("확인을 누르면 삭제됩니다.")
+			   $("#modalConfirmBtn").html("삭제");
 			  confirmModal.modal("show");
 
 			$("#modalConfirmBtn").on("click", function(e){
@@ -200,10 +201,11 @@
 		});	//end click
 		
 		$("#shareBtn").click(function(){
-			$(".confirm-title").html("가진 재료 공유하기");
+			  $(".confirm-title").html("가진 재료 공유하기");
 			  $(".confirm-body").html("<textarea id='ownText' cols='50' rows='5'></textarea>");
+			  $("#modalConfirmBtn").html("복사");
 			  $("#ownText").val("문자열입니다");
-			  var olist = "가진 재료 리스트는 ";
+			  var olist = "가진 재료 리스트는 /";
 			  olist += "<c:forEach items='${list}' var='own'>${own.ingreName}/</c:forEach>";
 			  olist += " 입니다."
 			  $("#ownText").val(olist);
