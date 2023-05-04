@@ -120,7 +120,11 @@
 					%>
 				</ul>
 			</div>
-		</div> <script type="text/javascript">
+	</div>
+
+			
+		</div>
+		 <script type="text/javascript">
 			var btnLogout = document.getElementById('btnLogout');
 			if (btnLogout != null) {
 				btnLogout.onclick = function() {

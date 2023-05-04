@@ -29,11 +29,12 @@
 <!-- Section-->
 <div class="py-3" style = "height : 2250px;">
 	<div class="container px-4 px-lg-5 mt-3">
+		<div class = "page_main" style = "height : 2100px;">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
 				<div class="col-lg-12">
 					<form id='searchForm' action="/recipe/get" method='get'
-						style="max-width: 1000px;">
+						style="max-width: 1200px; height : auto;">
 						<select name='type'>
 							<option value="R"
 								<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식
@@ -49,13 +50,14 @@
 								이름or종류or난이도</option>
 						</select> <input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}" />'
-							placeholder="예) [음식이름]-김치찌개 [음식종류]-한식 [난이도]- 초보" /> <input
+							placeholder="예) [음식이름]-김치찌개 [음식종류]-한식 [난이도]- 초보" 
+							style = "font-size : 20px;"/> <input
 							type='hidden' name='pageNum'
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
 							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
 						<button class="btn btn-primary btn-lg">
-							<img src="/resources/assets/search.png" width="20" height="auto">
+							<img src="/resources/assets/search.png" width="30" height="auto">
 						</button>
 					</form>
 				</div>
@@ -195,8 +197,9 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
+		</div>
 		<!-- start Paging -->
-		<div class='pull-right'>
+		<div class='pull-right' style = " position : flex ; bottom : 0px;">
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li class="paginate_button previous"><a

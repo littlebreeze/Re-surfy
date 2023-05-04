@@ -1,3 +1,10 @@
+.page_main{
+	height : 2100px;
+	width : auto;
+	position : center;
+}
+
+
 .card {
 	width: 350px;
 	border: 0px solid black;
