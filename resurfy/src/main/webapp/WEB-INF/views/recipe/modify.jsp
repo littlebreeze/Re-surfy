@@ -13,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>>UPDATE - <c:out value="${recipe.recipeName }"/></title>
        <link href="/resources/css/styles_detail.css" rel="stylesheet" />
+       <link href="/resources/css/modifyStyles.css" rel="stylesheet" />
 <!--        Bootstrap Core CSS -->
 <!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet"> -->
@@ -37,16 +38,7 @@
 <!-- Custom Fonts -->
 <!-- <link href="/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">-->
-	<style>
-	label{
-		font-size:20px;
-		font-weight:bold;
-	}
-	
-	.form-group{
-		margin-top:30px;
-	}
-	</style>
+
 </head>
 <body>
 <div class="row">
@@ -72,12 +64,41 @@
 					<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 					<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'> --%>
 
-
-						<div class="form-group" style=" width: 80%; margin: 0 auto; text-align:center">
+						<div class="py-1 row">
+    						
+    					<div class="col">
+						<div class="form-group" style=" margin: 0 auto; text-align:center">
 						<img src='<c:out value="${recipe.image }"/>' readonly="readonly" 
-							width=400px height=300px  alt="...">
+							width=410px height=400px  alt="..." style="margin-top:20px;">
 							
 						</div>
+						</div>
+						
+						<div class="col">
+							<div class="form-group">
+						<label>작성자</label> <input class="form-control" name='id'
+							value='<c:out value="${recipe.id}"/>' readonly="readonly" style="margin-top:20px;">
+					</div>
+					
+						<div class="form-group">
+						<label>작성 날짜</label> <input class="form-control" name='recipeDate'
+							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeDate}" />'
+							readonly="readonly" style="margin-top:20px;">
+					
+						</div>
+							<div class="form-group">
+						<label>수정 날짜</label> <input class="form-control"
+							name='recipeUpdateDate'
+							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeUpdateDate}" />'
+							readonly="readonly" style="margin-top:20px;">
+					</div>
+						
+						
+						
+						</div>
+						
+						
+						
 
 						<div class="form-group" style="margin-top:30px;">
 						<!-- <label>레시피 번호</label>--> <input type='hidden' class="form-control" name='bno'
@@ -91,26 +112,8 @@
 
 					<div class="form-group">
 						<label>요리 소개</label>
-						<textarea class="form-control" rows="3" name='recipeDescription' style="margin-top:20px;"><c:out
+						<textarea class="form-control" rows="3" name='recipeDescription' style="margin-top:20px; height:100px;"><c:out
 								value="${recipe.recipeDescription}" /></textarea>
-					</div>
-
-					<div class="form-group">
-						<label>작성자</label> <input class="form-control" name='id'
-							value='<c:out value="${recipe.id}"/>' readonly="readonly" style="margin-top:20px;">
-					</div>
-
-					<div class="form-group">
-						<label>작성 날짜</label> <input class="form-control" name='recipeDate'
-							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeDate}" />'
-							readonly="readonly" style="margin-top:20px;">
-					</div>
-
-					<div class="form-group">
-						<label>수정 날짜</label> <input class="form-control"
-							name='recipeUpdateDate'
-							value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${recipe.recipeUpdateDate}" />'
-							readonly="readonly" style="margin-top:20px;">
 					</div>
 					
 					<div class="form-group">
@@ -171,7 +174,7 @@
 					</div>
 
 					<div class="form-group">
-						<label>재료</label> 
+						<label style="margin-bottom:15px">재료</label> 
 						
 					
 						<c:forEach items="${ingre}" var="ing">
@@ -180,7 +183,7 @@
 						
     						<div class="py-1 row">
     						
-    							<div class="col fw-bolder">
+    							<div class="col">
     							  <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
@@ -190,11 +193,11 @@
     							</div>
 								<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; height: 37px; border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; height: 37px; border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px;  border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -211,7 +214,7 @@
 						
     						<div class="py-1 row">
     						
-    							<div class="col fw-bolder">
+    							<div class="col">
     							  <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
@@ -221,11 +224,11 @@
     							</div>
 							<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; height: 37px; border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; height: 37px; border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -242,7 +245,7 @@
 						
     						<div class="py-1 row">
     						
-    							<div class="col fw-bolder">
+    							<div class="col">
     							  <select class="form-select" id="ingredient_type" control-id="ControlID-11" name="ingreType">
 				                <option>재료별</option>
 				                <option value="주재료" <c:if test ="${ing.ingreType eq '주재료'}">selected="selected"</c:if>> 주재료</option>
@@ -252,11 +255,11 @@
     							</div>
 								<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px; height: 37px; border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; height: 37px; border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px;  border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -327,9 +330,9 @@
 					</div>
 
 					<div style="text-align: center; border-bottom:20px">
-					<button type="submit" data-oper='modifyw' class="btn btn-info" style="width:150px; height:50px; font-size:25px;" >수정</button>
+					<button id="modi_button" type="submit" data-oper='modifyw' class="btn btn-info" style="width:150px; height:50px; font-size:25px;color: #fff; background-color: #007bff; border-color: #007bff;" >수정</button>
 					<button type="submit" data-oper='remove' class="btn btn-danger" style="width:150px; height:50px; font-size:25px;">삭제</button>
-					<button type="submit" data-oper='list' class="btn btn-info" style="width:150px; height:50px; background-color: #e95420; font-size:25px;">목록</button>
+					<!-- <button type="submit" data-oper='list' class="btn btn-info" style="width:150px; height:50px; background-color: #e95420; font-size:25px;">목록</button>-->
 					</div>
 				</form>
 
