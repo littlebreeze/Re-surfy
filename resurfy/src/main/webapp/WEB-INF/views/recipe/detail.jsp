@@ -352,12 +352,12 @@
             <div class="col mb-5">
                 <div class="card h-100"  style="border:none">
                     <!-- Product image-->
-                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="border-radius:30px 30px"/></a>
+                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="height:200px"/></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">${sni.title}</h5>
+                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${sni.title}</h5>
                             <!-- Product price-->
                             
 							<div style="color:blue; font-size:20px"><fmt:formatNumber value="${sni.lprice}" pattern="#,###"/>원</div>
@@ -386,12 +386,12 @@
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." /></a>
+                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." style="height:200px"/></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">${si.title}</h5>
+                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${si.title}</h5>
                             <!-- Product price-->
                             <div style="color:blue; font-size:20px"><fmt:formatNumber value="${si.lprice}" pattern="#,###"/>원</div>
                             

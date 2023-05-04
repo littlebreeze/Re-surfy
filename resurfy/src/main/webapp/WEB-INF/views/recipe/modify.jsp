@@ -193,11 +193,11 @@
     							</div>
 								<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:295px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px;  border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:295px;  border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -224,11 +224,11 @@
     							</div>
 							<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:295px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px; border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:295px; border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -255,11 +255,11 @@
     							</div>
 								<div class="col">
 								<input type="text" name="ingreName" id="recipIngredient_name_1_1"
-				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:285px;  border-radius: 0.375rem" control-id="ControlID-19">
+				                class="addIngredient_name" value = '<c:out value="${ing.ingreName }"/>' style="width:295px;  border-radius: 0.375rem" control-id="ControlID-19">
 								</div>
 								<div class="col">
 								<input type="text" name="ingreMeasure" id="recipIngredient_amount_1_1"
-				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:210px;  border-radius: 0.375rem"  control-id="ControlID-20">
+				                class="addIngredient_amount"  value = '<c:out value="${ing.ingreMeasure }"/>' style="width:295px;  border-radius: 0.375rem"  control-id="ControlID-20">
 								</div>
 								
 							</div>
@@ -418,9 +418,6 @@
 
 	});
 </script>
-
-
-<%@include file="../includes/footer.jsp"%>
 
 </body>
 </html>
