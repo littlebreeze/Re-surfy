@@ -203,9 +203,30 @@ pageEncoding="UTF-8"%>
 
         <div class="regi_btm">
           <button type="submit" onclick="save()" class="btn-lg btn-primary" id="save" control-id="ControlID-44" style="width: 150px; letter-spacing: 8px; font-size:25px;">저장</button>
-          <button type="button" onclick="location.href='/recipe/get'" class="btn-lg btn-warning" id="cancel" control-id="ControlID-49"style="width: 150px; font-size:25px; letter-spacing: 8px;" >취소</button>
+  		  <button type="button" class="btn-lg btn-warning" id="cancel" control-id="ControlID-49" style="width: 150px; font-size:25px; letter-spacing: 8px;" onclick="showModal()">취소</button>
         </div><!--save and cancel-->        
       </div><!--container finish-->
+      
+      <!-- 취소 모달 -->
+      	<div class="modal" tabindex="-1" id="cancelModal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title"></h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true"></span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        <p>레시피 등록을 취소하시겠습니까?</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-primary" onclick="confirmCancel()">확인</button>
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
     </form>
     
     <!-- Bootstrap core JS-->

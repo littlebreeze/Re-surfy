@@ -42,7 +42,13 @@
 <!-- <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">-->
 
 <style>
-
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #ff7851;
+    border-color: #ff7851;
+}
 #listBtn, #modifyBtn, #addReplyBtn, #addCartBtn{
  &:hover {
       animation: jelly 0.5s;
@@ -344,9 +350,9 @@
 			</c:if>
         	<c:forEach items="${shopNotIn}" var="sni">
             <div class="col mb-5">
-                <div class="card h-100">
+                <div class="card h-100"  style="border:none">
                     <!-- Product image-->
-                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." /></a>
+                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="border-radius:30px 30px"/></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -612,7 +618,7 @@ var alertModal = $("#alertModal");
 				bno: bnoValue
 		};
 		replyService.add(reply, function (result){
-			alert(result);
+			//alert(result);
 			modal.find("input").val("");
 			modal.modal("hide");
 			
@@ -676,7 +682,7 @@ var alertModal = $("#alertModal");
     modalModBtn.on("click", function(e) {
 		var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
 		replyService.update(reply, function(result) {
-			alert(result);
+			//alert(result);
 			modal.modal("hide");
 			showList(pageNum);
 		});
@@ -685,7 +691,7 @@ var alertModal = $("#alertModal");
 	modalRemoveBtn.on("click", function(e) {
 		var rno = modal.data("rno");
 		replyService.remove(rno, function(result) {
-			alert(result);
+			//alert(result);
 			modal.modal("hide");
 			showList(pageNum);
 		});

@@ -264,3 +264,15 @@ function setFileInputEventListener(step) {
 
   return true;
 }
+
+
+
+function showModal() {
+    const cancelModal = new bootstrap.Modal(document.getElementById('cancelModal'));
+    cancelModal.show();
+  }
+
+  function confirmCancel() {
+    window.location.href = '/recipe/get';
+  }
+  

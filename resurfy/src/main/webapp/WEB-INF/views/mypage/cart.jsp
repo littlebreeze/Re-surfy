@@ -58,7 +58,7 @@
 					      <div class="col-md-1 themed-grid-col" id="cartVerticalP">
 					      	<input type="checkbox" id="cartVertical" class="form-check-input flex-shrink-0" name="chk" data-cno="${cart.cno}" data-ingre="${cart.iname}" data-price="${cart.price}" data-count="${cart.count}">
 					      </div>
-					      <div class="col-md-7 themed-grid-col"><img src="${cart.pimage}" width=100px style="margin-right:30px;" >${cart.pname}</div>
+					      <div class="col-md-7 themed-grid-col" id="cartVerticalP"><img src="${cart.pimage}" width=100px style="margin-right:30px; margin-left:50px; float:left;" ><div id="cartVertical">${cart.pname}</div></div>
 					      <div class="col-md-2 themed-grid-col" id="calCount"><div id="cartVertical"><fmt:formatNumber value="${cart.price*cart.count}" pattern="#,###"/>원</div></div>
 					      <div class="col-md-2 themed-grid-col" id="cartVerticalP">
 					      	<input class="col-md-2" type="number" id="cartVertical" value="${cart.count}" data-cno="${cart.cno}" data-price="${cart.price}" min="1">
