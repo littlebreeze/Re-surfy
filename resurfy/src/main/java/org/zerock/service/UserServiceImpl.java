@@ -70,8 +70,8 @@ public class UserServiceImpl implements UserService {
 	// 문자인증
 	@Override
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
-		String api_key = "NCSU4KF20BKCLMGU";
-	    String api_secret = "HQAHD1HZTX3WUQK76CMXQIODJ42HEBM0";
+		String api_key = "NCSRK75WPMAXTFVC";
+	    String api_secret = "UFBYSYB4J92EFIBGRASWU5SSEGLVAVBH";
 	    Message coolsms = new Message(api_key, api_secret);
 
 	    // 4 params(to, from, type, text) are mandatory. must be filled

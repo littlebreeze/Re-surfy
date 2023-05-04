@@ -67,12 +67,13 @@ public class UserController {
     	
     	HttpSession session = request.getSession();
     	UserVO lvo = Service.loginCheck(vo);
+    	System.out.println(lvo);
        
     	
     	if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
-            int result = 0;
-            rttr.addFlashAttribute("result", result);
-            return "member/login";
+    		int result = 0;
+    		rttr.addFlashAttribute("result", result);
+			return "/member/login";
             
         }
         session.setAttribute("member", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
@@ -99,10 +100,12 @@ public class UserController {
 			
 			return "fail";	// 중복 아이디가 존재
 			
+		} else if(memberId.contains("admin")){
+			
+			return "admin";
+			
 		} else {
-			
 			return "success";	// 중복 아이디 x
-			
 		}
 		
 	}

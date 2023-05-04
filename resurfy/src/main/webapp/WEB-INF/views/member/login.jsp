@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@page import="org.zerock.domain.UserVO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../resources/css/login.css?after2"/>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../resources/css/login.css?after1"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -27,53 +29,54 @@
       <form action="join.do" id="join_form" method="post">
       <span>
       	<div>
-      	   <h3><label for="j_id">아이디</label></h3>
+      	   <h7><label for="j_id">아이디</label></h7>
 	       <input type="text" id="j_id" placeholder="UserId" name="id"/>
 	       <span class="id_input_re_1">* 사용 가능한 아이디입니다.</span>
 		   <span class="id_input_re_2">* 아이디가 이미 존재합니다.</span>
+		   <span class="id_input_re_3">* 사용불가능한 문자가 포함되어있습니다.</span>
 	       </div>
       </span>
       
       <span>
-      	<h3><label for="j_name">이름</label></h3>
+      	<h7><label for="j_name">이름</label></h7>
         <input type="text" id="j_name" placeholder="UserName" name="userName"  />
        </span>
        <span>
-        <h3><label for="j_pw" >비밀번호</label></h3>
+        <h7><label for="j_pw" >비밀번호</label></h7>
         <input type="password" id="j_pw" name="password" placeholder="Password" />
         </span>
         <span>
-        <h3><label for="j_nick">닉네임</label></h3>
+        <h7><label for="j_nick">닉네임</label></h7>
         <input type="text"id="j_nick" name="nickname" placeholder="UserNickname" />
         </span>
         <div class="con2">
         <div>
- 	        <h3><label for="j_phone" >휴대폰번호</label></h3>
-	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:210px;" required/>
+ 	        <h7><label for="j_phone" >휴대폰번호</label></h7>
+	        <input type="tel" id="j_phone" name="phone" placeholder="Phone Number" style="width:230px;" required/>
 	        </div>
 	        <button id="phoneChk" type="button" style="float:left; width:100px;">인증번호 전송</button>
 	        
         </div>
         <div class="con3">
         <div>
- 	        <h3><label for="j_num">인증번호</label></h3>
-        	<input id="j_num" type="text" style="width:210px;" disabled required/>
+ 	        <h7><label for="j_num">인증번호</label></h7>
+        	<input id="j_num" type="text" style="width:230px;" disabled required/>
         	<span class="j_input_re_3">* 인증완료</span>
 			<span class="j_input_re_4">* 인증실패</span>
         </div>
 			<button id="phoneChk2" type="button" style="float:left; width:100px;">인증</button>
         </div> 
         <div class="agree">
-	        <p style="display: flex;"><input id="agree1" type="checkbox" style="width:15px;" required> 
-	        	<a href="/resources/agree1.html" onClick="window.open(this.href, '','width=400, height=430'); return false;" >이용약관 동의</a> 
+	        <p style="display: flex; justify-content: space-between; width:135px;"><input id="agree1" type="checkbox" style="width:15px;" required> 
+	        	<a onClick="openPopup()">이용약관 동의</a> 
 	        	<span class="fil">(필수)</span>
 	        </p>
-	        <p style="display: flex;"><input id="agree2" type="checkbox" style="width:15px;" required> 
-		        <a href="/resources/agree2.html" onClick="window.open(this.href, '','width=400, height=430'); return false;">개인정보 수집 및 이용 동의 </a>
+	       <p style="display: flex; justify-content: space-between; width:210px;"><input id="agree2" type="checkbox" style="width:15px;" required> 
+		        <a onClick="openPopup2()">개인정보 수집 및 이용 동의 </a>
 		        <span class="fil">(필수)</span>
 		    </p>
         </div>
-        <input class="btnJoin" type="button" value="Sing Up" onclick="formCheck(this.form)" />
+        <input class="btnJoin" type="button" value="Sing Up" />
       </form>
       <div class="separator">
       	<a href="#login" id="sign-in" onclick="toggle()">Sign In</a>
@@ -83,11 +86,11 @@
       <h1>LOGIN</h1>
       <form id="sign_form" method="post">
       <span>
-      	<h3><label for="userid">아이디</label></h3>
+      	<h7><label for="userid">아이디</label></h7>
         <input type="text" id="userid" name="id" placeholder="UserId" />
       </span>
       <span>
-        <h3><label for="passwd" >비밀번호</label></h3>  
+        <h7><label for="passwd" >비밀번호</label></h7>  
         <input type="password" id="passwd" name="password" placeholder="Password" />   
       </span>
         <input type="submit" id="btnLogin" value="Login" />
@@ -99,8 +102,27 @@
     </div>
   </div>
 </section>
-		
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center; display:block">
+        <h5 class="modal-title" id="staticBackdropLabel" >Welcome Re-Surfy</h5>
+      </div>
+      <div class="modal-body" id="modal-body" style="text-align:center;">
+         회원가입이 완료되었습니다.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style= "background-color:#e95420; border:none"; data-bs-dismiss="modal" onclick="clickDel()" >확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+
 		function toggle() {
 			  section = document.querySelector("section");
 			  section.classList.toggle("active");
@@ -125,7 +147,6 @@
 			//폼 내부의 데이터를 전송할 주소
 			$("#sign_form").attr("action", "loginCheck.do");
 			$("#sign_form").submit();
-			
 			 });
 			});
 	 
@@ -142,6 +163,7 @@
 				var phoneChk2=$("#phoneChk2").val();
 				
 				if(userId == ""){
+					  $('#staticBackdrop').modal('hide');
 					  alert("아이디를 입력하세요");
 					  $("#j_id").focus(); //입력포커스 이동
 					  return; //함수 종료
@@ -188,16 +210,20 @@
 		    	}
 				if(!$("#agree2").prop("checked")){
 					alert("개인정보 제공 및 이용 동의를 완료해주세요");
-					
+					return;
+		    	}else{
+		    		document.getElementById('modal-body').innerHTML=userName+"("+userNick+")님 회원가입이 완료되었습니다!";
+					$("#staticBackdrop").modal('show');
 					return;
 		    	}
 				
-				$("#join_form").attr("action", "join.do");
-				$("#join_form").submit();
-				alert( userNick+"("+userId+") 님 \n회원가입이 완료되었습니다.");
-				
 			});
 		});
+		
+		function clickDel(){
+			$("#join_form").attr("action", "join.do");
+			$("#join_form").submit();	
+		}
 		
 		//아이디 중복검사
 		$('#j_id').on("propertychange change keyup paste input", function(){
@@ -211,12 +237,18 @@
 				url  : "/member/memberIdChk",
 				data : data,
 				success : function(result){
-					if(result != 'fail'){
+					if(result == 'success'){
 						$('.id_input_re_1').css("display","inline-block");
-						$('.id_input_re_2').css("display", "none");				
-					} else {
+						$('.id_input_re_2').css("display", "none");
+						$('.id_input_re_3').css("display", "none");	
+					} else if(result == 'fail'){
 						$('.id_input_re_2').css("display","inline-block");
-						$('.id_input_re_1').css("display", "none");				
+						$('.id_input_re_1').css("display", "none");
+						$('.id_input_re_3').css("display", "none");	
+					} else if(result == 'admin'){
+						$('.id_input_re_2').css("display","none");
+						$('.id_input_re_1').css("display", "none");
+						$('.id_input_re_3').css("display", "inline-block");	
 					}
 				}
 			}); // ajax 종료	
@@ -280,6 +312,32 @@
 			}
 		});
 		
+		function openPopup() {
+			 
+		    var _width = '650';
+		    var _height = '380';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
+		    window.open('/resources/agree1.html', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+		 
+		}
+		function openPopup2() {
+			 
+		    var _width = '650';
+		    var _height = '300';
+		 
+		    // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
+		    var _left = Math.ceil(( window.screen.width - _width )/2);
+		    var _top = Math.ceil(( window.screen.height - _height )/2); 
+		 
+		    window.open('/resources/agree2.html', 'popup-test', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
+		 
+		}
+		
 	</script>
+	
 </body>
 </html>
