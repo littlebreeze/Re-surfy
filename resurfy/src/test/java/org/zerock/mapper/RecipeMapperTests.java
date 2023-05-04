@@ -194,8 +194,8 @@ public class RecipeMapperTests {
 	
 	
 	@Test
-	public void testSortReplyCnt() {
-		log.info("sorting...."+ mapper.getRecipeOrderByReplycnt());
+	public void testSortReplyCnt(Criteria cri) {
+		log.info("sorting...."+ mapper.getRecipeOrderByReplycnt(cri));
 		
 	}
 }

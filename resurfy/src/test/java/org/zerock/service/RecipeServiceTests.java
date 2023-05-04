@@ -98,8 +98,8 @@ public class RecipeServiceTests {
 	}
 
 	@Test
-	public void testSortReplyCnt() {
-		log.info(service.sortByReplyCnt());
+	public void testSortReplyCnt(Criteria cri) {
+		log.info(service.sortByReplyCnt(cri));
 	}
 	
 
