@@ -612,7 +612,10 @@ var alertModal = $("#alertModal");
 				bno: bnoValue
 		};
 		replyService.add(reply, function (result){
-			alert(result);
+			//alert(result);
+			$(".modal-title").html("댓글 등록 알림")
+   		    $(".modal-body").html("댓글이 등록되었습니다!")
+   		 	alertModal.modal("show");
 			modal.find("input").val("");
 			modal.modal("hide");
 			
