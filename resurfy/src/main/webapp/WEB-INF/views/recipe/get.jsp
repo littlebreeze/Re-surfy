@@ -66,12 +66,12 @@
 				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=visitcnt">#조회 수</a>
+					<a href="?orderBy=visitcnt" style="text-decoration:none;">#조회 수</a>
 				</button>
 				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=replycnt">#댓글 수</a>
+					<a href="?orderBy=replycnt" style="text-decoration:none;">#댓글 수</a>
 				</button>
 			</div>
 			</ul>
