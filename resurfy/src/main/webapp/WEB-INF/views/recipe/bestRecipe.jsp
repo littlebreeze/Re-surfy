@@ -23,8 +23,8 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <!-- Header-->
-<div class="slide_div_wrap" >
-				<div class="slide_div" >
+<div class="slide_div_wrap" style = " background-color: #fff;">
+				<div class="slide_div" style="background-color: #F0DDD8;">
 					<div>
 						<a href = "https://github.com/barcataeeon/Re-surfy.git">
 							<img src="/resources/assets/main/slick_first.png"

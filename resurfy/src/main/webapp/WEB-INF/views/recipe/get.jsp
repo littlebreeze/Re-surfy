@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../recipe/bestRecipe.jsp"%>
 <link href="/resources/css/get.css" rel="stylesheet">
+<link href="/resources/css/footer.css" rel="stylesheet">
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <br>
 <c:if test="${pageMaker.cri.type == 'O' }">
@@ -31,7 +32,8 @@
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
 				<div class="col-lg-12">
-					<form id='searchForm' action="/recipe/get" method='get' style = "max-width: 1000px;">
+					<form id='searchForm' action="/recipe/get" method='get'
+						style="max-width: 1000px;">
 						<select name='type'>
 							<option value="R"
 								<c:out value="${pageMaker.cri.type eq 'R'?'selected':''}"/>>음식
@@ -47,9 +49,10 @@
 								이름or종류or난이도</option>
 						</select> <input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}" />'
-							placeholder="예) [음식이름]-김치찌개 [음식종류]-한식 [난이도]- 초보" /> <input type='hidden'
-							name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' />
-						<input type='hidden' name='amount'
+							placeholder="예) [음식이름]-김치찌개 [음식종류]-한식 [난이도]- 초보" /> <input
+							type='hidden' name='pageNum'
+							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
+							type='hidden' name='amount'
 							value='<c:out value="${pageMaker.cri.amount}"/>' />
 						<button class="btn btn-primary btn-lg">
 							<img src="/resources/assets/search.png" width="20" height="auto">
@@ -59,16 +62,14 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" class="btn btn-light" 
-				data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="내림차순" style="color: #fff;">
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-original-title="내림차순"
+					style="color: #fff;">
 					<a href="?orderBy=visitcnt">#조회 수</a>
 				</button>
-				<button type="button" class="btn btn-light" 
-				data-bs-toggle="tooltip"
-						data-bs-placement="bottom"
-						data-bs-original-title="내림차순" style="color: #fff;">
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-original-title="내림차순"
+					style="color: #fff;">
 					<a href="?orderBy=replycnt">#댓글 수</a>
 				</button>
 			</div>
@@ -81,18 +82,18 @@
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
-						data-bs-placement="top"
-						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px; height: 50px;">
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
 								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px;">
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
@@ -120,18 +121,18 @@
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
-						data-bs-placement="top"
-						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px; height: 50px;">
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
 								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px;">
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
@@ -159,18 +160,18 @@
 						<div class="card" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
-						data-bs-placement="top"
-						data-bs-original-title = "조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}" >
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
 									<img class="card-img-top" src="${recipe.image}" alt="..." />
 								</div>
 							</a>
-							<div class="card-head" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px; height: 50px;">
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
 								<b style="font-size: 25px;"> <c:out
 										value="${recipe.recipeName}" /></b>
 							</div>
-							<div class="card-main" style="border-bottom: 1px solid #F0DDD8;
-							margin-top : 10px;">
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
 								<div>
 									난이도 :
 									<c:out value="${recipe.difficulty}" />
@@ -194,7 +195,6 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
-
 		<!-- start Paging -->
 		<div class='pull-right'>
 			<ul class="pagination">
@@ -228,9 +228,7 @@
 			<input type='hidden' name='chk' value='<c:out value="${chk}"/>'>
 		</c:forEach>
 	</form>
-
 </div>
-
 
 <script type="text/javascript">
 	$(document)
@@ -300,16 +298,14 @@
 					});
 </script>
 
-	<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-		<script>
-			// 툴팁 초기화
-			var tooltipTriggerList = [].slice.call(document
-					.querySelectorAll('[data-bs-toggle="tooltip"]'))
-			var tooltipList = tooltipTriggerList
-					.map(function(tooltipTriggerEl) {
-						return new bootstrap.Tooltip(tooltipTriggerEl)
-					})
-		</script>
-
-<%@include file="../includes/footer.jsp"%>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	// 툴팁 초기화
+	var tooltipTriggerList = [].slice.call(document
+			.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+</script>
+<%@include file = "../includes/footer.jsp" %>
