@@ -352,12 +352,12 @@
             <div class="col mb-5">
                 <div class="card h-100"  style="border:none">
                     <!-- Product image-->
-                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="border-radius:30px 30px"/></a>
+                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="height:200px"/></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">${sni.title}</h5>
+                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${sni.title}</h5>
                             <!-- Product price-->
                             
 							<div style="color:blue; font-size:20px"><fmt:formatNumber value="${sni.lprice}" pattern="#,###"/>원</div>
@@ -386,12 +386,12 @@
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." /></a>
+                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." style="height:200px"/></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder">${si.title}</h5>
+                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${si.title}</h5>
                             <!-- Product price-->
                             <div style="color:blue; font-size:20px"><fmt:formatNumber value="${si.lprice}" pattern="#,###"/>원</div>
                             
@@ -413,13 +413,13 @@
         
         
         <!-- Footer-->
-        <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
-            <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br>
+      <!--   <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
+            <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br> -->
            <!--  저작권 표기 문제 고민
-            <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">Github 아이콘  제작자: Pixel perfect - Flaticon</a> -->
+           <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">Github 아이콘  제작자: Pixel perfect - Flaticon</a> 
             <p class="m-0 text-center text-white"><img src ="https://cdn-icons-png.flaticon.com/512/733/733609.png" width=30px height=30px/>&nbsp Github Address : <a href="https://github.com/barcataeeon/Re-surfy" class="m-0 text-center text-white"> https://github.com/barcataeeon/Re-surfy</a></p><br>
              </div>
-        </footer>
+        </footer>-->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -856,3 +856,4 @@ console.log(priceArr);
 	
 </body>
 </html>
+<%@include file="../includes/footer.jsp"%>

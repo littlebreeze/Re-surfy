@@ -5,8 +5,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="/resources/js/scripts.js"></script> 
-        <footer class="p-3 mb-2 text-white" 
-        style= "background-color: #e95420;">
+
+        <footer class="p-3 mb-2 text-white" style="background-color: #ff7851">
             <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p>
             <br>
             <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘"></a>
