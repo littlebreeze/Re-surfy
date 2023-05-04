@@ -147,7 +147,7 @@ ul {
 }
 
 .step img {
-    border: 1px solid #e1e1e1;
+    border: 0px solid #e1e1e1;
     display: inline-block;
     vertical-align: middle;
 }
@@ -285,7 +285,3 @@ $text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
     --bs-btn-disabled-border-color: #e95420;
 }
 
-.modal{
-    display:none;
-    position: absolute;
-}
