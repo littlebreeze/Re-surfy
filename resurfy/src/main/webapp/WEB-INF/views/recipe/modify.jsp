@@ -358,7 +358,7 @@
 				</div>
 				<div class="modal-footer">
 					<button id='modalConfirmBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>					
-					<button id='modalCloseBtn' type="button" class="btn btn-default" style="border:1px solid lightgray">취소</button>
+					<button id='modalCancelBtn' type="button" class="btn btn-default" style="border:1px solid lightgray">취소</button>
 				</div>
 			</div>
 		</div>
@@ -370,8 +370,8 @@
 		var alertModal = $("#alertModal");
 
 			
-			var modalCloseBtn = $("#modalCloseBtn");
-			modalCloseBtn.on("click", function(e){
+			var modalCancelBtn = $("#modalCancelBtn");
+			modalCancelBtn.on("click", function(e){
 				confirmModal.modal("hide");
 			});
 		var formObj = $("form");
