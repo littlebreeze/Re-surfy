@@ -42,13 +42,7 @@
 <!-- <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">-->
 
 <style>
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-    z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: #ff7851;
-    border-color: #ff7851;
-}
+
 #listBtn, #modifyBtn, #addReplyBtn, #addCartBtn{
  &:hover {
       animation: jelly 0.5s;
@@ -350,14 +344,14 @@
 			</c:if>
         	<c:forEach items="${shopNotIn}" var="sni">
             <div class="col mb-5">
-                <div class="card h-100"  style="border:none">
+                <div class="card h-100">
                     <!-- Product image-->
-                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." style="height:200px"/></a>
+                    <a href="${sni.link}"><img class="card-img-top" src="${sni.image}" alt="..." /></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${sni.title}</h5>
+                            <h5 class="fw-bolder">${sni.title}</h5>
                             <!-- Product price-->
                             
 							<div style="color:blue; font-size:20px"><fmt:formatNumber value="${sni.lprice}" pattern="#,###"/>원</div>
@@ -386,12 +380,12 @@
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Product image-->
-                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." style="height:200px"/></a>
+                    <a href="${si.link}"><img class="card-img-top" src="${si.image}" alt="..." /></a>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder" style="height:130px; font-size:20px">${si.title}</h5>
+                            <h5 class="fw-bolder">${si.title}</h5>
                             <!-- Product price-->
                             <div style="color:blue; font-size:20px"><fmt:formatNumber value="${si.lprice}" pattern="#,###"/>원</div>
                             
@@ -413,13 +407,13 @@
         
         
         <!-- Footer-->
-      <!--   <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
-            <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br> -->
+        <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
+            <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br>
            <!--  저작권 표기 문제 고민
-           <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">Github 아이콘  제작자: Pixel perfect - Flaticon</a> 
+            <a href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">Github 아이콘  제작자: Pixel perfect - Flaticon</a> -->
             <p class="m-0 text-center text-white"><img src ="https://cdn-icons-png.flaticon.com/512/733/733609.png" width=30px height=30px/>&nbsp Github Address : <a href="https://github.com/barcataeeon/Re-surfy" class="m-0 text-center text-white"> https://github.com/barcataeeon/Re-surfy</a></p><br>
              </div>
-        </footer>-->
+        </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -466,9 +460,9 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="reModalLabel">댓글창</h4>
+					<h4 class="remodal-title" id="reModalLabel">댓글창</h4>
 				</div>
-				<div class="modal-body">
+				<div class="remodal-body">
 					<div class="form-group">
 						<label>댓글</label>
 						<input class="form-control" name='reply' value='New Reply!!!!'>
@@ -619,6 +613,9 @@ var alertModal = $("#alertModal");
 		};
 		replyService.add(reply, function (result){
 			//alert(result);
+			$(".modal-title").html("댓글 등록 알림")
+   		    $(".modal-body").html("댓글이 등록되었습니다!")
+   		 	alertModal.modal("show");
 			modal.find("input").val("");
 			modal.modal("hide");
 			
@@ -683,6 +680,9 @@ var alertModal = $("#alertModal");
 		var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
 		replyService.update(reply, function(result) {
 			//alert(result);
+			$(".modal-title").html("댓글 수정 알림")
+   		    $(".modal-body").html("댓글이 수정되었습니다!")
+   		 	alertModal.modal("show");
 			modal.modal("hide");
 			showList(pageNum);
 		});
@@ -692,6 +692,9 @@ var alertModal = $("#alertModal");
 		var rno = modal.data("rno");
 		replyService.remove(rno, function(result) {
 			//alert(result);
+			$(".modal-title").html("댓글 삭제 알림")
+   		    $(".modal-body").html("댓글이 삭제되었습니다!")
+   		 	alertModal.modal("show");
 			modal.modal("hide");
 			showList(pageNum);
 		});
@@ -856,4 +859,3 @@ console.log(priceArr);
 	
 </body>
 </html>
-<%@include file="../includes/footer.jsp"%>
