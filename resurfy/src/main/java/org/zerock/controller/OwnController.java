@@ -109,13 +109,18 @@ public class OwnController {
 		String userID = "";
 		if(sessionUser!=null)
 			userID=sessionUser.getId();
-
-		model.addAttribute("relist", rService.getUserList(cri, userID));
+		if(userID.contains("admin"))
+			model.addAttribute("relist", rService.getList(cri));
+		else
+			model.addAttribute("relist", rService.getUserList(cri, userID));
 		model.addAttribute("totalRecipe", service.getTotalRecipe(userID));
 		model.addAttribute("totalReply", service.getTotalReply(userID));
 
-		int total = rService.getUserTotal(cri, userID);
-
+		int total=0;
+		if(userID.contains("admin"))
+			total = rService.getTotal(cri);
+		else
+			total = rService.getUserTotal(cri, userID);
 		log.info("total : " + total);
 
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
