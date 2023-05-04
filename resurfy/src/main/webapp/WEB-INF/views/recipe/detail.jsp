@@ -793,6 +793,12 @@ $(document).ready(function() {
 	});
 	
 $("#addCartBtn").on("click", function(e){
+	if(('<c:out value="${member.id}"/>')=='') {
+		  $(".modal-title").html("로그인이 필요합니다")
+		  $(".modal-body").html(" 로그인하고 장바구니에 담아보세요!")
+		  $("#modalAlertBtn").html("닫기");
+		  alertModal.modal("show");
+	  }else{
 var priceArr = new Array();
 var titleArr = new Array();
 var ingreArr = new Array();
@@ -853,6 +859,7 @@ console.log(priceArr);
 
  
  } //else end
+	  }
 });
 });
 </script>
