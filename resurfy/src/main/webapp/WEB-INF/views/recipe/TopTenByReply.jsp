@@ -49,13 +49,13 @@
 	<div class="TopTen_recipe" style="display: flex; justify-content: center; align-items: center;">
 		<table>
 			<thead style="height: 50px; font-size : 20px;
-			border-bottom : 1px solid #ff7851; background-color : #F0DDD8;
-			color : #fff;">
+			border-bottom : 1px solid #fff; background-color : #F0DDD8;
+			color : #FF7851;">
 				<tr>
 					<th scope="col">순위</th>
 					<th scope="col">레시피</th>
 					<th scope="col">레시피 설명</th>
-					<th scope="col">레시피 댓글 수</th>
+					<th scope="col">댓글 수</th>
 				</tr>
 			</thead>
 			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
@@ -63,23 +63,26 @@
 					<tbody style="height: auto; font-size : 20px;
 					border-bottom : 1px solid #ff7851; background-color : #fff;">
 						<tr >
-							<th scope="row">${status.index + 1}</th>
+							<th scope="row" style = "font-size: 50px;
+							padding :0 10px;">${status.index + 1}</th>
 							<td><a
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 									<img src="${bestRecipe.image}" 
 									style = "width : 300px; height: 300px;"/> 
-								<div>
+								<div style ="text-decoration : none;">
 									<b> <c:out value="${bestRecipe.recipeName}" />
 									</b>
 								</div>
 							</a></td>
 								
-							<td><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td style="padding :0 10px; width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.replycnt}" /></td>
 						</tr>
 					</tbody>
 				</c:if>
 			</c:forEach>
 		</table>
+		</div>
+		<%@include file = "../includes/footer.jsp" %>
 </body>
 </html>

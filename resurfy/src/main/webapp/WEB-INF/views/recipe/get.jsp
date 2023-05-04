@@ -27,7 +27,7 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-3">
+<div class="py-3" style = "height : 2250px;">
 	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
@@ -64,12 +64,12 @@
 			<div>
 				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
-					style="color: #fff;">
+					style="color: #fff; text-decoration:none;">
 					<a href="?orderBy=visitcnt">#조회 수</a>
 				</button>
 				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
-					style="color: #fff;">
+					style="color: #fff; text-decoration:none;">
 					<a href="?orderBy=replycnt">#댓글 수</a>
 				</button>
 			</div>
