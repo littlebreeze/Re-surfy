@@ -106,7 +106,7 @@
   </div>
 </section>
 
-<!-- Modal -->
+<!-- 회원가입 완료 Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -118,6 +118,23 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" style= "background-color:#e95420; border:none"; data-bs-dismiss="modal" onclick="clickDel()" >확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 문자인증 Modal -->
+<div class="modal msg" id="msgBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align:center; display:block">
+        <h5 class="modal-title" id="staticBackdropLabel" >전송완료</h5>
+      </div>
+      <div class="modal-body" id="modal-body" style="text-align:center;">
+         인증번호 전송이 완료되었습니다! 문자를 확인해주세요.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style= "background-color:#e95420; border:none"; data-bs-dismiss="modal" >확인</button>
       </div>
     </div>
   </div>
@@ -271,7 +288,6 @@
 
 				  return; //함수 종료
 			}
-			alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
 			$.ajax({
 		        type:"GET",
 		        url:"phoneCheck?phone=" + phone,
@@ -280,7 +296,7 @@
 		        	if(data == "fail"){
 		        		alert("휴대폰 번호가 올바르지 않습니다.")
 		        	}else{	        		
-		        		alert("전송완료");
+		    			$("#msgBackdrop").modal('show');
 		        		$("#j_num").attr("disabled",false);
 		        		$("#j_phone").attr("readonly",true);
 		        		code2 = data;
