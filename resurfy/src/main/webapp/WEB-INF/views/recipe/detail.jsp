@@ -58,6 +58,53 @@
    background-color:#ff7851;
   }
 
+
+</style>
+<style>
+	@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+			.dropdown{
+			  position : relative;
+			  display : inline-block;
+			}
+			
+			
+			.shareBtn{
+			  border : 1px solid rgb(37, 37, 37);
+			  border-radius : 4px;
+			  background-color: #f5f5f5;
+			  font-weight: 400;
+			  color : rgb(37, 37, 37);
+			  padding : 12px;
+			  width :50px;
+			  text-align: left;
+			  cursor : pointer;
+			  font-size : 12px;
+			}
+			.dropdown-content{
+			  display : none;
+			  position : absolute;
+			  z-index : 1; /*다른 요소들보다 앞에 배치*/
+			  font-weight: 400;
+			  background-color: #f9f9f9;
+			  min-width : 150px;
+			}
+			
+			.dropdown-content a{
+			  display : block;
+			  text-decoration : none;
+			  color : rgb(37, 37, 37);
+			  font-size: 12px;
+			  padding : 12px 20px;
+			}
+			
+			.dropdown-content a:hover{
+			  background-color : #ececec
+			}
+			
+			.dropdown:hover .dropdown-content {
+			  display: block;
+			}
 </style>
 </head>
 <body>
@@ -99,9 +146,21 @@
               <div class="row">
                  <div class="fs-5 mb-5">
                        <br>
-                       <div class="sharebtn" style="width: 88%;text-align:right">
+                       <!-- <div class="sharebtn" style="width: 88%;text-align:right">
                             <button id="kakaoBtn" class="kakaoBtn" onclick="js:kakaoShare()" style="width: 40px; height:40px; border:1px solid lightgray; border-radius:10px 10px; background-color:white"><img src="/resources/assets/share.png" width="20" height="20"></button>
-                            </div>  
+                            </div>  -->
+                     	<div class='sharebtn' style="width: 88%;text-align:right">
+  						<div class="dropdown">
+					      <button id="shareBtn" class="shareBtn" style="border:1px solid lightgray; border-radius:10px 10px; background-color:white"> 
+					        
+					        <img src="/resources/assets/share.png" width="20" height="20">
+					      </button>
+					      <div class="dropdown-content" style="text-align:left">
+					        <a id="copyLink">링크 복사하기</a>
+					        <a id="kakaoBtn" onclick="js:kakaoShare()">카카오톡 공유하기</a>
+					      </div>
+					    </div>
+  						</div>
                             <div class="form-group">
                             <h1 class="p-2 fw-bolder"> <c:out value="${recipe.recipeName }"/> </h1>
 
@@ -368,7 +427,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                       <div class="text-center"><input style='zoom:2.5' type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/></div>
+                       <div class="text-center"><input style='zoom:2.5; accent-color: #ff7851;' type='checkbox' name="chk" data-price="${sni.lprice}" data-title="${sni.title}" data-ingre="${sni.ingredient}" data-image="${sni.image}" data-pid="${sni.productId}"/></div>
                     </div>
                 </div>
             </div>
@@ -402,7 +461,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><input type='checkbox' style='zoom:2.5' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" data-pid="${si.productId}" /></div>
+                        <div class="text-center"><input type='checkbox' style='zoom:2.5; accent-color: #ff7851' name="chk" data-price="${si.lprice}" data-title="${si.title}" data-ingre="${si.ingredient}" data-image="${si.image}" data-pid="${si.productId}" /></div>
                     </div>
                 </div>
             </div>
@@ -452,6 +511,40 @@
                <h3 class="modal-title" id="alertModalLabel">선택된 제품이 없습니다!</h3>
             </div>
             <div class="modal-body">
+               다시 확인해주세요
+            </div>
+            <div class="modal-footer">
+               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   <!-- Modal 장바구니에 아무것도 안담겼을 때 -->
+   <div class="modal fade" id="linkalertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+      <div class="modal-dialog" id="addModalDialog">
+         <div class="modal-content" id="addModalContent">
+            <div class="modal-header">
+               <h3 class="linkmodal-title" id="alertModalLabel">선택된 제품이 없습니다!</h3>
+            </div>
+            <div class="linkmodal-body">
+               다시 확인해주세요
+            </div>
+            <div class="modal-footer">
+               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   <!-- Modal 링크 복사 -->
+   <div class="modal fade" id="nocalertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+      <div class="modal-dialog" id="addModalDialog">
+         <div class="modal-content" id="addModalContent">
+            <div class="modal-header">
+               <h3 class="nocmodal-title" id="alertModalLabel">선택된 제품이 없습니다!</h3>
+            </div>
+            <div class="nocmodal-body">
                다시 확인해주세요
             </div>
             <div class="modal-footer">
@@ -788,6 +881,7 @@ var alertModal = $("#alertModal");
 $(document).ready(function() {
 
    var alertModal = $("#alertModal");
+   var nocalertModal = $("#nocalertModal");
    var confirmModal = $("#confirmModal");
    
    var modalCloseBtn = $("#modalCloseBtn");
@@ -798,6 +892,10 @@ $(document).ready(function() {
    $("#modalAlertBtn").on("click", function(e){
       alertModal.modal("hide");
    });
+   
+   $("#nocalertModal").on("click", function(e){
+	   nocalertModal.modal("hide");
+   });	
    
 $("#addCartBtn").on("click", function(e){
    if(('<c:out value="${member.id}"/>')=='') {
@@ -828,7 +926,10 @@ console.log(priceArr);
  
  if(priceArr.length == 0){
 /*  alert("선택된 제품이 없습니다."); */
-    alertModal.modal("show");
+    
+    $(".nocmodal-title").html("장바구니 알림")
+    $(".nocmodal-body").html("선택된 제품이 없습니다!")
+    nocalertModal.modal("show");
  
  }else{
  /* var confirm_val = confirm("장바구니에 추가하시겠습니까?"); */
@@ -869,6 +970,40 @@ console.log(priceArr);
      }
 });
 });
+</script>
+
+<script>
+$(document).ready(function() {
+	 var linkalertModal = $("#linkalertModal");
+	   
+	   var modalCloseBtn = $("#modalCloseBtn");
+	   modalCloseBtn.on("click", function(e){
+	      confirmModal.modal("hide");
+	   });
+	   
+	   $("#linkalertModal").on("click", function(e){
+		   linkalertModal.modal("hide");
+	   });	
+
+	   var thisUrl = document.URL;
+	   
+	$("#copyLink").click(function(){
+		var url = '';
+		var textarea = document.createElement("textarea");
+		document.body.appendChild(textarea);
+		url = window.document.location.href;
+		textarea.value = url;
+		textarea.select();
+		document.execCommand("copy");
+		document.body.removeChild(textarea);
+		//alert("레시피 링크가 복사되었습니다.")
+		
+		$(".linkmodal-title").html("레시피 공유하기")
+	     $(".linkmodal-body").html("링크가 복사되었습니다!")
+	     linkalertModal.modal("show");
+	});
+});
+
 </script>
 
  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
