@@ -255,7 +255,26 @@ h7 {
 }
 
 .login_warn{
-    margin-top: 30px;
+    font-size:13px ;
     text-align: center;
     color : red;
+}
+
+.modal{
+	text-align: center;
+ }
+
+@media screen and (min-width: 768px) { 
+        .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+        }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }

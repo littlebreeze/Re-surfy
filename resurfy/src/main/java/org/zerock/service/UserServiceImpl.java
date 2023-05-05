@@ -19,39 +19,10 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @AllArgsConstructor 
 public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
-	@Override
-	public void register(UserVO vo) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public UserVO get(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean modify(Criteria cri) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<UserVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTotal(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	@Override
 	public void join(UserVO userVO) {
-		log.info("join....." + userVO);
+//		log.info("join....." + userVO);
 		mapper.insert(userVO);
 		
 	}

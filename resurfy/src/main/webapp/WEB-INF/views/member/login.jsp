@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="org.zerock.domain.UserVO"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../resources/css/login.css?after1"/>
+<link rel="stylesheet" href="../resources/css/login.css?"/>
 <title>Re-Surfy</title>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -93,6 +93,9 @@
         <h7><label for="passwd" >비밀번호</label></h7>  
         <input type="password" id="passwd" name="password" placeholder="Password" />   
       </span>
+		<c:if test="${result eq 0}">
+		    <div class = "login_warn">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
+		</c:if>
         <input type="submit" id="btnLogin" value="Login" />
       </form>
       <!-- separator -->
@@ -145,7 +148,7 @@
 			  return;
 			}
 			//폼 내부의 데이터를 전송할 주소
-			$("#sign_form").attr("action", "loginCheck.do");
+			$("#sign_form").attr("action", "login.do");
 			$("#sign_form").submit();
 			 });
 			});
