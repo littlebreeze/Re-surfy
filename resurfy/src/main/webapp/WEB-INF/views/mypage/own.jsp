@@ -10,6 +10,53 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <link href="../resources/css/mypageGrid.css" rel="stylesheet">
+        
+        <style>
+        	@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+			.dropdown{
+			  position : relative;
+			  display : inline-block;
+			}
+			
+			
+			.shareBtn{
+			  border : 1px solid rgb(37, 37, 37);
+			  border-radius : 4px;
+			  background-color: #f5f5f5;
+			  font-weight: 400;
+			  color : rgb(37, 37, 37);
+			  padding : 12px;
+			  width :200px;
+			  text-align: left;
+			  cursor : pointer;
+			  font-size : 12px;
+			}
+			.dropdown-content{
+			  display : none;
+			  position : absolute;
+			  z-index : 1; /*다른 요소들보다 앞에 배치*/
+			  font-weight: 400;
+			  background-color: #f9f9f9;
+			  min-width : 150px;
+			}
+			
+			.dropdown-content a{
+			  display : block;
+			  text-decoration : none;
+			  color : rgb(37, 37, 37);
+			  font-size: 12px;
+			  padding : 12px 20px;
+			}
+			
+			.dropdown-content a:hover{
+			  background-color : #ececec
+			}
+			
+			.dropdown:hover .dropdown-content {
+			  display: block;
+			}
+        </style>
     </head>
     <body>
         <div class="d-flex" id="wrapper">
@@ -33,9 +80,22 @@
 						</h2>
 					<br></div>
 					<div class="col-lg-12 themed-container">
-						<div class='pull-right'>
+						<!-- <div class='pull-right'>
 							<button id="shareBtn" class="btn mypageBtn"><img src="/resources/assets/share.png" width="20" height="20"></button>
-						</div>
+						</div>-->
+						
+						<div class='pull-right'>
+  						<div class="dropdown">
+					      <button id="shareBtn" class="btn mypageBtn"> 
+					        
+					        <img src="/resources/assets/share.png" width="20" height="20">
+					      </button>
+					      <div class="dropdown-content">
+					        <a id="copyIngre">가진 재료 복사</a>
+					        <a id="shareKakao" onclick="js:kakaoShare()">카카오톡 공유하기</a>
+					      </div>
+					    </div>
+  						</div>
 					</div>
 					<div class="container">
 						<div class="row mb-3 text-center" id="chkAll" style="display:none;">
@@ -200,7 +260,7 @@
 		   }
 		});	//end click
 		
-		$("#shareBtn").click(function(){
+		$("#copyIngre").click(function(){
 			  $(".confirm-title").html("가진 재료 공유하기");
 			  $(".confirm-body").html("<textarea id='ownText' cols='50' rows='5'></textarea>");
 			  $("#modalConfirmBtn").html("복사");
@@ -327,6 +387,37 @@ $(document).ready(function(){
 	})
 });
 </script>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+    Kakao.init('ae6e31f26d9a4362ccaa202c4f354299');   <!--붙여넣기-->
+    Kakao.isInitialized();
+    var thisUrl = document.URL;
+    var olist = "<c:out value='${member.userName}'/>님이 가지고 있는 재료는 ";
+	  olist += "<c:forEach items='${list}' var='own'>${own.ingreName} </c:forEach>";
+	  olist += "입니다."
+    function kakaoShare(){
+       Kakao.Share.createDefaultButton({
+            container: '#shareKakao',
+            objectType: 'feed',
+            content: {
+              title: '가진 재료 공유하기',
+              description: olist,
+              imageUrl:
+            	  'https://k.kakaocdn.net/14/dn/btsdYB1QlEV/SzaI65dryp7pr3KqeYXy61/o.jpg',
+              link: {
+                mobileWebUrl: thisUrl,
+                webUrl: thisUrl,
+              },
+            },
+            itemContent: {
+              profileText: 'Resurfy',
+              profileImageUrl: 'https://k.kakaocdn.net/14/dn/btsdYB1QlEV/SzaI65dryp7pr3KqeYXy61/o.jpg',
+            },
+
+          });
+    }
+    </script>
     </body>
 </html>
 <%@include file="../includes/footer.jsp"%>
