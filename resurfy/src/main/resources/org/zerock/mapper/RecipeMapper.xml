@@ -23,20 +23,27 @@
 	<insert id="insertRecipe">
 		insert into recipe_tbl (bno, id, recipeName, recipeDescription,
 		foodType, time, person, difficulty, image)
-		values (seq_recipe.nextval, #{id}, #{recipeName}, #{recipeDescription},
-		#{foodType}, #{time}, #{person}, #{difficulty}, #{image})
+		values (seq_recipe.nextval,
+		#{id}, #{recipeName}, #{recipeDescription},
+		#{foodType}, #{time},
+		#{person}, #{difficulty}, #{image})
 		<selectKey keyProperty="bno" order="AFTER" resultType="long">
 			select max(bno) from recipe_tbl
 		</selectKey>
 	</insert>
 	<insert id="insertStep">
-		insert into step_tbl (sno, bno, stepno, stepdescription, stepimage, tip)
-		values (seq_step.nextval,#{bno},#{stepNo},#{stepDescription},
-		#{stepImage}, #{tip})
+		insert into step_tbl (sno, bno, stepno,
+		stepdescription, stepimage, tip)
+		values
+		(seq_step.nextval,#{bno},#{stepNo},#{stepDescription},
+		#{stepImage},
+		#{tip})
 	</insert>
 	<insert id="insertIngredient">
-		insert into ingredient_tbl (ino, bno, ingrename, ingremeasure, ingretype)
-		values (seq_ingre.nextval, #{bno}, #{ingreName}, #{ingreMeasure},
+		insert into ingredient_tbl (ino, bno, ingrename,
+		ingremeasure, ingretype)
+		values (seq_ingre.nextval, #{bno},
+		#{ingreName}, #{ingreMeasure},
 		#{ingreType})
 	</insert>
 
@@ -49,11 +56,13 @@
 
 	<!-- bno를 통해 recipe,step,ingre data를 불러온다 -->
 	<select id="readRecipe" resultType="org.zerock.domain.RecipeVO">
-		select * from recipe_tbl where bno=#{bno}
+		select * from recipe_tbl
+		where bno=#{bno}
 	</select>
 
 	<select id="readStep" resultType="org.zerock.domain.StepVO">
-		select * from step_tbl where bno=#{bno} order by stepNo
+		select * from step_tbl where
+		bno=#{bno} order by stepNo
 	</select>
 
 	<select id="readIngredient"
@@ -80,10 +89,12 @@
 		foodType = #{foodType},
 		time = #{time},
 		person = #{person},
-		difficulty = #{difficulty},
+		difficulty =
+		#{difficulty},
 		image = #{image},
 		recipeUpdateDate = sysdate
-		where bno = #{bno}
+		where bno =
+		#{bno}
 	</update>
 
 	<update id="updateRecipew"
@@ -92,7 +103,8 @@
 		set recipeName=#{recipeName},
 		recipeDescription = #{recipeDescription},
 		foodType = #{foodType},
-		time = #{time},
+		time =
+		#{time},
 		person = #{person},
 		difficulty = #{difficulty},
 		recipeUpdateDate = sysdate
@@ -112,14 +124,17 @@
 		set ingreName= #{ingreName},
 		ingreMeasure=#{ingreMeasure},
 		ingreType = #{ingreType}
-		where ino = #{ino}
+		where ino =
+		#{ino}
 	</update>
 
 
 	<select id="readIngreName" resultType="String">
-		select INGRENAME from INGREDIENT_TBL where bno = #{bno} and ingretype !=
+		select INGRENAME from
+		INGREDIENT_TBL where bno = #{bno} and ingretype !=
 		'양념'
-		and INGRENAME not in (select INGRENAME from own_tbl where id=#{userID})
+		and INGRENAME
+		not in (select INGRENAME from own_tbl where id=#{userID})
 	</select>
 	<select id="readIngreNameHave" resultType="String">
 		select INGRENAME from
@@ -223,46 +238,45 @@
 
 	<select id="getRecipeOrderByReplycnt"
 		resultType="org.zerock.domain.RecipeVO">
-		<!-- select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt,r.foodtype,r.difficulty,r.person,r.time,r.recipedescription,r.visitcnt 
-			from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno group by 
-			r.bno, r.image, r.recipename, r.replycnt, r.recipedescription,r.foodtype,r.difficulty,r.person,r.time,r.visitcnt 
-			order by r.replycnt desc, count(re.rno) desc -->
-		<![CDATA[ select bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription 
-			from ( select /*+INDEX_DESC(recipe_tbl pk_recipe) */ rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription 
-			from recipe_tbl where ]]> <include refid = "criteria"></include> <include 
-			refid = "ingre"></include> <![CDATA[ rownum <= #{pageNum} * #{amount} order 
-			by replycnt desc ) where rn > (#{pageNum} -1) * #{amount} ]]>
-</select>
-	
-
-  
-  <update id = "updateVisitCnt">
-	update recipe_tbl set visitcnt = visitcnt + #{amount} where bno = #{bno}
-  </update>
-  
-  
- <select id = "getRecipeOrderByVisitcnt" resultType = "org.zerock.domain.RecipeVO">
-  <!-- select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
-  from recipe_tbl 
-  order by visitcnt desc -->
-   <![CDATA[
-  	select 
-    bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
-  		from 
-      (
-      select /*+INDEX_DESC(recipe_tbl pk_recipe) */
-        rownum rn,bno,recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
-      from 
-        recipe_tbl
-      where 
-  ]]>
-		<include refid="criteria"></include>
-		<include refid="ingre"></include>
-  <![CDATA[    
-      rownum <= #{pageNum} * #{amount}
-      order by visitcnt desc
-      )
-  where rn > (#{pageNum} -1) * #{amount}   
-  ]]>
+		 select r.bno,count(re.rno),r.image ,r.recipename,r.replycnt,r.foodtype,r.difficulty,r.person,r.time,r.recipedescription,r.visitcnt 
+         from recipe_tbl r left outer join reply_tbl re on r.bno = re.bno group by 
+         r.bno, r.image, r.recipename, r.replycnt, r.recipedescription,r.foodtype,r.difficulty,r.person,r.time,r.visitcnt 
+         order by r.replycnt desc, count(re.rno) desc
 	</select>
+
+
+
+	<update id="updateVisitCnt">
+		update recipe_tbl set visitcnt = visitcnt + #{amount}
+		where bno = #{bno}
+	</update>
+
+
+	<select id="getRecipeOrderByVisitcnt"
+		resultType="org.zerock.domain.RecipeVO"> 
+select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
+ from recipe_tbl 
+ order by visitcnt desc 
+	</select>
+
+	<select id="getRecipeForSolo"
+		resultType="org.zerock.domain.RecipeVO">
+ 	select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
+ from recipe_tbl 
+ where person = '1인분'
+	</select>
+	<select id="getRecipeForCouple"
+		resultType="org.zerock.domain.RecipeVO">
+ 	select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
+ from recipe_tbl 
+ where person = '2인분'
+	</select>
+	<select id="getRecipeForFamily"
+		resultType="org.zerock.domain.RecipeVO">
+ 	select bno, recipename,image,recipeupdatedate,foodtype,difficulty,person,time,replycnt,visitcnt,recipedescription
+ from recipe_tbl 
+ where person = '4인분'
+	</select>
+
+
 </mapper>

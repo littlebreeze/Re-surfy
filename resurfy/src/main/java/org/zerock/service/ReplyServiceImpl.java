@@ -3,12 +3,12 @@ package org.zerock.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
-
 import org.zerock.mapper.RecipeMapper;
 import org.zerock.mapper.ReplyMapper;
 
@@ -25,6 +25,7 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	private ReplyMapper mapper;
 	
+	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
@@ -45,6 +46,7 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.update(vo);
 	}
 	
+	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public int remove(Long rno) {

@@ -1,24 +1,15 @@
 package org.zerock.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -163,9 +154,12 @@ public class RecipeController {
 		model.addAttribute("get", rService.getList(cri));
 		log.info("list");
 		model.addAttribute("listRecipe", rService.getAllList());
-		model.addAttribute("sortByReply", rService.sortByReplyCnt(cri));
-		model.addAttribute("sortByVisit", rService.sortByVisitCnt(cri));
-
+		model.addAttribute("sortByReply", rService.sortByReplyCnt());
+		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
+		model.addAttribute("soloList", rService.getRecipeSolo());
+		model.addAttribute("coupleList", rService.getRecipeCouple());
+		model.addAttribute("familyList", rService.getRecipeFamily());
+		
 		HttpSession session = request.getSession();
 		UserVO sessionUser = (UserVO) session.getAttribute("member");
 		if (sessionUser != null) {
@@ -173,7 +167,7 @@ public class RecipeController {
 			model.addAttribute("list", oService.getList(userID));
 		}
 
-		int total = rService.getTotal(cri);
+		int total = rService.getTotal(cri); 
 		log.info("total : " + total);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
@@ -245,16 +239,16 @@ public class RecipeController {
 
 	@GetMapping("/TopTenByReply")
 	public void ListSortByReply(Model model, @ModelAttribute("cri") Criteria cri) {
-		model.addAttribute("sortByReply", rService.sortByReplyCnt(cri));
+		model.addAttribute("sortByReply", rService.sortByReplyCnt());
 	}
 
 	@GetMapping("/TopTenByVisit")
 	public void ListSortByVisit(Model model, @ModelAttribute("cri") Criteria cri) {
-		model.addAttribute("sortByVisit", rService.sortByVisitCnt(cri));
+		model.addAttribute("sortByVisit", rService.sortByVisitCnt());
 	}
 
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
-
+		
 	}
 
 	public String modify(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {

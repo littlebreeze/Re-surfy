@@ -3,11 +3,11 @@ package org.zerock.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.RecipeVO;
-
 import org.zerock.mapper.RecipeMapper;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +37,8 @@ public class RecipeServiceImpl implements RecipeService {
 		return mapper.getRecipeList();
 	}
 	
+	
+	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public RecipeVO get(Long bno) {
@@ -79,15 +81,30 @@ public class RecipeServiceImpl implements RecipeService {
 	public int getUserTotal(Criteria cri, String userID) {
 		return mapper.getUserTotalCount(cri, userID);
 	}
-
+	
 	@Override
-	public List<RecipeVO> sortByReplyCnt(Criteria cri) {
-		return mapper.getRecipeOrderByReplycnt(cri);
+	public List<RecipeVO> sortByReplyCnt() {
+		return mapper.getRecipeOrderByReplycnt();
 	}
 
 	@Override
-	public List<RecipeVO> sortByVisitCnt(Criteria cri) {
-		return mapper.getRecipeOrderByVisitcnt(cri);
+	public List<RecipeVO> sortByVisitCnt() {
+		return mapper.getRecipeOrderByVisitcnt();
+	}
+
+	@Override
+	public List<RecipeVO> getRecipeSolo() {
+		return mapper.getRecipeForSolo();
+	}
+
+	@Override
+	public List<RecipeVO> getRecipeCouple() {
+		return mapper.getRecipeForCouple();
+	}
+
+	@Override
+	public List<RecipeVO> getRecipeFamily() {
+		return mapper.getRecipeForFamily();
 	}
 
 }

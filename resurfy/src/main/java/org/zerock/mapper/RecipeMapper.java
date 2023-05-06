@@ -39,12 +39,13 @@ public interface RecipeMapper {
 	public List<RecipeVO> getUserList(@Param(value = "cri") Criteria cri, @Param(value = "userID") String userID);
 	public int getUserTotalCount(@Param(value = "cri") Criteria cri, @Param(value = "userID") String userID);
 	
-	public List<RecipeVO> getRecipeOrderByReplycnt(Criteria cri);
+	public List<RecipeVO> getRecipeOrderByReplycnt();
 	
 	public void updateVisitCnt(@Param("bno") Long bno, @Param("amount") int amount);
 	
-	public List<RecipeVO> getRecipeOrderByVisitcnt(Criteria cri);
-	@Select("SELECT seq_recipe.nextval FROM dual")
-	public Long getNextBno();
+	public List<RecipeVO> getRecipeOrderByVisitcnt();
+	public List<RecipeVO> getRecipeForSolo();
+	public List<RecipeVO> getRecipeForFamily();
+	public List<RecipeVO> getRecipeForCouple();
 }
 

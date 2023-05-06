@@ -28,19 +28,19 @@
 					<div>
 						<a href = "https://github.com/barcataeeon/Re-surfy.git">
 							<img src="/resources/assets/main/slick_one.png"
-							style=" width = 1000px; height: 500px; padding : 0 100px;">
+							style=" width = 1000px; height: 400px; padding : 0 100px;">
 						</a>
 					</div>
 					<div >
 						<a href = "/recipe/TopTenByReply">
 							<img src="/resources/assets/main/slick_second.png"
-							style=" width = 1000px; height: 500px; padding : 0 100px;">
+							style=" width = 1000px; height: 400px; padding : 0 100px;">
 						</a>
 					</div>
 					<div>
 						<a href = "/recipe/TopTenByVisit">
 							<img src="/resources/assets/main/slick_third.png"
-							style=" width = 1000px; height: 500px; padding : 0 100px;">
+							style=" width = 1000px; height: 400px; padding : 0 100px;">
 						</a>
 					</div>				
 				</div>	

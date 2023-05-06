@@ -63,15 +63,24 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+				<button type="button" class="btn btn-light" id = "visitButton" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=visitcnt" style="text-decoration:none;">#조회 수</a>
+					<a href="?orderBy=visitcnt&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#조회 수</a>
 				</button>
-				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+				<button type="button" class="btn btn-light" id = "replyButton" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=replycnt" style="text-decoration:none;">#댓글 수</a>
+					<a href="?orderBy=replycnt&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#댓글 수</a>
+				</button>
+				<button type="button" class="btn btn-light" id = "soloButton">
+					<a href="?orderby=solo&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#싱글</a>
+				</button>
+				<button type="button" class="btn btn-light" id = "soloButton">
+					<a href="?orderby=couple&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#커플</a>
+				</button>
+				<button type="button" class="btn btn-light" id = "soloButton">
+					<a href="?orderby=family&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#온가족</a>
 				</button>
 			</div>
 			</ul>
@@ -155,6 +164,123 @@
 					</c:forEach>
 				</div>
 			</c:when>
+			<c:when test="${param.orderby eq 'solo'}">
+				<div class="card-container row row-cols-md-3" style="display:flex;">
+					<c:forEach items="${soloList}" var="recipe">
+						<div class="card col" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img" data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
+			<c:when test="${param.orderby eq 'couple'}">
+				<div class="card-container row row-cols-md-3" style="display:flex;">
+					<c:forEach items="${coupleList}" var="recipe">
+						<div class="card col" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img" data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
+			<c:when test="${param.orderby eq 'family'}">
+				<div class="card-container row row-cols-md-3" style="display:flex;">
+					<c:forEach items="${familyList}" var="recipe">
+						<div class="card col" style="border: 0px;">
+							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
+								<div class="card-img" data-bs-toggle="tooltip"
+									data-bs-placement="top"
+									data-bs-original-title="조회수 : ${recipe.visitcnt} | 댓글수 : ${recipe.replycnt}">
+									<img class="card-img-top" src="${recipe.image}" alt="..." />
+								</div>
+							</a>
+							<div class="card-head"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px; height: 50px;">
+								<b style="font-size: 25px;"> <c:out
+										value="${recipe.recipeName}" /></b>
+							</div>
+							<div class="card-main"
+								style="border-bottom: 1px solid #F0DDD8; margin-top: 10px;">
+								<div>
+									난이도 :
+									<c:out value="${recipe.difficulty}" />
+								</div>
+								<div>
+									종류 :
+									<c:out value="${recipe.foodType}" />
+								</div>
+								<div>
+									기준인분 :
+									<c:out value="${recipe.person}" />
+								</div>
+								<div>
+									조리시간 :
+									<c:out value="${recipe.time}" />
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
 			<c:otherwise>
 				<div class="card-container row row-cols-md-3" style="display:flex;">
 					<c:forEach items="${get}" var="recipe">
@@ -194,8 +320,7 @@
 						</div>
 					</c:forEach>
 				</div>
-			</c:otherwise>
-		</c:choose>
+	
 		<!-- start Paging -->
 		<div class='pull-right' style = " position : flex ; bottom : 0px;
 		margin : 0 37%;">
@@ -216,6 +341,8 @@
 				</c:if>
 			</ul>
 		</div>
+		</c:otherwise>
+</c:choose>
 		<!-- end paging -->
 	</div>
 	<form id='actionForm' action="/recipe/get" method='get'>
@@ -296,6 +423,8 @@
 											}
 											actionForm.submit();
 										});
+						
+					
 
 					});
 </script>
@@ -310,4 +439,6 @@
 		return new bootstrap.Tooltip(tooltipTriggerEl)
 	})
 </script>
+
+
 <%@include file = "../includes/footer.jsp" %>
