@@ -61,10 +61,9 @@
 			<c:forEach items="${sortByReply}" var="bestRecipe" varStatus="status">
 				<c:if test="${status.index < 10}">
 					<tbody style="height: auto; font-size : 20px;
-					border-bottom : 1px solid #ff7851; background-color : #fff;">
+					border-bottom : 1px solid #F0DDD8; background-color : #fff;">
 						<tr >
-							<th scope="row" style = "font-size: 50px;
-							padding :0 10px;">${status.index + 1}</th>
+							<th scope="row" style = "font-size: 50px;">${status.index + 1}</th>
 							<td><a
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 									<img src="${bestRecipe.image}" 
@@ -75,7 +74,7 @@
 								</div>
 							</a></td>
 								
-							<td style="padding :0 10px; width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td style="width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.replycnt}" /></td>
 						</tr>
 					</tbody>

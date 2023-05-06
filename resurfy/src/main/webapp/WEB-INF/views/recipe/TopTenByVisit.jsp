@@ -65,8 +65,7 @@
 					<tbody style="height: auto; font-size : 20px;
 					border-bottom: 1px solid #F0DDD8; background-color : #fff;">
 						<tr>
-							<th scope="row" style = "font-size: 50px;
-							padding :0 10px;">
+							<th scope="row" style = "font-size: 50px;">
 							${status.index + 1}</th>
 							<td style = "text-decoration:none;"><a
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
@@ -78,7 +77,7 @@
 								</div>
 							</a></td>
 
-							<td style = "padding :0 10px; width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td style = "width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.visitcnt}" /></td>
 						</tr>
 					</tbody>

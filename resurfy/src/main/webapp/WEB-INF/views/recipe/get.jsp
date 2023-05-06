@@ -27,7 +27,11 @@
 </c:if>
 
 <!-- Section-->
+<<<<<<< HEAD
+<div class="py-3" style="margin-bottom:100px; width : 100%;">
+=======
 <div class="py-3" style = "margin-bottom:100px;">
+>>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
@@ -78,7 +82,11 @@
 		</c:if>
 		<c:choose>
 			<c:when test="${param.orderBy eq 'visitcnt'}">
+<<<<<<< HEAD
+				<div class="card-container row" style="display:flex;">
+=======
 				<div class="card-container row row-cols-md-3" style="display:flex;">
+>>>>>>> branch 'main' of https://github.com/barcataeeon/Re-surfy.git
 					<c:forEach items="${sortByVisit}" var="recipe">
 						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
