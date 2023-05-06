@@ -27,7 +27,7 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-3" style="margin-bottom:100px; width : 100%;">
+<div class="py-3" style="margin-bottom:50px; width : 100%;">
 	<div class="container px-4 px-lg-5 mt-3">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
@@ -283,6 +283,15 @@
 			</c:when>
 			<c:otherwise>
 				<div class="card-container row row-cols-md-3" style="display:flex;">
+					<c:if test="${empty get}">
+						<div class="col card" style="border: 0px; width: 500px;">
+							<div class="text-center">
+								<img src="/resources/assets/fadefadeBlueLogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
+							    <h2 class="mb-3">검색 결과가 없습니다</h2>
+							    <h5 class="mb-3">검색 키워드를 확인하시거나</h5><h5>레시피를 공유해보세요!</h5>
+							  </div>
+						</div>
+					</c:if>
 					<c:forEach items="${get}" var="recipe">
 						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
