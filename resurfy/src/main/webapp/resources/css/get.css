@@ -4,6 +4,9 @@
 	position : center;
 }
 
+.card-container {
+	justify-content: center;
+}
 
 .card {
 	width: 350px;
