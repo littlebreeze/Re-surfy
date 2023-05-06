@@ -6,7 +6,8 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 .pagination {
-	display: inline-block;
+	justify-content : center;
+	display: flex;
 	padding-left: 0;
 	margin: 20px 0;
 	border-radius: 4px
@@ -97,10 +98,6 @@
 .pagination-sm>li:last-child>a, .pagination-sm>li:last-child>span {
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px
-}
-
-.pull-right {
-	float: right !important
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */

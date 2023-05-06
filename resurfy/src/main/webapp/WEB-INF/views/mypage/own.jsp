@@ -342,6 +342,10 @@
 		    searchForm.attr("action","/member/login.do");
 		    searchForm.submit();
 	  }
+		
+/* 		$(".col").click(function(){
+			alert($(this).find("input[type='checkbox']").attr("data-ownno"));
+		});	//end click */
 	});
 </script>
 <script type="text/javascript">
