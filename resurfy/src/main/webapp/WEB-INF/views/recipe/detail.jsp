@@ -72,7 +72,7 @@
 			.shareBtn{
 			  border : 1px solid rgb(37, 37, 37);
 			  border-radius : 4px;
-			  background-color: #f5f5f5;
+			  background-color: white;
 			  font-weight: 400;
 			  color : rgb(37, 37, 37);
 			  padding : 12px;
@@ -99,11 +99,15 @@
 			}
 			
 			.dropdown-content a:hover{
-			  background-color : #ececec
+			  background-color : #ffe7e0
 			}
 			
 			.dropdown:hover .dropdown-content {
 			  display: block;
+			}
+			
+			.shareBtn:hover{
+				background-color: #ff7851;
 			}
 </style>
 </head>
@@ -151,7 +155,7 @@
                             </div>  -->
                      	<div class='sharebtn' style="width: 88%;text-align:right">
   						<div class="dropdown">
-					      <button id="shareBtn" class="shareBtn" style="border:1px solid lightgray; border-radius:10px 10px; background-color:white"> 
+					      <button id="shareBtn" class="shareBtn" style="border:1px solid #ffe7e0; border-radius:10px 10px; "> 
 					        
 					        <img src="/resources/assets/share.png" width="20" height="20">
 					      </button>
