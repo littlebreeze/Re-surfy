@@ -300,3 +300,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .modal-body {
 	margin-left:15px;
 }
+
+.pull-right {
+	float: right !important
+}
