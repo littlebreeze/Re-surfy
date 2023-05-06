@@ -27,7 +27,7 @@
 				<div class="slide_div" style="background-color: #F0DDD8;">
 					<div>
 						<a href = "https://github.com/barcataeeon/Re-surfy.git">
-							<img src="/resources/assets/main/slick_first.png"
+							<img src="/resources/assets/main/slick_one.png"
 							style=" width = 1000px; height: 500px; padding : 0 100px;">
 						</a>
 					</div>
