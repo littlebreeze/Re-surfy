@@ -278,7 +278,7 @@
 							<c:choose>
       							<c:when test="${st.stepImage == ' ' || st.stepImage == '0'}"> 
       							<div class="py-3 row">
-      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=300px height=250px  alt="..."></div>
+      							<div class="col"><img src="/resources/assets/nonOrangelogo.png" width=85% height=250px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								<%-- <input type="text" name="stepDescription" id="stepDescription" value='<c:out value="${st.stepDescription }"/>'  class="form-control" style="width:600px; margin-top:13px; display:inline-block;" control-id="ControlID-30"> --%>              
@@ -302,7 +302,7 @@
 
       							<c:otherwise>
       							<div class="py-3 row"> 
-								<div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=300px height=250px  alt="..."></div>
+								<div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=85% height=250px  alt="..."></div>
 								<div class="col">
 								<div class="fw-bolder">Step<c:out value="${st.stepNo}" /></div>
 								
