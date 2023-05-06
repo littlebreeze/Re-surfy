@@ -394,13 +394,13 @@
     <div class="container px-4 px-lg-5 mt-5">
        <div>
         <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly text-center' style="font-size: 20px; width:200px; height:70px; background-color: #e95420; border:none; float:right"><img src="/resources/assets/detail/cart.png" width="30px" height="30px">&nbsp 장바구니 담기</button></h2>
-        
+        <div>❈ 이미지를 클릭하면 네이버 쇼핑 페이지로 이동합니다.</div>
         </div>
         <br>
         <hr class="my-2" align="center" style="margin: 0 auto;">
         <br>
         <!-- 없는 재료 -->
-        <h2 class="fw-bolder mb-4 h4">없는 재료</h2>
+        <h2 class="fw-bolder mb-4 h4">내가 가지고 있지 않은 재료</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center py-5 bg-light" style="border: 3px solid #e95420; border-radius:30px; padding: 10px">
         
            <c:if test="${empty shopNotIn}">
@@ -435,7 +435,7 @@
         </div>
         <!-- 있는 재료 -->
         <br><br>
-        <h2 class="fw-bolder mb-4 h4">있는 재료</h2>
+        <h2 class="fw-bolder mb-4 h4">내가 가지고 있는 재료</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #e95420; border-radius:30px;  text-align : center; padding : 100px 0; text-align:center">
            <c:if test="${empty shopIn}">
             <div class="col" style="margin-bottom:30px;">
