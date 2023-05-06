@@ -49,7 +49,7 @@
 <body>
 
 	<div class="TopTen_recipe" style="display: flex; justify-content: center; align-items: center;">
-		<table>
+		<table style = "width : 100%;">
 			 <thead style="height: 50px; font-size : 20px; 
 			 border-bottom : 1px solid #fff; background-color : #F0DDD8;
 			 color : #FF7851;">
@@ -77,7 +77,8 @@
 								</div>
 							</a></td>
 
-							<td style = "width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td>
+							<c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.visitcnt}" /></td>
 						</tr>
 					</tbody>

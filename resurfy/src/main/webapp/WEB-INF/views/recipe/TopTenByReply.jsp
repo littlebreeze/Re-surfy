@@ -45,9 +45,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <body>
-
 	<div class="TopTen_recipe" style="display: flex; justify-content: center; align-items: center;">
-		<table>
+		<table style = "width : 100%;">
 			<thead style="height: 50px; font-size : 20px;
 			border-bottom : 1px solid #fff; background-color : #F0DDD8;
 			color : #FF7851;">
@@ -68,13 +67,13 @@
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 									<img src="${bestRecipe.image}" 
 									style = "width : 300px; height: 300px;"/> 
-								<div style ="text-decoration : none;">
+								<div style ="text-decoration : none; color : #000;">
 									<b> <c:out value="${bestRecipe.recipeName}" />
 									</b>
 								</div>
 							</a></td>
 								
-							<td style="width : 1400px;"><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td><c:out value="${bestRecipe.recipeDescription}" /></td>
 							<td><c:out value="${bestRecipe.replycnt}" /></td>
 						</tr>
 					</tbody>
