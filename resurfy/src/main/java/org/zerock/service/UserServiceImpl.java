@@ -45,7 +45,6 @@ public class UserServiceImpl implements UserService {
 	    String api_secret = "UFBYSYB4J92EFIBGRASWU5SSEGLVAVBH";
 	    Message coolsms = new Message(api_key, api_secret);
 
-	    // 4 params(to, from, type, text) are mandatory. must be filled
 	    HashMap<String, String> params = new HashMap<String, String>();
 	    params.put("to", userPhoneNumber);    // 수신전화번호
 	    params.put("from", "01062066030");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
