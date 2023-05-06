@@ -27,9 +27,8 @@
 </c:if>
 
 <!-- Section-->
-<div class="py-3" style = "height : 2250px;">
+<div class="py-3" style="margin-bottom:100px; width : 100%;">
 	<div class="container px-4 px-lg-5 mt-3">
-		<div class = "page_main" style = "height : 2100px;">
 		<c:if test="${pageMaker.cri.type != 'O' }">
 			<div class='row'>
 				<div class="col-lg-12">
@@ -79,9 +78,9 @@
 		</c:if>
 		<c:choose>
 			<c:when test="${param.orderBy eq 'visitcnt'}">
-				<div class="card-container">
+				<div class="card-container row" style="display:flex;">
 					<c:forEach items="${sortByVisit}" var="recipe">
-						<div class="card" style="border: 0px;">
+						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
 									data-bs-placement="top"
@@ -118,9 +117,9 @@
 				</div>
 			</c:when>
 			<c:when test="${param.orderBy eq 'replycnt'}">
-				<div class="card-container">
+				<div class="card-container row row-cols-md-3" style="display:flex;">
 					<c:forEach items="${sortByReply}" var="recipe">
-						<div class="card" style="border: 0px;">
+						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
 									data-bs-placement="top"
@@ -157,9 +156,9 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="card-container">
+				<div class="card-container row row-cols-md-3" style="display:flex;">
 					<c:forEach items="${get}" var="recipe">
-						<div class="card" style="border: 0px;">
+						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
 								<div class="card-img" data-bs-toggle="tooltip"
 									data-bs-placement="top"
@@ -197,7 +196,6 @@
 				</div>
 			</c:otherwise>
 		</c:choose>
-		</div>
 		<!-- start Paging -->
 		<div class='pull-right' style = " position : flex ; bottom : 0px;">
 			<ul class="pagination">
