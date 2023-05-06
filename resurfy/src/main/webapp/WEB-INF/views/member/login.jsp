@@ -67,11 +67,11 @@
 			<button id="phoneChk2" type="button" style="float:left; width:100px;">인증</button>
         </div> 
         <div class="agree">
-	        <p style="display: flex; justify-content: space-between; width:135px;"><input id="agree1" type="checkbox" style="width:15px;" required> 
+	        <p style="display: flex; justify-content: space-between; width:40%;"><input id="agree1" type="checkbox" style="width:15px;" required> 
 	        	<a onClick="openPopup()">이용약관 동의</a> 
 	        	<span class="fil">(필수)</span>
 	        </p>
-	       <p style="display: flex; justify-content: space-between; width:210px;"><input id="agree2" type="checkbox" style="width:15px;" required> 
+	       <p style="display: flex; justify-content: space-between; width:62%;"><input id="agree2" type="checkbox" style="width:15px;" required> 
 		        <a onClick="openPopup2()">개인정보 수집 및 이용 동의 </a>
 		        <span class="fil">(필수)</span>
 		    </p>
