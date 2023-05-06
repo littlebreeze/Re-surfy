@@ -65,21 +65,20 @@
 					<tbody style="height: auto; font-size : 20px;
 					border-bottom: 1px solid #F0DDD8; background-color : #fff;">
 						<tr>
-							<th scope="row" style = "font-size: 50px;">
+							<th scope="row" style = "width:5%; font-size: 50px;">
 							${status.index + 1}</th>
-							<td style = "text-decoration:none;"><a
+							<td style = "width : 15%;"><a
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 									<img src="${bestRecipe.image}" 
 									style = "width : 300px; height: 300px;"/> 
 								<div style ="text-decoration : none; color : #000;">
-									<b><c:out value="${bestRecipe.recipeName}" />
+									<b> <c:out value="${bestRecipe.recipeName}" />
 									</b>
 								</div>
 							</a></td>
-
-							<td>
-							<c:out value="${bestRecipe.recipeDescription}" /></td>
-							<td style = "width : 5%;"><c:out value="${bestRecipe.visitcnt}" /></td>
+								
+							<td style = "width:75%;"><c:out value="${bestRecipe.recipeDescription}" /></td>
+							<td style = "width:5%;"><c:out value="${bestRecipe.visitcnt}" /></td>
 						</tr>
 					</tbody>
 				</c:if>

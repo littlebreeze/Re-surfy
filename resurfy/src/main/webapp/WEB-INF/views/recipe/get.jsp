@@ -197,7 +197,8 @@
 			</c:otherwise>
 		</c:choose>
 		<!-- start Paging -->
-		<div class='pull-right' style = " position : flex ; bottom : 0px;">
+		<div class='pull-right' style = " position : flex ; bottom : 0px;
+		margin : 0 37%;">
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li class="paginate_button previous"><a
