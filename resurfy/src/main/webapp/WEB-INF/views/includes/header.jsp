@@ -44,7 +44,7 @@
 	rel="stylesheet">
 <body>
 	<font face='NanumGothic'>
-		<div id="header_menu" style="border-bottom: 0px; height:50%;">
+		<div id="header_menu" style="border-bottom: 0px;">
 			<div id="logo">
 				<a href="/recipe/get"> <img
 					src="/resources/assets/horizontal_logo.png" width= "300px;"
