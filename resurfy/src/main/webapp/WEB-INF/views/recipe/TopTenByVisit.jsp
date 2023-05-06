@@ -71,7 +71,7 @@
 								href="/recipe/detail?bno=<c:out value="${bestRecipe.bno}" />">
 									<img src="${bestRecipe.image}" 
 									style = "width : 300px; height: 300px;"/> 
-								<div>
+								<div style ="text-decoration : none; color : #000;">
 									<b><c:out value="${bestRecipe.recipeName}" />
 									</b>
 								</div>
@@ -79,7 +79,7 @@
 
 							<td>
 							<c:out value="${bestRecipe.recipeDescription}" /></td>
-							<td><c:out value="${bestRecipe.visitcnt}" /></td>
+							<td style = "width : 5%;"><c:out value="${bestRecipe.visitcnt}" /></td>
 						</tr>
 					</tbody>
 				</c:if>

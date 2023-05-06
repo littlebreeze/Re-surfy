@@ -74,7 +74,7 @@
 							</a></td>
 								
 							<td><c:out value="${bestRecipe.recipeDescription}" /></td>
-							<td><c:out value="${bestRecipe.replycnt}" /></td>
+							<td style = "width : 5%;"><c:out value="${bestRecipe.replycnt}" /></td>
 						</tr>
 					</tbody>
 				</c:if>
