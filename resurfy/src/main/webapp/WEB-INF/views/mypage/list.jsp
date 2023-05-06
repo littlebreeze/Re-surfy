@@ -108,7 +108,7 @@
 										</tbody>
 									</table>
 									<!-- start Paging -->
-									<div class='pull-right'>
+									<div>
 										<ul class="pagination">
 											<c:if test="${pageMaker.prev}">
 												<li class="paginate_button previous">
@@ -126,7 +126,7 @@
 												</li>
 											</c:if>
 										</ul>
-									</div>
+									</div><br><br>
 									<!-- end paging -->
 								</div>
 							</div>

@@ -605,7 +605,7 @@ function showReplyPage(replyCnt) {
       next = true;
    }
    
-   var str = "<ul class='pagination pull-right'>";
+   var str = "<ul class='pagination' style='justify-content : center;'>";
    if(prev) {
       str += "<li class='page-item'><a class='page-link' href='"+(startNum-1)+"'>Previous</a></li>";
    }
