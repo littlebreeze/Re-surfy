@@ -19,39 +19,10 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @AllArgsConstructor 
 public class UserServiceImpl implements UserService {
 	private UserMapper mapper;
-	@Override
-	public void register(UserVO vo) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public UserVO get(Long bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean modify(Criteria cri) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<UserVO> getList(Criteria cri) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTotal(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	@Override
 	public void join(UserVO userVO) {
-		log.info("join....." + userVO);
+//		log.info("join....." + userVO);
 		mapper.insert(userVO);
 		
 	}
@@ -70,8 +41,8 @@ public class UserServiceImpl implements UserService {
 	// 문자인증
 	@Override
 	public void certifiedPhoneNumber(String userPhoneNumber, int randomNumber) {
-		String api_key = "NCSU4KF20BKCLMGU";
-	    String api_secret = "HQAHD1HZTX3WUQK76CMXQIODJ42HEBM0";
+		String api_key = "NCSRK75WPMAXTFVC";
+	    String api_secret = "UFBYSYB4J92EFIBGRASWU5SSEGLVAVBH";
 	    Message coolsms = new Message(api_key, api_secret);
 
 	    // 4 params(to, from, type, text) are mandatory. must be filled

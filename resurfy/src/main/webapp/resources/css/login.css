@@ -5,7 +5,6 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'NanumGothic';
 }
 
@@ -74,7 +73,7 @@ section.active .right {
 .sign-up h1 {
   color:#6cc3d5;
   font-size:42px;
-  margin-top:40px;
+  margin-top:20px;
   margin-bottom: 10px;
   text-align: center;
   transition:0.2s linear;
@@ -83,7 +82,7 @@ section.active .right {
   font-weight: bold;
 }
 
-h3 {
+h7 {
     font-size: 12px;
     font-weight: 500;
     color: #535354;
@@ -111,8 +110,10 @@ h3 {
 }
 
 .agree {
-	height:80px;
+	height:70px;
+	
 }
+
 
 .fil{
 	font-size: 11px;
@@ -120,17 +121,18 @@ h3 {
 	color:#08a600;
 }
 
-.con2 button,
-.con3 button{
+.con2 #phoneChk,
+.con3 #phoneChk2{
 	background: #6cc3d5;
 	border-radius:7px;
 	border: 0px;
 	color:#f5f5f5;
 	cursor: pointer;
 	font-family: 'NanumGothic';
+	font-size: 13px;
 	text-align: center;
 	height: 35px;
-	margin-top: 15px;
+	margin-top: 18px;
 	margin-left: 5px;
 	width:80px;
 }
@@ -144,7 +146,8 @@ h3 {
 }
 /* 중복아이디 존재하는 경우 */
 .id_input_re_2,
-.j_input_re_4{
+.j_input_re_4,
+.id_input_re_3{
 	color : red;
 	display : none;
 	font-size: 5px;
@@ -162,9 +165,9 @@ h3 {
   display: block;
 }
 
-.sign-up form input:nth-child(n+1):nth-child(-n+6),
+#j_id, #j_name, #j_pw, #j_nick, #j_phone, #j_num,
 .sign-in form input {
-  width: 320px;
+  width: 340px;
   border: 0;
   outline: 0;
   background: #f5f5f5;
@@ -173,6 +176,9 @@ h3 {
   padding-left: 15px;
   display: block;
   position: relative;
+  font-size: 13px;
+  font-family: 'NanumGothic';
+  line-height: normal;
 }
 
 
@@ -233,6 +239,8 @@ h3 {
 .agree a{
 	text-decoration: none;
 	color: black;
+	font-size:15px;
+	cursor: pointer;
 }
 
 .separator a,
@@ -244,4 +252,29 @@ h3 {
 .separator a:is(:hover, :visited),
 .separator a:is(:hover, :visited) {
   color: #6cc3d5;
+}
+
+.login_warn{
+    font-size:13px ;
+    text-align: center;
+    color : red;
+}
+
+.modal{
+	text-align: center;
+ }
+
+@media screen and (min-width: 768px) { 
+        .modal:before {
+                display: inline-block;
+                vertical-align: middle;
+                content: " ";
+                height: 100%;
+        }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 }

@@ -32,26 +32,13 @@ public class UserController {
 	@Autowired
 	private UserService Service;
 	
-	public String register(UserVO vo , RedirectAttributes rttr) {
-		return "";
-	}
-	public void register() {}
-	
-	public void get(Model model) {}
-	
-	public String remove(String id, RedirectAttributes rttr) {
-		return null;
-	
-	}
-	
 	@PostMapping("join.do")
     public String join(UserVO userVO) {
-        log.info("-------------------확인용------------------");
-        log.info("joinConfirm(일반회원): " + userVO.toString());
+//        log.info("-------------------확인용------------------");
+//        log.info("joinConfirm(일반회원): " + userVO.toString());
         Service.join(userVO);
         return "member/login";
 	}
-	
 	
 	@RequestMapping("login.do")
 	public String login() {
@@ -59,20 +46,19 @@ public class UserController {
 	}
 	
 	/* 로그인 */
-    @RequestMapping(value="loginCheck.do", method=RequestMethod.POST)
+    @RequestMapping(value="login.do", method=RequestMethod.POST)
     public String loginPOST(HttpServletRequest request, UserVO vo, RedirectAttributes rttr) throws Exception{
         
-        System.out.println("login 메서드 진입");
-        System.out.println("전달된 데이터 : " + vo);
+//        System.out.println("login 메서드 진입");
+//        System.out.println("전달된 데이터 : " + vo);
     	
     	HttpSession session = request.getSession();
     	UserVO lvo = Service.loginCheck(vo);
        
-    	
     	if(lvo == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
-            int result = 0;
-            rttr.addFlashAttribute("result", result);
-            return "member/login";
+    		int result = 0;
+    		rttr.addFlashAttribute("result", result);
+			return "redirect:/member/login.do";
             
         }
         session.setAttribute("member", lvo);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
@@ -99,10 +85,12 @@ public class UserController {
 			
 			return "fail";	// 중복 아이디가 존재
 			
+		} else if(memberId.contains("admin")){
+			
+			return "admin";
+			
 		} else {
-			
 			return "success";	// 중복 아이디 x
-			
 		}
 		
 	}
