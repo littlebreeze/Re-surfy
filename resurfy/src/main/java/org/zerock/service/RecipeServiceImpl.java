@@ -38,7 +38,6 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 	
 	
-	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public RecipeVO get(Long bno) {

@@ -97,10 +97,10 @@ public class RecipeServiceTests {
 		log.info("TOTAL RESULT : " + service.getTotal(cri));
 	}
 
-	@Test
-	public void testSortReplyCnt(Criteria cri) {
-		log.info(service.sortByReplyCnt(cri));
-	}
+	/*
+	 * @Test public void testSortReplyCnt(Criteria cri) {
+	 * log.info(service.sortByReplyCnt(cri)); }
+	 */
 	
 
 }

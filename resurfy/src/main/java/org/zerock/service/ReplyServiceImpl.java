@@ -25,7 +25,6 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	private ReplyMapper mapper;
 	
-	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
@@ -46,7 +45,6 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.update(vo);
 	}
 	
-	@CacheEvict(value = "getList", allEntries = true)
 	@Transactional
 	@Override
 	public int remove(Long rno) {

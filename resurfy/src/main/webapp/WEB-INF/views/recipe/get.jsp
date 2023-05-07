@@ -63,24 +63,30 @@
 			</div>
 			<br>
 			<div>
-				<button type="button" class="btn btn-light" id = "visitButton" data-bs-toggle="tooltip"
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=visitcnt&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#조회 수</a>
+					<a href="?orderBy=visitcnt" style="text-decoration:none;">#조회 수</a>
 				</button>
 				<button type="button" class="btn btn-light" id = "replyButton" data-bs-toggle="tooltip"
 					data-bs-placement="bottom" data-bs-original-title="내림차순"
 					style="color: #fff; text-decoration:none;">
-					<a href="?orderBy=replycnt&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#댓글 수</a>
+					<a href="?orderBy=replycnt" style="text-decoration:none;">#댓글 수</a>
 				</button>
-				<button type="button" class="btn btn-light" id = "soloButton">
-					<a href="?orderby=solo&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#싱글</a>
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-original-title="1인분"
+					style="color: #fff; text-decoration:none;">
+					<a href="?orderby=solo" style="text-decoration:none;">#싱글</a>
 				</button>
-				<button type="button" class="btn btn-light" id = "soloButton">
-					<a href="?orderby=couple&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#커플</a>
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-original-title="2인분"
+					style="color: #fff; text-decoration:none;">
+					<a href="?orderby=couple" style="text-decoration:none;">#커플</a>
 				</button>
-				<button type="button" class="btn btn-light" id = "soloButton">
-					<a href="?orderby=family&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" style="text-decoration:none;">#온가족</a>
+				<button type="button" class="btn btn-light" data-bs-toggle="tooltip"
+					data-bs-placement="bottom" data-bs-original-title="4인분"
+					style="color: #fff; text-decoration:none;">
+					<a href="?orderby=family" style="text-decoration:none;">#온가족</a>
 				</button>
 			</div>
 			</ul>
