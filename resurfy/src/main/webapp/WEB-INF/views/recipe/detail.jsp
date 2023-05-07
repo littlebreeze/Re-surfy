@@ -279,7 +279,7 @@
                            <div class="py-3 row">
                            <div class="col"><img src="/resources/assets/nonOrangelogo.png" width=350px height=300px  alt="..."></div>
                         <div class="col">
-                        <div class="fw-bolder" style="font-size:25px; color:#e95420">Step<c:out value="${st.stepNo}" /></div>
+                        <div class="fw-bolder" style="font-size:25px; color:#FF7851">Step<c:out value="${st.stepNo}" /></div>
                         <hr class="my-2" align="left" style="width: 100%; margin: 0 auto;">
                         <br><span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
                         <c:choose>
@@ -287,7 +287,7 @@
                         <div style="font-size:18px"></div>
                         </c:when>
                         <c:otherwise>
-                        <div class="fw-bolder" style="font-size:15px">❈ tip <br> <c:out value="${st.tip}" /></div>
+                        <div class="fw-bolder" style="font-size:15px"><br>❈ tip <br> <c:out value="${st.tip}" /></div>
                         </c:otherwise> 
 
                      </c:choose>  
@@ -299,7 +299,7 @@
                            <div class="py-3 row"> 
                         <div class="col"><img src='<c:out value="${st.stepImage }"/>' readonly="readonly" width=350px height=300px  alt="..."></div>
                         <div class="col">
-                        <div class="fw-bolder" style="font-size:25px; color:#e95420">Step<c:out value="${st.stepNo}" /></div>
+                        <div class="fw-bolder" style="font-size:25px; color:#FF7851">Step<c:out value="${st.stepNo}" /></div>
                         <hr class="my-2" align="left" style="width: 100%; margin: 0 auto;">
                         <br>
                         <span style="font-size:20px"><c:out value="${st.stepDescription}" /></span>
@@ -309,7 +309,7 @@
                         </c:when>
                         <c:otherwise>
                         <br>
-                        <div class="fw-bolder" style="font-size:15px">❈ tip <br> <c:out value="${st.tip}" /></div>
+                        <div class="fw-bolder" style="font-size:15px"><br>❈ tip <br> <c:out value="${st.tip}" /></div>
                         </c:otherwise> 
 
                      </c:choose>  
@@ -328,7 +328,7 @@
                   <div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:center; font-size:13px;">
                   <c:if test="${recipe.id eq member.id || member.id eq 'admin'}">
                   <%-- <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정</button> --%>
-                  <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:200px; height:70px; background-color: #e95420; font-size:20px; border:none; text-align:center">수정</button>
+                  <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:200px; height:70px; background-color: #FF7851; font-size:20px; border:none; text-align:center">수정</button>
                   </c:if>
                     <!-- <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
                   <button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:60px; background-color: #e95420; border:none; font-size:20px">목록</button> -->
@@ -346,7 +346,7 @@
                    <div class="row"  style=" width: 90%; margin: 0 auto; text-align:left">
                       <div class="col-11"><input class="form-control" rows="3" id='replybox' placeholder="댓글을 입력해주세요." style="width:95%; height:60px" ></div>
                       <div class="col-1"><button id='addReplyBtn'
-                                 class='btn btn-primary btn-jelly' style="width:150%; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button></div>
+                                 class='btn btn-primary btn-jelly' style="width:150%; height:60px; background-color: #FF7851; border:none; float:right; font-size:20px">등록</button></div>
                     
                   
                <%--    <c:if test="${not empty member.id}">
@@ -397,7 +397,7 @@
 <section class="py-5" style="background-clor:white">
     <div class="container px-4 px-lg-5 mt-5">
        <div>
-        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly text-center' style="font-size: 20px; width:200px; height:70px; background-color: #e95420; border:none; float:right"><img src="/resources/assets/detail/cart.png" width="30px" height="30px">&nbsp 장바구니 담기</button></h2>
+        <h2 class="fw-bolder mb-4 h4">이 레시피를 위한 추천 재료 <button id='addCartBtn' class='btn btn-primary btn-jelly text-center' style="font-size: 20px; width:200px; height:70px; background-color: #FF7851; border:none; float:right"><img src="/resources/assets/detail/cart.png" width="30px" height="30px">&nbsp 장바구니 담기</button></h2>
         <div>❈ 이미지를 클릭하면 네이버 쇼핑 페이지로 이동합니다.</div>
         </div>
         <br>
@@ -405,12 +405,12 @@
         <br>
         <!-- 없는 재료 -->
         <h2 class="fw-bolder mb-4 h4">내가 가지고 있지 않은 재료</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center py-5 bg-light" style="border: 3px solid #e95420; border-radius:30px; padding: 10px">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center py-5 bg-light" style="border: 3px solid #FF7851; border-radius:30px; padding: 10px">
         
            <c:if test="${empty shopNotIn}">
             <div class="col" style="margin-bottom:30px;">
                <div class="p-7 text-center">
-                   <h5 class="mb-3">레시피에 필요한 재료를 모두 가지고 있습니다!</h5>
+                   <h5 class="mb-3"><br>레시피에 필요한 재료를<br><br> 모두 가지고 있습니다!</h5>
                  </div>
             </div>
          </c:if>
@@ -440,11 +440,11 @@
         <!-- 있는 재료 -->
         <br><br>
         <h2 class="fw-bolder mb-4 h4">내가 가지고 있는 재료</h2>
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #e95420; border-radius:30px;  text-align : center; padding : 100px 0; text-align:center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" style="border: 3px solid #FF7851; border-radius:30px;  text-align : center; padding : 100px 0; text-align:center">
            <c:if test="${empty shopIn}">
             <div class="col" style="margin-bottom:30px;">
                <div class="p-7 text-center">
-                   <h5 class="mb-3" style="align-items: center">가지고 있는 재료를<br> 추가해보세요!</h5>
+                   <h5 class="mb-3" style="align-items: center"><br>가지고 있는 재료를<br><br> 추가해보세요!</h5>
                  </div>
             </div>
          </c:if>
@@ -500,7 +500,7 @@
                확인 또는 취소를 눌러주세요
             </div>
             <div class="modal-footer">
-               <button id='modalConfirmBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+               <button id='modalConfirmBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">확인</button>               
                <button id='modalCloseBtn' type="button" class="btn btn-default" style="border:1px solid lightgray">취소</button>
             </div>
          </div>
@@ -518,7 +518,7 @@
                다시 확인해주세요
             </div>
             <div class="modal-footer">
-               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">확인</button>               
             </div>
          </div>
       </div>
@@ -535,7 +535,7 @@
                다시 확인해주세요
             </div>
             <div class="modal-footer">
-               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">확인</button>               
             </div>
          </div>
       </div>
@@ -552,7 +552,7 @@
                다시 확인해주세요
             </div>
             <div class="modal-footer">
-               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">확인</button>               
+               <button id='modalAlertBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">확인</button>               
             </div>
          </div>
       </div>
@@ -583,7 +583,7 @@
             <div class="modal-footer">
                <button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
                <button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
-               <button id='modalRegisterBtn' type="button" class="btn btn-primary" style= "background-color:#e95420; border:none">등록</button>
+               <button id='modalRegisterBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">등록</button>
                
                <!-- <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>-->
             </div>
@@ -662,7 +662,7 @@ $(document).ready(function(){
             //str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
             //str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
             //str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
-            str+= "<div align='left'><div class='header'><strong class='primary-font' style='color:#e95420'>" + "<img src='/resources/assets/detail/user.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
+            str+= "<div align='left'><div class='header'><strong class='primary-font' style='color:#FF7851'>" + "<img src='/resources/assets/detail/user.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
             str+="<small class='rtime' style='font-size:15px'>&nbsp" + replyService.displayTime(list[i].replyDate)+"</small></div>";
             str+="<p>" + list[i].reply+"</p></div></li>";
             str+="<hr class='my-2' align='left' style='width: 93%; margin: 0 auto;'>";
