@@ -57,7 +57,6 @@ public class RecipeMapperTests {
 		log.info(board);
 	}
 	
-//	recipe ���� �߰��ϰ� , bno �� Ȯ�� �� �Ŀ� step, ingredient insert �ϸ� �˴ϴ�
 	@Test
 	public void testInsertRecipe() {
 		RecipeVO board = new RecipeVO();
@@ -114,7 +113,6 @@ public class RecipeMapperTests {
 	public void testRecipeDelete() {
 		log.info("DELETE COUNT : " + mapper.deleteRecipe(195456L));
 	}
-	// ���� �ϳ� recipe,step,ingredient �����ϰ� �׽�Ʈ, �⺻Ű, �ܷ�Ű�� �������� ���� �ϸ� �׽�Ʈ ����
 	
 	@Test
 	public void testUpdateRecipe() {
@@ -191,11 +189,4 @@ public class RecipeMapperTests {
 		log.info("Total....." + count);
 		
 	}
-	
-	/*
-	 * @Test public void testSortReplyCnt(Criteria cri) { log.info("sorting...."+
-	 * mapper.getRecipeOrderByReplycnt(cri));
-	 * 
-	 * }
-	 */
 }

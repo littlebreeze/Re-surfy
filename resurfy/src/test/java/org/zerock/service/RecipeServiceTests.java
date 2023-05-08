@@ -47,7 +47,6 @@ public class RecipeServiceTests {
 	
 	@Test
 	public void testGetList() {
-//		service.getList().forEach(board-> log.info(board));
 		service.getList(new Criteria(2,10)).forEach(board -> log.info(board));
 	}
 	
@@ -96,11 +95,5 @@ public class RecipeServiceTests {
 		
 		log.info("TOTAL RESULT : " + service.getTotal(cri));
 	}
-
-	/*
-	 * @Test public void testSortReplyCnt(Criteria cri) {
-	 * log.info(service.sortByReplyCnt(cri)); }
-	 */
-	
 
 }

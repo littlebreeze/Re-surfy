@@ -33,9 +33,9 @@ public class ReplyMapperTests {
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			ReplyVO board = new ReplyVO();
 			
-			board.setId("user1");			//FK , recipeTBL È®ÀÎ
-			board.setBno(bnoArr[i % 5]);	//FK , recipeTBL È®ÀÎ
-			board.setReply("´ñ±Û Å×½ºÆ® " + i);
+			board.setId("user1");			
+			board.setBno(bnoArr[i % 5]);	
+			board.setReply("ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ® " + i);
 			
 			mapper.insert(board);
 		

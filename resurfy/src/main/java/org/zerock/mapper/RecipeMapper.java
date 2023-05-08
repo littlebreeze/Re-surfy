@@ -20,7 +20,7 @@ public interface RecipeMapper {
 	public int updateStep(StepVO board);
 	public int updateIngredient(IngredientVO board);
 	
-	public int updateRecipew(RecipeVO board); // 필요한 부분만 레시피 수정
+	public int updateRecipew(RecipeVO board); 
 	
 	public int deleteRecipe(Long bno);
 	public int deleteStep(Long bno);

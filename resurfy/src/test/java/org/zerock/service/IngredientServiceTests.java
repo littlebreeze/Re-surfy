@@ -32,7 +32,6 @@ public class IngredientServiceTests {
 		board.setIngreType("주재료");
 		list.add(board);
 	
-		//service.registerAll(list);
 		log.info("생성된 게시물의 번호 : " + board.getIno());
 		
 	}
@@ -60,7 +59,6 @@ public class IngredientServiceTests {
 			return;
 		}
 		board.get(0).setIngreMeasure("400g");
-		//log.info("MODIFY RESULT : " + service.modify(board.get(0)));
 	}
 	
 	@Test
