@@ -18,28 +18,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/styles_detail.css" rel="stylesheet" />
-       <!--   <link href="/resources/css/bootstrap.min.css" rel="stylesheet" />-->
-       
-<!--        Bootstrap Core CSS -->
-<!-- <link href="/resources/vendor/bootstrap/css/bootstrap.min.css"
-   rel="stylesheet">-->
-
-<!-- MetisMenu CSS -->
-<!-- <link href="/resources/vendor/metisMenu/metisMenu.min.css"
-   rel="stylesheet">-->
-
-<!-- DataTables CSS -->
-<!-- <link
-   href="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"
-   rel="stylesheet">-->
-
-<!-- DataTables Responsive CSS -->
-<!-- <link
-   href="/resources/vendor/datatables-responsive/dataTables.responsive.css"
-   rel="stylesheet">-->
-
-<!-- Custom CSS -->
-<!-- <link href="/resources/dist/css/sb-admin-2.css" rel="stylesheet">-->
 
 <style>
 
@@ -112,35 +90,6 @@
 </style>
 </head>
 <body>
-    <!-- Navigation-->
-      <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav> -->
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5" >
@@ -150,9 +99,6 @@
               <div class="row">
                  <div class="fs-5 mb-5">
                        <br>
-                       <!-- <div class="sharebtn" style="width: 88%;text-align:right">
-                            <button id="kakaoBtn" class="kakaoBtn" onclick="js:kakaoShare()" style="width: 40px; height:40px; border:1px solid lightgray; border-radius:10px 10px; background-color:white"><img src="/resources/assets/share.png" width="20" height="20"></button>
-                            </div>  -->
                      	<div class='sharebtn' style="width: 88%;text-align:right">
   						<div class="dropdown">
 					      <button id="shareBtn" class="shareBtn" style="border:1px solid #ffe7e0; border-radius:10px 10px; "> 
@@ -191,8 +137,7 @@
               
                                       
                              <!-- 재료칸(재료, 양념) -->
-                      
-                  
+                                     
                              <div class="fw-bolder" style=" width: 80%; margin: 0 auto; text-align:left; font-size:25px">재료</div>
                              <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
                          
@@ -349,10 +294,6 @@
                                  class='btn btn-primary btn-jelly' style="width:150%; height:60px; background-color: #FF7851; border:none; float:right; font-size:20px">등록</button></div>
                     
                   
-               <%--    <c:if test="${not empty member.id}">
-                  <button id='addReplyBtn'
-                                 class='btn btn-primary btn-jelly' style="width:80px; height:60px; background-color: #e95420; border:none; float:right; font-size:20px">등록</button>
-                  </c:if>    --%>
                   </div><br>
                         <!-- <hr class="my-2" align="center" style="width: 100%; margin: 0 auto;"> -->
                   <div class="row">
@@ -477,13 +418,7 @@
 
         </section>
         
-        
-        <!-- Footer-->
-      <!--   <footer class="p-3 mb-2 text-white" style="background-color: #e95420">
-            <div class="container"><br><p class="m-0 text-center text-white">Copyright &copy; Resurfy 2023</p><br>
-            <p class="m-0 text-center text-white"><img src ="https://cdn-icons-png.flaticon.com/512/733/733609.png" width=30px height=30px/>&nbsp Github Address : <a href="https://github.com/barcataeeon/Re-surfy" class="m-0 text-center text-white"> https://github.com/barcataeeon/Re-surfy</a></p><br>
-             </div>
-        </footer> -->
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -695,16 +630,6 @@ var alertModal = $("#alertModal");
    });
    
    
-   /* $("#addReplyBtn").on("click", function(e) {
-      modal.find("input").val("");
-      modalInputReplyer.closest("div").hide();
-      modalInputReplyDate.closest("div").hide();
-      modal.find("button[id!='modalCloseBtn']").hide();
-      
-      modalRegisterBtn.show();
-      modal.modal("show");
-   }); */
-   
     $("#addReplyBtn").on("click", function(e) {
 
       if (writer.length > 0){
@@ -727,8 +652,7 @@ var alertModal = $("#alertModal");
          showList(-1);
       });
       parent.document.getElementById('replybox').value='';
-      /*parent.document.location.reload();*/
-      /*window.location.reload(true);*/ 
+
       } else{
          $(".modal-title").html("댓글 등록 오류")
              $(".modal-body").html("댓글을 남겨주세요!")
@@ -823,40 +747,6 @@ var alertModal = $("#alertModal");
        
       var bnoValue = '<c:out value="${recipe.bno}"/>';
       
-      /*replyService.add(
-            {reply:"JS Test", id:"user1", bno:bnoValue}
-            ,
-            function(result){
-               alert("RESULT : " + result);
-            }
-      );*/
-      /*replyService.getList({bno:bnoValue, page:1}, function(list){
-           var bnoValue='<c:out value="${board.bno}"/>';
-          for(var i = 0,  len = list.length||0; i < len; i++ ){
-            console.log(list[i]);
-          }
-      });*/
-      /*
-      replyService.remove(22, function(count) {
-         console.log(count);
-         if(count==="success") {
-            alert("REMOVED");
-         }
-      }, function(err) {
-         alert('ERROR....');
-      
-         });
-      */
-      /*var bnoValue='<c:out value="${recipe.bno}"/>';
-      replyService.update({
-           rno : 3,
-           bno : bnoValue,
-           reply : "너무 맛있어요!..."
-         }, function(result) {
-          
-           alert("수정 완료...");
-          
-         });  */
       
       replyService.get(7, function(data){
           console.log(data);
@@ -929,14 +819,12 @@ console.log(priceArr);
  console.log(pIdArr);
  
  if(priceArr.length == 0){
-/*  alert("선택된 제품이 없습니다."); */
     
     $(".nocmodal-title").html("장바구니 알림")
     $(".nocmodal-body").html("선택된 제품이 없습니다!")
     nocalertModal.modal("show");
  
  }else{
- /* var confirm_val = confirm("장바구니에 추가하시겠습니까?"); */
 
   $.ajax({
      url : "/mypage/addCart",
@@ -1000,7 +888,6 @@ $(document).ready(function() {
 		textarea.select();
 		document.execCommand("copy");
 		document.body.removeChild(textarea);
-		//alert("레시피 링크가 복사되었습니다.")
 		
 		$(".linkmodal-title").html("레시피 공유하기")
 	     $(".linkmodal-body").html("링크가 복사되었습니다!")
