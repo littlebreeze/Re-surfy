@@ -288,8 +288,8 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="card-container row row-cols-md-3" style="display:flex;">
-					<c:if test="${empty get}">
+				<c:if test="${empty get}">
+					<div class="card-container row row-cols-md-3" style="display:flex; justify-content: center;">
 						<div class="col card" style="border: 0px; width: 500px;">
 							<div class="text-center">
 								<img src="/resources/assets/fadefadeBlueLogo.png" alt="Generic placeholder image" class="img-fluid" style="width: 160px; margin-bottom:20px;">
@@ -297,7 +297,9 @@
 							    <h5 class="mb-3">검색 키워드를 확인하시거나</h5><h5>레시피를 공유해보세요!</h5>
 							  </div>
 						</div>
-					</c:if>
+					</div>
+				</c:if>
+				<div class="card-container row row-cols-md-3" style="display:flex;">
 					<c:forEach items="${get}" var="recipe">
 						<div class="card col" style="border: 0px;">
 							<a href="/recipe/detail?bno=<c:out value="${recipe.bno}" />">
