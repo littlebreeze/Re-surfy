@@ -394,7 +394,7 @@ $(document).ready(function(){
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-    Kakao.init('ae6e31f26d9a4362ccaa202c4f354299');   <!--붙여넣기-->
+    Kakao.init('JAVASCRIPT_KEY');   <!--붙여넣기-->
     Kakao.isInitialized();
     var thisUrl = document.URL;
     var olist = "<c:out value='${member.userName}'/>님이 가지고 있는 재료는 ";
@@ -408,7 +408,7 @@ $(document).ready(function(){
               title: '가진 재료 공유하기',
               description: olist,
               imageUrl:
-            	  'https://k.kakaocdn.net/14/dn/btsdYB1QlEV/SzaI65dryp7pr3KqeYXy61/o.jpg',
+            	  'imageUrl',
               link: {
                 mobileWebUrl: thisUrl,
                 webUrl: thisUrl,
@@ -416,7 +416,7 @@ $(document).ready(function(){
             },
             itemContent: {
               profileText: 'Resurfy',
-              profileImageUrl: 'https://k.kakaocdn.net/14/dn/btsdYB1QlEV/SzaI65dryp7pr3KqeYXy61/o.jpg',
+              profileImageUrl: 'profileImageUrl',
             },
 
           });

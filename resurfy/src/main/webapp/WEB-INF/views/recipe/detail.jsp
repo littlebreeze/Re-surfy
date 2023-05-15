@@ -899,7 +899,7 @@ $(document).ready(function() {
 
  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        Kakao.init('ae6e31f26d9a4362ccaa202c4f354299');   <!--붙여넣기-->
+        Kakao.init('JAVASCRIPT_KEY');   <!--붙여넣기-->
         Kakao.isInitialized();
         var thisUrl = document.URL;
         function kakaoShare(){
@@ -918,7 +918,7 @@ $(document).ready(function() {
                 },
                 itemContent: {
                   profileText: 'Resurfy',
-                  profileImageUrl: 'https://k.kakaocdn.net/14/dn/btsdYB1QlEV/SzaI65dryp7pr3KqeYXy61/o.jpg',
+                  profileImageUrl: 'profileImageUrl',
                 },
                
                 buttons: [
