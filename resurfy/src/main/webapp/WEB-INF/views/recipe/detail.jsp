@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
-<%-- <%@include file="../includes/header.jsp"%> --%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,7 +62,7 @@
 			.dropdown-content{
 			  display : none;
 			  position : absolute;
-			  z-index : 1; /*다른 요소들보다 앞에 배치*/
+			  z-index : 1; 
 			  font-weight: 400;
 			  background-color: #f9f9f9;
 			  min-width : 150px;
@@ -95,7 +95,7 @@
             <div class="container px-4 px-lg-5 my-5" >
             <div class="text-center">
         <img src='<c:out value="${recipe.image }"/>' readonly="readonly" width=800px height=600px alt="...">
-              <!-- <img src="http://file.okdab.com/UserFiles/searching/recipe/000200.jpg" width=500px height=500px  alt="..."> -->
+              
               <div class="row">
                  <div class="fs-5 mb-5">
                        <br>
@@ -123,7 +123,7 @@
                              <span style="font-size:20px">소요시간 : </span>
                              <span style="font-size:20px"><c:out value="${recipe.time }"/></span>
                              </div>
-                             <!-- 사용자 그림 사진 : https://cdn-icons-png.flaticon.com/512/5393/5393061.png-->
+                            
                              <hr class="my-2" align="center" style="width: 90%; margin: 0 auto;">
                              
                              <div class="p-2"  style=" width: 50%; margin: 0 auto; text-align:left">
@@ -272,17 +272,14 @@
                   </div>
                   <div class="py-3 container " style=" width: 50%; margin: 0 auto; text-align:center; font-size:13px;">
                   <c:if test="${recipe.id eq member.id || member.id eq 'admin'}">
-                  <%-- <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:100px; height:60px; background-color: #e95420; font-size:20px; border:none; margin-left:10px">수정</button> --%>
+                  
                   <button id='modifyBtn' data-oper='modify' class='py-3   btn btn-primary btn-jelly' onclick = "location.href='/recipe/modify?bno=<c:out value="${recipe.bno }"/>'" style="width:200px; height:70px; background-color: #FF7851; font-size:20px; border:none; text-align:center">수정</button>
                   </c:if>
-                    <!-- <div class="space" style="width: 3px; height: auto; display: inline-block;"></div>
-                  <button id='listBtn' data-oper='list' class='py-3  btn btn-primary btn-jelly' onclick = "location.href='/recipe/get'" style="width:100px; height:60px; background-color: #e95420; border:none; font-size:20px">목록</button> -->
                   </div>
                   
                   </div>
                
          
-                  <!-- 댓글 창에 부트스트랩 프레임워크의 class명을 확인한다. -->
                   <br><br><br><br><br>
                   
                   <div class="fw-bolder" style=" width: 90%; margin: 0 auto; text-align:left">댓글</div>
@@ -295,17 +292,15 @@
                     
                   
                   </div><br>
-                        <!-- <hr class="my-2" align="center" style="width: 100%; margin: 0 auto;"> -->
+                        
                   <div class="row">
                      <div class="col-lg-12">
                         <div class="panel panel-default">
-                           <!--       <div class="panel-heading">
-            <i class="fa fa-comments fa=fw"></i> Reply
-         </div> -->
+                         
                            <!-- /.panel-heading -->
                            <div class="panel-heading">
                            <i class="fa fa-comments fa=fw"></i> <!-- Reply -->
-                           <!-- <button id='addReplyBtn' class = 'btn btn-primary btn-xs pull-right'>New Reply</button>-->
+                          
                            </div>
                            <div class="panel-body">
                               <ul class="chat" style=" list-style:none">
@@ -330,11 +325,11 @@
 
 
                </div>
-                     <!-- <hr align="center" style="border: solid 1px gray; width: 50%;"> -->
+                     
                      
               </div> <!-- 전체 end -->
          </div>
-         <!-- <button id='addCartBtn' class='btn btn-primary btn-jelly' style="width:130px; height:50px; background-color: #33afe9; border:none; float:right">장바구니 담기</button>-->
+         
 <section class="py-5" style="background-clor:white">
     <div class="container px-4 px-lg-5 mt-5">
        <div>
@@ -421,8 +416,6 @@
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-       <!--  <script src="js/scripts.js"></script> -->
           
           <!-- Confirm Modal-->
    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -459,7 +452,7 @@
       </div>
    </div>
    
-   <!-- Modal 장바구니에 아무것도 안담겼을 때 -->
+   <!-- Modal - 레시피 공유 -->
    <div class="modal fade" id="linkalertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
       <div class="modal-dialog" id="addModalDialog">
          <div class="modal-content" id="addModalContent">
@@ -476,7 +469,7 @@
       </div>
    </div>
    
-   <!-- Modal 링크 복사 -->
+   <!-- Modal -->
    <div class="modal fade" id="nocalertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
       <div class="modal-dialog" id="addModalDialog">
          <div class="modal-content" id="addModalContent">
@@ -519,8 +512,6 @@
                <button id='modalModBtn' type="button" class="btn btn-warning">수정</button>
                <button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
                <button id='modalRegisterBtn' type="button" class="btn btn-primary" style= "background-color:#FF7851; border:none">등록</button>
-               
-               <!-- <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>-->
             </div>
          </div>
       </div>
@@ -569,11 +560,11 @@ $(document).ready(function(){
    var bnoValue = '<c:out value="${recipe.bno}"/>';
    var writer = '<c:out value="${member.id}"/>';
    var replyUL = $(".chat");
-//함수를 만드는 function() 익명함수이고 function showList(page) 함수명이 showList이고 매개변수는 page   
+
    showList(1);
    function showList(page){
       console.log("show list " + page);
-      //함수호출(매개값, list함수매개값{})
+      
       replyService.getList({bno:bnoValue, page: page||1}, 
             function(replyCnt, list){
          
@@ -594,9 +585,6 @@ $(document).ready(function(){
          }
          for (var i=0, len=list.length || 0; i<len; i++){
             str += "<li class='left clearfix' data-rno='"+list[i].rno+"' style='width: 90%; margin: 0 auto; text-align:left'>";
-            //str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-            //str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + list[i].id + "</strong>";
-            //str+= "<div><div class='header'><strong class='primary-font'>[" + list[i].rno + "] " + "<img src='https://cdn-icons-png.flaticon.com/512/9386/9386837.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
             str+= "<div align='left'><div class='header'><strong class='primary-font' style='color:#FF7851'>" + "<img src='/resources/assets/detail/user.png' width='25px' height='25px'> &nbsp"+list[i].id + "</strong>";
             str+="<small class='rtime' style='font-size:15px'>&nbsp" + replyService.displayTime(list[i].replyDate)+"</small></div>";
             str+="<p>" + list[i].reply+"</p></div></li>";
@@ -764,12 +752,7 @@ var alertModal = $("#alertModal");
           
         });
       </script>
-      
-      <!-- <script type="text/javascript">
-      $(document).ready(function() {
-         console.log(replyService);
-      });
-      </script>-->
+     
       
       <script>
 $(document).ready(function() {
@@ -836,8 +819,8 @@ console.log(priceArr);
      pIdArr : pIdArr },
      success : function(){
      console.log("장바구니 추가 성공");
-     /* alert("장바구니에 추가 되었습니다."); */
-     $(".modal-title").html("🛒 장바구니에 추가되었습니다!")
+     
+     $(".modal-title").html("장바구니에 추가되었습니다!")
      $(".modal-body").html("장바구니로 이동하시겠습니까?")
      confirmModal.modal("show");
      
@@ -899,7 +882,7 @@ $(document).ready(function() {
 
  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        Kakao.init('JAVASCRIPT_KEY');   <!--붙여넣기-->
+        Kakao.init('JAVASCRIPT_KEY');  
         Kakao.isInitialized();
         var thisUrl = document.URL;
         function kakaoShare(){

@@ -35,7 +35,7 @@
 			.dropdown-content{
 			  display : none;
 			  position : absolute;
-			  z-index : 1; /*다른 요소들보다 앞에 배치*/
+			  z-index : 1;
 			  font-weight: 400;
 			  background-color: #f9f9f9;
 			  min-width : 150px;
@@ -394,7 +394,7 @@ $(document).ready(function(){
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-    Kakao.init('JAVASCRIPT_KEY');   <!--붙여넣기-->
+    Kakao.init('JAVASCRIPT_KEY');  
     Kakao.isInitialized();
     var thisUrl = document.URL;
     var olist = "<c:out value='${member.userName}'/>님이 가지고 있는 재료는 ";
