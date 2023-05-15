@@ -31,8 +31,8 @@ public class ShoppingServiceImpl implements ShoppingService {
 	
 	@Override
 	public List<ShopVO> searchFromAPI(List<String> iname) {
-		String clientId = "cqLuBLlsSqi_VOfBfZEJ"; // 애플리케이션 클라이언트 아이디값"
-		String clientSecret = "Ntsyjhm6VN"; // 애플리케이션 클라이언트 시크릿값"
+		String clientId = "NAVER_API_CLIENT_ID"; // 애플리케이션 클라이언트 아이디값"
+		String clientSecret = "NAVER_API_CLIENT_SECRET"; // 애플리케이션 클라이언트 시크릿값"
 		
 		List<ShopVO> allList = new ArrayList<ShopVO>();
 		for (int i = 0; i < iname.size(); i++) {
