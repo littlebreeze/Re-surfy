@@ -4,7 +4,7 @@
 
 ![Resurfy.png](resurfy/src/main/webapp/resources/assets/horizontal_logo.png)
 
-Refesta : 사용자간 레시피를 공유하고, 쇼핑을 중계하는 사이트
+사용자간 레시피를 공유하고, 쇼핑을 중계하는 사이트
 
 ## 📅 진행 기간
 
