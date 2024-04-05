@@ -101,9 +101,9 @@ Refesta : 사용자간 레시피를 공유하고, 쇼핑을 중계하는 사이�
 
 ## 📃 프로젝트 산출물
 
-- [프로젝트 노션](https://instinctive-talk-7a7.notion.site/Aticket-637a6f1875244119a8c89f14ed540b44?pvs=4)
-- [화면 정의서](https://www.figma.com/file/bxs6l1zCnb9wPEKiLhj30e/%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8?type=design&node-id=0-1&mode=design&t=oEZFw1x6hpYl0e2k-0)
-- [API 명세서](https://www.notion.so/API-75a33ec196d343899287e49c6e081bdd)
+- [프로젝트 노션]()
+- [화면 정의서]()
+- [API 명세서]()
 
 ## 📊 ERD 다이어그램
 ![ERD](/img/ERD.png)
